@@ -14,6 +14,10 @@
 		27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4FA21F446E6500FD4166 /* LaunchScreen.storyboard */; };
 		27CE4FAF1F446E6500FD4166 /* calvi_tableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4FAE1F446E6500FD4166 /* calvi_tableTests.swift */; };
 		27CE4FBA1F446E6500FD4166 /* calvi_tableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4FB91F446E6500FD4166 /* calvi_tableUITests.swift */; };
+		27CE4FC81F44749E00FD4166 /* taylor_swift_blank_space.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */; };
+		27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13111F46FC5E0073C0E9 /* AdCell.swift */; };
+		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
+		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		27CE4FB51F446E6500FD4166 /* calvi_tableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calvi_tableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CE4FB91F446E6500FD4166 /* calvi_tableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calvi_tableUITests.swift; sourceTree = "<group>"; };
 		27CE4FBB1F446E6500FD4166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taylor_swift_blank_space.jpg; sourceTree = "<group>"; };
+		27FE13111F46FC5E0073C0E9 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
+		27FE13131F46FF110073C0E9 /* Ad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
+		27FE13151F47122F0073C0E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +109,12 @@
 				27CE4F9B1F446E6500FD4166 /* ViewController.swift */,
 				27CE4F9D1F446E6500FD4166 /* Main.storyboard */,
 				27CE4FA01F446E6500FD4166 /* Assets.xcassets */,
+				27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */,
 				27CE4FA21F446E6500FD4166 /* LaunchScreen.storyboard */,
 				27CE4FA51F446E6500FD4166 /* Info.plist */,
+				27FE13111F46FC5E0073C0E9 /* AdCell.swift */,
+				27FE13131F46FF110073C0E9 /* Ad.swift */,
+				27FE13151F47122F0073C0E9 /* DetailViewController.swift */,
 			);
 			path = calvi_table;
 			sourceTree = "<group>";
@@ -235,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27CE4FC81F44749E00FD4166 /* taylor_swift_blank_space.jpg in Resources */,
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
@@ -262,6 +275,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FE13141F46FF110073C0E9 /* Ad.swift in Sources */,
+				27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */,
+				27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */,
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
 			);
@@ -516,6 +532,7 @@
 				27CE4FC01F446E6500FD4166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CE4FC11F446E6500FD4166 /* Build configuration list for PBXNativeTarget "calvi_tableTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +541,7 @@
 				27CE4FC31F446E6500FD4166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CE4FC41F446E6500FD4166 /* Build configuration list for PBXNativeTarget "calvi_tableUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +550,7 @@
 				27CE4FC61F446E6500FD4166 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
