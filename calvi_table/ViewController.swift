@@ -4,15 +4,21 @@
 //
 //  Created by bernd wichura on 16.08.17.
 //  Copyright © 2017 bernd wichura. All rights reserved.
-//
+//  luftkraftsport
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
     
+    @IBOutlet weak var serachBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     var ads: [Ad] = []
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let myKeyWords = searchBar.text
+        print(myKeyWords)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,7 @@ class ViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.contentInset = UIEdgeInsets(top: -64.0, left: 0.0, bottom: 0.0, right: 0.0)
         
+        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         /*UINavigationBar.appearance().barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
     
         navigationItem.title = "Luftkraftsport"
