@@ -13,10 +13,16 @@ class DetailViewController: UIViewController {
     var anzeig: String?
     var pictureUrl: String?
     var desc: String?
+    var price: Int?
+    var location: String?
+    var date: Int32?
     
     @IBOutlet weak var anzeigeTitel: UILabel!
     @IBOutlet weak var mainPicture: UIImageView!
     @IBOutlet weak var beschreibung: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +36,17 @@ class DetailViewController: UIViewController {
             self.beschreibung.text = desc
         }
 
+        if price != nil {
+            self.priceLabel.text = String(describing: price!) + " €"
+        }
+        
+        if date != nil {
+            self.dateLabel.text = "Erstellt am: " + String(describing: NSDate(timeIntervalSince1970: TimeInterval(date!)))
+        }
+        
+        if location != nil {
+            self.locationLabel.text = location
+        }
         
         if pictureUrl != nil {
             

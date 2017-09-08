@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchResultsUpdating {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -31,16 +31,21 @@ class ViewController: UIViewController, UISearchBarDelegate {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Luftkraftsport"
         
-        tableView?.backgroundColor = UIColor.white
+        tableView?.backgroundColor = UIColor.gray
         
         navigationController?.navigationBar.isTranslucent = true
 
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchResultsUpdater = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
     
     func fetchAds() {
@@ -66,13 +71,16 @@ class ViewController: UIViewController, UISearchBarDelegate {
                 
                 let title = dictionary["title"] as? String
                 let descriptions = dictionary["description"] as? String
+                let price = dictionary["price"] as? Int
+                let userId = dictionary["userId"] as? String
+                let location = dictionary["locationName"] as? String
+                let date = dictionary["date"] as? Int32
                 var urls = dictionary["urls"] as? String
                 if urls == nil {
                     urls = ""
                 }
-                //let mainUrl = self.getPictureUrl(str: urls!)
                 
-                let ad = Ad(title: title!, desc: descriptions!, urls: urls!)
+                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!)
                 
                 //print(ad.urls)
                 
@@ -108,6 +116,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
                     detailViewController.anzeig = ad.title
                     detailViewController.pictureUrl = getPictureUrl(str: ad.urls)
                     detailViewController.desc = ad.desc
+                    detailViewController.price = ad.price
+                    detailViewController.location = ad.location
+                    detailViewController.date = ad.date
                 }
             }
         }
@@ -166,5 +177,9 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40.0
+    }
+    
+    func tableView(_ tableView: UITableView, heightFor section: Int) -> CGFloat{
+        return 15
     }
 }

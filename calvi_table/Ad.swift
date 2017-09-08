@@ -13,5 +13,8 @@ struct Ad {
     var title: String
     var desc: String
     var urls: String
-    
+    var price: Int
+    var location: String
+    var date: Int32
+    var userId: String
 }
