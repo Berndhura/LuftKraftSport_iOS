@@ -24,6 +24,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBAction func bookmarkButton(_ sender: Any) {
+        print("bookmark")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

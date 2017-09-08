@@ -133,17 +133,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-nL-Svl">
-                                <rect key="frame" x="0.0" y="629" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0H-nL-Svl">
+                                <rect key="frame" x="21" y="632" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-KV-JLy">
-                                <rect key="frame" x="329" y="637" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="daA-ou-CIa">
                                 <rect key="frame" x="21" y="72" width="333" height="267"/>
@@ -181,9 +173,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bD-KV-JLy">
+                                <rect key="frame" x="302" y="632" width="52" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Merken">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bookmarkButton:" destination="W1h-Wv-7it" eventType="touchUpInside" id="3dm-xL-rgM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QJc-k8-mN8" firstAttribute="top" secondItem="W0H-nL-Svl" secondAttribute="bottom" constant="5" id="2Gi-5Q-keM"/>
                             <constraint firstItem="WBE-3n-AqM" firstAttribute="leading" secondItem="3eW-mU-Kqt" secondAttribute="leadingMargin" constant="5" id="5RM-kf-Fs2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qLu-6H-rdK" secondAttribute="trailing" constant="5" id="9Pg-dg-nyZ"/>
                             <constraint firstItem="xMq-JX-mPu" firstAttribute="top" secondItem="daA-ou-CIa" secondAttribute="bottom" constant="20" id="BGX-GU-JKW"/>
@@ -195,6 +199,9 @@
                             <constraint firstItem="nEK-mJ-fxm" firstAttribute="leading" secondItem="3eW-mU-Kqt" secondAttribute="leadingMargin" constant="5" id="Pcx-fH-DK2"/>
                             <constraint firstItem="WBE-3n-AqM" firstAttribute="top" secondItem="1FX-Hc-NfB" secondAttribute="bottom" constant="8" id="XPy-I1-5Z1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="daA-ou-CIa" secondAttribute="trailing" constant="5" id="a7V-oM-ipd"/>
+                            <constraint firstItem="W0H-nL-Svl" firstAttribute="leading" secondItem="3eW-mU-Kqt" secondAttribute="leadingMargin" constant="5" id="bqE-rh-FAO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6bD-KV-JLy" secondAttribute="trailing" constant="5" id="cPU-YP-0b2"/>
+                            <constraint firstItem="QJc-k8-mN8" firstAttribute="top" secondItem="6bD-KV-JLy" secondAttribute="bottom" constant="5" id="ht4-eL-tsf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1FX-Hc-NfB" secondAttribute="trailing" constant="5" id="iZb-e8-CAp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WBE-3n-AqM" secondAttribute="trailing" constant="5" id="ihY-21-y0g"/>
                             <constraint firstItem="qLu-6H-rdK" firstAttribute="leading" secondItem="3eW-mU-Kqt" secondAttribute="leadingMargin" constant="5" id="l6O-CQ-YdO"/>
@@ -235,7 +242,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-KY-2hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-580" y="-97.601199400299862"/>
+            <point key="canvasLocation" x="-439" y="-99"/>
         </scene>
     </scenes>
     <resources>
