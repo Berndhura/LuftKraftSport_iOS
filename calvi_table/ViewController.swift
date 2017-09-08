@@ -10,15 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
     
-    @IBOutlet weak var serachBar: UISearchBar!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var ads: [Ad] = []
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let myKeyWords = searchBar.text
-        print(myKeyWords)
-    }
+    var searchController: UISearchController!
+    var resultController = UITableViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +28,15 @@ class ViewController: UIViewController, UISearchBarDelegate {
         self.tableView.contentInset = UIEdgeInsets(top: -64.0, left: 0.0, bottom: 0.0, right: 0.0)
         
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
-        /*UINavigationBar.appearance().barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
-    
+        navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Luftkraftsport"
         
         tableView?.backgroundColor = UIColor.white
         
-        navigationController?.navigationBar.isTranslucent = true*/
+        navigationController?.navigationBar.isTranslucent = true
 
-        
+        self.searchController = UISearchController(searchResultsController: self.resultController)
+        self.tableView.tableHeaderView = self.searchController.searchBar
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,6 +107,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
                     let ad: Ad = ads[indexPath!.row]
                     detailViewController.anzeig = ad.title
                     detailViewController.pictureUrl = getPictureUrl(str: ad.urls)
+                    detailViewController.desc = ad.desc
                 }
             }
         }

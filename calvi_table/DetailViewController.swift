@@ -12,16 +12,24 @@ class DetailViewController: UIViewController {
     
     var anzeig: String?
     var pictureUrl: String?
+    var desc: String?
     
     @IBOutlet weak var anzeigeTitel: UILabel!
     @IBOutlet weak var mainPicture: UIImageView!
+    @IBOutlet weak var beschreibung: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if anzeig != nil {
             self.anzeigeTitel.text = anzeig
+            self.title = anzeig
         }
+        
+        if desc != nil {
+            self.beschreibung.text = desc
+        }
+
         
         if pictureUrl != nil {
             
@@ -41,10 +49,6 @@ class DetailViewController: UIViewController {
                 }.resume()
 
         }
-        
-        self.title = "blsai"
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
