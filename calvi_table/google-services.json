@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "485775614575",
+    "firebase_url": "https://luftkraftsport-161620.firebaseio.com",
+    "project_id": "luftkraftsport-161620",
+    "storage_bucket": "luftkraftsport-161620.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485775614575:android:2d6a6a75fe51ec97",
+        "android_client_info": {
+          "package_name": "de.wichura.lks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485775614575-hm690j34vufjf0pcckaj0daug601lkjj.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "485775614575-f7n1o30oic97s3rc85el5shdui9kl8dm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.wichura.lks",
+            "certificate_hash": "12e4feaecd774a920dc4e51ac365faa30c50f968"
+          }
+        },
+        {
+          "client_id": "485775614575-bgge92h3jhg7hm24qlmrl7bekcd64mbp.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "485775614575-p5n59hndpks3faqeo8gnkqg8fci7msps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "de.wichura.lks",
+            "certificate_hash": "9390952941f40ba07097db4c419785108c26577f"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYcC66curYS3L7ZbS4B1LbEvQIm4xtSu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485775614575-hm690j34vufjf0pcckaj0daug601lkjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

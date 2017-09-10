@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */; };
+		206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */; };
 		27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F991F446E6500FD4166 /* AppDelegate.swift */; };
 		27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F9B1F446E6500FD4166 /* ViewController.swift */; };
 		27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4F9D1F446E6500FD4166 /* Main.storyboard */; };
@@ -18,6 +20,9 @@
 		27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13111F46FC5E0073C0E9 /* AdCell.swift */; };
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
+		27FE13521F64104B0073C0E9 /* google-services.json in Resources */ = {isa = PBXBuildFile; fileRef = 27FE13511F64104B0073C0E9 /* google-services.json */; };
+		27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */; };
+		76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_table.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		27CE4F961F446E6500FD4166 /* calvi_table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calvi_table.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CE4F991F446E6500FD4166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27CE4F9B1F446E6500FD4166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +62,16 @@
 		27FE13111F46FC5E0073C0E9 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		27FE13131F46FF110073C0E9 /* Ad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		27FE13151F47122F0073C0E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		27FE13511F64104B0073C0E9 /* google-services.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "google-services.json"; sourceTree = "<group>"; };
+		27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "calvi_table-Bridging-Header.h"; sourceTree = "<group>"; };
+		27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lks-Bridging-Header.m"; sourceTree = "<group>"; };
+		2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
+		5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.debug.xcconfig"; sourceTree = "<group>"; };
+		BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E81CCFCF4A59A12AF4386C19 /* Pods-calvi_table.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +109,8 @@
 				27CE4FAD1F446E6500FD4166 /* calvi_tableTests */,
 				27CE4FB81F446E6500FD4166 /* calvi_tableUITests */,
 				27CE4F971F446E6500FD4166 /* Products */,
+				D5066F03A7C90A06D472CC46 /* Pods */,
+				FC235A5C4BB21180C6E1AC70 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +127,7 @@
 		27CE4F981F446E6500FD4166 /* calvi_table */ = {
 			isa = PBXGroup;
 			children = (
+				27FE13511F64104B0073C0E9 /* google-services.json */,
 				27CE4F991F446E6500FD4166 /* AppDelegate.swift */,
 				27CE4F9B1F446E6500FD4166 /* ViewController.swift */,
 				27CE4F9D1F446E6500FD4166 /* Main.storyboard */,
@@ -115,6 +138,8 @@
 				27FE13111F46FC5E0073C0E9 /* AdCell.swift */,
 				27FE13131F46FF110073C0E9 /* Ad.swift */,
 				27FE13151F47122F0073C0E9 /* DetailViewController.swift */,
+				27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */,
+				27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */,
 			);
 			path = calvi_table;
 			sourceTree = "<group>";
@@ -137,6 +162,29 @@
 			path = calvi_tableUITests;
 			sourceTree = "<group>";
 		};
+		D5066F03A7C90A06D472CC46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */,
+				E81CCFCF4A59A12AF4386C19 /* Pods-calvi_table.release.xcconfig */,
+				16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */,
+				2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */,
+				5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */,
+				E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FC235A5C4BB21180C6E1AC70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */,
+				5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */,
+				BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27CE4FBE1F446E6500FD4166 /* Build configuration list for PBXNativeTarget "calvi_table" */;
 			buildPhases = (
+				B778CE734C7D816B84A98957 /* [CP] Check Pods Manifest.lock */,
 				27CE4F921F446E6500FD4166 /* Sources */,
 				27CE4F931F446E6500FD4166 /* Frameworks */,
 				27CE4F941F446E6500FD4166 /* Resources */,
+				A42127077F70A7C68DF44F1B /* [CP] Embed Pods Frameworks */,
+				F09AA32DFABF0E337CEFA71F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,9 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27CE4FC11F446E6500FD4166 /* Build configuration list for PBXNativeTarget "calvi_tableTests" */;
 			buildPhases = (
+				0CF37C3998C3AC0BF3B3BBE8 /* [CP] Check Pods Manifest.lock */,
 				27CE4FA61F446E6500FD4166 /* Sources */,
 				27CE4FA71F446E6500FD4166 /* Frameworks */,
 				27CE4FA81F446E6500FD4166 /* Resources */,
+				4FCDBCE5FB685FA072141504 /* [CP] Embed Pods Frameworks */,
+				D28F80D35BC8127A4DB0FDB4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27CE4FC41F446E6500FD4166 /* Build configuration list for PBXNativeTarget "calvi_tableUITests" */;
 			buildPhases = (
+				149BE6A01AA269D9E13CA023 /* [CP] Check Pods Manifest.lock */,
 				27CE4FB11F446E6500FD4166 /* Sources */,
 				27CE4FB21F446E6500FD4166 /* Frameworks */,
 				27CE4FB31F446E6500FD4166 /* Resources */,
+				0FB70BA31EB7B38B7DD0C40A /* [CP] Embed Pods Frameworks */,
+				EF0AEE9A7580B76846BBF63F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,6 +263,7 @@
 					27CE4F951F446E6500FD4166 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = XPVL95Z44H;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					27CE4FA91F446E6500FD4166 = {
@@ -251,6 +309,7 @@
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
+				27FE13521F64104B0073C0E9 /* google-services.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +329,144 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CF37C3998C3AC0BF3B3BBE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0FB70BA31EB7B38B7DD0C40A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		149BE6A01AA269D9E13CA023 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4FCDBCE5FB685FA072141504 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A42127077F70A7C68DF44F1B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B778CE734C7D816B84A98957 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D28F80D35BC8127A4DB0FDB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF0AEE9A7580B76846BBF63F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F09AA32DFABF0E337CEFA71F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27CE4F921F446E6500FD4166 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -280,6 +477,7 @@
 				27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */,
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
+				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,32 +629,40 @@
 		};
 		27CE4FBF1F446E6500FD4166 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
 				INFOPLIST_FILE = calvi_table/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.wichura.calvi-table";
+				PRODUCT_BUNDLE_IDENTIFIER = de.wichura.lks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "calvi_table/calvi_table-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		27CE4FC01F446E6500FD4166 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E81CCFCF4A59A12AF4386C19 /* Pods-calvi_table.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
 				INFOPLIST_FILE = calvi_table/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.wichura.calvi-table";
+				PRODUCT_BUNDLE_IDENTIFIER = de.wichura.lks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "calvi_table/calvi_table-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		27CE4FC21F446E6500FD4166 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -472,6 +678,7 @@
 		};
 		27CE4FC31F446E6500FD4166 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +694,7 @@
 		};
 		27CE4FC51F446E6500FD4166 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
@@ -501,6 +709,7 @@
 		};
 		27CE4FC61F446E6500FD4166 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = XPVL95Z44H;

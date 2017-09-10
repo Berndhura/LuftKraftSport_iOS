@@ -76,6 +76,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 let location = dictionary["locationName"] as? String
                 let date = dictionary["date"] as? Int32
                 var urls = dictionary["urls"] as? String
+                
                 if urls == nil {
                     urls = ""
                 }

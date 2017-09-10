@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, GIDSignInUIDelegate {
     
     var anzeig: String?
     var pictureUrl: String?
@@ -24,12 +24,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBAction func bookmarkButton(_ sender: Any) {
-        print("bookmark")
-    }
+    @IBOutlet weak var signInButton: GIDSignInButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         if anzeig != nil {
             self.anzeigeTitel.text = anzeig
