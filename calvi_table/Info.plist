@@ -25,7 +25,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>485775614575-bgge92h3jhg7hm24qlmrl7bekcd64mbp.apps.googleusercontent.com</string>
+				<string>com.googleusercontent.apps.1073947249746-qib0k4v8m52ialthhc6r5cg9grvhv2rf</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>de.wichura.lks</string>
 			</array>
 		</dict>
 	</array>
