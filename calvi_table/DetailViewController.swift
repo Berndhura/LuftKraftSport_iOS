@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Google
 
-class DetailViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate  {
+
+class DetailViewController: UIViewController {
     
     var anzeig: String?
     var pictureUrl: String?
@@ -69,46 +69,11 @@ class DetailViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDele
                 }.resume()
 
         }
-        
-        
-        // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        //assert(configureError == nil, "Error configuring Google services: \(configureError)")
-        
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
-        
-        let signInButton = GIDSignInButton(frame: CGRect(x:0,y:0,width: 100, height: 50))
-        
-        signInButton.center = view.center
-        
-        view.addSubview(signInButton)
-        
-        
-    }
+}
     
-    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
     
-        
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-            //let userId = user.userID                  // For client-side use only!
-            //let idToken = user.authentication.idToken // Safe to send to the server
-            //let fullName = user.profile.name
-            //let givenName = user.profile.givenName
-            //let familyName = user.profile.familyName
-            //let email = user.profile.email
-            print(user.profile.imageURL(withDimension: 400))
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

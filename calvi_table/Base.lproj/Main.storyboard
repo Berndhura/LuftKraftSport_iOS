@@ -12,6 +12,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login Controller-->
+        <scene sceneID="8f8-na-VX6">
+            <objects>
+                <viewController id="Cch-lw-Akm" customClass="LoginController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Vi-uR-4ON"/>
+                        <viewControllerLayoutGuide type="bottom" id="eVc-zX-ab6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v5G-e0-8lp" customClass="Login">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="-819"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -97,9 +115,16 @@
                             <constraint firstItem="npf-sk-PXm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fw5-oK-ypN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="otG-NE-Ul2"/>
+                    <navigationItem key="navigationItem" id="otG-NE-Ul2">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="oJB-CC-tTC">
+                            <connections>
+                                <action selector="openLoginPage:" destination="BYZ-38-t0r" id="wwx-ek-wlN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="npf-sk-PXm" id="vtY-Iv-s4N"/>
+                        <segue destination="Cch-lw-Akm" kind="show" identifier="openLogin" id="RxT-PW-Fp5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -232,7 +257,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

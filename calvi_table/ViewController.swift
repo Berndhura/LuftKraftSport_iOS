@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController, UISearchResultsUpdating {
     
+    @IBAction func openLoginPage(_ sender: Any) {
+        self.performSegue(withIdentifier: "openLogin", sender: self)
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
     var ads: [Ad] = []
-    
     var searchController: UISearchController!
     var resultController = UITableViewController()
     
