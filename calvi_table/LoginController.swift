@@ -34,14 +34,37 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         if (error == nil) {
             // Perform any operations on signed in user here.
             //let userId = user.userID                  // For client-side use only!
-            //let idToken = user.authentication.idToken // Safe to send to the server
+            print("userToken: ", user.authentication.idToken)
             //let fullName = user.profile.name
             //let givenName = user.profile.givenName
             //let familyName = user.profile.familyName
             //let email = user.profile.email
             print(user.profile.imageURL(withDimension: 400))
+            
+            saveUserDetails(user: user)
+            
+           
+            // Adding an out going chat bubble
+            let chatBubbleDataMine = ChatBubbleData(text: "Hey there!!! How are you?   Firebase/Analytics][I-ACS023012] Firebase Analytics enabled Firebase/Analytics][I-ACS023012] Firebase Analytics enabled", image: nil, date: NSDate(), type: .Mine)
+            let chatBubbleMine = ChatBubble(data: chatBubbleDataMine, startY: 150)
+            self.view.addSubview(chatBubbleMine)
+            
+            // Adding an incoming chat bubble
+            let chatBubbleDataOpponent = ChatBubbleData(text: "Fine bro!!! check this out", image:UIImage(named: "taylor_swift_blank_space.jpg"), date: NSDate(), type: .Opponent)
+            let chatBubbleOpponent = ChatBubble(data: chatBubbleDataOpponent, startY: chatBubbleMine.frame.maxX + 10)
+            self.view.addSubview(chatBubbleOpponent)
+            
         } else {
             print("\(error.localizedDescription)")
         }
+    }
+    
+    func saveUserDetails(user: GIDGoogleUser) {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(user.authentication.idToken, forKey: "userId")
+        
+        //let userId = defaults.object(forKey:"userId") as? [String] ?? [String]()
+
     }
 }
