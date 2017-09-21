@@ -14,6 +14,10 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         self.performSegue(withIdentifier: "openLogin", sender: self)
     }
     
+    @IBAction func openMessages(_ sender: Any) {
+        self.performSegue(withIdentifier: "openMessages", sender: self)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var ads: [Ad] = []

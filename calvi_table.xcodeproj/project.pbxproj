@@ -20,6 +20,7 @@
 		27CE4FC81F44749E00FD4166 /* taylor_swift_blank_space.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */; };
 		27F5C3611F728EBD002B8AB8 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C3601F728EBD002B8AB8 /* ChatBubble.swift */; };
 		27F5C3631F728F1A002B8AB8 /* ChatBubbleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C3621F728F1A002B8AB8 /* ChatBubbleData.swift */; };
+		27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C3661F73F44D002B8AB8 /* MessageController.swift */; };
 		27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13111F46FC5E0073C0E9 /* AdCell.swift */; };
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
@@ -65,6 +66,7 @@
 		27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taylor_swift_blank_space.jpg; sourceTree = "<group>"; };
 		27F5C3601F728EBD002B8AB8 /* ChatBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		27F5C3621F728F1A002B8AB8 /* ChatBubbleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatBubbleData.swift; path = ../ChatBubbleData.swift; sourceTree = "<group>"; };
+		27F5C3661F73F44D002B8AB8 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		27FE13111F46FC5E0073C0E9 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
 		27FE13131F46FF110073C0E9 /* Ad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		27FE13151F47122F0073C0E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				273E6E101F671F0D0036A445 /* LoginController.swift */,
 				27F5C3621F728F1A002B8AB8 /* ChatBubbleData.swift */,
 				27F5C3601F728EBD002B8AB8 /* ChatBubble.swift */,
+				27F5C3661F73F44D002B8AB8 /* MessageController.swift */,
 			);
 			path = calvi_table;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
 				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
+				27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */,
 				273E6E111F671F0D0036A445 /* LoginController.swift in Sources */,
 				27F5C3611F728EBD002B8AB8 /* ChatBubble.swift in Sources */,
 			);

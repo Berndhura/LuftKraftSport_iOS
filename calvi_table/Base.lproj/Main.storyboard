@@ -9,9 +9,28 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Messages Controller-->
+        <scene sceneID="eFy-pe-AZ8">
+            <objects>
+                <viewController id="fNo-fk-EtJ" customClass="MessagesController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dpc-ZN-SeV"/>
+                        <viewControllerLayoutGuide type="bottom" id="qdx-Ym-lBW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vgx-hA-D58">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-aP-1RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412" y="-867"/>
+        </scene>
         <!--Login Controller-->
         <scene sceneID="8f8-na-VX6">
             <objects>
@@ -28,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="-819"/>
+            <point key="canvasLocation" x="1148" y="-585"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -116,20 +135,28 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="otG-NE-Ul2">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="oJB-CC-tTC">
-                            <connections>
-                                <action selector="openLoginPage:" destination="BYZ-38-t0r" id="wwx-ek-wlN"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Login" id="oJB-CC-tTC">
+                                <connections>
+                                    <action selector="openLoginPage:" destination="BYZ-38-t0r" id="wwx-ek-wlN"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Mail" id="M7W-Fc-HbK">
+                                <connections>
+                                    <action selector="openMessages:" destination="BYZ-38-t0r" id="GxS-Um-t0T"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="npf-sk-PXm" id="vtY-Iv-s4N"/>
                         <segue destination="Cch-lw-Akm" kind="show" identifier="openLogin" id="RxT-PW-Fp5"/>
+                        <segue destination="fNo-fk-EtJ" kind="show" identifier="openMessages" id="Whp-rO-OQf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="359.19999999999999" y="-97.601199400299862"/>
+            <point key="canvasLocation" x="-257" y="7"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Qbk-Zk-5uH">
@@ -252,14 +279,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcP-CE-t3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119.2" y="-98.50074962518741"/>
+            <point key="canvasLocation" x="887" y="188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vgR-jU-Z3W">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -270,7 +297,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-KY-2hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-439" y="-99"/>
+            <point key="canvasLocation" x="-949" y="-15"/>
         </scene>
     </scenes>
     <resources>
