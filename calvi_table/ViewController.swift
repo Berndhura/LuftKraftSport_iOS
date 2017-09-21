@@ -21,6 +21,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     @IBOutlet weak var tableView: UITableView!
     
     var ads: [Ad] = []
+    
     var searchController: UISearchController!
     var resultController = UITableViewController()
     
