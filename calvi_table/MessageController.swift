@@ -17,14 +17,11 @@ class MessagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //User defaults: userToken
-        let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userId")
-        print("UserToken: " + userId!)
+        fetchMessages()
         
         //dummydata
         
-        let msg1 = Message(name: "Maul1")
+        /*let msg1 = Message(name: "Maul1")
         let msg2 = Message(name: "Maul2")
         let msg3 = Message(name: "Maul3")
         let msg4 = Message(name: "Maul4")
@@ -34,15 +31,76 @@ class MessagesController: UIViewController {
         messages.append(msg2)
         messages.append(msg3)
         messages.append(msg4)
-        messages.append(msg5)
+        messages.append(msg5)*/
         
         //table
+        self.tableView.contentInset = UIEdgeInsets(top: -64.0, left: 0.0, bottom: 0.0, right: 0.0)
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.contentInset = UIEdgeInsets(top: -64.0, left: 0.0, bottom: 0.0, right: 0.0)
         
+        navigationItem.title = "Messages"
+        tableView?.backgroundColor = UIColor.gray
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
+    func getUserToken() -> String {
+        //User defaults: userToken
+        let defaults:UserDefaults = UserDefaults.standard
+        let userId: String? = defaults.string(forKey: "userId")
+        //print("UserToken: " + userId!)
+        return userId!
+    }
+    
+    func fetchMessages() {
+        
+        let userToken = getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
+        
+        print(url)
+        
+        URLSession.shared.dataTask(with: url!) { data, response, error in
+            
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard let data = data else {
+                print("Data is empty")
+                return
+            }
+            
+            let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+            
+            print(json)
+            
+            for dictionary in json as! [[String: Any]] {
+                
+                let message = dictionary["message"] as? String
+                let name = dictionary["name"] as? String
+                let url = dictionary["url"] as? String
+                let idFrom = dictionary["idFrom"] as? String
+                let idTo = dictionary["idTo"] as? String
+                let date = dictionary["date"] as? Int32
+                let articleId = dictionary["articleId"] as? Int64
+                let chatPartner = dictionary["chatPartner"] as? String
+                
+                let msg = Message(name: name!, message: message!, url: url!, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                
+                //print(ad.urls)
+                
+                self.messages.append(msg)
+            }
+            
+            DispatchQueue.main.async(execute: {
+                self.tableView.reloadData()
+            })
+            
+            }.resume()
     }
 }
+
 
 extension MessagesController: UITableViewDataSource {
     

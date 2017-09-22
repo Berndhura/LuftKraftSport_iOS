@@ -11,5 +11,11 @@ import Foundation
 struct Message {
     
     var name: String
-    //var userId: String
+    var message: String
+    var url: String
+    var date: Int32
+    var idFrom: String
+    var idTo: String
+    var articleId: Int64
+    var chatPartner: String
 }

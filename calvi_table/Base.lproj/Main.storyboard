@@ -114,15 +114,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="NDr-mK-Mnr">
-                                                    <rect key="frame" x="5" y="5" width="333" height="200"/>
+                                                    <rect key="frame" x="5" y="5" width="374" height="200"/>
                                                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="333" id="Hnb-Fd-QX4"/>
                                                         <constraint firstAttribute="height" constant="200" id="sl3-gT-Pqw"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26O-9o-zzW">
-                                                    <rect key="frame" x="5" y="210" width="333" height="30"/>
+                                                    <rect key="frame" x="5" y="210" width="364" height="30"/>
                                                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="daC-PR-MzV"/>
@@ -132,7 +131,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wrk-pU-33t">
-                                                    <rect key="frame" x="5" y="250" width="333" height="30"/>
+                                                    <rect key="frame" x="5" y="250" width="364" height="30"/>
                                                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="5HO-7y-KA7"/>
@@ -152,6 +151,7 @@
                                                 <constraint firstItem="26O-9o-zzW" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="5" id="XfP-Jw-Cjz"/>
                                                 <constraint firstAttribute="trailing" secondItem="NDr-mK-Mnr" secondAttribute="trailing" constant="5" id="g2n-td-3t8"/>
                                                 <constraint firstItem="Wrk-pU-33t" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="5" id="kFK-F1-09S"/>
+                                                <constraint firstItem="NDr-mK-Mnr" firstAttribute="width" secondItem="6IU-NM-KFW" secondAttribute="width" id="r2Y-yd-Aqv"/>
                                                 <constraint firstAttribute="trailing" secondItem="Wrk-pU-33t" secondAttribute="trailing" constant="5" id="ttA-VA-EXN"/>
                                                 <constraint firstItem="26O-9o-zzW" firstAttribute="top" secondItem="NDr-mK-Mnr" secondAttribute="bottom" constant="5" id="znz-h0-sSm"/>
                                             </constraints>
