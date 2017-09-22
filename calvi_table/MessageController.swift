@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MessagesController: UIViewController {
     
@@ -140,6 +141,9 @@ extension MessagesController: UITableViewDataSource {
                 cell?.bild.image = image
             })
             }.resume()
+        
+        //TODO  Task vorher entfernen
+        cell?.bild!.sd_setImage(with: url)
         
         return cell!
     }

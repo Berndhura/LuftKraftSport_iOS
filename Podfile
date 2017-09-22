@@ -8,6 +8,7 @@ target 'calvi_table' do
   # Pods for calvi_table
 	
   pod 'Google/SignIn'
+  pod 'SDWebImage'
 
   target 'calvi_tableTests' do
     inherit! :search_paths
