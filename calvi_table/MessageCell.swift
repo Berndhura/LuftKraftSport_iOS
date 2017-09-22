@@ -19,6 +19,12 @@ class MessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //bild.layer.borderWidth = 1
+        //bild.layer.masksToBounds = false
+        //bild.layer.borderColor = CGColor
+        bild.layer.cornerRadius = bild.frame.size.width/2
+        bild.clipsToBounds = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
