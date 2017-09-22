@@ -10,9 +10,11 @@ import UIKit
 
 class MessageCell: UITableViewCell {
 
-    @IBOutlet weak var name: UILabel!
-    
+    @IBOutlet weak var date: UILabel!
+   
     @IBOutlet weak var message: UILabel!
+    
+    @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var bild: UIImageView!
     

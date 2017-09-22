@@ -69,7 +69,7 @@ class MessagesController: UIViewController {
                 let url = self.getPictureUrl(str: urlList!)
                 let idFrom = dictionary["idFrom"] as? String
                 let idTo = dictionary["idTo"] as? String
-                let date = dictionary["date"] as? Int32
+                let date = dictionary["date"] as? Double
                 let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["chatPartner"] as? String
                 
@@ -119,6 +119,9 @@ extension MessagesController: UITableViewDataSource {
         
         //message
         cell?.message?.text = currentMessage.message
+        
+        //date
+        cell?.date?.text = String(describing: NSDate(timeIntervalSince1970: TimeInterval(currentMessage.date)))
     
         //image
         let imageId = messages[indexPath.item].url
@@ -145,14 +148,14 @@ extension MessagesController: UITableViewDataSource {
 extension MessagesController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 130.0//UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40.0
+        return 200.0
     }
     
     func tableView(_ tableView: UITableView, heightFor section: Int) -> CGFloat{
-        return 15
+        return 100.0
     }
 }
