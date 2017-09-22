@@ -36,32 +36,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="278.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVQ-4i-4Ee">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVQ-4i-4Ee">
                                                     <rect key="frame" x="150" y="129" width="251" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0cA-0c-6Br">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0cA-0c-6Br">
                                                     <rect key="frame" x="5" y="49.999999999999986" width="125" height="178.66666666666663"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="A3n-T0-0Ah"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvO-O4-3od">
+                                                    <rect key="frame" x="135" y="158" width="266" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="0cA-0c-6Br" secondAttribute="bottom" constant="50" id="44m-5T-Uzk"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VvO-O4-3od" secondAttribute="bottom" constant="5" id="HF7-HZ-P3v"/>
                                                 <constraint firstItem="0cA-0c-6Br" firstAttribute="top" secondItem="xME-mq-hCw" secondAttribute="top" constant="50" id="RWW-ox-5b1"/>
+                                                <constraint firstItem="VvO-O4-3od" firstAttribute="top" secondItem="dVQ-4i-4Ee" secondAttribute="bottom" constant="8" id="WfQ-PR-Nsl"/>
                                                 <constraint firstItem="0cA-0c-6Br" firstAttribute="centerY" secondItem="xME-mq-hCw" secondAttribute="centerY" id="XJT-mx-Ff6"/>
+                                                <constraint firstItem="VvO-O4-3od" firstAttribute="top" secondItem="dVQ-4i-4Ee" secondAttribute="bottom" constant="8" id="aGj-s2-QNQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dVQ-4i-4Ee" secondAttribute="trailing" constant="5" id="e1m-fx-0Qf"/>
                                                 <constraint firstItem="0cA-0c-6Br" firstAttribute="leading" secondItem="xME-mq-hCw" secondAttribute="leading" constant="5" id="eRU-aA-Hfg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VvO-O4-3od" secondAttribute="trailing" constant="5" id="fK6-5G-det"/>
                                                 <constraint firstItem="dVQ-4i-4Ee" firstAttribute="leading" secondItem="0cA-0c-6Br" secondAttribute="trailing" constant="20" id="iEs-qs-wZ2"/>
+                                                <constraint firstItem="VvO-O4-3od" firstAttribute="leading" secondItem="0cA-0c-6Br" secondAttribute="trailing" constant="5" id="rQ1-vD-r1G"/>
                                                 <constraint firstItem="dVQ-4i-4Ee" firstAttribute="top" secondItem="xME-mq-hCw" secondAttribute="topMargin" constant="121" id="teV-r6-hYR"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dVQ-4i-4Ee" secondAttribute="bottom" constant="120.67" id="wNb-oD-EWX"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bild" destination="0cA-0c-6Br" id="dok-g1-9x8"/>
+                                            <outlet property="message" destination="VvO-O4-3od" id="D8L-7Q-HZ7"/>
                                             <outlet property="name" destination="dVQ-4i-4Ee" id="tOd-vg-FvG"/>
                                         </connections>
                                     </tableViewCell>

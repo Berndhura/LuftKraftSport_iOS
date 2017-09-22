@@ -65,14 +65,15 @@ class MessagesController: UIViewController {
                 
                 let message = dictionary["message"] as? String
                 let name = dictionary["name"] as? String
-                let url = dictionary["url"] as? String
+                let urlList = dictionary["url"] as? String
+                let url = self.getPictureUrl(str: urlList!)
                 let idFrom = dictionary["idFrom"] as? String
                 let idTo = dictionary["idTo"] as? String
                 let date = dictionary["date"] as? Int32
                 let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["chatPartner"] as? String
                 
-                let msg = Message(name: name!, message: message!, url: url!, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                let msg = Message(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
                 
                 //print(ad.urls)
                 
@@ -84,6 +85,15 @@ class MessagesController: UIViewController {
             })
             
             }.resume()
+    }
+    
+    func getPictureUrl(str: String) -> String {
+        let ind = str.characters.split{$0 == ","}.map(String.init)
+        if ind.count > 0 {
+            return ind[0]
+        } else {
+            return "1"
+        }
     }
 }
 
@@ -106,6 +116,9 @@ extension MessagesController: UITableViewDataSource {
         
         //name
         cell?.name?.text = currentMessage.name
+        
+        //message
+        cell?.message?.text = currentMessage.message
     
         //image
         let imageId = messages[indexPath.item].url
