@@ -67,6 +67,7 @@ class DetailViewController: UIViewController {
                     self.mainPicture.image = image
                 })
                 }.resume()
+            //self.mainPicture.sd_setHighlightedImage(with: url)
 
         }
 }

@@ -11,10 +11,13 @@ import UIKit
 class AdCell: UITableViewCell {
     
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var desc: UILabel!
     @IBOutlet weak var bild: UIImageView!
+    
+    @IBOutlet weak var title: UILabel!
    
+    @IBOutlet weak var desc: UILabel!
+    
+    @IBOutlet weak var price: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

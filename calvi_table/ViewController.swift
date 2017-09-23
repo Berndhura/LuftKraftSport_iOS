@@ -155,6 +155,9 @@ extension ViewController: UITableViewDataSource {
         //description
         cell?.desc?.text = currentAd.desc
         
+        //price
+        cell?.price?.text = String(currentAd.price)
+        
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
         
@@ -172,6 +175,8 @@ extension ViewController: UITableViewDataSource {
                 cell?.bild.image = image
             })
         }.resume()
+        
+        cell?.bild?.sd_setImage(with: url)
 
         return cell!
     }
@@ -184,10 +189,10 @@ extension ViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40.0
+        return 200.0
     }
     
     func tableView(_ tableView: UITableView, heightFor section: Int) -> CGFloat{
-        return 15
+        return 150.0
     }
 }

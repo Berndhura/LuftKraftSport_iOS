@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 
+
 class MessagesController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -127,7 +128,7 @@ extension MessagesController: UITableViewDataSource {
         //image
         let imageId = messages[indexPath.item].url
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail")
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/")
         
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
@@ -143,11 +144,12 @@ extension MessagesController: UITableViewDataSource {
             }.resume()
         
         //TODO  Task vorher entfernen
-        cell?.bild!.sd_setImage(with: url)
+        cell?.bild.sd_setImage(with: url, placeholderImage: UIImage(named: "taylor_swift_blank_space.jpg"))
         
         return cell!
     }
 }
+
 
 extension MessagesController: UITableViewDelegate {
     
