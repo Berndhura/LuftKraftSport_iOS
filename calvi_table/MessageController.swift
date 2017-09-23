@@ -26,7 +26,7 @@ class MessagesController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        navigationItem.title = "Messages"
+        navigationItem.title = "Messages: " + String(messages.count)
         tableView?.backgroundColor = UIColor.gray
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -81,6 +81,8 @@ class MessagesController: UIViewController {
                 
                 self.messages.append(msg)
             }
+            
+            self.navigationItem.title = "Messages: " + String(self.messages.count)
             
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
