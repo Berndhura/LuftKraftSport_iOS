@@ -13,9 +13,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Messages Controller-->
+        <!--Messages-->
         <scene sceneID="eFy-pe-AZ8">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-aP-1RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="fNo-fk-EtJ" customClass="MessagesController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dpc-ZN-SeV"/>
@@ -112,17 +113,18 @@
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerX" secondItem="Vgx-hA-D58" secondAttribute="centerX" id="zUh-dD-Oon"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Messages" image="icons8-Mail-50" id="mKE-vv-HxX"/>
                     <connections>
                         <outlet property="tableView" destination="MRy-lw-OLN" id="MN9-fT-kRF"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-aP-1RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="-670"/>
+            <point key="canvasLocation" x="610" y="-722"/>
         </scene>
-        <!--Login Controller-->
+        <!--Login-->
         <scene sceneID="8f8-na-VX6">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Cch-lw-Akm" customClass="LoginController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2Vi-uR-4ON"/>
@@ -133,14 +135,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Login" image="icons8-Login-25" id="nQs-aG-x1w"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="7"/>
+            <point key="canvasLocation" x="609" y="757"/>
         </scene>
-        <!--View Controller-->
+        <!--Anzeigen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -151,7 +154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="378" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="npf-sk-PXm">
-                                <rect key="frame" x="20" y="64" width="374" height="672"/>
+                                <rect key="frame" x="20" y="64" width="374" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdCell" rowHeight="378" id="fbH-nU-18z" customClass="AdCell" customModule="calvi_table" customModuleProvider="target">
@@ -235,26 +238,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXF-8S-JGX">
-                                <rect key="frame" x="20" y="687" width="374" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="LmU-wr-zBa"/>
-                                    <tabBarItem title="Mail" id="W4u-I4-WPY"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="npf-sk-PXm" secondAttribute="trailing" id="4dD-zZ-I1P"/>
                             <constraint firstItem="npf-sk-PXm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7WX-7h-lLP"/>
-                            <constraint firstItem="JXF-8S-JGX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8du-0c-kkt"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JXF-8S-JGX" secondAttribute="bottom" id="LTV-Lz-8MH"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="npf-sk-PXm" secondAttribute="bottom" id="QDV-H3-znC"/>
-                            <constraint firstItem="JXF-8S-JGX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="au6-tb-eqH"/>
                             <constraint firstItem="npf-sk-PXm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fw5-oK-ypN"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Anzeigen" id="BRl-jb-NO6"/>
                     <navigationItem key="navigationItem" id="otG-NE-Ul2">
                         <rightBarButtonItems>
                             <barButtonItem title="Login" id="oJB-CC-tTC">
@@ -271,13 +264,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="npf-sk-PXm" id="vtY-Iv-s4N"/>
-                        <segue destination="Cch-lw-Akm" kind="show" identifier="openLogin" id="RxT-PW-Fp5"/>
-                        <segue destination="fNo-fk-EtJ" kind="show" identifier="openMessages" id="Whp-rO-OQf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-257.97101449275362" y="6.5217391304347831"/>
+            <point key="canvasLocation" x="609" y="7"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Qbk-Zk-5uH">
@@ -292,14 +282,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMq-JX-mPu">
-                                <rect key="frame" x="25" y="428" width="374" height="21"/>
+                                <rect key="frame" x="25" y="379" width="374" height="21"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEK-mJ-fxm">
-                                <rect key="frame" x="25" y="457" width="364" height="100"/>
+                                <rect key="frame" x="25" y="408" width="364" height="100"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="uHo-LF-vZS"/>
@@ -309,10 +299,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="daA-ou-CIa">
-                                <rect key="frame" x="20" y="64" width="374" height="344"/>
+                                <rect key="frame" x="20" y="64" width="374" height="295"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLu-6H-rdK">
-                                <rect key="frame" x="25" y="565" width="364" height="30"/>
+                                <rect key="frame" x="25" y="516" width="364" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Qag-X1-nGh"/>
@@ -322,7 +312,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FX-Hc-NfB">
-                                <rect key="frame" x="25" y="603" width="364" height="30"/>
+                                <rect key="frame" x="25" y="554" width="364" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="tsb-E2-Imd"/>
@@ -332,7 +322,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBE-3n-AqM">
-                                <rect key="frame" x="25" y="641" width="364" height="30"/>
+                                <rect key="frame" x="25" y="592" width="364" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="K4I-d6-8HS"/>
@@ -342,14 +332,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wY-aa-a43">
-                                <rect key="frame" x="0.0" y="706" width="205" height="30"/>
+                                <rect key="frame" x="0.0" y="657" width="205" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Nachricht">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYE-Yg-Il7">
-                                <rect key="frame" x="207" y="706" width="207" height="30"/>
+                                <rect key="frame" x="207" y="657" width="207" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Merken">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -400,11 +390,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcP-CE-t3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-258" y="860"/>
+            <point key="canvasLocation" x="1477" y="7"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vgR-jU-Z3W">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-KY-2hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
@@ -413,12 +404,35 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iWd-xn-dBk"/>
+                        <segue destination="twv-Ca-amS" kind="relationship" relationship="rootViewController" id="iWd-xn-dBk"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-KY-2hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1023" y="7"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="0W4-G7-JRy">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="twv-Ca-amS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jm9-LG-RWC"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="T4g-PP-w8t">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="nY6-ht-nUR"/>
+                        <segue destination="Cch-lw-Akm" kind="relationship" relationship="viewControllers" id="Jiv-Wb-l6G"/>
+                        <segue destination="fNo-fk-EtJ" kind="relationship" relationship="viewControllers" id="rT3-Di-bgs"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h6k-xE-Tgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-257.97101449275362" y="6.5217391304347831"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icons8-Login-25" width="25" height="25"/>
+        <image name="icons8-Mail-50" width="50" height="50"/>
+    </resources>
 </document>
