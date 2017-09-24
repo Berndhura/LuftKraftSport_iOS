@@ -25,6 +25,11 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     var searchController: UISearchController!
     var resultController = UITableViewController()
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Test")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +42,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Luftkraftsport"
+
         
         tableView?.backgroundColor = UIColor.gray
         

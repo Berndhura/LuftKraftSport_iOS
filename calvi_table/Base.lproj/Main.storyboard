@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-aP-1RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="411.59420289855075" y="-867.39130434782612"/>
+            <point key="canvasLocation" x="587" y="-670"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="8f8-na-VX6">
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="-585"/>
+            <point key="canvasLocation" x="1446" y="7"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -235,12 +235,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXF-8S-JGX">
+                                <rect key="frame" x="20" y="687" width="374" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="LmU-wr-zBa"/>
+                                    <tabBarItem title="Mail" id="W4u-I4-WPY"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="npf-sk-PXm" secondAttribute="trailing" id="4dD-zZ-I1P"/>
                             <constraint firstItem="npf-sk-PXm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7WX-7h-lLP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="npf-sk-PXm" secondAttribute="bottom" id="NTc-IL-98b"/>
+                            <constraint firstItem="JXF-8S-JGX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8du-0c-kkt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JXF-8S-JGX" secondAttribute="bottom" id="LTV-Lz-8MH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="npf-sk-PXm" secondAttribute="bottom" id="QDV-H3-znC"/>
+                            <constraint firstItem="JXF-8S-JGX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="au6-tb-eqH"/>
                             <constraint firstItem="npf-sk-PXm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fw5-oK-ypN"/>
                         </constraints>
                     </view>
@@ -389,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcP-CE-t3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="887" y="188"/>
+            <point key="canvasLocation" x="-258" y="860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vgR-jU-Z3W">

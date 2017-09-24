@@ -9,6 +9,7 @@
 import UIKit
 import Google
 
+
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         signInButton.center = view.center
         
         view.addSubview(signInButton)
+        
+       
 
     }
     

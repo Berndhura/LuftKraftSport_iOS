@@ -125,6 +125,10 @@ extension MessagesController: UITableViewDataSource {
         cell?.message?.text = currentMessage.message
         
         //date
+        //let formatter = DateFormatter()
+        //formatter.dateFormat = "dd.MM.yy"
+        //let TestDateTime = formatter.date(from: String(describing: currentMessage.date))
+        //cell?.date?.text = String(describing: TestDateTime)
         cell?.date?.text = String(describing: NSDate(timeIntervalSince1970: TimeInterval(currentMessage.date)))
     
         //image
