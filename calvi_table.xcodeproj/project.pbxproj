@@ -12,6 +12,8 @@
 		273E6E111F671F0D0036A445 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E6E101F671F0D0036A445 /* LoginController.swift */; };
 		2748C4B51F744A620009CDCB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B41F744A620009CDCB /* Message.swift */; };
 		2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B91F7455C00009CDCB /* MessageCell.swift */; };
+		279F0C731F793550004E2525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 279F0C721F793550004E2525 /* GoogleService-Info.plist */; };
+		279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C761F7943BA004E2525 /* ChatViewController.swift */; };
 		27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F991F446E6500FD4166 /* AppDelegate.swift */; };
 		27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F9B1F446E6500FD4166 /* ViewController.swift */; };
 		27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4F9D1F446E6500FD4166 /* Main.storyboard */; };
@@ -27,7 +29,6 @@
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
 		27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */; };
-		27FE135C1F65B9F10073C0E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27FE135B1F65B9F10073C0E9 /* GoogleService-Info.plist */; };
 		76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		273E6E101F671F0D0036A445 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2748C4B41F744A620009CDCB /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2748C4B91F7455C00009CDCB /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		279F0C721F793550004E2525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		279F0C761F7943BA004E2525 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		27CE4F961F446E6500FD4166 /* calvi_table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calvi_table.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CE4F991F446E6500FD4166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27CE4F9B1F446E6500FD4166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		27FE13151F47122F0073C0E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "calvi_table-Bridging-Header.h"; sourceTree = "<group>"; };
 		27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lks-Bridging-Header.m"; sourceTree = "<group>"; };
-		27FE135B1F65B9F10073C0E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 				27F5C3661F73F44D002B8AB8 /* MessageController.swift */,
 				273E6E101F671F0D0036A445 /* LoginController.swift */,
 				27FE13151F47122F0073C0E9 /* DetailViewController.swift */,
+				279F0C761F7943BA004E2525 /* ChatViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -172,8 +175,8 @@
 				2748C4B61F7453CC0009CDCB /* cell */,
 				2748C4B31F74498E0009CDCB /* model */,
 				2748C4B11F74494F0009CDCB /* controller */,
-				27FE135B1F65B9F10073C0E9 /* GoogleService-Info.plist */,
 				27CE4F991F446E6500FD4166 /* AppDelegate.swift */,
+				279F0C721F793550004E2525 /* GoogleService-Info.plist */,
 				27CE4F9D1F446E6500FD4166 /* Main.storyboard */,
 				27CE4FA01F446E6500FD4166 /* Assets.xcassets */,
 				27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */,
@@ -349,7 +352,7 @@
 			files = (
 				27CE4FC81F44749E00FD4166 /* taylor_swift_blank_space.jpg in Resources */,
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
-				27FE135C1F65B9F10073C0E9 /* GoogleService-Info.plist in Resources */,
+				279F0C731F793550004E2525 /* GoogleService-Info.plist in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
 			);
@@ -387,7 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		0FB70BA31EB7B38B7DD0C40A /* [CP] Embed Pods Frameworks */ = {
@@ -420,7 +423,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4FCDBCE5FB685FA072141504 /* [CP] Embed Pods Frameworks */ = {
@@ -448,12 +451,18 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -475,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D28F80D35BC8127A4DB0FDB4 /* [CP] Copy Pods Resources */ = {
@@ -542,6 +551,7 @@
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
 				2748C4B51F744A620009CDCB /* Message.swift in Sources */,
 				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
+				279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */,
 				27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */,
 				273E6E111F671F0D0036A445 /* LoginController.swift in Sources */,
 				27F5C3611F728EBD002B8AB8 /* ChatBubble.swift in Sources */,

@@ -99,6 +99,26 @@ class MessagesController: UIViewController {
             return "1"
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "openChat" {
+            let chatController: ChatViewController = (segue.destination as? ChatViewController)!
+            //let cell: UITableViewCell? = sender as? UITableViewCell
+            
+            /*if cell != nil {
+                let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)
+                if indexPath != nil {
+                    let ad: Ad = ads[indexPath!.row]
+                    detailViewController.anzeig = ad.title
+                    detailViewController.pictureUrl = getPictureUrl(str: ad.urls)
+                    detailViewController.desc = ad.desc
+                    detailViewController.price = ad.price
+                    detailViewController.location = ad.location
+                    detailViewController.date = ad.date
+                }
+            }*/
+        }
+    }
 }
 
 

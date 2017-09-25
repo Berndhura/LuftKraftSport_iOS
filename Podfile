@@ -9,6 +9,11 @@ target 'calvi_table' do
 	
   pod 'Google/SignIn'
   pod 'SDWebImage'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Core'
+  pod 'JSQMessagesViewController'
 
   target 'calvi_tableTests' do
     inherit! :search_paths
