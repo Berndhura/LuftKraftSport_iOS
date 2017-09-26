@@ -11,11 +11,11 @@ import Google
 import FacebookLogin
 import FBSDKLoginKit
 
-class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
     
     var dict : [String : AnyObject]!
 
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
 
         // Initialize sign-in
@@ -33,35 +33,31 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         
         
         //Facebbook
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+        let loginButton = FBSDKLoginButton()
         loginButton.center = view.center
         
         //adding it to view
-        //view.addSubview(loginButton)
+        view.addSubview(loginButton)
+            
+        loginButton.delegate = self
         
         //if the user is already logged in
-        if let accessToken = FBSDKAccessToken.current(){
-            getFBUserData()
+        if let _ = FBSDKAccessToken.current(){
+            //getFBUserData()
         }
     }
     
-    //when login button clicked
-    @objc func loginButtonClicked() {
-        let loginManager = LoginManager()
-        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                self.getFBUserData()
-            }
-        }
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("logou")
     }
     
-    //function is fetching the user data
-    func getFBUserData(){
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print("facebooook yeahhhhh")
+        self.dict = result as! [String : AnyObject]
+        print(result!)
+        print(self.dict)
+        print(result)
+        
         if((FBSDKAccessToken.current()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
@@ -72,6 +68,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             })
         }
     }
+    
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         

@@ -163,7 +163,7 @@ extension ViewController: UITableViewDataSource {
         cell?.desc?.text = currentAd.desc
         
         //articleId
-        cell?.articleId = currentAd.articleId
+        //cell?.articleId = currentAd.articleId
         
         //price
         cell?.price?.text = String(currentAd.price)
