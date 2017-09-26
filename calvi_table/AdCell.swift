@@ -19,6 +19,12 @@ class AdCell: UITableViewCell {
     
     @IBOutlet weak var price: UILabel!
     
+    public var artivleId: Int32!
+    
+    @IBAction func bookmarkAd(_ sender: Any) {
+        print("like this")
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

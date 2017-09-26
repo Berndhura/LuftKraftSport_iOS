@@ -14,6 +14,8 @@ target 'calvi_table' do
   pod 'Firebase/Database'
   pod 'Firebase/Core'
   pod 'JSQMessagesViewController'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 
   target 'calvi_tableTests' do
     inherit! :search_paths

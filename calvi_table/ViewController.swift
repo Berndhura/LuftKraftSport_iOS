@@ -88,13 +88,14 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 let userId = dictionary["userId"] as? String
                 let location = dictionary["locationName"] as? String
                 let date = dictionary["date"] as? Int32
+                let articleId = dictionary["id"] as? Int32
                 var urls = dictionary["urls"] as? String
                 
                 if urls == nil {
                     urls = ""
                 }
                 
-                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!)
+                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!, articleId: articleId!)
                 
                 //print(ad.urls)
                 
@@ -160,6 +161,9 @@ extension ViewController: UITableViewDataSource {
         
         //description
         cell?.desc?.text = currentAd.desc
+        
+        //articleId
+        cell?.articleId = currentAd.articleId
         
         //price
         cell?.price?.text = String(currentAd.price)
