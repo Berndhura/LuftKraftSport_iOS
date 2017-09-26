@@ -34,6 +34,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         //Facebbook
         let loginButton = FBSDKLoginButton()
+            
         loginButton.center = view.center
         
         //adding it to view
@@ -53,9 +54,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("facebooook yeahhhhh")
-        self.dict = result as! [String : AnyObject]
-        print(result!)
-        print(self.dict)
+        print(error)
         print(result)
         
         if((FBSDKAccessToken.current()) != nil){
