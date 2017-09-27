@@ -13,12 +13,30 @@ import FBSDKLoginKit
 
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
     
-    var dict : [String : AnyObject]!
-
         override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Initialize sign-in
+        initGoogleSignInButton()
+        initFacebookLoginButton()
+            
+}
+    
+    func initFacebookLoginButton() {
+        let loginButton = FBSDKLoginButton()
+        
+        loginButton.center = view.center
+        view.addSubview(loginButton)
+        
+        loginButton.delegate = self
+        
+        //if the user is already logged in
+        if let _ = FBSDKAccessToken.current(){
+            //getFBUserData()
+        }
+    }
+    
+    func initGoogleSignInButton() {
+        
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         //assert(configureError == nil, "Error configuring Google services: \(configureError)")
@@ -30,22 +48,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         signInButton.center = view.center
         
         view.addSubview(signInButton)
-        
-        
-        //Facebbook
-        let loginButton = FBSDKLoginButton()
-            
-        loginButton.center = view.center
-        
-        //adding it to view
-        view.addSubview(loginButton)
-            
-        loginButton.delegate = self
-        
-        //if the user is already logged in
-        if let _ = FBSDKAccessToken.current(){
-            //getFBUserData()
-        }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -56,16 +58,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         print("facebooook yeahhhhh")
         print(error)
         print(result)
-        
-        if((FBSDKAccessToken.current()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, picture.type(large), email"]).start(completionHandler: { (connection, result, error) -> Void in
-                if (error == nil){
-                    self.dict = result as! [String : AnyObject]
-                    print(result!)
-                    print(self.dict)
-                }
-            })
-        }
     }
     
     
@@ -105,6 +97,5 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         defaults.set(user.authentication.idToken, forKey: "userId")
         
         //let userId = defaults.object(forKey:"userId") as? [String] ?? [String]()
-
     }
 }
