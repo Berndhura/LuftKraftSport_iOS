@@ -12,5 +12,7 @@ struct Message {
     
     var chatPartner: String
     var articleId: Int64
-
+    var date: Double
+    var message: String
+    
 }

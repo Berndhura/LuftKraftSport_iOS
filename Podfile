@@ -16,7 +16,7 @@ target 'calvi_table' do
   pod 'JSQMessagesViewController'
   pod 'FacebookCore'
   pod 'FacebookLogin'
-  pod 'Alamofire'
+pod 'Alamofire'
 
   target 'calvi_tableTests' do
     inherit! :search_paths

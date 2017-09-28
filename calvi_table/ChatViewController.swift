@@ -26,12 +26,53 @@ class ChatViewController: JSQMessagesViewController {
         fetchChat()
         
         // messages from someone else
-        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
+        //addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
         // messages sent from local sender
-        addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
-        addMessage(withId: senderId, name: "Me", text: "I like to run!")
+        //addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
+        //addMessage(withId: senderId, name: "Me", text: "I like to run!")
         // animates the receiving of a new message on the view
-        finishReceivingMessage()
+        
+        
+        
+    }
+    
+    func fetchChat() {
+        
+        let userToken = getUserToken()
+        
+        //Alamofire.request("http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)").responseJSON { response
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)")
+        
+        URLSession.shared.dataTask(with: url!) { data, response, error in
+            
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            guard let data = data else {
+                print("Data is empty")
+                return
+            }
+
+        
+            let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+                
+            print(json)
+            
+            for dictionary in json as! [[String: Any]] {
+                
+                let message = dictionary["message"] as? String
+                let date = dictionary["date"] as? Double
+                //let articleId = dictionary["articleId"] as? Int64
+                let chatPartner = dictionary["chatPartner"] as? String
+                
+                self.addMessage(withId: chatPartner!, name: "mauli", text: message!)
+            }
+            
+            self.finishReceivingMessage()
+        }.resume()
     }
     
     func getUserToken() -> String {
@@ -41,17 +82,6 @@ class ChatViewController: JSQMessagesViewController {
         //print("UserToken: " + userId!)
         return userId!
     }
-    
-    func fetchChat() {
-        
-        let userToken = getUserToken()
-        
-        Alamofire.request("http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)").responseJSON { response in
-            
-            print(response.result.value)
-        }
-    }
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
