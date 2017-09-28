@@ -33,7 +33,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j1J-yf-PNq" id="xME-mq-hCw">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="249.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-yr-81L" userLabel="picture_view">
@@ -53,7 +53,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bla sülz bitte surfbrett 100 liter ganz gelb" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-fa-gux" userLabel="message">
-                                                            <rect key="frame" x="10" y="51.000000000000007" width="270" height="40.666666666666679"/>
+                                                            <rect key="frame" x="10" y="51" width="270" height="41"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -196,7 +196,7 @@
                                         <rect key="frame" x="0.0" y="28" width="374" height="378"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbH-nU-18z" id="6IU-NM-KFW">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="377.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="377"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbH-FZ-Tm1" userLabel="image_view">
@@ -295,7 +295,7 @@
                             <constraint firstItem="npf-sk-PXm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fw5-oK-ypN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Anzeigen" id="BRl-jb-NO6"/>
+                    <tabBarItem key="tabBarItem" title="Anzeigen" image="UIBarButtonSystemItem.Refresh" id="BRl-jb-NO6"/>
                     <navigationItem key="navigationItem" id="otG-NE-Ul2">
                         <rightBarButtonItems>
                             <barButtonItem title="Login" id="oJB-CC-tTC">
@@ -483,6 +483,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="UIBarButtonSystemItem.Refresh" width="16" height="16"/>
         <image name="icons8-Login-25" width="25" height="25"/>
         <image name="icons8-Mail-50" width="50" height="50"/>
     </resources>

@@ -14,7 +14,7 @@ class MessagesController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var messages: [Message] = []
+    var messages: [MessageOverview] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class MessagesController: UIViewController {
                 let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["chatPartner"] as? String
                 
-                let msg = Message(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
                 
                 //print(ad.urls)
                 
@@ -103,20 +103,16 @@ class MessagesController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openChat" {
             let chatController: ChatViewController = (segue.destination as? ChatViewController)!
-            //let cell: UITableViewCell? = sender as? UITableViewCell
+            let cell: UITableViewCell? = sender as? UITableViewCell
             
-            /*if cell != nil {
+            if cell != nil {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)
                 if indexPath != nil {
-                    let ad: Ad = ads[indexPath!.row]
-                    detailViewController.anzeig = ad.title
-                    detailViewController.pictureUrl = getPictureUrl(str: ad.urls)
-                    detailViewController.desc = ad.desc
-                    detailViewController.price = ad.price
-                    detailViewController.location = ad.location
-                    detailViewController.date = ad.date
+                    let messageElement: MessageOverview = messages[indexPath!.row]
+                    chatController.sender = messageElement.chatPartner
+                    chatController.articleId = messageElement.articleId
                 }
-            }*/
+            }
         }
     }
 }
@@ -136,7 +132,7 @@ extension MessagesController: UITableViewDataSource {
             cell = MessageCell(style: .default, reuseIdentifier: "MessageCell")
         }
         
-        let currentMessage: Message = messages[indexPath.row]
+        let currentMessage: MessageOverview = messages[indexPath.row]
         
         //name
         cell?.name?.text = currentMessage.name

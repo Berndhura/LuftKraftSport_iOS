@@ -10,10 +10,11 @@
 		1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */; };
 		206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */; };
 		273E6E111F671F0D0036A445 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E6E101F671F0D0036A445 /* LoginController.swift */; };
-		2748C4B51F744A620009CDCB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B41F744A620009CDCB /* Message.swift */; };
+		2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B41F744A620009CDCB /* MessageOverview.swift */; };
 		2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B91F7455C00009CDCB /* MessageCell.swift */; };
 		279F0C731F793550004E2525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 279F0C721F793550004E2525 /* GoogleService-Info.plist */; };
 		279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C761F7943BA004E2525 /* ChatViewController.swift */; };
+		279F0C791F7D2F1D004E2525 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C781F7D2F1D004E2525 /* Message.swift */; };
 		27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F991F446E6500FD4166 /* AppDelegate.swift */; };
 		27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F9B1F446E6500FD4166 /* ViewController.swift */; };
 		27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4F9D1F446E6500FD4166 /* Main.storyboard */; };
@@ -54,10 +55,11 @@
 		16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		27048BEB1F7AD95500835C40 /* calvi_table.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = calvi_table.entitlements; sourceTree = "<group>"; };
 		273E6E101F671F0D0036A445 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		2748C4B41F744A620009CDCB /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2748C4B41F744A620009CDCB /* MessageOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageOverview.swift; sourceTree = "<group>"; };
 		2748C4B91F7455C00009CDCB /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		279F0C721F793550004E2525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		279F0C761F7943BA004E2525 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		279F0C781F7D2F1D004E2525 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		27CE4F961F446E6500FD4166 /* calvi_table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calvi_table.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CE4F991F446E6500FD4166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27CE4F9B1F446E6500FD4166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +136,8 @@
 			children = (
 				27F5C3621F728F1A002B8AB8 /* ChatBubbleData.swift */,
 				27FE13131F46FF110073C0E9 /* Ad.swift */,
-				2748C4B41F744A620009CDCB /* Message.swift */,
+				2748C4B41F744A620009CDCB /* MessageOverview.swift */,
+				279F0C781F7D2F1D004E2525 /* Message.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -566,12 +569,13 @@
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
-				2748C4B51F744A620009CDCB /* Message.swift in Sources */,
+				2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */,
 				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
 				279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */,
 				27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */,
 				273E6E111F671F0D0036A445 /* LoginController.swift in Sources */,
 				27F5C3611F728EBD002B8AB8 /* ChatBubble.swift in Sources */,
+				279F0C791F7D2F1D004E2525 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

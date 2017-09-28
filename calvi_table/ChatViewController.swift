@@ -12,7 +12,8 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
-    //var channelRef: FIRDatabaseReference?
+    var sender: String = ""
+    var articleId: Int64 = 1
     
     var messages = [JSQMessage]()
     
