@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import JSQMessagesViewController
+import Alamofire
 
 class ChatViewController: JSQMessagesViewController {
     
@@ -21,6 +22,9 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        fetchChat()
+        
         // messages from someone else
         addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
         // messages sent from local sender
@@ -29,6 +33,25 @@ class ChatViewController: JSQMessagesViewController {
         // animates the receiving of a new message on the view
         finishReceivingMessage()
     }
+    
+    func getUserToken() -> String {
+        //User defaults: userToken
+        let defaults:UserDefaults = UserDefaults.standard
+        let userId: String? = defaults.string(forKey: "userId")
+        //print("UserToken: " + userId!)
+        return userId!
+    }
+    
+    func fetchChat() {
+        
+        let userToken = getUserToken()
+        
+        Alamofire.request("http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)").responseJSON { response in
+            
+            print(response.result.value)
+        }
+    }
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
