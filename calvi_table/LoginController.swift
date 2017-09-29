@@ -24,26 +24,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         initFacebookLoginButton()
     }
     
-    func initFacebookLoginButton() {
-        
-        let loginButton = FBSDKLoginButton(frame: CGRect(x:0,y:0,width: 200, height: 50))
-        
-        let screenSize:CGRect = UIScreen.main.bounds
-        let screenHeight = screenSize.height //real screen height
-        //let's suppose we want to have 10 points bottom margin
-        let newCenterY = screenHeight - loginButton.frame.height - 50
-        let newCenter = CGPoint(x: view.center.x, y: newCenterY)
-        loginButton.center = newCenter
-        view.addSubview(loginButton)
-        
-        loginButton.delegate = self
-        
-        //if the user is already logged in
-        if let _ = FBSDKAccessToken.current(){
-            //getFBUserData()
-        }
-    }
-    
     func initGoogleSignInButton() {
         
         var configureError: NSError?
@@ -64,14 +44,46 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         view.addSubview(signInButton)
     }
     
+    func initFacebookLoginButton() {
+        
+        let loginButton = FBSDKLoginButton(frame: CGRect(x:0,y:0,width: 200, height: 50))
+        
+        //let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
+        
+        let screenSize:CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height //real screen height
+        //let's suppose we want to have 10 points bottom margin
+        let newCenterY = screenHeight - loginButton.frame.height - 50
+        let newCenter = CGPoint(x: view.center.x, y: newCenterY)
+        loginButton.center = newCenter
+        loginButton.delegate = self
+        view.addSubview(loginButton)
+        
+        //if the user is already logged in
+        if let _ = FBSDKAccessToken.current(){
+            //getFBUserData()
+        }
+    }
+    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("logoug facebook")
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("facebooook yeahhhhh")
-        print(error)
-        print(result)
+        
+        if error != nil {
+            print(error)
+            return
+        }
+        
+        let accesToken = FBSDKAccessToken.current()
+        print(accesToken!)
+        
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture"]).start(completionHandler: { (conection, result, error) in
+            print(result)
+            
+        })
     }
     
     
@@ -96,7 +108,5 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         let defaults:UserDefaults = UserDefaults.standard
         defaults.set(user.authentication.idToken, forKey: "userToken")
         defaults.set(user.userID, forKey: "userId")
-        
-        //let userId = defaults.object(forKey:"userId") as? [String] ?? [String]()
     }
 }

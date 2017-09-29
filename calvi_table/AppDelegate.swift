@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
@@ -24,15 +25,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Use Firebase library to configure APIs
         FIRApp.configure()
+    
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        let googleDidHandle = GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+       /* let googleDidHandle = GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    
+        return googleDidHandle */
         
-        return googleDidHandle
+        let sourceApplication =  options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
+        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
+        
+        let googleHandler = GIDSignIn.sharedInstance().handle(
+            url,
+            sourceApplication: sourceApplication,
+            annotation: annotation )
+        
+        let facebookHandler = FBSDKApplicationDelegate.sharedInstance().application (
+            app,
+            open: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation )
+        
+        return googleHandler || facebookHandler
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
