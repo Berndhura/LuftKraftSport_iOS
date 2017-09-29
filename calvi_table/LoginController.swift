@@ -94,7 +94,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     func saveUserDetails(user: GIDGoogleUser) {
         
         let defaults:UserDefaults = UserDefaults.standard
-        defaults.set(user.authentication.idToken, forKey: "userId")
+        defaults.set(user.authentication.idToken, forKey: "userToken")
+        defaults.set(user.authentication.clientID, forKey: "userId")
         
         //let userId = defaults.object(forKey:"userId") as? [String] ?? [String]()
     }

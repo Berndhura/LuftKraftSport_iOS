@@ -31,10 +31,19 @@ class ChatViewController: JSQMessagesViewController {
         //addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
         //addMessage(withId: senderId, name: "Me", text: "I like to run!")
         // animates the receiving of a new message on the view
-        
-        
-        
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.senderId = "109156770575781620767"
+        self.senderDisplayName = "CONAN"
+        
+        // No avatars
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+    }
+
     
     func fetchChat() {
         
@@ -59,18 +68,22 @@ class ChatViewController: JSQMessagesViewController {
         
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
                 
-            print(json)
+            //print(json)
             
             for dictionary in json as! [[String: Any]] {
                 
                 let message = dictionary["message"] as? String
+                print(message!)
+                
                 let date = dictionary["date"] as? Double
+                print(date!)
+                
                 //let articleId = dictionary["articleId"] as? Int64
-                let chatPartner = dictionary["chatPartner"] as? String
+                let chatPartner = dictionary["idFrom"] as? String
+                print(chatPartner!)
                 
                 self.addMessage(withId: chatPartner!, name: "mauli", text: message!)
             }
-            
             self.finishReceivingMessage()
         }.resume()
     }
@@ -81,18 +94,6 @@ class ChatViewController: JSQMessagesViewController {
         let userId: String? = defaults.string(forKey: "userId")
         //print("UserToken: " + userId!)
         return userId!
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.senderId = "0815" //FIRAuth.auth()?.currentUser?.uid
-        self.senderDisplayName = "CONAN"
-        
-        // No avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
-        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -111,6 +112,18 @@ class ChatViewController: JSQMessagesViewController {
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            cell.textView?.textColor = UIColor.white
+        } else {
+            cell.textView?.textColor = UIColor.black
+        }
+        return cell
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!,
