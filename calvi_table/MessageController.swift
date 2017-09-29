@@ -34,7 +34,7 @@ class MessagesController: UIViewController {
     func getUserToken() -> String {
         //User defaults: userToken
         let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userId")
+        let userId: String? = defaults.string(forKey: "userToken")
         //print("UserToken: " + userId!)
         return userId!
     }
@@ -42,6 +42,10 @@ class MessagesController: UIViewController {
     func fetchMessages() {
         
         let userToken = getUserToken()
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        let userId: String? = defaults.string(forKey: "userId")
+
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
         

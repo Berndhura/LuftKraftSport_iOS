@@ -21,11 +21,9 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.485775614575-fgcdf5gp12fa475bladu1ab9jcjsl1rv</string>
+				<string>fb535532649933816</string>
 			</array>
 		</dict>
 		<dict>
@@ -33,14 +31,27 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>de.wichura.lks</string>
+				<string>com.googleusercontent.apps.485775614575-fgcdf5gp12fa475bladu1ab9jcjsl1rv</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>535532649933816</string>
+	<key>FacebookDisplayName</key>
+	<string>Simplified iOS</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We want to get your profile picture for this app</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -62,27 +73,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb535532649933816</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>535532649933816</string>
-    <key>FacebookDisplayName</key>
-    <string>Simplified iOS</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>We want to get your profile picture for this app</string>
 </dict>
 </plist>

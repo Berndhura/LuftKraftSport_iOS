@@ -39,7 +39,7 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.senderId = "109156770575781620767"
+        self.senderId = getUserId()
         self.senderDisplayName = "CONAN"
         
         // No avatars
@@ -147,10 +147,14 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func getUserToken() -> String {
-        //User defaults: userToken
         let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userId")
-        //print("UserToken: " + userId!)
+        let userToken: String? = defaults.string(forKey: "userToken")
+        return userToken!
+    }
+    
+    func getUserId() -> String {
+        let defaults: UserDefaults = UserDefaults.standard
+        let userId = defaults.string(forKey: "userId")
         return userId!
     }
     

@@ -51,7 +51,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("logou")
+        print("logoug facebook")
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -95,7 +95,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         let defaults:UserDefaults = UserDefaults.standard
         defaults.set(user.authentication.idToken, forKey: "userToken")
-        defaults.set(user.authentication.clientID, forKey: "userId")
+        defaults.set(user.userID, forKey: "userId")
         
         //let userId = defaults.object(forKey:"userId") as? [String] ?? [String]()
     }
