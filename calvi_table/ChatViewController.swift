@@ -83,9 +83,7 @@ class ChatViewController: JSQMessagesViewController {
                 return nil
             }
             return NSAttributedString(string: senderDisplayName)
-            
         }
-        
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat

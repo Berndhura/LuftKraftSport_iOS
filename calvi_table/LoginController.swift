@@ -13,18 +13,27 @@ import FBSDKLoginKit
 
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
     
-        override func viewDidLoad() {
+    @IBOutlet weak var userImage: UIImageView!
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         initGoogleSignInButton()
         initFacebookLoginButton()
-            
-}
+    }
     
     func initFacebookLoginButton() {
-        let loginButton = FBSDKLoginButton()
         
-        loginButton.center = view.center
+        let loginButton = FBSDKLoginButton(frame: CGRect(x:0,y:0,width: 200, height: 50))
+        
+        let screenSize:CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height //real screen height
+        //let's suppose we want to have 10 points bottom margin
+        let newCenterY = screenHeight - loginButton.frame.height - 50
+        let newCenter = CGPoint(x: view.center.x, y: newCenterY)
+        loginButton.center = newCenter
         view.addSubview(loginButton)
         
         loginButton.delegate = self
@@ -45,8 +54,13 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         GIDSignIn.sharedInstance().delegate = self
         
         let signInButton = GIDSignInButton(frame: CGRect(x:0,y:0,width: 200, height: 50))
-        signInButton.center = view.center
         
+        let screenSize:CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height //real screen height
+        //let's suppose we want to have 10 points bottom margin
+        let newCenterY = screenHeight - signInButton.frame.height - 120
+        let newCenter = CGPoint(x: view.center.x, y: newCenterY)
+        signInButton.center = newCenter
         view.addSubview(signInButton)
     }
     
@@ -64,27 +78,13 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
         if (error == nil) {
-            // Perform any operations on signed in user here.
-            //let userId = user.userID                  // For client-side use only!
-            //print("userToken: ", user.authentication.idToken)
-            //let fullName = user.profile.name
-            //let givenName = user.profile.givenName
-            //let familyName = user.profile.familyName
-            //let email = user.profile.email
-            //print(user.profile.imageURL(withDimension: 400))
+            
+            self.userImage.sd_setImage(with: user.profile.imageURL(withDimension: 400))
+            
+            let fullName = user.profile.name
+            self.userName.text = "Willkommen " + fullName!
             
             saveUserDetails(user: user)
-            
-           
-            // Adding an out going chat bubble
-            let chatBubbleDataMine = ChatBubbleData(text: "Hey there!!! How are you?   Firebase/Analytics][I-ACS023012] Firebase Analytics enabled Firebase/Analytics][I-ACS023012] Firebase Analytics enabled", image: nil, date: NSDate(), type: .Mine)
-            let chatBubbleMine = ChatBubble(data: chatBubbleDataMine, startY: 150)
-            self.view.addSubview(chatBubbleMine)
-            
-            // Adding an incoming chat bubble
-            let chatBubbleDataOpponent = ChatBubbleData(text: "Fine bro!!! check this out", image:UIImage(named: "taylor_swift_blank_space.jpg"), date: NSDate(), type: .Opponent)
-            let chatBubbleOpponent = ChatBubble(data: chatBubbleDataOpponent, startY: chatBubbleMine.frame.maxX + 10)
-            self.view.addSubview(chatBubbleOpponent)
             
         } else {
             print("\(error.localizedDescription)")
