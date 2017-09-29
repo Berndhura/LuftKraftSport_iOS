@@ -18,6 +18,9 @@ class ChatViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
     
+    //private lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
+    private var newMessageRefHandle: FIRDatabaseHandle?
+    
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
@@ -42,6 +45,61 @@ class ChatViewController: JSQMessagesViewController {
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+    }
+    
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        //let itemRef = messageRef.childByAutoId() // 1
+        let messageItem = [ // 2
+            "senderId": senderId!,
+            "senderName": senderDisplayName!,
+            "text": text!,
+            ]
+        
+        //itemRef.setValue(messageItem) // 3
+        
+        /*@POST("messages")
+        Observable<String> sendNewMessage(@Query("message") String message,
+        @Query("articleId") int articleId,
+        @Query("idTo") String idTo,
+        @Query("token") String token);*/
+        
+       // Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters)
+        
+        
+        JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
+        
+        finishSendingMessage() // 5
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString!
+    {
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            return nil
+        } else {
+            guard let senderDisplayName = message.senderDisplayName else {
+                assertionFailure()
+                return nil
+            }
+            return NSAttributedString(string: senderDisplayName)
+            
+        }
+        
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
+    {
+        //return 17.0
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            return 0.0
+        } else {
+            
+            return 17.0
+            
+        }
     }
 
     
@@ -82,7 +140,7 @@ class ChatViewController: JSQMessagesViewController {
                 let chatPartner = dictionary["idFrom"] as? String
                 print(chatPartner!)
                 
-                self.addMessage(withId: chatPartner!, name: "mauli", text: message!)
+                self.addMessage(withId: chatPartner!, name: "Ziegenpeter", text: message!)
             }
             self.finishReceivingMessage()
         }.resume()

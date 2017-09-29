@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ChatViewController.swift"
-            timestampString = "528364459.408406"
+            timestampString = "528380109.506549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "fetchChat()"
             landmarkType = "7">
          </BreakpointContent>
