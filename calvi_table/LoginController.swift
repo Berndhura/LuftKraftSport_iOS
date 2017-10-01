@@ -66,7 +66,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("logoug facebook")
+        print("logout from facebook")
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
@@ -81,9 +81,38 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         print(accesToken!)
         
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture"]).start(completionHandler: { (conection, result, error) in
-            print(result)
             
+            if error != nil {
+                print(error!)
+                return
+            }
+
+            //FB access token
+            let token = FBSDKAccessToken.current().tokenString
+            self.saveUserToken(tokenString: token!)
+            
+            var dict: NSDictionary!
+            dict = result as! NSDictionary
+            
+            let defaults:UserDefaults = UserDefaults.standard
+            defaults.set(dict["name"]!, forKey: "userName")
+            
+            if let picture = dict["picture"] as? NSDictionary {
+                if let data = picture["data"] as? NSDictionary{
+                    if let profilePicture = data["url"] as? String {
+                        print(profilePicture)
+                        self.userImage.sd_setImage(with: URL(string: profilePicture))
+                    }
+                }
+            }
         })
+    }
+    
+    func saveUserToken(tokenString: String) {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(tokenString, forKey: "userToken")
+        defaults.synchronize()
     }
     
     

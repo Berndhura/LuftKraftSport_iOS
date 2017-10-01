@@ -13,7 +13,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Messages-->
+        <!--Messages Controller-->
         <scene sceneID="eFy-pe-AZ8">
             <objects>
                 <viewController id="fNo-fk-EtJ" customClass="MessagesController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerX" secondItem="Vgx-hA-D58" secondAttribute="centerX" id="zUh-dD-Oon"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="icons8-Mail-50" id="mKE-vv-HxX"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="mKE-vv-HxX"/>
                     <connections>
                         <outlet property="tableView" destination="MRy-lw-OLN" id="MN9-fT-kRF"/>
                     </connections>
@@ -140,7 +140,7 @@
             </objects>
             <point key="canvasLocation" x="1478.2608695652175" y="-707.60869565217399"/>
         </scene>
-        <!--Login-->
+        <!--Login Controller-->
         <scene sceneID="8f8-na-VX6">
             <objects>
                 <viewController id="Cch-lw-Akm" customClass="LoginController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -174,7 +174,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uRn-4T-BMf" secondAttribute="trailing" constant="20" id="ubx-WU-nLS"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Login" image="icons8-Login-25" id="nQs-aG-x1w"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="nQs-aG-x1w"/>
                     <connections>
                         <outlet property="userImage" destination="uRn-4T-BMf" id="YGQ-gb-5xB"/>
                         <outlet property="userName" destination="VTd-Z4-xSL" id="tLR-nH-bOc"/>
@@ -184,7 +184,7 @@
             </objects>
             <point key="canvasLocation" x="608.69565217391312" y="756.52173913043487"/>
         </scene>
-        <!--Anzeigen-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +303,7 @@
                             <constraint firstItem="npf-sk-PXm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fw5-oK-ypN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Anzeigen" image="UIBarButtonSystemItem.Refresh" id="BRl-jb-NO6"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="BRl-jb-NO6"/>
                     <navigationItem key="navigationItem" id="otG-NE-Ul2">
                         <rightBarButtonItems>
                             <barButtonItem title="Login" id="oJB-CC-tTC">
@@ -455,7 +455,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -490,9 +490,4 @@
             <point key="canvasLocation" x="-257.97101449275362" y="6.5217391304347831"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="UIBarButtonSystemItem.Refresh" width="16" height="16"/>
-        <image name="icons8-Login-25" width="25" height="25"/>
-        <image name="icons8-Mail-50" width="50" height="50"/>
-    </resources>
 </document>
