@@ -70,7 +70,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("facebooook yeahhhhh")
         
         if error != nil {
             print(error)
@@ -94,18 +93,25 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             var dict: NSDictionary!
             dict = result as! NSDictionary
             
-            let defaults:UserDefaults = UserDefaults.standard
-            defaults.set(dict["name"]!, forKey: "userName")
+            self.saveUserName(nameString: dict["name"]! as! String)
             
             if let picture = dict["picture"] as? NSDictionary {
                 if let data = picture["data"] as? NSDictionary{
                     if let profilePicture = data["url"] as? String {
                         print(profilePicture)
+                        self.userImage.sd_setShowActivityIndicatorView(true)
+                        self.userImage.sd_setIndicatorStyle(.gray)
                         self.userImage.sd_setImage(with: URL(string: profilePicture))
                     }
                 }
             }
         })
+    }
+    
+    func saveUserName(nameString: String) {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(nameString, forKey: "userName")
     }
     
     func saveUserToken(tokenString: String) {

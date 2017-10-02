@@ -10,14 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UISearchResultsUpdating {
     
-    @IBAction func openLoginPage(_ sender: Any) {
-        self.performSegue(withIdentifier: "openLogin", sender: self)
-    }
-    
-    @IBAction func openMessages(_ sender: Any) {
-        self.performSegue(withIdentifier: "openMessages", sender: self)
-    }
-    
     @IBOutlet weak var tableView: UITableView!
     
     var ads: [Ad] = []
@@ -42,7 +34,11 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Luftkraftsport"
-
+        
+        let leftButton =  UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.plain, target: self, action: #selector(save))
+        tabBarController?.navigationItem.rightBarButtonItem = leftButton
+        tabBarController?.navigationItem.title = "Luftkraftsport"
+        
         
         tableView?.backgroundColor = UIColor.gray
         
@@ -51,6 +47,12 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
+}
+    func save() {
+        //TODO login falls nicht eingelogged
+        //self.performSegue(withIdentifier: "createNewAd", sender: self)
+        
+        print("save")
     }
 
     override func didReceiveMemoryWarning() {
