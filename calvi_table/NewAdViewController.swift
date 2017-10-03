@@ -18,6 +18,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var decriptionText: UITextView!
     
+    @IBOutlet weak var price: UITextField!
+   
+    @IBOutlet weak var location: UITextField!
+    
     @IBAction func saveNewAd(_ sender: Any) {
         createNewAd()
     }
@@ -37,11 +41,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func createNewAd() {
-        /*
-     @POST("articles")
-     Observable<RowItem> saveNewAd(@Query("token") String userToken,
-     @Body RowItem item);
-     */
+        
         let userToken = getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
@@ -68,25 +68,18 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         dict = response.result.value as! NSDictionary
         let articleId = dict["id"]!
         
-        /*
-         @Multipart
-         @POST("articles/{articleId}/addPicture")
-         Observable<String> uploadPicture(@Path("articleId") Long articleId,
-         @Query("token") String userToken,
-         @Part MultipartBody.Part file);
- */
         let userToken = getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
         
-        let imageData: NSData = UIImagePNGRepresentation(self.image.image!)! as NSData
+        let imageData = UIImageJPEGRepresentation(self.image.image!, 0.5)!
         
         let parameters = [
             "file_name": "swift_file.jpeg"
         ]
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(UIImageJPEGRepresentation(self.image.image!, 0.5)!, withName: "file", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
+            multipartFormData.append(imageData, withName: "file", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
             for (key, value) in parameters {
                 multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
             }
@@ -118,6 +111,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
             
         }
+        
+        //back to main..
+        //let chatController: ChatViewController = (segue.destination as? ChatViewController)!
+        
     }
     
     func getUserToken() -> String {
