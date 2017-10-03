@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
+import AddressBookUI
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -23,7 +25,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var location: UITextField!
     
     @IBAction func saveNewAd(_ sender: Any) {
-        createNewAd()
+        
+        getLatLng(address: location.text!)
     }
     
     override func viewDidLoad() {
@@ -40,7 +43,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     }
     
-    func createNewAd() {
+    func createNewAd(coordinate: CLLocationCoordinate2D) {
         
         let userToken = getUserToken()
         
@@ -48,11 +51,16 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let price = "69"
         
+       // let location = coordinate.latitude
+        
         let params = [
-            "price": String(price),
-            "title": titleText.text,
+            "price": String(price)! as Any,
+            "title": titleText.text! as Any,
             "description": decriptionText.text
-        ]
+            //"location": ["coordinates": "\(coordinate.latitude),\(coordinate.longitude)", "type": "Point"]
+        ] as [String : Any]
+        
+        print(params)
 
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -62,8 +70,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func uploadImagesForNewAd(response: DataResponse<Any>) {
-     
-        //get new ID from response
+     print(response)        //get new ID from response
         var dict: NSDictionary!
         dict = response.result.value as! NSDictionary
         let articleId = dict["id"]!
@@ -89,20 +96,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             case .success(let upload, _, _):
                 
                 upload.uploadProgress(closure: { (Progress) in
-                    print("Upload Progress: \(Progress.fractionCompleted)")
+                   // print("Upload Progress: \(Progress.fractionCompleted)")
                 })
                 
                 upload.responseJSON { response in
                     //self.delegate?.showSuccessAlert()
-                    print(response.request)  // original URL request
-                    print(response.response) // URL response
-                    print(response.data)     // server data
-                    print(response.result)   // result of response serialization
+                   // print(response.request)  // original URL request
+                   // print(response.response) // URL response
+                    //print(response.data)     // server data
+                   // print(response.result)   // result of response serialization
                     //                        self.showSuccesAlert()
                     //self.removeImage("frame", fileExtension: "txt")
-                    if let JSON = response.result.value {
-                        print("JSON: \(JSON)")
-                    }
+                    //if let JSON = response.result.value {
+                    //    print("JSON: \(JSON)")
+                    //}
                 }
                 
             case .failure(let encodingError):
@@ -115,6 +122,23 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //back to main..
         //let chatController: ChatViewController = (segue.destination as? ChatViewController)!
         
+    }
+    
+    func getLatLng(address: String) {
+        
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            if (placemarks?.count)! > 0 {
+                let placemark = placemarks?[0]
+                let location = placemark?.location
+                let coordinate = location?.coordinate
+                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                self.createNewAd(coordinate: coordinate!)
+            }
+        })
     }
     
     func getUserToken() -> String {
