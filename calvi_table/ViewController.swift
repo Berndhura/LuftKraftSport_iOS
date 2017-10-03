@@ -35,7 +35,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Luftkraftsport"
         
-        let leftButton =  UIBarButtonItem(title: "New", style: UIBarButtonItemStyle.plain, target: self, action: #selector(save))
+        let leftButton =  UIBarButtonItem(title: "Reload", style: UIBarButtonItemStyle.plain, target: self, action: #selector(refreshArticles))
         tabBarController?.navigationItem.rightBarButtonItem = leftButton
         tabBarController?.navigationItem.title = "Luftkraftsport"
         
@@ -47,12 +47,12 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
-}
-    func save() {
-        //TODO login falls nicht eingelogged
-        //self.performSegue(withIdentifier: "createNewAd", sender: self)
+    }
+    
+    func refreshArticles() {
         
-        print("save")
+        ads.removeAll()
+        fetchAds()
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,6 +136,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                     detailViewController.price = ad.price
                     detailViewController.location = ad.location
                     detailViewController.date = ad.date
+                    detailViewController.userId = ad.userId
+                    detailViewController.articleId = ad.articleId
                 }
             }
         }

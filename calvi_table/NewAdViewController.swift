@@ -51,14 +51,16 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let price = "69"
         
-       // let location = coordinate.latitude
-        
-        let params = [
+        var params = [
             "price": String(price)! as Any,
             "title": titleText.text! as Any,
-            "description": decriptionText.text
-            //"location": ["coordinates": "\(coordinate.latitude),\(coordinate.longitude)", "type": "Point"]
+            "description": decriptionText.text,
+            "date": "12312323"
         ] as [String : Any]
+        
+        params["location"] = [
+            "type": "Point",
+            "coordinates": [coordinate.latitude, coordinate.longitude]]
         
         print(params)
 
@@ -70,7 +72,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func uploadImagesForNewAd(response: DataResponse<Any>) {
-     print(response)        //get new ID from response
+     
+        print(response)
+        
+        //get new ID from response
         var dict: NSDictionary!
         dict = response.result.value as! NSDictionary
         let articleId = dict["id"]!
