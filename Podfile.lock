@@ -47,6 +47,7 @@ PODS:
   - FirebaseStorage (1.1.0):
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
+  - Google-Material-Design-Icons-Swift (1.0.1)
   - Google/Core (3.1.0):
     - FirebaseAnalytics (~> 3.2)
   - Google/SignIn (3.1.0):
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - Google-Material-Design-Icons-Swift
   - Google/SignIn
   - JSQMessagesViewController
   - SDWebImage
@@ -108,6 +110,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
+  Google-Material-Design-Icons-Swift: ff587db57d713061f66b8457229d1af2cae84c56
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
@@ -116,6 +119,6 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 57f6ebb301433e4e5f5d3732bde2def2e7fcfbb4
+PODFILE CHECKSUM: 7eb397c639fb5741cf084167e0d1382e7f3694d1
 
 COCOAPODS: 1.3.1

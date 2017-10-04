@@ -136,14 +136,14 @@ class DetailViewController: UIViewController {
                 }
 
             } else {
-                // user did not fill field
+                //nothing here
             }
         }
         
         let cancelAction = UIAlertAction(title: "Doch nicht", style: .cancel) { (_) in }
         
         alertController.addTextField { (textField) in
-            textField.placeholder = "Email"
+            textField.placeholder = "Sag etwas..."
         }
         
         alertController.addAction(confirmAction)
