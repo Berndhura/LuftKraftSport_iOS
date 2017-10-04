@@ -36,11 +36,27 @@ class DetailViewController: UIViewController {
         if userId == userIdFromDefaults {
             deleteArticle(articleId: articleId!)
         } else {
-            sendMessage(articleId: articleId!, userIdFromArticle: userId!)
+            if getUserToken() == "" {
+                //not logged in
+                let alert = UIAlertController(title: "Nicht angemeldet!", message: "Um Nachrichten zu versenden, musst du dich anmleden.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Schließen", style:.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Anmelden", style: .default, handler: { (action: UIAlertAction!) in
+                    //let newViewController = LoginController()
+                    //self.navigationController?.pushViewController(newViewController, animated: true)
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+                    self.present(newViewController, animated: true, completion: nil)
+                    //TODO mach login seite auf aber ohne navigation leider, keine möglichkeit nach login von der seite zu kommen
+                }))
+
+                self.present(alert, animated: true, completion: nil)
+
+            } else {
+                sendMessage(articleId: articleId!, userIdFromArticle: userId!)
+            }
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -161,7 +177,10 @@ class DetailViewController: UIViewController {
     
     func getUserToken() -> String {
         let defaults:UserDefaults = UserDefaults.standard
-        let userToken: String? = defaults.string(forKey: "userToken")
-        return userToken!
+        if let userToken = defaults.string(forKey: "userToken") {
+            return userToken
+        } else {
+            return ""
+        }
     }
 }
