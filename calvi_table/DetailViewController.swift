@@ -28,6 +28,15 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+   
+    @IBOutlet weak var bookmarkEditButton: UIButton!
+    
+    @IBAction func bookmarkEditAction(_ sender: Any) {
+        
+    }
+    
+    
+    
     @IBOutlet weak var messageButton: UIButton!
     
     @IBAction func msgDeleteButton(_ sender: Any) {
@@ -45,7 +54,7 @@ class DetailViewController: UIViewController {
                     //self.navigationController?.pushViewController(newViewController, animated: true)
                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-                    self.present(newViewController, animated: true, completion: nil)
+                    self.navigationController?.present(newViewController, animated: true, completion: nil)
                     //TODO mach login seite auf aber ohne navigation leider, keine möglichkeit nach login von der seite zu kommen
                 }))
 
@@ -64,7 +73,7 @@ class DetailViewController: UIViewController {
             let userIdFromDefaults = getUserId()
             if userId == userIdFromDefaults {
                 messageButton.setTitle("Löschen" , for: .normal)
-                //bookmarkButton.setTitle("Bearbeiten", for: .normal)
+                bookmarkEditButton.setTitle("Bearbeiten", for: .normal)
             }
         }
         
@@ -171,8 +180,11 @@ class DetailViewController: UIViewController {
     
     func getUserId() -> String {
         let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userId")
-        return userId!
+        if let userId = defaults.string(forKey: "userId") {
+            return userId
+        } else {
+            return ""
+        }
     }
     
     func getUserToken() -> String {

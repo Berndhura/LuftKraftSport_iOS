@@ -553,6 +553,9 @@
                                 <state key="normal" title="Merken">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="bookmarkEditAction:" destination="W1h-Wv-7it" eventType="touchUpInside" id="04L-eH-3mZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -591,6 +594,7 @@
                     <connections>
                         <outlet property="anzeigeTitel" destination="xMq-JX-mPu" id="eZl-U3-wPD"/>
                         <outlet property="beschreibung" destination="nEK-mJ-fxm" id="2sk-B1-311"/>
+                        <outlet property="bookmarkEditButton" destination="WYE-Yg-Il7" id="ktU-zX-z1h"/>
                         <outlet property="dateLabel" destination="WBE-3n-AqM" id="Xv5-SH-Eim"/>
                         <outlet property="locationLabel" destination="1FX-Hc-NfB" id="8uR-3I-thv"/>
                         <outlet property="mainPicture" destination="daA-ou-CIa" id="wg1-3X-CUH"/>

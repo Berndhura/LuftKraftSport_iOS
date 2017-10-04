@@ -63,7 +63,16 @@ class ChatViewController: JSQMessagesViewController {
         @Query("idTo") String idTo,
         @Query("token") String token);*/
         
-       // Alamofire.request("https://httpbin.org/post", method: .post, parameters: parameters)
+        /*let message = text.text!
+        
+        let userToken = self.getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
+        
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                debugPrint(response)
+        }*/
         
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
