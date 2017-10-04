@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
         if userId == userIdFromDefaults {
             deleteArticle(articleId: articleId!)
         } else {
-            //sendMessage()
+            sendMessage(articleId: articleId!, userIdFromArticle: userId!)
         }
     }
 
@@ -114,6 +114,43 @@ class DetailViewController: UIViewController {
         }))
         
         present(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func sendMessage(articleId: Int32, userIdFromArticle: String) {
+        
+        let alertController = UIAlertController(title: "Send Message", message: "write your message:", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Senden", style: .default) { (_) in
+            if let field = alertController.textFields![0] as? UITextField {
+                
+                let message = field.text!
+                
+                let userToken = self.getUserToken()
+                
+                let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
+                
+                
+                Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+                    .responseJSON { response in
+                        debugPrint(response)
+                }
+
+            } else {
+                // user did not fill field
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Doch nicht", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
     }
     
     func getUserId() -> String {

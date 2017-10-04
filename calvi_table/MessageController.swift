@@ -32,10 +32,14 @@ class MessagesController: UIViewController {
     }
     
     func getUserToken() -> String {
-        //User defaults: userToken
         let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userToken")
-        //print("UserToken: " + userId!)
+        let userToken: String? = defaults.string(forKey: "userToken")
+        return userToken!
+    }
+    
+    func getUserId() -> String {
+        let defaults:UserDefaults = UserDefaults.standard
+        let userId: String? = defaults.string(forKey: "userId")
         return userId!
     }
     
