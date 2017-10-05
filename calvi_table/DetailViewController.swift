@@ -28,11 +28,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-   
+
     @IBOutlet weak var bookmarkEditButton: UIButton!
-    
     @IBAction func bookmarkEditAction(_ sender: Any) {
-        
         let userIdFromDefaults = getUserId()
         
         if userId == userIdFromDefaults {
@@ -41,13 +39,10 @@ class DetailViewController: UIViewController {
             bookmarkArticle(articleId: articleId!)
         }
     }
-    
-    
-    
+   
     @IBOutlet weak var messageButton: UIButton!
     
     @IBAction func msgDeleteButton(_ sender: Any) {
-        
         let userIdFromDefaults = getUserId()
         
         if userId == userIdFromDefaults {
@@ -65,15 +60,19 @@ class DetailViewController: UIViewController {
                     self.navigationController?.present(newViewController, animated: true, completion: nil)
                     //TODO mach login seite auf aber ohne navigation leider, keine möglichkeit nach login von der seite zu kommen
                 }))
-
+                
                 self.present(alert, animated: true, completion: nil)
-
+                
             } else {
                 sendMessage(articleId: articleId!, userIdFromArticle: userId!)
             }
         }
     }
 
+    
+    
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
