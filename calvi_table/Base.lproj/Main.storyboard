@@ -498,11 +498,11 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-Ki-74n" userLabel="title">
                                                 <rect key="frame" x="10" y="340" width="300" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beschreibung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htV-bn-u1Y">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beschreibung" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htV-bn-u1Y">
                                                 <rect key="frame" x="10" y="381" width="300" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -612,6 +612,7 @@
                         <outlet property="dateLabel" destination="qWQ-ZQ-C3J" id="RiZ-jV-BIp"/>
                         <outlet property="locationLabel" destination="ljI-yD-hkd" id="iZ6-cr-yOF"/>
                         <outlet property="mainPicture" destination="YFd-ve-FSf" id="gHI-0g-ybr"/>
+                        <outlet property="mapView" destination="ktI-Mm-4Go" id="iei-WU-ASd"/>
                         <outlet property="messageButton" destination="nxA-Z0-M4e" id="apc-vN-BVm"/>
                         <outlet property="priceLabel" destination="OTS-4G-tfW" id="gvK-QZ-MbH"/>
                     </connections>

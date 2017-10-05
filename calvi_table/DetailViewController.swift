@@ -8,9 +8,10 @@
 
 import UIKit
 import Alamofire
+import MapKit
 
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, MKMapViewDelegate {
     
     var anzeig: String?
     var pictureUrl: String?
@@ -27,9 +28,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
 
     @IBOutlet weak var bookmarkEditButton: UIButton!
+    
     @IBAction func bookmarkEditAction(_ sender: Any) {
         let userIdFromDefaults = getUserId()
         
@@ -69,12 +72,17 @@ class DetailViewController: UIViewController {
         }
     }
 
-    
-    
-    
-   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        let anno: MKPointAnnotation = MKPointAnnotation()
+        anno.coordinate = CLLocationCoordinate2DMake(49, 13)
+        anno.title = "Tabou"
+        mapView.addAnnotation(anno)
+        
+        print(location)
         
         if userId != nil {
             let userIdFromDefaults = getUserId()
