@@ -33,6 +33,13 @@ class DetailViewController: UIViewController {
     
     @IBAction func bookmarkEditAction(_ sender: Any) {
         
+        let userIdFromDefaults = getUserId()
+        
+        if userId == userIdFromDefaults {
+            editArticle(articleId: articleId!)
+        } else {
+            bookmarkArticle(articleId: articleId!)
+        }
     }
     
     
@@ -42,6 +49,7 @@ class DetailViewController: UIViewController {
     @IBAction func msgDeleteButton(_ sender: Any) {
         
         let userIdFromDefaults = getUserId()
+        
         if userId == userIdFromDefaults {
             deleteArticle(articleId: articleId!)
         } else {
@@ -119,6 +127,29 @@ class DetailViewController: UIViewController {
         }
     }
     
+    func editArticle(articleId: Int32) {
+        
+    }
+    
+    func bookmarkArticle(articleId: Int32) {
+        
+        let userToken = getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
+        
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response)
+                self.showAlert()
+        }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Nachricht gesendet!", message: nil, preferredStyle: .actionSheet)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+    }
+    
     func deleteArticle(articleId: Int32) {
         
         let userToken = getUserToken()
@@ -143,7 +174,7 @@ class DetailViewController: UIViewController {
     
     func sendMessage(articleId: Int32, userIdFromArticle: String) {
         
-        let alertController = UIAlertController(title: "Send Message", message: "write your message:", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Nachricht schreiben", message: nil, preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Senden", style: .default) { (_) in
             if let field = alertController.textFields![0] as? UITextField {
