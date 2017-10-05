@@ -145,7 +145,7 @@ class DetailViewController: UIViewController {
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Nachricht gesendet!", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Artikel ist gemerkt!", message: nil, preferredStyle: .actionSheet)
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
