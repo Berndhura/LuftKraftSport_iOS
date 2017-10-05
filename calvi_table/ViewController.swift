@@ -92,12 +92,16 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 let date = dictionary["date"] as? Int32
                 let articleId = dictionary["id"] as? Int32
                 var urls = dictionary["urls"] as? String
+                let coordinates = dictionary["location"] as! [String: Any]
+                let latLng = coordinates["coordinates"] as! [Double]
+                let lat = latLng[0]
+                let lng = latLng[1]
                 
                 if urls == nil {
                     urls = ""
                 }
                 
-                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!, articleId: articleId!)
+                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng)
                 
                 //print(ad.urls)
                 
@@ -138,6 +142,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                     detailViewController.date = ad.date
                     detailViewController.userId = ad.userId
                     detailViewController.articleId = ad.articleId
+                    detailViewController.lat = ad.lat
+                    detailViewController.lng = ad.lng
                 }
             }
         }

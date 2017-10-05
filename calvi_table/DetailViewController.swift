@@ -21,6 +21,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     var date: Int32?
     var userId: String?
     var articleId: Int32?
+    var lat: Double?
+    var lng: Double?
     
     @IBOutlet weak var anzeigeTitel: UILabel!
     @IBOutlet weak var mainPicture: UIImageView!
@@ -73,16 +75,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        let anno: MKPointAnnotation = MKPointAnnotation()
-        anno.coordinate = CLLocationCoordinate2DMake(49, 13)
-        anno.title = "Tabou"
-        mapView.addAnnotation(anno)
-        
-        print(location)
+        prepareMap()
         
         if userId != nil {
             let userIdFromDefaults = getUserId()
@@ -132,6 +128,25 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             //self.mainPicture.sd_setHighlightedImage(with: url)
 
         }
+    }
+    
+    func prepareMap() {
+        
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        let anno: MKPointAnnotation = MKPointAnnotation()
+        if lat != nil && lng != nil {
+            anno.coordinate = CLLocationCoordinate2DMake(lat!, lng!)
+        }
+        anno.title = anzeig
+        
+        let span = MKCoordinateSpanMake(1, 1)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat!, longitude: lng!), span: span)
+        mapView.setRegion(region, animated: true)
+        
+        mapView.isZoomEnabled = true
+        
+        mapView.addAnnotation(anno)
     }
     
     func editArticle(articleId: Int32) {

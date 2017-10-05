@@ -18,4 +18,6 @@ struct Ad {
     var date: Int32
     var userId: String
     var articleId: Int32
+    var lat: Double
+    var lng: Double
 }
