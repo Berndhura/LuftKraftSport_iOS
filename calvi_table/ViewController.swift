@@ -7,6 +7,7 @@
 //  luftkraftsport
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController, UISearchResultsUpdating {
     
@@ -66,7 +67,32 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
     }
     
+    func getMyBookmaks() {
+        
+        let userToken = getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/ids?token=\(userToken)")
+
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response)
+                // self.showAlert()
+        }
+    }
+    
+    func getUserToken() -> String {
+        let defaults:UserDefaults = UserDefaults.standard
+        if let userToken = defaults.string(forKey: "userToken") {
+            return userToken
+        } else {
+            return ""
+        }
+    }
+
+    
     func fetchAds() {
+        
+        getMyBookmaks()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")
         
