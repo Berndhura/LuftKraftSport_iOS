@@ -89,7 +89,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 let price = dictionary["price"] as? Int
                 let userId = dictionary["userId"] as? String
                 let location = dictionary["locationName"] as? String
-                let date = dictionary["date"] as? Int32
+                let date = dictionary["date"] as? Double
                 let articleId = dictionary["id"] as? Int32
                 var urls = dictionary["urls"] as? String
                 let coordinates = dictionary["location"] as! [String: Any]

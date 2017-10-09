@@ -121,7 +121,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         defaults.synchronize()
     }
     
-    
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
         if (error == nil) {
@@ -141,6 +140,12 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.window?.rootViewController!.present(mainPage, animated: true, completion: nil)
         }
+        
+        //go back
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController
     }
     
     func saveUserDetails(user: GIDGoogleUser) {
@@ -149,11 +154,4 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         defaults.set(user.authentication.idToken, forKey: "userToken")
         defaults.set(user.userID, forKey: "userId")
     }
-    
-    //go back
-    //https://www.youtube.com/watch?v=qBtOYc9MOMs
-    let sb = UIStoryboard(name: "Main", bundle: nil)
-    let tabBarController = sb?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    appDelegate.window?.rootViewController = tabBarController
 }

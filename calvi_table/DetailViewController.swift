@@ -18,7 +18,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     var desc: String?
     var price: Int?
     var location: String?
-    var date: Int32?
+    var date: Double?
     var userId: String?
     var articleId: Int32?
     var lat: Double?
@@ -101,21 +101,16 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             self.priceLabel.text = String(describing: price!) + " €"
         }
         
+        //date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "de_DE")
         
-        //let date = Date(timeIntervalSinceReferenceDate: kCFAbsoluteTimeIntervalSince1970(self.date!))
+        let date = Date(timeIntervalSince1970: (self.date! / 1000.0))
+        self.dateLabel.text = "Erstellt am: " + dateFormatter.string(from: date)
         
-        
-        dateFormatter.locale = Locale(identifier: "fr_FR")
-       // print(dateFormatter.string(from: date)) // 2 janv. 2001
-        
-        
-        if date != nil {
-            self.dateLabel.text = "Erstellt am: " //+ dateFormatter.string(from: date)
-        }
-        
+        //location
         if location != nil {
             self.locationLabel.text = location
         }
