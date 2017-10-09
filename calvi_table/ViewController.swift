@@ -170,13 +170,13 @@ extension ViewController: UITableViewDataSource {
         cell?.title?.text = currentAd.title
         
         //description
-        cell?.desc?.text = currentAd.desc
+        cell?.location?.text = currentAd.location
         
-        //articleId
-        //cell?.articleId = currentAd.articleId
+        //date
+        cell?.date?.text = getFormatedDate(date: currentAd.date)
         
         //price
-        cell?.price?.text = String(currentAd.price)
+        cell?.price?.text = String(currentAd.price) + " €"
         
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
@@ -199,6 +199,16 @@ extension ViewController: UITableViewDataSource {
         cell?.bild?.sd_setImage(with: url)
 
         return cell!
+    }
+    
+    func getFormatedDate(date: Double) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMdd")
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        
+        let date = Date(timeIntervalSince1970: (date / 1000.0))
+        return dateFormatter.string(from: date)
     }
 }
 

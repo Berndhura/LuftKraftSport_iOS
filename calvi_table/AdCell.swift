@@ -15,15 +15,17 @@ class AdCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
    
-    @IBOutlet weak var desc: UILabel!
+    @IBOutlet weak var location: UILabel!
     
     @IBOutlet weak var price: UILabel!
     
-    public var artivleId: Int32!
+    @IBOutlet weak var date: UILabel!
     
     @IBAction func bookmarkAd(_ sender: Any) {
         print("like this")
     }
+    
+    public var artivleId: Int32!
     
     override func awakeFromNib() {
         super.awakeFromNib()

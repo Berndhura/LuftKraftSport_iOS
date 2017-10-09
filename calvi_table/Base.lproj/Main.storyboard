@@ -385,10 +385,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akR-1x-U7R" userLabel="title_view">
-                                                    <rect key="frame" x="95" y="8" width="240" height="377"/>
+                                                    <rect key="frame" x="95" y="8" width="240" height="361"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G74-wd-XO6" userLabel="title">
-                                                            <rect key="frame" x="10" y="10" width="240" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G74-wd-XO6" userLabel="title">
+                                                            <rect key="frame" x="10" y="10" width="192" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -406,7 +406,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxl-6l-oiP">
-                                                            <rect key="frame" x="190" y="352" width="45" height="20"/>
+                                                            <rect key="frame" x="190" y="336" width="45" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="45" id="OJS-Hu-Ckg"/>
                                                                 <constraint firstAttribute="height" constant="20" id="gWz-3r-R2h"/>
@@ -416,25 +416,33 @@
                                                                 <action selector="bookmarkAd:" destination="fbH-nU-18z" eventType="touchUpInside" id="8tZ-Ui-Nmm"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fss-p0-QA0" userLabel="date">
+                                                            <rect key="frame" x="167" y="10" width="72" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="G74-wd-XO6" firstAttribute="top" secondItem="akR-1x-U7R" secondAttribute="top" constant="10" id="2gm-ZW-qAQ"/>
+                                                        <constraint firstItem="G74-wd-XO6" firstAttribute="top" secondItem="akR-1x-U7R" secondAttribute="top" multiplier="0.7" constant="10" id="2gm-ZW-qAQ"/>
                                                         <constraint firstItem="R8B-9n-mar" firstAttribute="top" secondItem="G74-wd-XO6" secondAttribute="bottom" constant="10" id="2r9-yV-awK"/>
+                                                        <constraint firstAttribute="trailing" secondItem="fss-p0-QA0" secondAttribute="trailing" constant="1" id="5wZ-sv-oTR"/>
                                                         <constraint firstAttribute="bottom" secondItem="Bxl-6l-oiP" secondAttribute="bottom" constant="5" id="BEz-yJ-p4y"/>
                                                         <constraint firstItem="G74-wd-XO6" firstAttribute="leading" secondItem="akR-1x-U7R" secondAttribute="leading" constant="10" id="CmA-94-Nib"/>
+                                                        <constraint firstItem="fss-p0-QA0" firstAttribute="width" secondItem="akR-1x-U7R" secondAttribute="width" multiplier="0.3" id="HH9-XM-htz"/>
                                                         <constraint firstItem="R8B-9n-mar" firstAttribute="leading" secondItem="akR-1x-U7R" secondAttribute="leading" constant="10" id="PZj-LZ-QvJ"/>
-                                                        <constraint firstItem="G74-wd-XO6" firstAttribute="width" secondItem="akR-1x-U7R" secondAttribute="width" id="cP8-t8-h9H"/>
+                                                        <constraint firstItem="G74-wd-XO6" firstAttribute="width" secondItem="akR-1x-U7R" secondAttribute="width" multiplier="0.8" id="cP8-t8-h9H"/>
                                                         <constraint firstItem="i2t-Ck-PZE" firstAttribute="leading" secondItem="akR-1x-U7R" secondAttribute="leading" constant="10" id="cs3-dP-Y4l"/>
                                                         <constraint firstItem="i2t-Ck-PZE" firstAttribute="width" secondItem="akR-1x-U7R" secondAttribute="width" id="hCG-Sz-xlB"/>
                                                         <constraint firstItem="R8B-9n-mar" firstAttribute="width" secondItem="akR-1x-U7R" secondAttribute="width" id="lIZ-nI-VfM"/>
                                                         <constraint firstItem="i2t-Ck-PZE" firstAttribute="top" secondItem="R8B-9n-mar" secondAttribute="bottom" constant="10" id="pFL-ly-HGS"/>
+                                                        <constraint firstItem="fss-p0-QA0" firstAttribute="top" secondItem="akR-1x-U7R" secondAttribute="top" constant="10" id="v8M-3S-S5b"/>
                                                         <constraint firstAttribute="trailing" secondItem="Bxl-6l-oiP" secondAttribute="trailing" constant="5" id="vju-UD-xiC"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="akR-1x-U7R" firstAttribute="height" secondItem="6IU-NM-KFW" secondAttribute="height" id="1fj-4e-U0m"/>
                                                 <constraint firstItem="lbH-FZ-Tm1" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="top" id="7E8-Ss-OYc"/>
                                                 <constraint firstItem="akR-1x-U7R" firstAttribute="width" secondItem="6IU-NM-KFW" secondAttribute="width" multiplier="0.7" id="EEb-9k-QdP"/>
                                                 <constraint firstItem="lbH-FZ-Tm1" firstAttribute="height" secondItem="6IU-NM-KFW" secondAttribute="height" id="U0u-08-Ykq"/>
@@ -448,7 +456,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bild" destination="YGx-o9-hlI" id="zgB-l7-MaA"/>
-                                            <outlet property="desc" destination="R8B-9n-mar" id="fZs-mt-fsv"/>
+                                            <outlet property="date" destination="fss-p0-QA0" id="kw8-Hc-6ch"/>
+                                            <outlet property="location" destination="R8B-9n-mar" id="o8d-oa-5id"/>
                                             <outlet property="price" destination="i2t-Ck-PZE" id="VT0-XQ-hMD"/>
                                             <outlet property="title" destination="G74-wd-XO6" id="I7F-N3-5rJ"/>
                                             <segue destination="W1h-Wv-7it" kind="show" identifier="showDetailView" id="N4T-zU-gsS"/>
@@ -629,7 +638,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -645,7 +654,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="0W4-G7-JRy">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h6k-xE-Tgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="twv-Ca-amS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="jm9-LG-RWC"/>
@@ -661,6 +669,7 @@
                         <segue destination="yDh-be-Uo9" kind="relationship" relationship="viewControllers" id="Dyg-Be-lzy"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h6k-xE-Tgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-257.97101449275362" y="6.5217391304347831"/>
         </scene>
