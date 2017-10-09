@@ -29,14 +29,17 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.contentInset = UIEdgeInsets(top: -64.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        // -64 space for tabbar
+        //self.tableView.contentInset = UIEdgeInsets(top: -64.0.0, left: 0.0, bottom: 0.0, right: 0.0)
         
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationItem.title = "Luftkraftsport"
         
-        let leftButton =  UIBarButtonItem(title: "Reload", style: UIBarButtonItemStyle.plain, target: self, action: #selector(refreshArticles))
-        tabBarController?.navigationItem.rightBarButtonItem = leftButton
+        //refresh button in tabbar
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
+        tabBarController?.navigationItem.rightBarButtonItem = refreshButton
         tabBarController?.navigationItem.title = "Luftkraftsport"
         
         
@@ -80,7 +83,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
             }
             
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-            print(json)
             
             for dictionary in json["ads"] as! [[String: Any]] {
                 
@@ -102,8 +104,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 }
                 
                 let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng)
-                
-                //print(ad.urls)
                 
                 self.ads.append(ad)
             }
