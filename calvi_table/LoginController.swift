@@ -144,4 +144,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         defaults.set(user.authentication.idToken, forKey: "userToken")
         defaults.set(user.userID, forKey: "userId")
     }
+    
+    //go back
+    //https://www.youtube.com/watch?v=qBtOYc9MOMs
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+    let tabBarController = sb?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    appDelegate.window?.rootViewController = tabBarController
 }

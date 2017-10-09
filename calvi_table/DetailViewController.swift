@@ -105,15 +105,15 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        let date = Date(timeIntervalSinceReferenceDate: kCFAbsoluteTimeIntervalSince1970(self.date!))
+        //let date = Date(timeIntervalSinceReferenceDate: kCFAbsoluteTimeIntervalSince1970(self.date!))
         
         
         dateFormatter.locale = Locale(identifier: "fr_FR")
-        print(dateFormatter.string(from: date)) // 2 janv. 2001
+       // print(dateFormatter.string(from: date)) // 2 janv. 2001
         
         
         if date != nil {
-            self.dateLabel.text = "Erstellt am: " + dateFormatter.string(from: date)
+            self.dateLabel.text = "Erstellt am: " //+ dateFormatter.string(from: date)
         }
         
         if location != nil {
