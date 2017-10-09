@@ -166,6 +166,9 @@ extension ViewController: UITableViewDataSource {
         
         let currentAd: Ad = ads[indexPath.row]
         
+        //articleId
+        cell?.articleId = currentAd.articleId
+        
         //title
         cell?.title?.text = currentAd.title
         
