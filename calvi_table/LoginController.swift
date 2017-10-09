@@ -136,11 +136,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             print("\(error.localizedDescription)")
         }
         
-        if let mainPage = self.storyboard?.instantiateViewController(withIdentifier: "mainPage") as? ViewController {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController!.present(mainPage, animated: true, completion: nil)
-        }
-        
         //go back
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
