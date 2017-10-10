@@ -211,6 +211,7 @@ extension ViewController: UITableViewDataSource {
         //bookmark
         if myBookmarks.contains(currentAd.articleId) {
             cell?.bookmarkButton.setTitle("booked", for: .normal)
+            //cell?.bookmarkButton.setImage(bm, for: .normal)
         } else {
             cell?.bookmarkButton.setTitle("nope", for: .normal)
         }
