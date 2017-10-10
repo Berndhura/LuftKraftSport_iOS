@@ -26,21 +26,35 @@ class AdCell: UITableViewCell {
     
     public var articleId: Int32 = 0
     
+    public var myBookmarks: [Int32] = []
+    
     @IBAction func addBookmark(_ sender: Any) {
         
         let userToken = getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
-        
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                print(response)
-               // self.showAlert()
+        if myBookmarks.contains(articleId) {
+            //remove bookmark
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/\(articleId)?token=\(userToken)")
+            
+            Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    //nothing here, if request did not work? show user info!
+            }
+            bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_empty"), for: .normal)
+            removeArticelFromBokkmarkList(id: articleId)
+            
+        } else {
+            //create bookmark
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
+            
+            Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    print(response)
+                    // self.showAlert()
+            }
+            bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_full"), for: .normal)
+            myBookmarks.append(articleId)
         }
-        
-        print((sender as AnyObject).tag)
-        bookmarkButton.setTitle("BOOKED", for: .normal)
-
     }
     
     override func awakeFromNib() {
@@ -51,6 +65,19 @@ class AdCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func removeArticelFromBokkmarkList(id: Int32) {
+        
+        var pos: Int = 0
+        for i: Int32 in myBookmarks {
+            if articleId == i {
+                myBookmarks.remove(at: pos)
+                return
+            } else {
+                pos = pos + 1
+            }
+        }
     }
     
     func getUserToken() -> String {

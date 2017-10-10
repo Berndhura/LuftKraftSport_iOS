@@ -73,14 +73,20 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         let userToken = getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/ids?token=\(userToken)")
-
-        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
-            .responseJSON { response in
+        if userToken != "" {
             
-                self.myBookmarks.removeAll()
-                self.myBookmarks = response.result.value! as! [Int32]
-                self.fetchAds()
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/ids?token=\(userToken)")
+            
+            Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    
+                    self.myBookmarks.removeAll()
+                    self.myBookmarks = response.result.value! as! [Int32]
+                    self.fetchAds()
+            }
+        } else {
+            self.myBookmarks.removeAll()
+            self.fetchAds()
         }
     }
     
@@ -210,11 +216,12 @@ extension ViewController: UITableViewDataSource {
         
         //bookmark
         if myBookmarks.contains(currentAd.articleId) {
-            cell?.bookmarkButton.setTitle("booked", for: .normal)
-            //cell?.bookmarkButton.setImage(bm, for: .normal)
+            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_full"), for: .normal)
         } else {
-            cell?.bookmarkButton.setTitle("nope", for: .normal)
+            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_empty"), for: .normal)
         }
+        
+        cell?.myBookmarks = self.myBookmarks
         
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
