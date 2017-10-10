@@ -36,6 +36,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var bookmarkEditButton: UIButton!
     
     @IBAction func bookmarkEditAction(_ sender: Any) {
+        
         let userIdFromDefaults = getUserId()
         
         if userId == userIdFromDefaults {
@@ -48,6 +49,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var messageButton: UIButton!
     
     @IBAction func msgDeleteButton(_ sender: Any) {
+        
         let userIdFromDefaults = getUserId()
         
         if userId == userIdFromDefaults {
@@ -190,6 +192,11 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
                     debugPrint(response)
+                    //return to main list
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = tabBarController
             }
         }))
         

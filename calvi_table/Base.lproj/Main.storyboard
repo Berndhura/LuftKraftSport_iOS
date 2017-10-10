@@ -151,26 +151,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf">
-                                <rect key="frame" x="36" y="84" width="303" height="375"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf" userLabel="Image">
+                                <rect key="frame" x="64" y="84" width="247.5" height="247.5"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-Z4-xSL">
-                                <rect key="frame" x="36" y="469" width="303" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-Z4-xSL" userLabel="Name">
+                                <rect key="frame" x="36" y="351.5" width="303" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pas-Wu-L3Y">
+                                <rect key="frame" x="64" y="382" width="247.5" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Zurück">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton:" destination="Cch-lw-Akm" eventType="touchUpInside" id="DB4-zI-Z6w"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="top" secondItem="2Vi-uR-4ON" secondAttribute="bottom" constant="20" id="7TS-eW-31l"/>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="leading" secondItem="v5G-e0-8lp" secondAttribute="leadingMargin" constant="20" id="DxA-hn-TjQ"/>
+                            <constraint firstItem="pas-Wu-L3Y" firstAttribute="width" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="HW9-EZ-sh1"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="centerX" secondItem="v5G-e0-8lp" secondAttribute="centerX" id="Igd-lx-RWz"/>
+                            <constraint firstItem="pas-Wu-L3Y" firstAttribute="centerX" secondItem="v5G-e0-8lp" secondAttribute="centerX" id="OgR-zY-TBO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VTd-Z4-xSL" secondAttribute="trailing" constant="20" id="UZb-ZG-A71"/>
-                            <constraint firstItem="uRn-4T-BMf" firstAttribute="height" secondItem="v5G-e0-8lp" secondAttribute="width" id="X2o-mH-pbV"/>
-                            <constraint firstItem="uRn-4T-BMf" firstAttribute="leading" secondItem="v5G-e0-8lp" secondAttribute="leadingMargin" constant="20" id="kkQ-aA-Wtm"/>
-                            <constraint firstItem="VTd-Z4-xSL" firstAttribute="top" secondItem="uRn-4T-BMf" secondAttribute="bottom" constant="10" id="rLJ-pn-7XW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uRn-4T-BMf" secondAttribute="trailing" constant="20" id="ubx-WU-nLS"/>
+                            <constraint firstItem="uRn-4T-BMf" firstAttribute="height" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="X2o-mH-pbV"/>
+                            <constraint firstItem="pas-Wu-L3Y" firstAttribute="top" secondItem="VTd-Z4-xSL" secondAttribute="bottom" constant="10" id="dAI-KC-3vh"/>
+                            <constraint firstItem="VTd-Z4-xSL" firstAttribute="top" secondItem="uRn-4T-BMf" secondAttribute="bottom" constant="20" id="rLJ-pn-7XW"/>
+                            <constraint firstItem="uRn-4T-BMf" firstAttribute="width" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="t1u-gb-c7x"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="nQs-aG-x1w"/>

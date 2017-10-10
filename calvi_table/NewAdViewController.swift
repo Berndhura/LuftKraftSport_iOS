@@ -115,6 +115,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     //if let JSON = response.result.value {
                     //    print("JSON: \(JSON)")
                     //}
+                    
+                    //return to main list
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = tabBarController
+
                 }
                 
             case .failure(let encodingError):

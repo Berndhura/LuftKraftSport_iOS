@@ -17,6 +17,15 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     @IBOutlet weak var userName: UILabel!
     
+    @IBAction func backButton(_ sender: Any) {
+        
+        //go back after login
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -135,12 +144,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         } else {
             print("\(error.localizedDescription)")
         }
-        
-        //go back
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = tabBarController
     }
     
     func saveUserDetails(user: GIDGoogleUser) {
