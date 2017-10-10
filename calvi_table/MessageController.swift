@@ -53,8 +53,6 @@ class MessagesController: UIViewController {
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
         
-        //print(url)
-        
         URLSession.shared.dataTask(with: url!) { data, response, error in
             
             guard error == nil else {

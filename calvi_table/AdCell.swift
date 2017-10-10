@@ -22,6 +22,8 @@ class AdCell: UITableViewCell {
     
     @IBOutlet weak var date: UILabel!
     
+    @IBOutlet weak var bookmarkButton: UIButton!
+    
     public var articleId: Int32 = 0
     
     @IBAction func addBookmark(_ sender: Any) {
@@ -35,6 +37,9 @@ class AdCell: UITableViewCell {
                 print(response)
                // self.showAlert()
         }
+        
+        print((sender as AnyObject).tag)
+        bookmarkButton.setTitle("BOOKED", for: .normal)
 
     }
     

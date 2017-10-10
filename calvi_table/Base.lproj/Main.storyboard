@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j1J-yf-PNq" id="xME-mq-hCw">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-yr-81L" userLabel="picture_view">
@@ -366,7 +366,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="378"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbH-nU-18z" id="6IU-NM-KFW">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="377"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="378"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbH-FZ-Tm1" userLabel="image_view">
@@ -411,7 +411,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTE-mk-KS8">
+                                                        <button opaque="NO" tag="1" contentMode="scaleToFill" restorationIdentifier="bookmarkButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTE-mk-KS8">
                                                             <rect key="frame" x="206" y="72" width="24" height="24"/>
                                                             <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" image="ic_add_circle_white"/>
@@ -453,6 +453,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bild" destination="YGx-o9-hlI" id="zgB-l7-MaA"/>
+                                            <outlet property="bookmarkButton" destination="dTE-mk-KS8" id="JoY-AW-5G4"/>
                                             <outlet property="date" destination="fss-p0-QA0" id="kw8-Hc-6ch"/>
                                             <outlet property="location" destination="R8B-9n-mar" id="o8d-oa-5id"/>
                                             <outlet property="price" destination="i2t-Ck-PZE" id="VT0-XQ-hMD"/>

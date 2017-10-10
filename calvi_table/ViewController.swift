@@ -15,6 +15,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     var ads: [Ad] = []
     
+    var myBookmarks: [Int32] = []
+    
     var searchController: UISearchController!
     var resultController = UITableViewController()
     
@@ -26,7 +28,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchAds()
+        getMyBookmaks()
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -56,7 +58,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     func refreshArticles() {
         
         ads.removeAll()
-        fetchAds()
+        getMyBookmaks()
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,8 +77,10 @@ class ViewController: UIViewController, UISearchResultsUpdating {
 
         Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print(response)
-                // self.showAlert()
+            
+                self.myBookmarks.removeAll()
+                self.myBookmarks = response.result.value! as! [Int32]
+                self.fetchAds()
         }
     }
     
@@ -89,10 +93,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         }
     }
 
-    
     func fetchAds() {
-        
-        getMyBookmaks()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")
         
@@ -198,7 +199,7 @@ extension ViewController: UITableViewDataSource {
         //title
         cell?.title?.text = currentAd.title
         
-        //description
+        //location
         cell?.location?.text = currentAd.location
         
         //date
@@ -206,6 +207,13 @@ extension ViewController: UITableViewDataSource {
         
         //price
         cell?.price?.text = String(currentAd.price) + " €"
+        
+        //bookmark
+        if myBookmarks.contains(currentAd.articleId) {
+            cell?.bookmarkButton.setTitle("booked", for: .normal)
+        } else {
+            cell?.bookmarkButton.setTitle("nope", for: .normal)
+        }
         
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
