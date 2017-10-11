@@ -147,11 +147,7 @@ extension MessagesController: UITableViewDataSource {
         cell?.message?.text = currentMessage.message
         
         //date
-        //let formatter = DateFormatter()
-        //formatter.dateFormat = "dd.MM.yy"
-        //let TestDateTime = formatter.date(from: String(describing: currentMessage.date))
-        //cell?.date?.text = String(describing: TestDateTime)
-        cell?.date?.text = String(describing: NSDate(timeIntervalSince1970: TimeInterval(currentMessage.date)))
+        cell?.date?.text = getFormatedDate(date: currentMessage.date)
     
         //image
         let imageId = messages[indexPath.item].url
@@ -175,6 +171,16 @@ extension MessagesController: UITableViewDataSource {
         cell?.bild.sd_setImage(with: url, placeholderImage: UIImage(named: "taylor_swift_blank_space.jpg"))
         
         return cell!
+    }
+    
+    func getFormatedDate(date: Double) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMdd")
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        
+        let date = Date(timeIntervalSince1970: (date / 1000.0))
+        return dateFormatter.string(from: date)
     }
 }
 
