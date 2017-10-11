@@ -32,6 +32,18 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func shareArticle(_ sender: Any) {
+        
+        let originalString = "First Whatsapp Share"
+        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
+        
+        let url  = URL(string: "whatsapp://send?text=\(escapedString!)")
+        
+        if UIApplication.shared.canOpenURL(url! as URL)
+        {
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        }
+    }
 
     @IBOutlet weak var bookmarkEditButton: UIButton!
     
@@ -92,7 +104,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         if anzeig != nil {
             self.anzeigeTitel.text = anzeig
-            self.title = anzeig
+            //self.title = anzeig
         }
         
         if desc != nil {

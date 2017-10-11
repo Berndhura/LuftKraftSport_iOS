@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Messages Controller-->
+        <!--Messages-->
         <scene sceneID="eFy-pe-AZ8">
             <objects>
                 <viewController id="fNo-fk-EtJ" customClass="MessagesController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +112,7 @@
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerX" secondItem="Vgx-hA-D58" secondAttribute="centerX" id="zUh-dD-Oon"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="mKE-vv-HxX"/>
+                    <tabBarItem key="tabBarItem" title="Messages" id="mKE-vv-HxX"/>
                     <connections>
                         <outlet property="tableView" destination="MRy-lw-OLN" id="MN9-fT-kRF"/>
                     </connections>
@@ -612,6 +612,16 @@
                                             <constraint firstAttribute="trailing" secondItem="PJk-pO-8lR" secondAttribute="trailing" id="whQ-Kf-bVY"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-8D-tVD">
+                                        <rect key="frame" x="266" y="-56" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareArticle:" destination="W1h-Wv-7it" eventType="touchUpInside" id="Uz7-iC-kiz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dNN-Tj-yHK" secondAttribute="trailing" id="LgG-HZ-gbI"/>

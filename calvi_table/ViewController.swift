@@ -43,7 +43,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         //refresh button in tabbar
         let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
         tabBarController?.navigationItem.rightBarButtonItem = refreshButton
-        tabBarController?.navigationItem.title = "Luftkraftsport"
         
         
         tableView?.backgroundColor = UIColor.gray
