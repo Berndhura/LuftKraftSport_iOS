@@ -88,7 +88,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         let accesToken = FBSDKAccessToken.current()
         print(accesToken!)
         
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture"]).start(completionHandler: { (conection, result, error) in
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.type(large)"]).start(completionHandler: { (conection, result, error) in
             
             if error != nil {
                 print(error!)

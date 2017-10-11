@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Messages-->
+        <!--Nachrichten-->
         <scene sceneID="eFy-pe-AZ8">
             <objects>
                 <viewController id="fNo-fk-EtJ" customClass="MessagesController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +112,7 @@
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerX" secondItem="Vgx-hA-D58" secondAttribute="centerX" id="zUh-dD-Oon"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messages" id="mKE-vv-HxX"/>
+                    <tabBarItem key="tabBarItem" title="Nachrichten" image="ic_message" id="mKE-vv-HxX"/>
                     <connections>
                         <outlet property="tableView" destination="MRy-lw-OLN" id="MN9-fT-kRF"/>
                     </connections>
@@ -139,7 +139,7 @@
             </objects>
             <point key="canvasLocation" x="1478.2608695652175" y="-707.60869565217399"/>
         </scene>
-        <!--Login Controller-->
+        <!--Anmelden-->
         <scene sceneID="8f8-na-VX6">
             <objects>
                 <viewController storyboardIdentifier="loginPage" id="Cch-lw-Akm" customClass="LoginController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -185,7 +185,7 @@
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="width" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="t1u-gb-c7x"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="nQs-aG-x1w"/>
+                    <tabBarItem key="tabBarItem" title="Anmelden" image="ic_login" id="nQs-aG-x1w"/>
                     <connections>
                         <outlet property="userImage" destination="uRn-4T-BMf" id="YGQ-gb-5xB"/>
                         <outlet property="userName" destination="VTd-Z4-xSL" id="tLR-nH-bOc"/>
@@ -665,7 +665,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -704,6 +704,8 @@
     <resources>
         <image name="bookmark_empty" width="128" height="128"/>
         <image name="ic_add_circle_white" width="24" height="24"/>
+        <image name="ic_login" width="24" height="24"/>
+        <image name="ic_message" width="24" height="24"/>
         <image name="taylor_swift_blank_space" width="1280" height="720"/>
     </resources>
 </document>
