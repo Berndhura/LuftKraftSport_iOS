@@ -22,7 +22,7 @@ class MessagesController: UIViewController {
         fetchMessages()
 
         //table
-        self.tableView.contentInset = UIEdgeInsets(top: -64.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
