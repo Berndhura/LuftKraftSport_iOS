@@ -13,6 +13,7 @@
 		27454F5F1F824F1B008AA35A /* NewAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27454F5D1F824F1B008AA35A /* NewAdViewController.swift */; };
 		2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B41F744A620009CDCB /* MessageOverview.swift */; };
 		2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B91F7455C00009CDCB /* MessageCell.swift */; };
+		274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DA64F1F8FDE2B001DD34F /* Utils.swift */; };
 		279F0C731F793550004E2525 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 279F0C721F793550004E2525 /* GoogleService-Info.plist */; };
 		279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C761F7943BA004E2525 /* ChatViewController.swift */; };
 		279F0C791F7D2F1D004E2525 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C781F7D2F1D004E2525 /* Message.swift */; };
@@ -59,6 +60,7 @@
 		27454F5D1F824F1B008AA35A /* NewAdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAdViewController.swift; sourceTree = "<group>"; };
 		2748C4B41F744A620009CDCB /* MessageOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageOverview.swift; sourceTree = "<group>"; };
 		2748C4B91F7455C00009CDCB /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		274DA64F1F8FDE2B001DD34F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		279F0C721F793550004E2525 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		279F0C761F7943BA004E2525 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		279F0C781F7D2F1D004E2525 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 			name = cell;
 			sourceTree = "<group>";
 		};
+		274DA64C1F8FDCBB001DD34F /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				274DA64F1F8FDE2B001DD34F /* Utils.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		27CE4F8D1F446E6500FD4166 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +189,7 @@
 		27CE4F981F446E6500FD4166 /* calvi_table */ = {
 			isa = PBXGroup;
 			children = (
+				274DA64C1F8FDCBB001DD34F /* utils */,
 				27048BEB1F7AD95500835C40 /* calvi_table.entitlements */,
 				2748C4B61F7453CC0009CDCB /* cell */,
 				2748C4B31F74498E0009CDCB /* model */,
@@ -403,7 +414,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		0FB70BA31EB7B38B7DD0C40A /* [CP] Embed Pods Frameworks */ = {
@@ -436,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4FCDBCE5FB685FA072141504 /* [CP] Embed Pods Frameworks */ = {
@@ -509,7 +520,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		D28F80D35BC8127A4DB0FDB4 /* [CP] Copy Pods Resources */ = {
@@ -574,6 +585,7 @@
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
+				274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */,
 				2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */,
 				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
 				279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */,

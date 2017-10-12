@@ -39,7 +39,7 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.senderId = getUserId()
+        self.senderId = Utils.getUserId()
         self.senderDisplayName = "CONAN"
         
         // No avatars
@@ -112,7 +112,7 @@ class ChatViewController: JSQMessagesViewController {
     
     func fetchChat() {
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         //Alamofire.request("http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)").responseJSON { response
         
@@ -151,18 +151,6 @@ class ChatViewController: JSQMessagesViewController {
             }
             self.finishReceivingMessage()
         }.resume()
-    }
-    
-    func getUserToken() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        let userToken: String? = defaults.string(forKey: "userToken")
-        return userToken!
-    }
-    
-    func getUserId() -> String {
-        let defaults: UserDefaults = UserDefaults.standard
-        let userId = defaults.string(forKey: "userId")
-        return userId!
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {

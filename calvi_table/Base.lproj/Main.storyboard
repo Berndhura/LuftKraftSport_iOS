@@ -185,7 +185,7 @@
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="width" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="t1u-gb-c7x"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Anmelden" image="ic_login" id="nQs-aG-x1w"/>
+                    <tabBarItem key="tabBarItem" title="Anmelden" image="ic_login_24dp" id="nQs-aG-x1w"/>
                     <connections>
                         <outlet property="userImage" destination="uRn-4T-BMf" id="YGQ-gb-5xB"/>
                         <outlet property="userName" destination="VTd-Z4-xSL" id="tLR-nH-bOc"/>
@@ -428,11 +428,11 @@
                                                         </label>
                                                         <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleAspectFill" restorationIdentifier="bookmarkButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTE-mk-KS8">
                                                             <rect key="frame" x="200" y="72" width="30" height="30"/>
-                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dTE-mk-KS8" secondAttribute="height" multiplier="1:1" id="Ru8-dR-JKA"/>
                                                             </constraints>
-                                                            <state key="normal" image="bookmark_empty"/>
+                                                            <state key="normal" image="ic_star_outline_white_36pt"/>
                                                             <connections>
                                                                 <action selector="addBookmark:" destination="fbH-nU-18z" eventType="touchUpInside" id="7kE-90-Qi5"/>
                                                             </connections>
@@ -665,7 +665,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -702,11 +702,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark_empty" width="128" height="128"/>
         <image name="ic_add_circle_outline_36pt" width="36" height="36"/>
-        <image name="ic_login" width="24" height="24"/>
+        <image name="ic_login_24dp" width="24" height="24"/>
         <image name="ic_mail_outline_36pt" width="36" height="36"/>
         <image name="ic_search_white_36pt" width="36" height="36"/>
+        <image name="ic_star_outline_white_36pt" width="36" height="36"/>
         <image name="taylor_swift_blank_space" width="1280" height="720"/>
     </resources>
 </document>

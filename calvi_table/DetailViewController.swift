@@ -49,7 +49,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func bookmarkEditAction(_ sender: Any) {
         
-        let userIdFromDefaults = getUserId()
+        let userIdFromDefaults = Utils.getUserId()
         
         if userId == userIdFromDefaults {
             editArticle(articleId: articleId!)
@@ -62,12 +62,12 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func msgDeleteButton(_ sender: Any) {
         
-        let userIdFromDefaults = getUserId()
+        let userIdFromDefaults = Utils.getUserId()
         
         if userId == userIdFromDefaults {
             deleteArticle(articleId: articleId!)
         } else {
-            if getUserToken() == "" {
+            if Utils.getUserToken() == "" {
                 //not logged in
                 let alert = UIAlertController(title: "Nicht angemeldet!", message: "Um Nachrichten zu versenden, musst du dich anmleden.", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Schließen", style:.default, handler: nil))
@@ -92,13 +92,12 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         super.viewDidLoad()
         
-        beschreibung.layer.isGeometryFlipped = true
         bookmarkEditButton.layer.cornerRadius = 10
         
         prepareMap()
         
         if userId != nil {
-            let userIdFromDefaults = getUserId()
+            let userIdFromDefaults = Utils.getUserId()
             if userId == userIdFromDefaults {
                 messageButton.setTitle("Löschen" , for: .normal)
                 bookmarkEditButton.setTitle("Bearbeiten", for: .normal)
@@ -178,7 +177,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
     func bookmarkArticle(articleId: Int32) {
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
         
@@ -197,7 +196,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
     func deleteArticle(articleId: Int32) {
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)?token=\(userToken)")
         
@@ -231,7 +230,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                 
                 let message = field.text!
                 
-                let userToken = self.getUserToken()
+                let userToken = Utils.getUserToken()
                 
                 let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
                 
@@ -256,24 +255,5 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-
-    }
-    
-    func getUserId() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        if let userId = defaults.string(forKey: "userId") {
-            return userId
-        } else {
-            return ""
-        }
-    }
-    
-    func getUserToken() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        if let userToken = defaults.string(forKey: "userToken") {
-            return userToken
-        } else {
-            return ""
-        }
     }
 }

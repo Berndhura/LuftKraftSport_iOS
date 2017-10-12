@@ -42,16 +42,46 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         //refresh button in tabbar
         let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
-        tabBarController?.navigationItem.rightBarButtonItem = refreshButton
         
+        //login button in tabbar
+        let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(ViewController.openLoginPage))
+
+        if isLoggedIn() {
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton], animated: true)
+        } else {
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton, loginButton], animated: true)
+        }
         
         tableView?.backgroundColor = UIColor.gray
         
         navigationController?.navigationBar.isTranslucent = true
-
+        
+        //connect serachBar
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
+    }
+    
+    func isLoggedIn() -> Bool {
+        
+        let userToken = Utils.getUserToken()
+        if userToken == "" {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func openLoginPage() {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+        self.navigationController?.present(newViewController, animated: true, completion: nil)
+        
+        /*let sb = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = sb.instantiateViewController(withIdentifier: "loginPage") as! UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController*/
     }
     
     func refreshArticles() {
@@ -70,7 +100,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     func getMyBookmaks() {
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         if userToken != "" {
             
@@ -89,15 +119,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         }
     }
     
-    func getUserToken() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        if let userToken = defaults.string(forKey: "userToken") {
-            return userToken
-        } else {
-            return ""
-        }
-    }
-
     func fetchAds() {
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")

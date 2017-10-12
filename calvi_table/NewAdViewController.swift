@@ -45,7 +45,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
         
@@ -80,7 +80,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         dict = response.result.value as! NSDictionary
         let articleId = dict["id"]!
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
         
@@ -153,12 +153,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         })
     }
     
-    func getUserToken() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        let userToken: String? = defaults.string(forKey: "userToken")
-        return userToken!
-    }
- 
     func prepareForms() {
  
         self.titleText.placeholder = "Was verkaufst du..."

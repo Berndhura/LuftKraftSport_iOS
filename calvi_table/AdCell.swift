@@ -30,7 +30,7 @@ class AdCell: UITableViewCell {
     
     @IBAction func addBookmark(_ sender: Any) {
         
-        let userToken = getUserToken()
+        let userToken = Utils.getUserToken()
         
         if myBookmarks.contains(articleId) {
             //remove bookmark
@@ -77,15 +77,6 @@ class AdCell: UITableViewCell {
             } else {
                 pos = pos + 1
             }
-        }
-    }
-    
-    func getUserToken() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        if let userToken = defaults.string(forKey: "userToken") {
-            return userToken
-        } else {
-            return ""
         }
     }
     

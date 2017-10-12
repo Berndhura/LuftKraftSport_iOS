@@ -31,25 +31,9 @@ class MessagesController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    func getUserToken() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        let userToken: String? = defaults.string(forKey: "userToken")
-        return userToken!
-    }
-    
-    func getUserId() -> String {
-        let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userId")
-        return userId!
-    }
-    
     func fetchMessages() {
         
-        let userToken = getUserToken()
-        
-        let defaults:UserDefaults = UserDefaults.standard
-        let userId: String? = defaults.string(forKey: "userId")
-
+        let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
         
