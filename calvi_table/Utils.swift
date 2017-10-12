@@ -29,4 +29,12 @@ class Utils {
             return ""
         }
     }
+    
+    static func logoutUser() {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set("", forKey: "userToken")
+        defaults.set("", forKey: "userId")
+        defaults.synchronize()
+    }
 }

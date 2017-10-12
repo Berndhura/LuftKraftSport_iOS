@@ -170,10 +170,22 @@
                                     <action selector="backButton:" destination="Cch-lw-Akm" eventType="touchUpInside" id="DB4-zI-Z6w"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awu-0X-MQ3">
+                                <rect key="frame" x="63.5" y="401.5" width="247.5" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButton:" destination="Cch-lw-Akm" eventType="touchUpInside" id="0Vv-LH-R5k"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="awu-0X-MQ3" firstAttribute="centerX" secondItem="v5G-e0-8lp" secondAttribute="centerX" id="3ak-VH-dYU"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="top" secondItem="2Vi-uR-4ON" secondAttribute="bottom" constant="20" id="7TS-eW-31l"/>
+                            <constraint firstItem="awu-0X-MQ3" firstAttribute="width" secondItem="pas-Wu-L3Y" secondAttribute="width" id="CQk-90-Pmi"/>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="leading" secondItem="v5G-e0-8lp" secondAttribute="leadingMargin" constant="20" id="DxA-hn-TjQ"/>
                             <constraint firstItem="pas-Wu-L3Y" firstAttribute="width" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="HW9-EZ-sh1"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="centerX" secondItem="v5G-e0-8lp" secondAttribute="centerX" id="Igd-lx-RWz"/>
@@ -181,6 +193,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="VTd-Z4-xSL" secondAttribute="trailing" constant="20" id="UZb-ZG-A71"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="height" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="X2o-mH-pbV"/>
                             <constraint firstItem="pas-Wu-L3Y" firstAttribute="top" secondItem="VTd-Z4-xSL" secondAttribute="bottom" constant="10" id="dAI-KC-3vh"/>
+                            <constraint firstItem="awu-0X-MQ3" firstAttribute="top" secondItem="pas-Wu-L3Y" secondAttribute="bottom" constant="10" id="pd5-YZ-yaf"/>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="top" secondItem="uRn-4T-BMf" secondAttribute="bottom" constant="20" id="rLJ-pn-7XW"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="width" secondItem="v5G-e0-8lp" secondAttribute="width" multiplier="0.66" id="t1u-gb-c7x"/>
                         </constraints>

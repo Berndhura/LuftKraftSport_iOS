@@ -26,6 +26,10 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         appDelegate.window?.rootViewController = tabBarController
     }
     
+    @IBAction func logoutButton(_ sender: Any) {
+        
+        Utils.logoutUser()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

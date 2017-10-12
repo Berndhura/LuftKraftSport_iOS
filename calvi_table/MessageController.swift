@@ -19,16 +19,33 @@ class MessagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchMessages()
-
-        //table
-        self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        if isLoggedIn() {
         
-        navigationItem.title = "Messages: " + String(messages.count)
-        tableView?.backgroundColor = UIColor.gray
-        navigationController?.navigationBar.isTranslucent = true
+            fetchMessages()
+
+            //table
+            self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            
+            navigationItem.title = "Messages: " + String(messages.count)
+            tableView?.backgroundColor = UIColor.gray
+            navigationController?.navigationBar.isTranslucent = true
+        }
+    }
+    
+    func isLoggedIn() -> Bool {
+        
+        if Utils.getUserToken() == "" {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+            self.navigationController?.popViewController(animated: false)
+            self.navigationController?.pushViewController(newViewController, animated: true)
+            return false
+        } else {
+            //user in
+            return true
+        }
     }
     
     func fetchMessages() {

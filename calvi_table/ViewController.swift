@@ -22,6 +22,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print("Test")
+     print(   item.tag)
     }
     
     
