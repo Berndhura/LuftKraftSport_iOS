@@ -92,6 +92,9 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         super.viewDidLoad()
         
+        beschreibung.layer.isGeometryFlipped = true
+        bookmarkEditButton.layer.cornerRadius = 10
+        
         prepareMap()
         
         if userId != nil {

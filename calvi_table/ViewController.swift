@@ -215,9 +215,9 @@ extension ViewController: UITableViewDataSource {
         
         //bookmark
         if myBookmarks.contains(currentAd.articleId) {
-            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_full"), for: .normal)
+            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
         } else {
-            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_empty"), for: .normal)
+            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
         }
         
         cell?.myBookmarks = self.myBookmarks

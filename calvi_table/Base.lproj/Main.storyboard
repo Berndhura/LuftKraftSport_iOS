@@ -36,29 +36,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-yr-81L" userLabel="picture_view">
-                                                    <rect key="frame" x="0.0" y="0.0" width="113" height="249"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="112.5" height="249"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf">
-                                                    <rect key="frame" x="6" y="74" width="102" height="102"/>
+                                                    <rect key="frame" x="6" y="74.5" width="101.5" height="101"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccn-xd-ovE" userLabel="message_view">
-                                                    <rect key="frame" x="113" y="0.0" width="262" height="249"/>
+                                                    <rect key="frame" x="112.5" y="0.0" width="262.5" height="249"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Nachnache" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkC-Xc-UbG" userLabel="name">
-                                                            <rect key="frame" x="10" y="10" width="158" height="21"/>
+                                                            <rect key="frame" x="10" y="10" width="157.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bla sülz bitte surfbrett 100 liter ganz gelb" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-fa-gux" userLabel="message">
-                                                            <rect key="frame" x="10" y="51" width="242" height="41"/>
+                                                            <rect key="frame" x="10" y="51" width="242.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.08.17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umc-El-g1F">
-                                                            <rect key="frame" x="153" y="10" width="104" height="21"/>
+                                                            <rect key="frame" x="152.5" y="10" width="105" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerX" secondItem="Vgx-hA-D58" secondAttribute="centerX" id="zUh-dD-Oon"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nachrichten" image="ic_message" id="mKE-vv-HxX"/>
+                    <tabBarItem key="tabBarItem" title="Nachrichten" image="ic_mail_outline_36pt" id="mKE-vv-HxX"/>
                     <connections>
                         <outlet property="tableView" destination="MRy-lw-OLN" id="MN9-fT-kRF"/>
                     </connections>
@@ -195,7 +195,7 @@
             </objects>
             <point key="canvasLocation" x="-1023" y="935"/>
         </scene>
-        <!--New-->
+        <!--Anbieten-->
         <scene sceneID="O69-ie-Fg1">
             <objects>
                 <viewController id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -211,10 +211,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="539"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sf-KF-4Zc" userLabel="imageView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="135.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="FGz-Pr-ufD" userLabel="imageOne">
-                                                <rect key="frame" x="2" y="0.0" width="135" height="135"/>
+                                                <rect key="frame" x="2" y="0.0" width="135.5" height="135.5"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -226,7 +226,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSQ-Nh-oJ0" userLabel="textView">
-                                        <rect key="frame" x="0.0" y="135" width="375" height="404"/>
+                                        <rect key="frame" x="0.0" y="135.5" width="375" height="403.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ese-s6-RDB" userLabel="devider1">
                                                 <rect key="frame" x="0.0" y="15" width="375" height="1"/>
@@ -249,33 +249,33 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="beschreibungstestz" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fML-4B-sjO">
-                                                <rect key="frame" x="10" y="64" width="355" height="161"/>
+                                                <rect key="frame" x="10" y="64" width="355" height="160.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4H-xc-xrc" userLabel="devider3">
-                                                <rect key="frame" x="0.0" y="235" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="234.5" width="375" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="gK8-JU-Qdo"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" placeholder="Preis..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-PG-IKu">
-                                                <rect key="frame" x="10" y="246" width="355" height="17"/>
+                                                <rect key="frame" x="10" y="245.5" width="355" height="17"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcr-kU-YdM" userLabel="devider4">
-                                                <rect key="frame" x="0.0" y="273" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="272.5" width="375" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="9Yf-Ea-MaV"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="loitz" placeholder="Standort..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAT-1p-12S">
-                                                <rect key="frame" x="10" y="284" width="355" height="17"/>
+                                                <rect key="frame" x="10" y="283.5" width="355" height="17"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -345,7 +345,7 @@
                             <constraint firstItem="XLl-ab-H54" firstAttribute="centerY" secondItem="1Zd-Ay-d7A" secondAttribute="centerY" id="JCK-s2-hyQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="New" image="ic_add_circle_white" id="hi4-gC-d1e"/>
+                    <tabBarItem key="tabBarItem" title="Anbieten" image="ic_add_circle_outline_36pt" id="hi4-gC-d1e"/>
                     <connections>
                         <outlet property="decriptionText" destination="fML-4B-sjO" id="jSW-tu-hHg"/>
                         <outlet property="image" destination="FGz-Pr-ufD" id="HI9-Ey-Kbc"/>
@@ -358,7 +358,7 @@
             </objects>
             <point key="canvasLocation" x="-281" y="934"/>
         </scene>
-        <!--View Controller-->
+        <!--Suche-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="mainPage" id="BYZ-38-t0r" customClass="ViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
@@ -491,7 +491,7 @@
                             <constraint firstItem="npf-sk-PXm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fw5-oK-ypN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="BRl-jb-NO6"/>
+                    <tabBarItem key="tabBarItem" title="Suche" image="ic_search_white_36pt" id="BRl-jb-NO6"/>
                     <navigationItem key="navigationItem" id="otG-NE-Ul2"/>
                     <connections>
                         <outlet property="tableView" destination="npf-sk-PXm" id="vtY-Iv-s4N"/>
@@ -665,7 +665,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -703,9 +703,10 @@
     </scenes>
     <resources>
         <image name="bookmark_empty" width="128" height="128"/>
-        <image name="ic_add_circle_white" width="24" height="24"/>
+        <image name="ic_add_circle_outline_36pt" width="36" height="36"/>
         <image name="ic_login" width="24" height="24"/>
-        <image name="ic_message" width="24" height="24"/>
+        <image name="ic_mail_outline_36pt" width="36" height="36"/>
+        <image name="ic_search_white_36pt" width="36" height="36"/>
         <image name="taylor_swift_blank_space" width="1280" height="720"/>
     </resources>
 </document>
