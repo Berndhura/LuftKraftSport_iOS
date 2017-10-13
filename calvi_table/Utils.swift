@@ -30,6 +30,17 @@ class Utils {
         }
     }
     
+    static func getUserProfilePicture() -> String {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        if let userImg = defaults.string(forKey: "userImageUrl") {
+            return userImg
+        } else {
+            return ""
+        }
+    }
+
+    
     static func logoutUser() {
         
         let defaults:UserDefaults = UserDefaults.standard

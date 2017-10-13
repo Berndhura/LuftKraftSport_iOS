@@ -29,12 +29,38 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     @IBAction func logoutButton(_ sender: Any) {
         
         Utils.logoutUser()
+        
+        cleanUserInfo()
+        
+        //google
+        GIDSignIn.sharedInstance().signOut()
+        
+        dismiss(animated: true, completion: nil)
+        
+        //facebook sign out? TODO
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initGoogleSignInButton()
         initFacebookLoginButton()
+        
+        if Utils.getUserToken() != "" {
+            showUserProfile()
+        }
+    }
+    
+    func showUserProfile() {
+        
+        let profilePicture = Utils.getUserProfilePicture()
+        self.userImage.sd_setImage(with: URL(string: profilePicture))
+    }
+    
+    func cleanUserInfo() {
+        
+        self.userImage.sd_setImage(with: nil)
+        self.userName.text = ""
     }
     
     func initGoogleSignInButton() {
@@ -112,6 +138,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
                 if let data = picture["data"] as? NSDictionary{
                     if let profilePicture = data["url"] as? String {
                         print(profilePicture)
+                        self.saveUsersProfileImage(profileUrl: profilePicture)
                         self.userImage.sd_setShowActivityIndicatorView(true)
                         self.userImage.sd_setIndicatorStyle(.gray)
                         self.userImage.sd_setImage(with: URL(string: profilePicture))
@@ -134,10 +161,18 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         defaults.synchronize()
     }
     
+    func saveUsersProfileImage(profileUrl: String) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(profileUrl, forKey: "userImageUrl")
+        defaults.synchronize()
+    }
+    
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
         if (error == nil) {
             
+            self.saveUsersProfileImage(profileUrl: user.profile.imageURL(withDimension: 400).absoluteString)
             self.userImage.sd_setImage(with: user.profile.imageURL(withDimension: 400))
             
             let fullName = user.profile.name

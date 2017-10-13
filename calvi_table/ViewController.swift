@@ -29,6 +29,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkLoginStatus()
+        
         getMyBookmaks()
         
         self.tableView.dataSource = self
@@ -61,6 +63,15 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
+    }
+    
+    func checkLoginStatus() {
+        
+        if GIDSignIn.sharedInstance().hasAuthInKeychain() {
+            print("google sign in")
+        } else {
+            print("google ou")
+        }
     }
     
     func isLoggedIn() -> Bool {
