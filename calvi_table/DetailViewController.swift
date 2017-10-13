@@ -13,7 +13,7 @@ import MapKit
 
 class DetailViewController: UIViewController, MKMapViewDelegate {
     
-    var anzeig: String?
+    var articleTitle: String?
     var pictureUrl: String?
     var desc: String?
     var price: Int?
@@ -104,8 +104,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             }
         }
         
-        if anzeig != nil {
-            self.anzeigeTitel.text = anzeig
+        if articleTitle != nil {
+            self.anzeigeTitel.text = articleTitle
             //self.title = anzeig
         }
         
@@ -160,7 +160,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         if lat != nil && lng != nil {
             anno.coordinate = CLLocationCoordinate2DMake(lat!, lng!)
         }
-        anno.title = anzeig
+        anno.title = articleTitle
         
         let span = MKCoordinateSpanMake(1, 1)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat!, longitude: lng!), span: span)
@@ -173,6 +173,19 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
     func editArticle(articleId: Int32) {
         
+        //open edit article wit articleId
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
+        vc.articleId = self.articleId!
+        vc.titleFromAd = self.articleTitle!
+        vc.descFromAd = self.desc!
+        vc.date = self.date!
+        vc.lat = self.lat!
+        vc.lng = self.lng!
+        vc.priceFromAd = self.price!
+        vc.locationFromAd = self.location!
+        vc.isEditMode = true
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
     
     func bookmarkArticle(articleId: Int32) {

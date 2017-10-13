@@ -199,7 +199,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)
                 if indexPath != nil {
                     let ad: Ad = ads[indexPath!.row]
-                    detailViewController.anzeig = ad.title
+                    detailViewController.articleTitle = ad.title
                     detailViewController.pictureUrl = getPictureUrl(str: ad.urls)
                     detailViewController.desc = ad.desc
                     detailViewController.price = ad.price

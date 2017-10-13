@@ -211,7 +211,7 @@
         <!--Anbieten-->
         <scene sceneID="O69-ie-Fg1">
             <objects>
-                <viewController id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newArticleController" id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YIA-Ju-SDd"/>
                         <viewControllerLayoutGuide type="bottom" id="qPP-i4-BmW"/>
@@ -229,13 +229,21 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="FGz-Pr-ufD" userLabel="imageOne">
                                                 <rect key="frame" x="2" y="0.0" width="135.5" height="135.5"/>
                                             </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="hqS-dj-L3s" userLabel="ImageTwo">
+                                                <rect key="frame" x="142.5" y="-0.5" width="135.5" height="135.5"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="FGz-Pr-ufD" firstAttribute="height" secondItem="0sf-KF-4Zc" secondAttribute="height" id="3Fy-wS-h5k"/>
+                                            <constraint firstItem="hqS-dj-L3s" firstAttribute="leading" secondItem="FGz-Pr-ufD" secondAttribute="trailing" constant="5" id="A4b-Vu-idi"/>
+                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="height" secondItem="hqS-dj-L3s" secondAttribute="height" id="I1s-o1-kqE"/>
                                             <constraint firstItem="FGz-Pr-ufD" firstAttribute="width" secondItem="0sf-KF-4Zc" secondAttribute="height" id="JOn-l1-To6"/>
                                             <constraint firstItem="FGz-Pr-ufD" firstAttribute="centerY" secondItem="0sf-KF-4Zc" secondAttribute="centerY" id="KGk-8P-fU2"/>
+                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="width" secondItem="hqS-dj-L3s" secondAttribute="width" id="PRE-Bt-U3C"/>
                                             <constraint firstItem="FGz-Pr-ufD" firstAttribute="leading" secondItem="0sf-KF-4Zc" secondAttribute="leading" constant="2" id="Xvr-Qq-if2"/>
+                                            <constraint firstItem="hqS-dj-L3s" firstAttribute="centerY" secondItem="0sf-KF-4Zc" secondAttribute="centerY" id="pqd-Tb-sFZ"/>
+                                            <constraint firstItem="hqS-dj-L3s" firstAttribute="height" secondItem="0sf-KF-4Zc" secondAttribute="height" id="uWX-LQ-fqV"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSQ-Nh-oJ0" userLabel="textView">
@@ -248,7 +256,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="kLc-c3-tj7"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test" placeholder="Was verkaufst Du..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-Bd-Oj9" userLabel="title">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Was verkaufst Du..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-Bd-Oj9" userLabel="title">
                                                 <rect key="frame" x="10" y="26" width="355" height="17"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -261,7 +269,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="am0-05-qT2"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="beschreibungstestz" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fML-4B-sjO">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fML-4B-sjO">
                                                 <rect key="frame" x="10" y="64" width="355" height="160.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -362,8 +370,10 @@
                     <connections>
                         <outlet property="decriptionText" destination="fML-4B-sjO" id="jSW-tu-hHg"/>
                         <outlet property="image" destination="FGz-Pr-ufD" id="HI9-Ey-Kbc"/>
+                        <outlet property="imageTwo" destination="hqS-dj-L3s" id="6MJ-dH-KGC"/>
                         <outlet property="location" destination="ZAT-1p-12S" id="1gM-bx-2yX"/>
                         <outlet property="price" destination="rhr-PG-IKu" id="5U9-6K-Akb"/>
+                        <outlet property="saveArticleButton" destination="zBQ-BS-DXb" id="hll-A9-UVa"/>
                         <outlet property="titleText" destination="C3H-Bd-Oj9" id="0Sy-Fo-Uwd"/>
                     </connections>
                 </viewController>
@@ -678,7 +688,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

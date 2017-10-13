@@ -13,8 +13,21 @@ import AddressBookUI
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    public var articleId: Int32 = 0
+    public var isEditMode: Bool = false
+    public var titleFromAd: String = ""
+    public var descFromAd: String = ""
+    public var priceFromAd: Int = 0
+    public var pictureUrl: String = ""
+    public var locationFromAd: String = ""
+    public var date: Double = 0.0
+    public var lat: Double = 0.0
+    public var lng: Double = 0.0
+
    
     @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var imageTwo: UIImageView!
     
     @IBOutlet weak var titleText: UITextField!
     
@@ -24,23 +37,54 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
    
     @IBOutlet weak var location: UITextField!
     
+    @IBOutlet weak var saveArticleButton: UIButton!
+    
     @IBAction func saveNewAd(_ sender: Any) {
         
-        getLatLng(address: location.text!)
+        if isEditMode {
+            updateArticle()
+        } else {
+            getLatLng(address: location.text!)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        if isEditMode {
+            
+            saveArticleButton.setTitle("Änderung speichern", for: .normal)
+            editArticle()
+            
+        } else {
         
-        // add it to the image view;
-        image.addGestureRecognizer(tapGesture)
-        // make sure imageView can be interacted with by user
-        image.isUserInteractionEnabled = true
-        
-        prepareForms()
+            let tapGestureImgOne = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+            
+            image.addGestureRecognizer(tapGestureImgOne)
+            //imageTwo.addGestureRecognizer(tapGestureImgTwo)
+            // make sure imageView can be interacted with by user
+            image.isUserInteractionEnabled = true
+            image.layer.setValue(1, forKey: "imageNumber")
+            imageTwo.isUserInteractionEnabled = true
+            
+            prepareForms()
+        }
+    }
 
+    func editArticle() {
+        
+        self.titleText.text = titleFromAd
+        self.decriptionText.text = descFromAd
+        //self.price.text = 23.0
+        
+        //location
+        
+        // pic?
+    }
+    
+    func updateArticle() {
+        
+        
     }
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {
@@ -160,7 +204,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func imageTapped() {
-        
+
         let picker = UIImagePickerController()
         
         picker.delegate = self
