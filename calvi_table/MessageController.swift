@@ -29,6 +29,7 @@ class MessagesController: UIViewController {
             self.tableView.delegate = self
             
             navigationItem.title = "Messages: " + String(messages.count)
+            navigationController?.hidesBarsOnSwipe = true
             tableView?.backgroundColor = UIColor.gray
             navigationController?.navigationBar.isTranslucent = true
         }

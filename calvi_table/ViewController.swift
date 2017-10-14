@@ -20,12 +20,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     var searchController: UISearchController!
     var resultController = UITableViewController()
     
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("Test")
-     print(   item.tag)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +35,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationItem.title = "Luftkraftsport"
+        title = "Luftkraftsport"
         
         //refresh button in tabbar
         let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
@@ -70,7 +64,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         if GIDSignIn.sharedInstance().hasAuthInKeychain() {
             print("google sign in")
         } else {
-            print("google ou")
+            print("google out")
         }
     }
     

@@ -27,6 +27,7 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         fetchChat()
+
         
         // messages from someone else
         //addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
@@ -114,9 +115,7 @@ class ChatViewController: JSQMessagesViewController {
         
         let userToken = Utils.getUserToken()
         
-        //Alamofire.request("http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)").responseJSON { response
-        
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(sender)&articleId=\(articleId)")
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(self.sender)&articleId=\(self.articleId)")
         
         URLSession.shared.dataTask(with: url!) { data, response, error in
             
@@ -130,10 +129,16 @@ class ChatViewController: JSQMessagesViewController {
                 return
             }
 
+            self.addtoChat(data: data)
+            
+        }.resume()
+    }
+    
+    func addtoChat(data: Data) {
         
+        DispatchQueue.main.async(execute: {
+
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
-                
-            //print(json)
             
             for dictionary in json as! [[String: Any]] {
                 
@@ -146,11 +151,11 @@ class ChatViewController: JSQMessagesViewController {
                 //let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["idFrom"] as? String
                 print(chatPartner!)
-                
                 self.addMessage(withId: chatPartner!, name: "Ziegenpeter", text: message!)
+                
             }
             self.finishReceivingMessage()
-        }.resume()
+        })
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {

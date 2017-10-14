@@ -104,7 +104,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         if articleTitle != nil {
             self.anzeigeTitel.text = articleTitle
-            //self.title = anzeig
+            self.title = articleTitle
         }
         
         if desc != nil {
