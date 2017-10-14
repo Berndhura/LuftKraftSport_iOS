@@ -215,7 +215,10 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     }
 }
 
+let imageCache = NSCache<NSString, UIImage>()
+
 extension ViewController: UITableViewDataSource {
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ads.count
@@ -258,22 +261,31 @@ extension ViewController: UITableViewDataSource {
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail")
+        let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail"
         
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            
-            guard error == nil else {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async(execute: {
-                let image = UIImage(data: data!)
-                cell?.bild.image = image
-            })
-        }.resume()
+        let url = URL(string: urlString)
         
-        cell?.bild?.sd_setImage(with: url)
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+            cell?.bild.image = imageFromCache
+            
+        } else {
+        
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    let imageToCache = UIImage(data:data!)
+                    if imageToCache != nil {
+                        imageCache.setObject(imageToCache!, forKey: urlString as NSString)
+                        cell?.bild.image = imageToCache
+                    }
+                })
+            }.resume()
+        }
 
         return cell!
     }

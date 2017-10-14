@@ -92,8 +92,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         super.viewDidLoad()
         
-        bookmarkEditButton.layer.cornerRadius = 10
-        
         prepareMap()
         
         if userId != nil {
