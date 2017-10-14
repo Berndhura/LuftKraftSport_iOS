@@ -28,8 +28,10 @@ class MessagesController: UIViewController {
             self.tableView.dataSource = self
             self.tableView.delegate = self
             
-            navigationItem.title = "Messages: " + String(messages.count)
-            navigationController?.hidesBarsOnSwipe = true
+            //navigationItem.title = "Messages: " + String(messages.count)
+            
+            //navigationController?.hidesBarsOnSwipe = true
+            
             tableView?.backgroundColor = UIColor.gray
             navigationController?.navigationBar.isTranslucent = true
         }
@@ -94,6 +96,7 @@ class MessagesController: UIViewController {
             
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
+                self.tabBarController?.title = "Messages: " + String(self.messages.count)
             })
             
             }.resume()
@@ -112,6 +115,7 @@ class MessagesController: UIViewController {
         if segue.identifier == "openChat" {
             let chatController: ChatViewController = (segue.destination as? ChatViewController)!
             let cell: UITableViewCell? = sender as? UITableViewCell
+            self.tabBarController?.title = "Partner: "
             
             if cell != nil {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)

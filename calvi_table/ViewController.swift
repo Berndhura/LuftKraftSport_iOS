@@ -35,7 +35,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
-        title = "Luftkraftsport"
+        
+        tabBarController?.title = "Luftkraftsport"
         
         //refresh button in tabbar
         let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
