@@ -24,7 +24,11 @@ class MessageCell: UITableViewCell {
         //bild.layer.borderWidth = 1
         //bild.layer.masksToBounds = false
         //bild.layer.borderColor = CGColor
-        bild.layer.cornerRadius = bild.frame.size.width/2
+        print(bild.frame.size.width)
+        print(bild.frame.size.height)
+        let rad = bild.frame.size.width / 2.0
+        print(rad)
+        bild.layer.cornerRadius = rad
         bild.clipsToBounds = true
         
     }

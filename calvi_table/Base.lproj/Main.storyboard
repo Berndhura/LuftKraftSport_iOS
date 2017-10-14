@@ -39,13 +39,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="112.5" height="249"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf">
-                                                    <rect key="frame" x="6" y="74.5" width="101.5" height="101"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf">
+                                                    <rect key="frame" x="6" y="74.5" width="101.5" height="101.5"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccn-xd-ovE" userLabel="message_view">
                                                     <rect key="frame" x="112.5" y="0.0" width="262.5" height="249"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Nachnache" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkC-Xc-UbG" userLabel="name">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Nachnache" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkC-Xc-UbG" userLabel="name">
                                                             <rect key="frame" x="10" y="10" width="157.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -57,8 +57,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.08.17" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umc-El-g1F">
-                                                            <rect key="frame" x="152.5" y="10" width="105" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.08.17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umc-El-g1F">
+                                                            <rect key="frame" x="177.5" y="10" width="75" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -67,10 +67,10 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="g6T-fa-gux" firstAttribute="top" secondItem="JkC-Xc-UbG" secondAttribute="bottom" constant="20" id="2EP-is-37I"/>
-                                                        <constraint firstItem="Umc-El-g1F" firstAttribute="width" secondItem="ccn-xd-ovE" secondAttribute="width" multiplier="0.4" id="7MH-BF-CAT"/>
                                                         <constraint firstItem="JkC-Xc-UbG" firstAttribute="width" secondItem="ccn-xd-ovE" secondAttribute="width" multiplier="0.6" id="HVF-4S-3cI"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Umc-El-g1F" secondAttribute="trailing" constant="5" id="Ils-K0-Np6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Umc-El-g1F" secondAttribute="trailing" constant="10" id="Ils-K0-Np6"/>
                                                         <constraint firstItem="JkC-Xc-UbG" firstAttribute="leading" secondItem="ccn-xd-ovE" secondAttribute="leading" constant="10" id="QDO-Ab-g0v"/>
+                                                        <constraint firstItem="Umc-El-g1F" firstAttribute="leading" secondItem="JkC-Xc-UbG" secondAttribute="trailing" constant="10" id="WLG-Hd-0JB"/>
                                                         <constraint firstItem="JkC-Xc-UbG" firstAttribute="top" secondItem="ccn-xd-ovE" secondAttribute="top" constant="10" id="e5o-gO-u7E"/>
                                                         <constraint firstItem="Umc-El-g1F" firstAttribute="top" secondItem="ccn-xd-ovE" secondAttribute="top" constant="10" id="rYP-GC-Kx7"/>
                                                         <constraint firstItem="g6T-fa-gux" firstAttribute="leading" secondItem="ccn-xd-ovE" secondAttribute="leading" constant="10" id="u46-i1-dQT"/>
@@ -79,7 +79,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="L65-Pt-yLf" firstAttribute="height" secondItem="iLQ-yr-81L" secondAttribute="width" multiplier="0.9" priority="999" id="FuE-b1-wks"/>
+                                                <constraint firstItem="L65-Pt-yLf" firstAttribute="height" secondItem="iLQ-yr-81L" secondAttribute="width" multiplier="0.9" id="FuE-b1-wks"/>
                                                 <constraint firstItem="iLQ-yr-81L" firstAttribute="leading" secondItem="xME-mq-hCw" secondAttribute="leading" id="McL-Jm-6xH"/>
                                                 <constraint firstAttribute="trailing" secondItem="ccn-xd-ovE" secondAttribute="trailing" id="Nwk-6T-0Nz"/>
                                                 <constraint firstItem="iLQ-yr-81L" firstAttribute="height" secondItem="xME-mq-hCw" secondAttribute="height" id="PiJ-Fp-162"/>
@@ -688,7 +688,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

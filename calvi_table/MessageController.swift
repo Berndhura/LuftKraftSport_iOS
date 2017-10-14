@@ -124,6 +124,7 @@ class MessagesController: UIViewController {
     }
 }
 
+//let imageCache = NSCache<NSString, UIImage>()
 
 extension MessagesController: UITableViewDataSource {
     
@@ -153,23 +154,29 @@ extension MessagesController: UITableViewDataSource {
         //image
         let imageId = messages[indexPath.item].url
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/")
+        let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/"
         
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            
-            guard error == nil else {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async(execute: {
-                let image = UIImage(data: data!)
-                cell?.bild.image = image
-            })
-            }.resume()
+        let url = URL(string: urlString)
         
-        //TODO  Task vorher entfernen
-        cell?.bild.sd_setImage(with: url, placeholderImage: UIImage(named: "taylor_swift_blank_space.jpg"))
+        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+            cell?.bild.image = imageFromCache
+            
+        } else {
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    let image = UIImage(data: data!)
+                    imageCache.setObject(image!, forKey: urlString as NSString)
+                    cell?.bild.image = image
+                })
+                }.resume()
+        }
         
         return cell!
     }
