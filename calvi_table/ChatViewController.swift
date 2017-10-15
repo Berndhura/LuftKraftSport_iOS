@@ -19,7 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     
     //private lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
-    private var newMessageRefHandle: FIRDatabaseHandle?
+    private var newMessageRefHandle: DatabaseHandle?
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()

@@ -7,16 +7,16 @@ target 'calvi_table' do
 
   # Pods for calvi_table
 	
-  pod 'Google/SignIn'
-  pod 'SDWebImage'
-  pod 'Firebase/Storage'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'Firebase/Core'
-  pod 'JSQMessagesViewController'
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'Alamofire'
+    pod 'Google/SignIn'
+    pod 'SDWebImage'
+    pod 'Firebase/Storage'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Core'
+    pod 'JSQMessagesViewController'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'Alamofire'
 
   target 'calvi_tableTests' do
     inherit! :search_paths
