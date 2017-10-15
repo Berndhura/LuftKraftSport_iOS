@@ -13,6 +13,7 @@ target 'calvi_table' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
     pod 'JSQMessagesViewController'
     pod 'FacebookCore'
     pod 'FacebookLogin'

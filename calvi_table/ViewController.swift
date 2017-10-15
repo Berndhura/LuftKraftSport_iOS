@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 class ViewController: UIViewController, UISearchResultsUpdating {
     
@@ -22,6 +23,9 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let token = Messaging.messaging().fcmToken
+        print("FCM token: \(token ?? "")")
         
         checkLoginStatus()
         

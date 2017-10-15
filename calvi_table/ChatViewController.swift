@@ -18,7 +18,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
     
-    //private lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
+    private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
     private var newMessageRefHandle: DatabaseHandle?
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
@@ -49,14 +49,15 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        //let itemRef = messageRef.childByAutoId() // 1
+        
+        let itemRef = messageRef.childByAutoId() // 1
         let messageItem = [ // 2
             "senderId": senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
             ]
         
-        //itemRef.setValue(messageItem) // 3
+        itemRef.setValue(messageItem) // 3
         
         /*@POST("messages")
         Observable<String> sendNewMessage(@Query("message") String message,
