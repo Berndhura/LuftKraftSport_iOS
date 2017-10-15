@@ -115,7 +115,7 @@ class MessagesController: UIViewController {
         if segue.identifier == "openChat" {
             let chatController: ChatViewController = (segue.destination as? ChatViewController)!
             let cell: UITableViewCell? = sender as? UITableViewCell
-            self.tabBarController?.title = "Partner: "
+            //self.tabBarController?.title = "Partner: "
             
             if cell != nil {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)
@@ -162,6 +162,8 @@ extension MessagesController: UITableViewDataSource {
         let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/"
         
         let url = URL(string: urlString)
+        
+        cell?.bild.image = UIImage(named: "lks_logo_1024x1024")
         
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             cell?.bild.image = imageFromCache

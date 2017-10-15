@@ -37,6 +37,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         navigationController?.navigationBar.tintColor = UIColor.white
         
         tabBarController?.title = "Luftkraftsport"
+        //tabBarController?.toolbarItems.
         
         //refresh button in tabbar
         let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
@@ -213,8 +214,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
 let imageCache = NSCache<NSString, UIImage>()
 
 extension ViewController: UITableViewDataSource {
-    
-    
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ads.count
     }
@@ -259,6 +259,8 @@ extension ViewController: UITableViewDataSource {
         let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail"
         
         let url = URL(string: urlString)
+        
+        cell?.bild.image = UIImage(named: "lks_logo_1024x1024")
         
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             cell?.bild.image = imageFromCache
