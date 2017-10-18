@@ -276,7 +276,7 @@ extension ViewController: UITableViewDataSource {
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
         
-        let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail"
+        let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)"
         
         let url = URL(string: urlString)
         
@@ -321,7 +321,10 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130.0//UITableViewAutomaticDimension
+        
+        //get device height
+        //let cellHeight =
+        return 400.0//UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

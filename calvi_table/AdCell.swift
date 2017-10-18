@@ -29,7 +29,7 @@ class AdCell: UITableViewCell {
     public var myBookmarks: [Int32] = []
     
     @IBAction func addBookmark(_ sender: Any) {
-        
+     
         let userToken = Utils.getUserToken()
         
         if myBookmarks.contains(articleId) {
@@ -40,7 +40,7 @@ class AdCell: UITableViewCell {
                 .responseJSON { response in
                     //nothing here, if request did not work? show user info!
             }
-            bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_empty"), for: .normal)
+            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
             removeArticelFromBokkmarkList(id: articleId)
             
         } else {
@@ -52,7 +52,7 @@ class AdCell: UITableViewCell {
                     print(response)
                     // self.showAlert()
             }
-            bookmarkButton.setImage(#imageLiteral(resourceName: "bookmark_full"), for: .normal)
+            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
             myBookmarks.append(articleId)
         }
     }
