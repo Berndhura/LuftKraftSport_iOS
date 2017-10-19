@@ -415,7 +415,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW5-ia-zSd">
-                                                    <rect key="frame" x="8" y="252" width="29" height="18"/>
+                                                    <rect key="frame" x="8" y="252" width="290.5" height="18"/>
                                                     <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -433,12 +433,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSn-2C-ab2">
+                                                    <rect key="frame" x="48.5" y="278" width="38.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="rW5-ia-zSd" firstAttribute="width" secondItem="6IU-NM-KFW" secondAttribute="width" multiplier="0.8" id="47r-nq-VbD"/>
+                                                <constraint firstItem="SSn-2C-ab2" firstAttribute="top" secondItem="rW5-ia-zSd" secondAttribute="bottom" constant="8" id="51T-oY-LsD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="UJq-Na-9OF" secondAttribute="trailing" id="6wG-GE-SLf"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="7jt-bO-F53"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="8aj-rW-HOD"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="3" id="E01-eK-NFV"/>
+                                                <constraint firstItem="SSn-2C-ab2" firstAttribute="leading" secondItem="R2l-oE-iwT" secondAttribute="trailing" constant="10" id="Hsp-9r-kF1"/>
                                                 <constraint firstItem="juY-iZ-GIN" firstAttribute="top" secondItem="zn6-gS-HTW" secondAttribute="bottom" constant="5" id="VGl-3U-VRv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zn6-gS-HTW" secondAttribute="trailing" id="aUm-yA-Feg"/>
                                                 <constraint firstItem="R2l-oE-iwT" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="cGH-db-D58"/>
@@ -456,6 +465,7 @@
                                             <outlet property="bookmarkButton" destination="juY-iZ-GIN" id="VND-sd-eDu"/>
                                             <outlet property="date" destination="R2l-oE-iwT" id="cRB-Tf-Ty9"/>
                                             <outlet property="location" destination="UJq-Na-9OF" id="Naj-ea-cRh"/>
+                                            <outlet property="price" destination="SSn-2C-ab2" id="C5r-n0-NLR"/>
                                             <outlet property="title" destination="rW5-ia-zSd" id="z1x-sb-4SM"/>
                                             <segue destination="W1h-Wv-7it" kind="show" identifier="showDetailView" id="N4T-zU-gsS"/>
                                         </connections>
@@ -645,7 +655,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
