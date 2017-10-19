@@ -310,7 +310,7 @@ extension ViewController: UITableViewDataSource {
     func getFormatedDate(date: Double) -> String {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("MMMdd")
+        dateFormatter.setLocalizedDateFormatFromTemplate("ddMMMyyyy")
         dateFormatter.locale = Locale(identifier: "de_DE")
         
         let date = Date(timeIntervalSince1970: (date / 1000.0))

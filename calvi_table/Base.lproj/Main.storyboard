@@ -405,17 +405,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zn6-gS-HTW">
-                                                    <rect key="frame" x="8" y="58" width="347" height="264.5"/>
+                                                    <rect key="frame" x="8" y="58" width="347" height="189"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juY-iZ-GIN">
-                                                    <rect key="frame" x="330" y="327.5" width="30" height="30"/>
+                                                    <rect key="frame" x="325" y="252" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="addBookmark:" destination="fbH-nU-18z" eventType="touchUpInside" id="abs-NF-pfQ"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW5-ia-zSd">
-                                                    <rect key="frame" x="8" y="327.5" width="32.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="252" width="29" height="18"/>
+                                                    <color key="backgroundColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -425,28 +427,28 @@
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-oE-iwT" userLabel="date">
-                                                    <rect key="frame" x="8" y="356" width="35" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-oE-iwT" userLabel="date">
+                                                    <rect key="frame" x="8" y="278" width="30.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="R2l-oE-iwT" firstAttribute="top" secondItem="zn6-gS-HTW" secondAttribute="bottom" constant="5" id="4wn-Hc-HrF" userLabel="date.top = Title.bottom + 5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="UJq-Na-9OF" secondAttribute="trailing" id="6wG-GE-SLf"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="7jt-bO-F53"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="8aj-rW-HOD"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="3" id="E01-eK-NFV"/>
-                                                <constraint firstItem="R2l-oE-iwT" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" constant="5" id="Jzc-mo-svB"/>
                                                 <constraint firstItem="juY-iZ-GIN" firstAttribute="top" secondItem="zn6-gS-HTW" secondAttribute="bottom" constant="5" id="VGl-3U-VRv"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zn6-gS-HTW" secondAttribute="trailing" id="aUm-yA-Feg"/>
-                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="height" secondItem="6IU-NM-KFW" secondAttribute="height" multiplier="0.7" id="cgw-sw-mIW"/>
+                                                <constraint firstItem="R2l-oE-iwT" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="cGH-db-D58"/>
+                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="height" secondItem="6IU-NM-KFW" secondAttribute="height" multiplier="0.5" id="cgw-sw-mIW"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="cjE-yd-RXH"/>
+                                                <constraint firstItem="R2l-oE-iwT" firstAttribute="top" secondItem="rW5-ia-zSd" secondAttribute="bottom" constant="8" id="jyW-BT-UIS"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="top" secondItem="zn6-gS-HTW" secondAttribute="bottom" constant="5" id="ksQ-Wy-yri"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="vxZ-24-0Gx"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="50" id="wys-ms-RfW"/>
-                                                <constraint firstItem="juY-iZ-GIN" firstAttribute="trailing" secondItem="6IU-NM-KFW" secondAttribute="trailingMargin" constant="5" id="z9X-Td-t4M"/>
+                                                <constraint firstItem="juY-iZ-GIN" firstAttribute="trailing" secondItem="6IU-NM-KFW" secondAttribute="trailingMargin" id="z9X-Td-t4M"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -643,7 +645,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
