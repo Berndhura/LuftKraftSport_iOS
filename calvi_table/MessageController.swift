@@ -120,9 +120,11 @@ class MessagesController: UIViewController {
             if cell != nil {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)
                 if indexPath != nil {
+                    self.navigationItem.title = ""
                     let messageElement: MessageOverview = messages[indexPath!.row]
                     chatController.sender = messageElement.chatPartner
                     chatController.articleId = messageElement.articleId
+                    chatController.partnerName = messageElement.name
                 }
             }
         }

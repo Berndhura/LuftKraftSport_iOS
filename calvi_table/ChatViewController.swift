@@ -15,6 +15,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var sender: String = ""
     var articleId: Int64 = 1
+    var partnerName: String?
     
     var messages = [JSQMessage]()
     
@@ -25,6 +26,8 @@ class ChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        title = partnerName!
         
         fetchChat()
 
@@ -57,24 +60,19 @@ class ChatViewController: JSQMessagesViewController {
             "text": text!,
             ]
         
-       // itemRef.setValue(messageItem) // 3
+        //itemRef.setValue(messageItem) // 3
         
-        /*@POST("messages")
-        Observable<String> sendNewMessage(@Query("message") String message,
-        @Query("articleId") int articleId,
-        @Query("idTo") String idTo,
-        @Query("token") String token);*/
+        let message = text!
         
-        /*let message = text.text!
+        let userToken = Utils.getUserToken()
         
-        let userToken = self.getUserToken()
-        
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(sender)&message=\(message)")
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
-        }*/
+                self.addMessage(withId: senderId, name: "Me", text: text!)
+        }
         
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
@@ -152,7 +150,7 @@ class ChatViewController: JSQMessagesViewController {
                 //let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["idFrom"] as? String
                 print(chatPartner!)
-                self.addMessage(withId: chatPartner!, name: "Ziegenpeter", text: message!)
+                self.addMessage(withId: chatPartner!, name: self.partnerName!, text: message!)
                 
             }
             self.finishReceivingMessage()
