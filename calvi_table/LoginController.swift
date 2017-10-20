@@ -133,6 +133,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             dict = result as! NSDictionary
             
             self.saveUserName(nameString: dict["name"]! as! String)
+            self.saveUserId(idString: dict["id"]! as! String)
             
             if let picture = dict["picture"] as? NSDictionary {
                 if let data = picture["data"] as? NSDictionary{
@@ -146,6 +147,12 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
                 }
             }
         })
+    }
+    
+    func saveUserId(idString: String) {
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(idString, forKey: "userId")
+        defaults.synchronize()
     }
     
     func saveUserName(nameString: String) {
