@@ -11,6 +11,11 @@ import Alamofire
 
 class AdCell: UITableViewCell {
     
+    @IBOutlet weak var editButton: UIButton!
+    
+    @IBAction func editArticle(_ sender: Any) {
+        
+    }
     
     @IBOutlet weak var bild: UIImageView!
     
@@ -40,7 +45,7 @@ class AdCell: UITableViewCell {
                 .responseJSON { response in
                     //nothing here, if request did not work? show user info!
             }
-            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
+            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
             removeArticelFromBokkmarkList(id: articleId)
             
         } else {
@@ -52,7 +57,7 @@ class AdCell: UITableViewCell {
                     print(response)
                     // self.showAlert()
             }
-            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
+            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
             myBookmarks.append(articleId)
         }
     }

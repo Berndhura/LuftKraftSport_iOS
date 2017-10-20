@@ -303,6 +303,13 @@ extension ViewController: UITableViewDataSource {
                 })
             }.resume()
         }
+        
+        //is my article
+        if (currentAd.userId == Utils.getUserId()) {
+            cell?.editButton.isHidden = false
+        } else {
+            cell?.editButton.isHidden = true
+        }
 
         return cell!
     }
