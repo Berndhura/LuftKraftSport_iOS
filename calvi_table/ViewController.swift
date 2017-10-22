@@ -24,7 +24,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateDeviceToken()
         
         checkLoginStatus()
         
@@ -62,23 +61,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
-    }
-    
-    func updateDeviceToken() {
-        
-        let userToken = Utils.getUserToken()
-        
-        let deviceToken = Messaging.messaging().fcmToken
-        print("FCM token: \(deviceToken ?? "")")
-        
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/users/sendToken?token=\(userToken)&deviceToken\(deviceToken ?? "")")
-        
-        //let url2 = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/ids?token=\(userToken)")
-        
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                
-        }
     }
     
     func checkLoginStatus() {

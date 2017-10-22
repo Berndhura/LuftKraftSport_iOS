@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Firebase
+import Alamofire
 
 class Utils {
     
@@ -46,6 +48,27 @@ class Utils {
         let defaults:UserDefaults = UserDefaults.standard
         defaults.set("", forKey: "userToken")
         defaults.set("", forKey: "userId")
+        defaults.synchronize()
+    }
+    
+    static func updateDeviceToken() {
+        
+        let userToken = Utils.getUserToken()
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        let deviceToken = defaults.string(forKey: "deviceFcmToken")
+
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/users/sendToken?token=\(userToken)&deviceToken=\(deviceToken ?? "")")
+        
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response)
+        }
+    }
+    
+    static func saveDeviceFmcToken(fcmToken: String) {
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(fcmToken, forKey: "deviceFcmToken")
         defaults.synchronize()
     }
 }

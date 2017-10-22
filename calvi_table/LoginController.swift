@@ -129,6 +129,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             let token = FBSDKAccessToken.current().tokenString
             self.saveUserToken(tokenString: token!)
             
+            Utils.updateDeviceToken()
+            
             var dict: NSDictionary!
             dict = result as! NSDictionary
             

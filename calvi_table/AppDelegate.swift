@@ -30,14 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // [START set_messaging_delegate]
-        Messaging.messaging().delegate = self as MessagingDelegate
+        Messaging.messaging().delegate = self
         // [END set_messaging_delegate]
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
         // [START register_for_notifications]
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
+            UNUserNotificationCenter.current().delegate = self
             
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
@@ -50,6 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
+        
+        //todo voll wichtig diese zeile!! sonst kommen keine nahcrichten
+        
+        Messaging.messaging().shouldEstablishDirectChannel = true
         
         // [END register_for_notifications]
     
@@ -103,9 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
-        // Messaging.messaging().apnsToken = deviceToken
+        //TODO was bedeutet das? war vorher auskommentiert!!!!
+        Messaging.messaging().apnsToken = deviceToken
     }
-
     
     public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
@@ -128,6 +132,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             annotation: annotation )
         
         return googleHandler || facebookHandler
+    }
+    
+    func application(application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        Messaging.messaging().apnsToken = deviceToken as Data
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -155,6 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+
 // [START ios_10_message_handling]
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
@@ -166,7 +176,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         
         // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -176,7 +186,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([])
+        completionHandler([.alert, .badge, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -200,6 +210,8 @@ extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
+        
+        Utils.saveDeviceFmcToken(fcmToken: fcmToken)
     }
     // [END refresh_token]
     // [START ios_10_data_message]
@@ -210,4 +222,6 @@ extension AppDelegate : MessagingDelegate {
     }
     // [END ios_10_data_message]
 }
+
+
 
