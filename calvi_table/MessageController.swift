@@ -9,7 +9,6 @@
 import UIKit
 import SDWebImage
 
-
 class MessagesController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,7 +23,7 @@ class MessagesController: UIViewController {
             fetchMessages()
 
             //table
-            self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+            self.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 0.0, right: 0.0)
             self.tableView.dataSource = self
             self.tableView.delegate = self
             
@@ -69,32 +68,39 @@ class MessagesController: UIViewController {
                 return
             }
             
-            let dataString = String(describing: data)
-            print(dataString)
-            print(data)
             
-            let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+            //TODO fals falscher user - crash hier! NSArray vs NSDictionary wie?
+            //let jsonDictionary = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
             
-            print(json)
+           // let jsonString = String(describing: jsonDictionary)
             
-            for dictionary in json as! [[String: Any]] {
-                
-                let message = dictionary["message"] as? String
-                let name = dictionary["name"] as? String
-                let urlList = dictionary["url"] as? String
-                let url = self.getPictureUrl(str: urlList!)
-                let idFrom = dictionary["idFrom"] as? String
-                let idTo = dictionary["idTo"] as? String
-                let date = dictionary["date"] as? Double
-                let articleId = dictionary["articleId"] as? Int64
-                let chatPartner = dictionary["chatPartner"] as? String
-                
-                let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
-                
-                //print(ad.urls)
-                
-                self.messages.append(msg)
-            }
+          //  if jsonString.contains("Unauthorized") {
+                //nothing here TODO show info to user - unauthorized
+           // } else {
+                let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+            
+            
+                //print(json)
+            
+                for dictionary in json as! [[String: Any]] {
+                    
+                    let message = dictionary["message"] as? String
+                    let name = dictionary["name"] as? String
+                    let urlList = dictionary["url"] as? String
+                    let url = self.getPictureUrl(str: urlList!)
+                    let idFrom = dictionary["idFrom"] as? String
+                    let idTo = dictionary["idTo"] as? String
+                    let date = dictionary["date"] as? Double
+                    let articleId = dictionary["articleId"] as? Int64
+                    let chatPartner = dictionary["chatPartner"] as? String
+                    
+                    let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                    
+                    //print(ad.urls)
+                    
+                    self.messages.append(msg)
+                }
+          //  }
             
             self.navigationItem.title = "Messages: " + String(self.messages.count)
             

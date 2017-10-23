@@ -21,12 +21,8 @@ class MessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     
-        //bild.layer.cornerRadius = bild.frame.size.height/2.0
-        //bild.setNeedsLayout()
     }
     
-  
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -40,8 +36,12 @@ class RoundImageView: UIImageView {
         super.layoutSubviews()
         
         let radius: CGFloat = self.frame.size.width / 2.0
-        
         self.layer.cornerRadius = radius
+        
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        
+        self.layer.borderWidth = 1
+        
         
         let constraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: 0.0)
         self.addConstraint(constraint)

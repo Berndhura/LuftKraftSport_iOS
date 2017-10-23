@@ -38,7 +38,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-yr-81L" userLabel="picture_view">
                                                     <rect key="frame" x="0.0" y="0.0" width="112" height="249"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Foo" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
                                                             <rect key="frame" x="-0.5" y="68" width="112" height="112"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="L65-Pt-yLf" secondAttribute="height" multiplier="1:1" id="jok-II-w82"/>
@@ -113,9 +113,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="MRy-lw-OLN" firstAttribute="height" secondItem="Vgx-hA-D58" secondAttribute="height" id="BLz-yv-yoL"/>
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="width" secondItem="Vgx-hA-D58" secondAttribute="width" id="CHf-Y0-mxc"/>
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerY" secondItem="Vgx-hA-D58" secondAttribute="centerY" id="H4h-x2-BsI"/>
-                            <constraint firstItem="MRy-lw-OLN" firstAttribute="height" secondItem="Vgx-hA-D58" secondAttribute="height" id="bRK-Ef-kg7"/>
                             <constraint firstItem="MRy-lw-OLN" firstAttribute="centerX" secondItem="Vgx-hA-D58" secondAttribute="centerX" id="zUh-dD-Oon"/>
                         </constraints>
                     </view>
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-aP-1RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="-722"/>
+            <point key="canvasLocation" x="608.79999999999995" y="-722.78860569715152"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="vKY-bs-H4X">
@@ -136,7 +136,7 @@
                         <viewControllerLayoutGuide type="top" id="ybq-5Z-S69"/>
                         <viewControllerLayoutGuide type="bottom" id="2p0-pr-xhX"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ljB-4B-8do" customClass="ChatV">
+                    <view key="view" contentMode="scaleToFill" id="ljB-4B-8do">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -702,7 +702,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavBarController" automaticallyAdjustsScrollViewInsets="NO" id="eQg-6t-vH4" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ya-B6-sc1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ya-B6-sc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -739,7 +739,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Foo" width="16" height="16"/>
         <image name="ic_add_circle_outline_36pt" width="36" height="36"/>
         <image name="ic_edit_black_36dp" width="54" height="54"/>
         <image name="ic_login_24dp" width="24" height="24"/>
