@@ -320,7 +320,7 @@ extension ViewController: UITableViewDelegate {
         
         //get device height
         //let cellHeight =
-        return 400.0//UITableViewAutomaticDimension
+        return 500.0//UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

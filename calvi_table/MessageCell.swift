@@ -44,6 +44,7 @@ class RoundImageView: UIImageView {
         
         
         let constraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: 0.0)
+        
         self.addConstraint(constraint)
         
         self.contentMode = UIViewContentMode.scaleAspectFill
