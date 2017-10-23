@@ -16,27 +16,36 @@ class MessageCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
     
-    @IBOutlet weak var bild: UIImageView!
+    @IBOutlet weak var bild: RoundImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        //bild.layer.borderWidth = 1
-        //bild.layer.masksToBounds = false
-        //bild.layer.borderColor = CGColor
-        print(bild.frame.size.width)
-        print(bild.frame.size.height)
-        let rad = bild.frame.size.width / 2.0
-        print(rad)
-        bild.layer.cornerRadius = rad
-        bild.clipsToBounds = true
-        
+    
+        //bild.layer.cornerRadius = bild.frame.size.height/2.0
+        //bild.setNeedsLayout()
     }
+    
+  
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+}
 
+class RoundImageView: UIImageView {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let radius: CGFloat = self.frame.size.width / 2.0
+        
+        self.layer.cornerRadius = radius
+        
+        let constraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: 0.0)
+        self.addConstraint(constraint)
+        
+        self.contentMode = UIViewContentMode.scaleAspectFill
+    }
 }

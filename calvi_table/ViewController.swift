@@ -120,7 +120,14 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                 .responseJSON { response in
                     
                     self.myBookmarks.removeAll()
-                    self.myBookmarks = response.result.value! as! [Int32]
+                    print("-------------------------")
+                    print(String(describing: response.result.value))
+                    let res = String(describing: response.result.value)
+                    if res.contains("Unauthorized") {
+                        //nix
+                    } else {
+                        self.myBookmarks = response.result.value! as! [Int32]
+                    }
                     self.fetchAds()
             }
         } else {

@@ -36,29 +36,40 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLQ-yr-81L" userLabel="picture_view">
-                                                    <rect key="frame" x="0.0" y="0.0" width="112.5" height="249"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="112" height="249"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Foo" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
+                                                            <rect key="frame" x="-0.5" y="68" width="112" height="112"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="L65-Pt-yLf" secondAttribute="height" multiplier="1:1" id="jok-II-w82"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="L65-Pt-yLf" firstAttribute="centerX" secondItem="iLQ-yr-81L" secondAttribute="centerX" id="BGj-ot-dgQ"/>
+                                                        <constraint firstItem="L65-Pt-yLf" firstAttribute="centerY" secondItem="iLQ-yr-81L" secondAttribute="centerY" id="JS6-q6-dcO"/>
+                                                        <constraint firstItem="L65-Pt-yLf" firstAttribute="width" secondItem="iLQ-yr-81L" secondAttribute="width" id="eJS-Cg-oZS"/>
+                                                        <constraint firstItem="L65-Pt-yLf" firstAttribute="height" secondItem="iLQ-yr-81L" secondAttribute="width" id="wzo-iS-908"/>
+                                                    </constraints>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L65-Pt-yLf">
-                                                    <rect key="frame" x="6" y="74.5" width="101.5" height="101.5"/>
-                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccn-xd-ovE" userLabel="message_view">
-                                                    <rect key="frame" x="112.5" y="0.0" width="262.5" height="249"/>
+                                                    <rect key="frame" x="112" y="0.0" width="263" height="249"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Nachnache" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkC-Xc-UbG" userLabel="name">
-                                                            <rect key="frame" x="10" y="10" width="157.5" height="21"/>
+                                                            <rect key="frame" x="10" y="10" width="158" height="21"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bla sülz bitte surfbrett 100 liter ganz gelb" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g6T-fa-gux" userLabel="message">
-                                                            <rect key="frame" x="10" y="51" width="242.5" height="20.5"/>
+                                                            <rect key="frame" x="10" y="51" width="243" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.08.17" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umc-El-g1F">
-                                                            <rect key="frame" x="177.5" y="10" width="75" height="21"/>
+                                                            <rect key="frame" x="178" y="10" width="75" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -79,17 +90,13 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="L65-Pt-yLf" firstAttribute="height" secondItem="iLQ-yr-81L" secondAttribute="width" multiplier="0.9" id="FuE-b1-wks"/>
                                                 <constraint firstItem="iLQ-yr-81L" firstAttribute="leading" secondItem="xME-mq-hCw" secondAttribute="leading" id="McL-Jm-6xH"/>
                                                 <constraint firstAttribute="trailing" secondItem="ccn-xd-ovE" secondAttribute="trailing" id="Nwk-6T-0Nz"/>
                                                 <constraint firstItem="iLQ-yr-81L" firstAttribute="height" secondItem="xME-mq-hCw" secondAttribute="height" id="PiJ-Fp-162"/>
                                                 <constraint firstItem="ccn-xd-ovE" firstAttribute="height" secondItem="xME-mq-hCw" secondAttribute="height" id="UcS-Eo-Lhp"/>
-                                                <constraint firstItem="L65-Pt-yLf" firstAttribute="centerY" secondItem="iLQ-yr-81L" secondAttribute="centerY" id="Zxn-cC-BuC"/>
                                                 <constraint firstItem="iLQ-yr-81L" firstAttribute="centerY" secondItem="xME-mq-hCw" secondAttribute="centerY" id="cHg-2k-zHI"/>
-                                                <constraint firstItem="L65-Pt-yLf" firstAttribute="width" secondItem="iLQ-yr-81L" secondAttribute="width" multiplier="0.9" id="ltX-an-eF6"/>
-                                                <constraint firstItem="iLQ-yr-81L" firstAttribute="width" secondItem="xME-mq-hCw" secondAttribute="width" multiplier="0.3" id="qUC-yz-gQ7"/>
+                                                <constraint firstItem="ccn-xd-ovE" firstAttribute="leading" secondItem="iLQ-yr-81L" secondAttribute="trailing" id="dBt-FZ-yml"/>
                                                 <constraint firstItem="ccn-xd-ovE" firstAttribute="width" secondItem="xME-mq-hCw" secondAttribute="width" multiplier="0.7" id="xe2-ZK-ym4"/>
-                                                <constraint firstItem="L65-Pt-yLf" firstAttribute="centerX" secondItem="iLQ-yr-81L" secondAttribute="centerX" id="xjb-BI-DEA"/>
                                                 <constraint firstItem="ccn-xd-ovE" firstAttribute="centerY" secondItem="xME-mq-hCw" secondAttribute="centerY" id="y0F-gZ-hLI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -732,6 +739,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Foo" width="16" height="16"/>
         <image name="ic_add_circle_outline_36pt" width="36" height="36"/>
         <image name="ic_edit_black_36dp" width="54" height="54"/>
         <image name="ic_login_24dp" width="24" height="24"/>

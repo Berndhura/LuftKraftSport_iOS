@@ -69,6 +69,10 @@ class MessagesController: UIViewController {
                 return
             }
             
+            let dataString = String(describing: data)
+            print(dataString)
+            print(data)
+            
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
             
             print(json)
