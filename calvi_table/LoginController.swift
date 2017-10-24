@@ -17,10 +17,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     @IBOutlet weak var userName: UILabel!
     
-    @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var logoutBtn: UIButton!
     
-    @IBAction func backButton(_ sender: Any) {
+    //@IBOutlet weak var backBtn: UIButton!
+    //@IBOutlet weak var logoutBtn: UIButton!
+    
+    /*@IBAction func backButton(_ sender: Any) {
         
         //go back after login
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -41,10 +42,39 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         dismiss(animated: true, completion: nil)
         
         //facebook sign out? TODO
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backBtn = UIButton()
+        backBtn.translatesAutoresizingMaskIntoConstraints = false
+        backBtn.backgroundColor = UIColor.blue
+        
+        backBtn.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        view.addSubview(backBtn)
+        let margins = view.layoutMarginsGuide
+        backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        backBtn.centerYAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        //backBtn.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 50).isActive = true
+        
+        
+        let v2 = UIView()
+        v2.backgroundColor = UIColor.red
+        // use auto layout
+        v2.translatesAutoresizingMaskIntoConstraints = false
+        // add width / height constraints
+        v2.addConstraint(NSLayoutConstraint(item: v2, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100))
+        v2.addConstraint(NSLayoutConstraint(item: v2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100))
+        // must add to hirarchy before adding the following constraints
+        view.addSubview(v2)
+        view.addConstraint(NSLayoutConstraint(item: v2, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 100))
+        view.addConstraint(NSLayoutConstraint(item: v2, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
+    
+        //https://stackoverflow.com/questions/41791052/swift-adding-a-button-programmatically-without-supplying-a-frame-during-initial
+        
+        
 
         initGoogleSignInButton()
         initFacebookLoginButton()
@@ -64,17 +94,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     func positionButtons() {
         
-        // Get the superview's layout
-        let margins = view.layoutMarginsGuide
-        
-        // Pin the leading edge of backButton to the margin's leading edge
-        backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        
-        // left
-        backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        
-        //right
-        backBtn.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
         
         
         
@@ -106,7 +125,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         // Get the superview's layout
         let margins = view.layoutMarginsGuide
         
-        //signInButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        //signInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         
         signInButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
@@ -114,9 +133,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         //signInButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
         signInButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 0).isActive = true
+        signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
         //signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 150).isActive = true
         
+        //signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: 100).isActive = true
         //https://stackoverflow.com/questions/33348267/3-views-next-to-each-other-programmatically-constraints
         
     }
