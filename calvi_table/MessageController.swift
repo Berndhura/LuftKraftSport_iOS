@@ -215,7 +215,11 @@ extension MessagesController: UITableViewDataSource {
 extension MessagesController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130.0//UITableViewAutomaticDimension
+        
+        let screenSize:CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        
+        return screenHeight / 5.0
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

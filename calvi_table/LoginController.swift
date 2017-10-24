@@ -17,6 +17,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     @IBOutlet weak var userName: UILabel!
     
+    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var logoutBtn: UIButton!
+    
     @IBAction func backButton(_ sender: Any) {
         
         //go back after login
@@ -46,6 +49,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         initGoogleSignInButton()
         initFacebookLoginButton()
         
+        positionButtons()
+        
         if Utils.getUserToken() != "" {
             showUserProfile()
         }
@@ -55,6 +60,24 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         let profilePicture = Utils.getUserProfilePicture()
         self.userImage.sd_setImage(with: URL(string: profilePicture))
+    }
+    
+    func positionButtons() {
+        
+        // Get the superview's layout
+        let margins = view.layoutMarginsGuide
+        
+        // Pin the leading edge of backButton to the margin's leading edge
+        backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        
+        // left
+        backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        
+        //right
+        backBtn.centerXAnchor.constraint(equalTo: margins.centerXAnchor)
+        
+        
+        
     }
     
     func cleanUserInfo() {
@@ -72,20 +95,35 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         
-        let signInButton = GIDSignInButton(frame: CGRect(x:0,y:0,width: 200, height: 50))
-        
-        let screenSize:CGRect = UIScreen.main.bounds
-        let screenHeight = screenSize.height //real screen height
-        //let's suppose we want to have 10 points bottom margin
-        let newCenterY = screenHeight - signInButton.frame.height - 120
-        let newCenter = CGPoint(x: view.center.x, y: newCenterY)
-        signInButton.center = newCenter
+        //let signInButton = GIDSignInButton(frame: CGRect(x: 0,y: 0,width: view.frame.width-32, height: 30))
+        let signInButton = GIDSignInButton()
         view.addSubview(signInButton)
+
+        
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
+        //signInButton.colorScheme(style: GIDSignInButtonColorScheme.light)
+        
+        // Get the superview's layout
+        let margins = view.layoutMarginsGuide
+        
+        //signInButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        
+        signInButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        signInButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        
+        //signInButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        signInButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 0).isActive = true
+        
+        //signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 150).isActive = true
+        
+        //https://stackoverflow.com/questions/33348267/3-views-next-to-each-other-programmatically-constraints
+        
     }
     
     func initFacebookLoginButton() {
         
-        let loginButton = FBSDKLoginButton(frame: CGRect(x:0,y:0,width: 200, height: 50))
+        let loginButton = FBSDKLoginButton(frame: CGRect(x: 0,y: 0,width: view.frame.width-32, height: 30))
         
         //let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
         

@@ -318,9 +318,9 @@ extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        //get device height
-        //let cellHeight =
-        return 500.0//UITableViewAutomaticDimension
+        let screenSize:CGRect = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        return screenHeight * 0.8
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
