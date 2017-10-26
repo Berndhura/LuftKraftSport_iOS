@@ -24,7 +24,6 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         checkLoginStatus()
         
         getMyBookmaks()

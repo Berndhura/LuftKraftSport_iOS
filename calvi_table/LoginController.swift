@@ -31,6 +31,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor(red: 215/255, green: 233/255, blue: 242/255, alpha: 1.0)
+        
         //google sign in button
         initGoogleSignInButton()
         
@@ -58,7 +60,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         GIDSignIn.sharedInstance().delegate = self
 
         signInButton.translatesAutoresizingMaskIntoConstraints = false
-        //signInButton.colorScheme(style: GIDSignInButtonColorScheme.light)
+        signInButton.colorScheme = GIDSignInButtonColorScheme.dark
         
         let margins = view.layoutMarginsGuide
         
@@ -66,8 +68,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         view.addSubview(signInButton)
         
-        signInButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        signInButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        signInButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: -4).isActive = true
+        signInButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 4).isActive = true
         signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
     }
     
@@ -205,6 +207,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
                     }
                 }
             }
+            let fullName = dict["name"]! as! String
+            self.userName.text = "Willkommen " + fullName
         })
     }
     
@@ -245,6 +249,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             self.userName.text = "Willkommen " + fullName!
             
             saveUserDetails(user: user)
+            Utils.updateDeviceToken()
             
         } else {
             print("\(error.localizedDescription)")
