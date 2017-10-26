@@ -17,92 +17,35 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     @IBOutlet weak var userName: UILabel!
     
+    let signInButton = GIDSignInButton()
     
-    //@IBOutlet weak var backBtn: UIButton!
-    //@IBOutlet weak var logoutBtn: UIButton!
+    let loginButton = FBSDKLoginButton()
     
-    /*@IBAction func backButton(_ sender: Any) {
-        
-        //go back after login
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = tabBarController
-    }
+    let backBtn = UIButton()
     
-    @IBAction func logoutButton(_ sender: Any) {
-        
-        Utils.logoutUser()
-        
-        cleanUserInfo()
-        
-        //google
-        GIDSignIn.sharedInstance().signOut()
-        
-        dismiss(animated: true, completion: nil)
-        
-        //facebook sign out? TODO
-    }*/
+    let logoutBtn = UIButton()
+    
+    let buttonHeight: CGFloat = 30
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backBtn = UIButton()
-        backBtn.translatesAutoresizingMaskIntoConstraints = false
-        backBtn.backgroundColor = UIColor.blue
-        
-        backBtn.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        view.addSubview(backBtn)
-        let margins = view.layoutMarginsGuide
-        backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        backBtn.centerYAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        //backBtn.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 50).isActive = true
-        
-        
-        let v2 = UIView()
-        v2.backgroundColor = UIColor.red
-        // use auto layout
-        v2.translatesAutoresizingMaskIntoConstraints = false
-        // add width / height constraints
-        v2.addConstraint(NSLayoutConstraint(item: v2, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100))
-        v2.addConstraint(NSLayoutConstraint(item: v2, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 100))
-        // must add to hirarchy before adding the following constraints
-        view.addSubview(v2)
-        view.addConstraint(NSLayoutConstraint(item: v2, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 100))
-        view.addConstraint(NSLayoutConstraint(item: v2, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0))
-    
-        //https://stackoverflow.com/questions/41791052/swift-adding-a-button-programmatically-without-supplying-a-frame-during-initial
-        
-        
-
+        //google sign in button
         initGoogleSignInButton()
-        initFacebookLoginButton()
         
-        positionButtons()
+        //facebook button
+        initFacebookLoginButton()
+
+        //back button
+        initBackButton()
+        
+        //logout button
+        initLogoutButton()
         
         if Utils.getUserToken() != "" {
             showUserProfile()
         }
-    }
-    
-    func showUserProfile() {
-        
-        let profilePicture = Utils.getUserProfilePicture()
-        self.userImage.sd_setImage(with: URL(string: profilePicture))
-    }
-    
-    func positionButtons() {
-        
-        
-        
-        
-    }
-    
-    func cleanUserInfo() {
-        
-        self.userImage.sd_setImage(with: nil)
-        self.userName.text = ""
     }
     
     func initGoogleSignInButton() {
@@ -113,55 +56,110 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        
-        //let signInButton = GIDSignInButton(frame: CGRect(x: 0,y: 0,width: view.frame.width-32, height: 30))
-        let signInButton = GIDSignInButton()
-        view.addSubview(signInButton)
 
-        
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         //signInButton.colorScheme(style: GIDSignInButtonColorScheme.light)
         
-        // Get the superview's layout
         let margins = view.layoutMarginsGuide
         
-        //signInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        signInButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         
+        view.addSubview(signInButton)
         
         signInButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         signInButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        
-        //signInButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        signInButton.centerYAnchor.constraint(equalTo: margins.centerYAnchor, constant: 0).isActive = true
-        signInButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        
-        //signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor, constant: 150).isActive = true
-        
-        //signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: 100).isActive = true
-        //https://stackoverflow.com/questions/33348267/3-views-next-to-each-other-programmatically-constraints
-        
+        signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
     }
     
     func initFacebookLoginButton() {
         
-        let loginButton = FBSDKLoginButton(frame: CGRect(x: 0,y: 0,width: view.frame.width-32, height: 30))
-        
-        //let loginButton = LoginButton(readPermissions: [ .publicProfile, .email, .userFriends ])
-        
-        let screenSize:CGRect = UIScreen.main.bounds
-        let screenHeight = screenSize.height //real screen height
-        //let's suppose we want to have 10 points bottom margin
-        let newCenterY = screenHeight - loginButton.frame.height - 50
-        let newCenter = CGPoint(x: view.center.x, y: newCenterY)
-        loginButton.center = newCenter
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.delegate = self
         view.addSubview(loginButton)
+        
+        let margins = view.layoutMarginsGuide
+        
+        loginButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        
+        
+        loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        
+        loginButton.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -10).isActive = true
         
         //if the user is already logged in
         if let _ = FBSDKAccessToken.current(){
             //getFBUserData()
         }
     }
+    
+    func initBackButton() {
+        
+        backBtn.addTarget(self, action: #selector(goBackPressed), for: .allTouchEvents)
+        
+        backBtn.translatesAutoresizingMaskIntoConstraints = false
+        backBtn.backgroundColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
+        backBtn.setTitle("Zurück", for: .normal)
+        
+        backBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        view.addSubview(backBtn)
+        let margins = view.layoutMarginsGuide
+        backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        backBtn.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -10).isActive = true
+    }
+    
+    func initLogoutButton() {
+        
+        logoutBtn.addTarget(self, action: #selector(logoutPressed), for: .allTouchEvents)
+        
+        logoutBtn.translatesAutoresizingMaskIntoConstraints = false
+        logoutBtn.backgroundColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
+        logoutBtn.setTitle("Logout", for: .normal)
+        
+        logoutBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        view.addSubview(logoutBtn)
+        let margins = view.layoutMarginsGuide
+        logoutBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        logoutBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        logoutBtn.bottomAnchor.constraint(equalTo: backBtn.topAnchor, constant: -10).isActive = true
+    }
+
+    func logoutPressed() {
+        
+        Utils.logoutUser()
+        
+        cleanUserInfo()
+        
+        //google
+        GIDSignIn.sharedInstance().signOut()
+        
+        dismiss(animated: true, completion: nil)
+        //facebook sign out? TODO
+    }
+    
+    func goBackPressed() {
+        
+        //go back after login
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = tabBarController
+    }
+    
+    func showUserProfile() {
+        
+        let profilePicture = Utils.getUserProfilePicture()
+        self.userImage.sd_setImage(with: URL(string: profilePicture))
+    }
+    
+    
+    func cleanUserInfo() {
+        
+        self.userImage.sd_setImage(with: nil)
+        self.userName.text = ""
+    }
+
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("logout from facebook")
