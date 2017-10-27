@@ -26,7 +26,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         checkLoginStatus()
         
-        getMyBookmaks()
+        getMyBookmaks(type: "all")
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -45,12 +45,16 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         //login button in tabbar
         let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(ViewController.openLoginPage))
-
+        
+        //home button
+        let homeButton = UIBarButtonItem(image: UIImage(named: "ic_home_white_36pt"), style: .plain, target: self, action: #selector(showMyArticle))
+        
         if isLoggedIn() {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton, homeButton], animated: true)
         } else {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton, loginButton], animated: true)
         }
+        
         
         tableView?.backgroundColor = UIColor.gray
         
@@ -96,7 +100,25 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     func refreshArticles() {
         
         ads.removeAll()
-        getMyBookmaks()
+        getMyBookmaks(type: "all")
+    }
+    
+    func showMyArticle() {
+        
+        ads.removeAll()
+        getMyBookmaks(type: "my")
+        /*lade nur eigene
+        
+         url dazu:  
+         @GET("articles/my")
+         Observable<AdsAsPage> getAdsMy(@Query("page") int page, @Query("size") int size, @Query("token") String token);
+         
+         
+         anzeige: durch gehen json, wie schon in get All
+         editierbar und löschbar machen
+         
+         */
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,7 +129,7 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
     }
     
-    func getMyBookmaks() {
+    func getMyBookmaks(type: String) {
         
         let userToken = Utils.getUserToken()
         
@@ -127,19 +149,31 @@ class ViewController: UIViewController, UISearchResultsUpdating {
                     } else {
                         self.myBookmarks = response.result.value! as! [Int32]
                     }
-                    self.fetchAds()
+                    self.fetchAds(type: type)
             }
         } else {
             self.myBookmarks.removeAll()
-            self.fetchAds()
+            self.fetchAds(type: type)
         }
     }
     
-    func fetchAds() {
+    func fetchAds(type: String) {
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")
+        //TODO das ist mist, alamofire in extra func rufen?? wahrscheinlich...
+        var url: URL
         
-        URLSession.shared.dataTask(with: url!) { data, response, error in
+        if type == "all" {
+            //all articles
+            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")!
+            
+        } else {
+            //my articles
+            let userToken = Utils.getUserToken()
+            let urlString = Urls.getMyArticles + "?token=\(userToken)&page=0&size=30"
+            url = URL(string: urlString)!
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
             
             guard error == nil else {
                 print(error!)
