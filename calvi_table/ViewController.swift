@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Firebase
 
-class ViewController: UIViewController, UISearchResultsUpdating {
+class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,6 +20,8 @@ class ViewController: UIViewController, UISearchResultsUpdating {
     
     var searchController: UISearchController!
     var resultController = UITableViewController()
+    
+    var searchString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +62,25 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         navigationController?.navigationBar.isTranslucent = true
         
-        //connect serachBar
+        //connect searchBar
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
+        self.searchController.searchBar.delegate = self
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+     
+        //searchText = searchController.searchBar.text!
+        //perform(#selector(test), with: nil, afterDelay: 2)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchString = searchBar.text!
+        self.searchController.dismiss(animated: true, completion: nil)
+        ads.removeAll()
+        self.getMyBookmaks(type: "search")
     }
     
     func checkLoginStatus() {
@@ -107,29 +124,24 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         
         ads.removeAll()
         getMyBookmaks(type: "my")
-        /*lade nur eigene
-        
-         url dazu:  
-         @GET("articles/my")
-         Observable<AdsAsPage> getAdsMy(@Query("page") int page, @Query("size") int size, @Query("token") String token);
-         
-         
-         anzeige: durch gehen json, wie schon in get All
-         editierbar und löschbar machen
-         
-         */
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
     func getMyBookmaks(type: String) {
+        
+        if !Utils.isInternetAvailable() {
+            
+            let alert = UIAlertController(title: "No Internet Connection", message: "make sure your device is connected to the internet", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+            tableView.backgroundColor = UIColor.white
+            
+            return
+        }
         
         let userToken = Utils.getUserToken()
         
@@ -165,6 +177,11 @@ class ViewController: UIViewController, UISearchResultsUpdating {
         if type == "all" {
             //all articles
             url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")!
+            
+        } else if type == "search" {
+            //search for article
+            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")!
+            print("http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")
             
         } else {
             //my articles
@@ -353,7 +370,7 @@ extension ViewController: UITableViewDelegate {
         
         let screenSize:CGRect = UIScreen.main.bounds
         let screenHeight = screenSize.height
-        return screenHeight * 0.8
+        return screenHeight * 0.85
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
