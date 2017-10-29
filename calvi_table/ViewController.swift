@@ -23,6 +23,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var searchString: String?
     
+    /*override func viewDidAppear(_ animated: Bool) {
+        navigationController?.hidesBarsOnSwipe = true
+    }*/
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -116,6 +120,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     func refreshArticles() {
         
+        //todo searchbar auch an anderen stellen "" setzen!!
+        self.searchController.searchBar.text = ""
         ads.removeAll()
         getMyBookmaks(type: "all")
     }
@@ -203,6 +209,18 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             }
             
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
+            
+            //todo auslagern hier
+            let total =  json["total"] as! Int
+            if total == 0 && type == "search" {
+                
+                let alert = UIAlertController(title: "Suche erfolglos!", message: "Dies Suche hat leider kein Ergebnis gebracht :-(", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                self.tableView.backgroundColor = UIColor.white
+            }
+
             
             for dictionary in json["ads"] as! [[String: Any]] {
                 
