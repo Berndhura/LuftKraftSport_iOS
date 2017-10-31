@@ -415,22 +415,22 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqs-LX-frS" userLabel="buttonView">
                                                     <rect key="frame" x="8" y="284.5" width="363" height="50"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSH-0c-dEr" userLabel="edit">
-                                                            <rect key="frame" x="0.0" y="0.5" width="50" height="50"/>
-                                                            <state key="normal" image="new-file"/>
-                                                            <connections>
-                                                                <action selector="editArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="ukN-Je-mub"/>
-                                                            </connections>
-                                                        </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29h-DX-NKo" userLabel="delete">
-                                                            <rect key="frame" x="116" y="0.5" width="50" height="50"/>
+                                                            <rect key="frame" x="305" y="0.0" width="50" height="50"/>
                                                             <state key="normal" image="round-delete-button"/>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juY-iZ-GIN">
-                                                            <rect key="frame" x="58" y="0.5" width="50" height="50"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="juY-iZ-GIN" userLabel="bookmark">
+                                                            <rect key="frame" x="8" y="0.0" width="50" height="50"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <connections>
                                                                 <action selector="addBookmark:" destination="fbH-nU-18z" eventType="touchUpInside" id="abs-NF-pfQ"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSH-0c-dEr" userLabel="edit">
+                                                            <rect key="frame" x="74" y="0.0" width="50" height="50"/>
+                                                            <state key="normal" image="new-file"/>
+                                                            <connections>
+                                                                <action selector="editArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="ukN-Je-mub"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -438,15 +438,15 @@
                                                     <constraints>
                                                         <constraint firstItem="juY-iZ-GIN" firstAttribute="height" secondItem="PSH-0c-dEr" secondAttribute="height" id="2Mz-Wp-8qe"/>
                                                         <constraint firstAttribute="height" constant="50" id="9O5-oK-QP0"/>
-                                                        <constraint firstItem="PSH-0c-dEr" firstAttribute="leading" secondItem="Hqs-LX-frS" secondAttribute="leading" id="DQI-LQ-nU6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="29h-DX-NKo" secondAttribute="trailing" constant="8" id="Int-i8-Ybc"/>
                                                         <constraint firstItem="juY-iZ-GIN" firstAttribute="width" secondItem="PSH-0c-dEr" secondAttribute="width" id="W2k-aO-egf"/>
                                                         <constraint firstItem="29h-DX-NKo" firstAttribute="height" secondItem="juY-iZ-GIN" secondAttribute="height" id="cUO-2Z-YBf"/>
-                                                        <constraint firstItem="29h-DX-NKo" firstAttribute="leading" secondItem="juY-iZ-GIN" secondAttribute="trailing" constant="8" id="iB3-oD-qDq"/>
+                                                        <constraint firstItem="juY-iZ-GIN" firstAttribute="leading" secondItem="Hqs-LX-frS" secondAttribute="leading" constant="8" id="jgw-au-z6M"/>
                                                         <constraint firstItem="PSH-0c-dEr" firstAttribute="width" secondItem="Hqs-LX-frS" secondAttribute="height" id="kRR-df-uX6"/>
                                                         <constraint firstItem="29h-DX-NKo" firstAttribute="top" secondItem="Hqs-LX-frS" secondAttribute="top" id="oJR-t6-V03"/>
                                                         <constraint firstItem="PSH-0c-dEr" firstAttribute="height" secondItem="Hqs-LX-frS" secondAttribute="height" id="rEi-bb-pLV"/>
                                                         <constraint firstItem="juY-iZ-GIN" firstAttribute="top" secondItem="Hqs-LX-frS" secondAttribute="top" id="tbR-Hx-rpm"/>
-                                                        <constraint firstItem="juY-iZ-GIN" firstAttribute="leading" secondItem="PSH-0c-dEr" secondAttribute="trailing" constant="8" id="ttA-gN-N0C"/>
+                                                        <constraint firstItem="PSH-0c-dEr" firstAttribute="leading" secondItem="juY-iZ-GIN" secondAttribute="trailing" constant="16" id="wRI-wX-Mcs"/>
                                                         <constraint firstItem="29h-DX-NKo" firstAttribute="width" secondItem="juY-iZ-GIN" secondAttribute="width" id="zn6-g5-jzu"/>
                                                         <constraint firstItem="PSH-0c-dEr" firstAttribute="top" secondItem="Hqs-LX-frS" secondAttribute="top" id="zrm-f6-Upk"/>
                                                     </constraints>
