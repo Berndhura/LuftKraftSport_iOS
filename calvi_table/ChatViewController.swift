@@ -27,6 +27,8 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        super.viewDidAppear(true)
+        
         title = partnerName!
         
         fetchChat()
@@ -63,8 +65,13 @@ class ChatViewController: JSQMessagesViewController {
         //itemRef.setValue(messageItem) // 3
         
         let message = text!
+        print("message: " + message)
         
         let userToken = Utils.getUserToken()
+        
+        print("userToken: " + userToken)
+        print(articleId)
+        print(sender)
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(sender)&message=\(message)")
         

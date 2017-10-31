@@ -47,13 +47,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //tabBarController?.toolbarItems.
         
         //refresh button in tabbar
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(refreshArticles))
+        let refreshButton = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(refreshArticles))
         
         //login button in tabbar
         let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(ViewController.openLoginPage))
         
         //home button
-        let homeButton = UIBarButtonItem(image: UIImage(named: "ic_home_white_36pt"), style: .plain, target: self, action: #selector(showMyArticle))
+        let homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(showMyArticle))
         
         if isLoggedIn() {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton, homeButton], animated: true)

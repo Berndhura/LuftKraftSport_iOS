@@ -53,9 +53,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //todo voll wichtig diese zeile!! sonst kommen keine nahcrichten
         
-        Messaging.messaging().shouldEstablishDirectChannel = true
+        //Messaging.messaging().shouldEstablishDirectChannel = true
         
         // [END register_for_notifications]
+        
+        if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil {
+            
+            
+            // Do what you want to happen when a remote notification is tapped.
+            print("open dat---------------------------------------------")
+            
+            
+        }
     
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
