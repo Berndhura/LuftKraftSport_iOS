@@ -36,6 +36,11 @@ class MessagesController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tabBarController?.title = "WTF soll ich das machen"
+    }
+
+    
     func isLoggedIn() -> Bool {
         
         if Utils.getUserToken() == "" {

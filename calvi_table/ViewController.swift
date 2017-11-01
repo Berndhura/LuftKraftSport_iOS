@@ -23,9 +23,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var searchString: String?
     
-    /*override func viewDidAppear(_ animated: Bool) {
-        navigationController?.hidesBarsOnSwipe = true
-    }*/
+    override func viewDidAppear(_ animated: Bool) {
+        adaptTitle(adsCount: ads.count)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +69,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //connect searchBar
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchBar.placeholder = "Suche dein Material..."
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
     }
@@ -245,12 +246,17 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 
                 self.ads.append(ad)
             }
-            
+
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
+                self.adaptTitle(adsCount: self.ads.count)
             })
             
             }.resume()
+    }
+    
+    func adaptTitle(adsCount: Int) {
+        self.tabBarController?.title = "Anzeigen: " + String(self.ads.count)
     }
     
     func getPictureUrl(str: String) -> String {

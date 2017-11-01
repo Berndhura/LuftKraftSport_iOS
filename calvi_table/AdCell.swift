@@ -11,6 +11,8 @@ import Alamofire
 
 class AdCell: UITableViewCell {
     
+    @IBOutlet weak var profileImage: UIImageView!
+    
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var deleteButton: UIButton!
