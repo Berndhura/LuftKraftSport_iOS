@@ -13,9 +13,7 @@ class AdCell: UITableViewCell {
     
     @IBOutlet weak var editButton: UIButton!
     
-    @IBAction func editArticle(_ sender: Any) {
-        
-    }
+    @IBOutlet weak var deleteButton: UIButton!
     
     @IBOutlet weak var bild: UIImageView!
     
@@ -61,6 +59,53 @@ class AdCell: UITableViewCell {
             myBookmarks.append(articleId)
         }
     }
+    
+    @IBAction func deleteArticle(_ sender: Any) {
+        
+        let userToken = Utils.getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)?token=\(userToken)")
+        
+        let refreshAlert = UIAlertController(title: "Artikel wird gelöscht!", message: "Nix mehr mit verkaufen.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Löschen", style: .default, handler: { (action: UIAlertAction!) in
+            Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    debugPrint(response)
+                    //return to main list
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = tabBarController
+            }
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
+            return
+        }))
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(refreshAlert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func editArticle(_ sender: Any) {
+        
+        //open edit article wit articleId
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
+        vc.articleId = articleId
+        //vc.titleFromAd = self.articleTitle!
+        //vc.descFromAd = self.desc!
+        //vc.date = self.date
+        //vc.lat = self.lat!
+        //vc.lng = self.lng!
+        //vc.priceFromAd = self.price!
+        //vc.locationFromAd = self.location!
+        vc.isEditMode = true
+        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+
+    }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

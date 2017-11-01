@@ -364,8 +364,10 @@ extension ViewController: UITableViewDataSource {
         //is my article
         if (currentAd.userId == Utils.getUserId()) {
             cell?.editButton.isHidden = false
+            cell?.deleteButton.isHidden = false
         } else {
             cell?.editButton.isHidden = true
+            cell?.deleteButton.isHidden = true
         }
 
         return cell!
