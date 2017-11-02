@@ -42,8 +42,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         tabBarController?.title = "Luftkraftsport"
+        
         //tabBarController?.toolbarItems.
         
         //refresh button in tabbar
