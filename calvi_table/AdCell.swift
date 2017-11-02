@@ -13,6 +13,8 @@ class AdCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var profileName: UILabel!
+    
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var deleteButton: UIButton!
@@ -123,9 +125,18 @@ class AdCell: UITableViewCell {
     
         let userToken = Utils.getUserToken()
         
+        self.profileImage.image = nil
+        
         if userToken != "" {
+        
+            let urlString = Urls.sellerDetails + "\(userId)?token=\(userToken)"
             
             let url = URL(string: Urls.sellerDetails + "\(userId)?token=\(userToken)")
+            
+            if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
+                self.profileImage.image = imageFromCache
+                
+            } else {
             
             Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
@@ -133,13 +144,21 @@ class AdCell: UITableViewCell {
                     if let result = response.result.value {
                         let jsonResult = result as! NSDictionary
                         print(jsonResult)
-                        if let pictureUrl = jsonResult.value(forKey: "profilePictureUrl") as? String{
+                        
+                        //profile picture
+                        if let pictureUrl = jsonResult.value(forKey: "profilePictureUrl") as? String {
                             self.profileImage.sd_setImage(with: URL(string: pictureUrl))
                         } else {
-                            return
+                            //no profile picture
+                        }
+                        
+                        //profile name
+                        if let name = jsonResult.value(forKey: "name") as? String {
+                            self.profileName.text! = name
                         }
                     }
                 }
+            }
             
         } else {
                 

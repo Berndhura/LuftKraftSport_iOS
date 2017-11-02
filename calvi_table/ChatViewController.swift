@@ -68,17 +68,21 @@ class ChatViewController: JSQMessagesViewController {
         print("message: " + message)
         
         let userToken = Utils.getUserToken()
+        let adId = articleId
+        let sender = self.sender
         
         print("userToken: " + userToken)
         print(articleId)
         print(sender)
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(sender)&message=\(message)")
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(adId)&idTo=\(sender)&message=\(message)")
+        
+        print(url!)
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
-                self.addMessage(withId: senderId, name: "Me", text: text!)
+                //self.addMessage(withId: senderId, name: "Me", text: text!)
         }
         
         

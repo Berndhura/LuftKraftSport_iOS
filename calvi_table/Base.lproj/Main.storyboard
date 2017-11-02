@@ -461,19 +461,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJq-Na-9OF" userLabel="location">
-                                                    <rect key="frame" x="60" y="11" width="62.5" height="44"/>
+                                                    <rect key="frame" x="60" y="11" width="299" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xY-rX-2Q0" userLabel="user_name">
+                                                    <rect key="frame" x="60" y="36.5" width="299" height="18.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="OGD-Gd-Ehb" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="1sH-lE-Soa"/>
+                                                <constraint firstItem="2xY-rX-2Q0" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="5" id="4eG-3F-QZD"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="7jt-bO-F53"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="8aj-rW-HOD"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="OGD-Gd-Ehb" secondAttribute="bottom" constant="5" id="DQD-50-Jg5"/>
-                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="3" id="E01-eK-NFV"/>
-                                                <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="EFi-tF-fvQ"/>
+                                                <constraint firstItem="2xY-rX-2Q0" firstAttribute="leading" secondItem="OGD-Gd-Ehb" secondAttribute="trailing" constant="8" id="L6R-JD-Myg"/>
+                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="2xY-rX-2Q0" secondAttribute="bottom" constant="3" id="N7u-ti-AbZ"/>
                                                 <constraint firstItem="Hqs-LX-frS" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="OGe-1f-tsZ"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="top" secondItem="Hqs-LX-frS" secondAttribute="bottom" constant="8" id="QFi-lu-Gdf"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="UmJ-55-Bss"/>
@@ -485,8 +492,9 @@
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="leading" secondItem="OGD-Gd-Ehb" secondAttribute="trailing" constant="8" id="edn-cK-wqa"/>
                                                 <constraint firstItem="SSn-2C-ab2" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="kfI-hI-xw2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zn6-gS-HTW" secondAttribute="trailing" id="lSw-8C-iqt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2xY-rX-2Q0" secondAttribute="trailing" constant="8" id="qJB-0a-Iii"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="UJq-Na-9OF" secondAttribute="trailing" constant="8" id="rIn-Rl-vK7"/>
                                                 <constraint firstItem="R2l-oE-iwT" firstAttribute="top" secondItem="rW5-ia-zSd" secondAttribute="bottom" constant="8" id="ruP-Oo-k42"/>
-                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="3" id="uW7-p4-h2w"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="50" id="wys-ms-RfW"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -502,6 +510,7 @@
                                             <outlet property="location" destination="UJq-Na-9OF" id="Naj-ea-cRh"/>
                                             <outlet property="price" destination="SSn-2C-ab2" id="C5r-n0-NLR"/>
                                             <outlet property="profileImage" destination="OGD-Gd-Ehb" id="tdz-lu-0eD"/>
+                                            <outlet property="profileName" destination="2xY-rX-2Q0" id="RId-BX-eBO"/>
                                             <outlet property="title" destination="rW5-ia-zSd" id="z1x-sb-4SM"/>
                                             <segue destination="W1h-Wv-7it" kind="show" identifier="showDetailView" id="N4T-zU-gsS"/>
                                         </connections>
