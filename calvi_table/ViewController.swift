@@ -213,6 +213,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
             
+            //print(json)
             //todo auslagern hier
             let total =  json["total"] as! Int
             if total == 0 && type == "search" {
@@ -316,6 +317,9 @@ extension ViewController: UITableViewDataSource {
         
         //articleId
         cell?.articleId = currentAd.articleId
+        
+        //sellerUserId
+        cell?.userId = currentAd.userId
         
         //title
         cell?.title?.text = currentAd.title

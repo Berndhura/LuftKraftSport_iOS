@@ -31,6 +31,12 @@ class AdCell: UITableViewCell {
     
     public var articleId: Int32 = 0
     
+    public var userId: String?  {
+        didSet {
+            loadProfileImage(userId: userId!)
+        }
+    }
+    
     public var myBookmarks: [Int32] = []
     
     @IBAction func addBookmark(_ sender: Any) {
@@ -111,7 +117,34 @@ class AdCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func loadProfileImage(userId: String) {
+    
+        let userToken = Utils.getUserToken()
         
+        if userToken != "" {
+            
+            let url = URL(string: Urls.sellerDetails + "\(userId)?token=\(userToken)")
+            
+            Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    
+                    if let result = response.result.value {
+                        let jsonResult = result as! NSDictionary
+                        print(jsonResult)
+                        if let pictureUrl = jsonResult.value(forKey: "profilePictureUrl") as? String{
+                            self.profileImage.sd_setImage(with: URL(string: pictureUrl))
+                        } else {
+                            return
+                        }
+                    }
+                }
+            
+        } else {
+                
+            //TODO: nicht angelmedet, was nun ? API ändern hier! userToken falsch hier
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
