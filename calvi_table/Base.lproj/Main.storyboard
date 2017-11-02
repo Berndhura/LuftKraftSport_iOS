@@ -397,9 +397,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="OGD-Gd-Ehb" userLabel="profile_image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="49" height="50"/>
+                                                    <rect key="frame" x="8" y="8" width="44" height="45"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="49" id="gqL-0a-g33"/>
+                                                        <constraint firstAttribute="width" constant="44" id="gqL-0a-g33"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-oE-iwT" userLabel="date">
@@ -461,7 +461,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJq-Na-9OF" userLabel="location">
-                                                    <rect key="frame" x="65" y="11" width="62.5" height="44"/>
+                                                    <rect key="frame" x="60" y="11" width="62.5" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -471,7 +471,7 @@
                                                 <constraint firstItem="OGD-Gd-Ehb" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="1sH-lE-Soa"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="7jt-bO-F53"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="8aj-rW-HOD"/>
-                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="OGD-Gd-Ehb" secondAttribute="bottom" id="DQD-50-Jg5"/>
+                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="OGD-Gd-Ehb" secondAttribute="bottom" constant="5" id="DQD-50-Jg5"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="3" id="E01-eK-NFV"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="EFi-tF-fvQ"/>
                                                 <constraint firstItem="Hqs-LX-frS" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leadingMargin" id="OGe-1f-tsZ"/>

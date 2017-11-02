@@ -162,8 +162,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 .responseJSON { response in
                     
                     self.myBookmarks.removeAll()
-                    print("-------------------------")
-                    print(String(describing: response.result.value))
                     let res = String(describing: response.result.value)
                     if res.contains("Unauthorized") {
                         //nix
