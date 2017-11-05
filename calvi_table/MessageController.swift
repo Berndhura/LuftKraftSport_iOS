@@ -92,7 +92,7 @@ class MessagesController: UIViewController {
                     let message = dictionary["message"] as? String
                     let name = dictionary["name"] as? String
                     let urlList = dictionary["url"] as? String
-                    let url = self.getPictureUrl(str: urlList!)
+                    let url = Utils.getPictureUrl(str: urlList!)
                     let idFrom = dictionary["idFrom"] as? String
                     let idTo = dictionary["idTo"] as? String
                     let date = dictionary["date"] as? Double
@@ -115,15 +115,6 @@ class MessagesController: UIViewController {
             })
             
             }.resume()
-    }
-    
-    func getPictureUrl(str: String) -> String {
-        let ind = str.characters.split{$0 == ","}.map(String.init)
-        if ind.count > 0 {
-            return ind[0]
-        } else {
-            return "1"
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -10,8 +10,9 @@ import UIKit
 import Alamofire
 import CoreLocation
 import AddressBookUI
+import SDWebImage
 
-class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
     public var articleId: Int32 = 0
     public var isEditMode: Bool = false
@@ -51,6 +52,19 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        decriptionText.delegate = self
+        titleText.delegate = self
+        price.delegate = self
+        location.delegate = self
+        
+        titleText.returnKeyType = UIReturnKeyType.next
+        decriptionText.returnKeyType = UIReturnKeyType.next
+        price.returnKeyType = UIReturnKeyType.next
+        location.returnKeyType = UIReturnKeyType.send
+        
+        
+        //self.decriptionText.returnKeyType = UIReturnKeyType.done
+        
         if isEditMode {
             
             saveArticleButton.setTitle("Änderung speichern", for: .normal)
@@ -70,7 +84,41 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             prepareForms()
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField === titleText) {
+            decriptionText.becomeFirstResponder()
+        } else if (textField === decriptionText) {
+            price.resignFirstResponder()
+        } else if (textField === price) {
+            location.becomeFirstResponder()
+        }
+        
+        if (textField.returnKeyType == UIReturnKeyType.send) {
+            // tab forward logic here
+            print("senden")
+        }
+        /*- jo das passt ausser next in beschreibung weil kein kein textfiled sondern textview!!
+        - scollbar machen sonst ist bei eingabe das textfeld nict zu sehen
+        - 3 bilder auswählbar mach_vm_read_entry
+        - bearbeiten der anzeige, nicht neu abspeichern
+        - alles allignen abstand bilder von top
+        - schriftgrösse?
+        standort eingabe richtig so? was wenn quatscheingegeben?
+        - */
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if text == "\n" {
+            price.resignFirstResponder()
+            print("maul2")
+        }
+        return true;
+    }
 
+    
     func editArticle() {
         
         self.titleText.text = titleFromAd
@@ -79,12 +127,69 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //location
         
-        // pic?
+        //images
+        print(pictureUrl)
+        //self.image.sd_setImage(with: URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(pictureUrl)"))
+        
+        let firstId = Utils.getPictureUrl(str: pictureUrl)
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(firstId)")
+        
+        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            
+            guard error == nil else {
+                print(error!)
+                return
+            }
+            
+            DispatchQueue.main.async(execute: {
+                //let imageToCache = UIImage(data:data!)
+                //if imageToCache != nil {
+                //    imageCache.setObject(imageToCache!, forKey: urlString as NSString)
+                self.image.image = UIImage(data: data!)
+            })
+            }.resume()
+
     }
     
     func updateArticle() {
+     
+     
+        let userToken = Utils.getUserToken()
         
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
         
+
+        let price = "69"
+        
+        var params = [
+            "price": String(price)! as Any,
+            "title": titleText.text! as Any,
+            "description": decriptionText.text,
+            "date": "12312323",
+            "articleId": articleId
+            ] as [String : Any]
+        
+        params["location"] = [
+            "type": "Point",
+            "coordinates": [47.0, 13.5]]
+        
+        print(params)
+        
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                debugPrint(response)
+                
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = tabBarController
+        }
+        
+       /* update, der bestehenden ad,
+        dazu bilder  updaten
+        flag welches bild angefasst wurdd
+        */
     }
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {

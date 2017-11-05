@@ -331,6 +331,9 @@ extension ViewController: UITableViewDataSource {
         //price
         cell?.price?.text = String(currentAd.price) + " €"
         
+        //pictureURLs
+        cell?.pictureURL = currentAd.urls
+        
         //bookmark
         if myBookmarks.contains(currentAd.articleId) {
             cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)

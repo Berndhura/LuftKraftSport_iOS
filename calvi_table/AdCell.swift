@@ -33,6 +33,8 @@ class AdCell: UITableViewCell {
     
     public var articleId: Int32 = 0
     
+    public var pictureURL: String = ""
+    
     public var userId: String?  {
         didSet {
             loadProfileImage(userId: userId!)
@@ -104,7 +106,8 @@ class AdCell: UITableViewCell {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
         vc.articleId = articleId
-        //vc.titleFromAd = self.articleTitle!
+        vc.pictureUrl = pictureURL
+        vc.titleFromAd = self.title.text!
         //vc.descFromAd = self.desc!
         //vc.date = self.date
         //vc.lat = self.lat!
@@ -113,7 +116,7 @@ class AdCell: UITableViewCell {
         //vc.locationFromAd = self.location!
         vc.isEditMode = true
         UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
-
+       
     }
 
     

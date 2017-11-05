@@ -13,6 +13,15 @@ import SystemConfiguration
 
 class Utils {
     
+    static func getPictureUrl(str: String) -> String {
+        let ind = str.characters.split{$0 == ","}.map(String.init)
+        if ind.count > 0 {
+            return ind[0]
+        } else {
+            return "1"
+        }
+    }
+    
     static func getUserToken() -> String {
         
         let defaults:UserDefaults = UserDefaults.standard
