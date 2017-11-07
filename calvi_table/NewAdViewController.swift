@@ -30,6 +30,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var imageTwo: UIImageView!
     
+    @IBOutlet weak var imageThree: UIImageView!
+    
     @IBOutlet weak var titleText: UITextField!
     
     @IBOutlet weak var decriptionText: UITextView!
@@ -48,6 +50,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             getLatLng(address: location.text!)
         }
     }
+    
+    var currentImageView: UIImageView?
+    
+    //TODO scheiß weil was wenn mehrmals das selbe bild geändert wird?
+    var imageSize: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,22 +75,98 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isEditMode {
             
             saveArticleButton.setTitle("Änderung speichern", for: .normal)
+            addGestureOnImages()
             editArticle()
             
         } else {
         
-            let tapGestureImgOne = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-            
-            image.addGestureRecognizer(tapGestureImgOne)
-            //imageTwo.addGestureRecognizer(tapGestureImgTwo)
-            // make sure imageView can be interacted with by user
-            image.isUserInteractionEnabled = true
-            image.layer.setValue(1, forKey: "imageNumber")
-            imageTwo.isUserInteractionEnabled = true
-            
+            addGestureOnImages()
             prepareForms()
         }
     }
+    
+    func addGestureOnImages() {
+        
+        let tapGestureImgOne = UITapGestureRecognizer(target: self, action: #selector(imageTapped1))
+        let tapGestureImgTwo = UITapGestureRecognizer(target: self, action: #selector(imageTapped2))
+        let tapGestureImgThree = UITapGestureRecognizer(target: self, action: #selector(imageTapped3))
+         
+            
+        image.addGestureRecognizer(tapGestureImgOne)
+        image.isUserInteractionEnabled = true
+        image.layer.setValue(1, forKey: "imageNumber")
+
+        imageTwo.addGestureRecognizer(tapGestureImgTwo)
+        imageTwo.isUserInteractionEnabled = true
+        imageTwo.layer.setValue(2, forKey: "imageNumber")
+
+        imageThree.addGestureRecognizer(tapGestureImgThree)
+        imageThree.isUserInteractionEnabled = true
+        imageThree.layer.setValue(3, forKey: "imageNumber")
+
+    }
+    
+    func imageTapped1() {
+        
+        imageSize  += 1
+        
+        let picker = UIImagePickerController()
+        
+        self.currentImageView = image
+        
+        picker.delegate = self
+        
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    func imageTapped2() {
+        
+        imageSize  += 1
+        
+        let picker = UIImagePickerController()
+        
+        self.currentImageView = imageTwo
+
+        
+        picker.delegate = self
+        
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+
+    
+    func imageTapped3() {
+        
+        imageSize  += 1
+        
+        let picker = UIImagePickerController()
+        
+        self.currentImageView = imageThree
+
+        picker.delegate = self
+        
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            self.currentImageView?.image = chosenImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField === titleText) {
@@ -123,15 +206,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         self.titleText.text = titleFromAd
         self.decriptionText.text = descFromAd
-        //self.price.text = 23.0
-        
-        //location
+        self.price.text = String(describing: priceFromAd)
+    
         
         //images
-        print(pictureUrl)
+        //print(pictureUrl)
         //self.image.sd_setImage(with: URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(pictureUrl)"))
         
+        let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
+        
+        getThemAll(urlList: urlList)
+        
         let firstId = Utils.getPictureUrl(str: pictureUrl)
+        
+        //iteriere durch urllist ..... zeige images
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(firstId)")
         
@@ -152,6 +240,32 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     }
     
+    func getThemAll(urlList: [String]) {
+        
+        var imageArry = [UIImage]()
+        
+        for i in 0..<urlList.count {
+            
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async(execute: {
+
+                    imageArry.append(UIImage(data: data!)!)
+                })
+            }.resume()
+        }
+        print("sd") //nix drinne weil asyncron :-(
+    }
+
+    
+    
     func updateArticle() {
      
      
@@ -159,22 +273,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
         
-
-        let price = "69"
-        
         var params = [
-            "price": String(price)! as Any,
+            "id": articleId,
+            "price": price.text! as Any,
             "title": titleText.text! as Any,
-            "description": decriptionText.text,
-            "date": "12312323",
-            "articleId": articleId
+            "description": decriptionText.text! as Any
             ] as [String : Any]
         
         params["location"] = [
             "type": "Point",
             "coordinates": [47.0, 13.5]]
         
-        print(params)
         
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -221,13 +330,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func uploadImagesForNewAd(response: DataResponse<Any>) {
+        
+        imageSize  = 0
      
-        print(response)
+        //print(response)
         
         //get new ID from response
         var dict: NSDictionary!
         dict = response.result.value as! NSDictionary
         let articleId = dict["id"]!
+        
+        print("neue articleID: " + String(describing: articleId))
         
         let userToken = Utils.getUserToken()
         
@@ -306,31 +419,5 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
  
         self.titleText.placeholder = "Was verkaufst du..."
         //self.decriptionText.placeholder = "maul"
-    }
-    
-    func imageTapped() {
-
-        let picker = UIImagePickerController()
-        
-        picker.delegate = self
-        
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        self.present(picker, animated: true, completion: nil)
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-        image.image = chosenImage
-            
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
     }
 }

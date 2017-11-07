@@ -35,6 +35,8 @@ class AdCell: UITableViewCell {
     
     public var pictureURL: String = ""
     
+    public var desc: String = ""
+    
     public var userId: String?  {
         didSet {
             loadProfileImage(userId: userId!)
@@ -108,11 +110,11 @@ class AdCell: UITableViewCell {
         vc.articleId = articleId
         vc.pictureUrl = pictureURL
         vc.titleFromAd = self.title.text!
-        //vc.descFromAd = self.desc!
+        vc.descFromAd = self.desc
         //vc.date = self.date
         //vc.lat = self.lat!
         //vc.lng = self.lng!
-        //vc.priceFromAd = self.price!
+        //vc.priceFromAd = self.price.text!
         //vc.locationFromAd = self.location!
         vc.isEditMode = true
         UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
@@ -146,7 +148,7 @@ class AdCell: UITableViewCell {
                     
                     if let result = response.result.value {
                         let jsonResult = result as! NSDictionary
-                        print(jsonResult)
+                        //print(jsonResult)
                         
                         //profile picture
                         if let pictureUrl = jsonResult.value(forKey: "profilePictureUrl") as? String {

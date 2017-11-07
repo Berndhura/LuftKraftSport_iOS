@@ -24,8 +24,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     var lat: Double?
     var lng: Double?
     
+    var imageArry = [UIImage]()
+    
     @IBOutlet weak var anzeigeTitel: UILabel!
-    @IBOutlet weak var mainPicture: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var beschreibung: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -129,7 +131,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             self.locationLabel.text = location
         }
         
-        if pictureUrl != nil {
+       /* if pictureUrl != nil {
             
             let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(pictureUrl ?? "3797")")
             
@@ -145,8 +147,49 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                     self.mainPicture.image = image
                 })
                 }.resume()
-            //self.mainPicture.sd_setHighlightedImage(with: url)
+            }
+            */
+        
+        getThemAll(urlList: Utils.getAllPictureUrls(str: pictureUrl!))
 
+        
+    }
+    
+    func getThemAll(urlList: [String]) {
+        
+        for i in 0..<urlList.count {
+            
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
+            
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                
+                guard error == nil else {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async(execute: {
+                    self.imageArry.append(UIImage(data: data!)!)
+                    if (i == urlList.count-1) {
+                        self.showPictures()
+                    }
+                })
+            }.resume()
+        }
+    }
+
+    func showPictures() {
+        
+        for i in 0..<imageArry.count {
+            let imageView = UIImageView()
+            imageView.image = imageArry[i]
+            imageView.contentMode = .scaleAspectFit
+            let xPosition = self.view.frame.width * CGFloat(i)
+            imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.width)
+            
+            scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
+            scrollView.addSubview(imageView)
+            
         }
     }
     
@@ -182,6 +225,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         vc.lng = self.lng!
         vc.priceFromAd = self.price!
         vc.locationFromAd = self.location!
+        vc.pictureUrl = self.pictureUrl!
         vc.isEditMode = true
         self.navigationController?.present(vc, animated: true, completion: nil)
     }

@@ -280,7 +280,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 if indexPath != nil {
                     let ad: Ad = ads[indexPath!.row]
                     detailViewController.articleTitle = ad.title
-                    detailViewController.pictureUrl = getPictureUrl(str: ad.urls)
+                    detailViewController.pictureUrl = ad.urls//getPictureUrl(str: ad.urls)
                     detailViewController.desc = ad.desc
                     detailViewController.price = ad.price
                     detailViewController.location = ad.location
@@ -315,6 +315,9 @@ extension ViewController: UITableViewDataSource {
         
         //articleId
         cell?.articleId = currentAd.articleId
+        
+        //description
+        cell?.desc = currentAd.desc
         
         //sellerUserId
         cell?.userId = currentAd.userId

@@ -365,6 +365,7 @@
                     <connections>
                         <outlet property="decriptionText" destination="fML-4B-sjO" id="jSW-tu-hHg"/>
                         <outlet property="image" destination="FGz-Pr-ufD" id="HI9-Ey-Kbc"/>
+                        <outlet property="imageThree" destination="s5i-a7-dUN" id="GKh-0a-k2h"/>
                         <outlet property="imageTwo" destination="hqS-dj-L3s" id="6MJ-dH-KGC"/>
                         <outlet property="location" destination="ZAT-1p-12S" id="1gM-bx-2yX"/>
                         <outlet property="price" destination="rhr-PG-IKu" id="5U9-6K-Akb"/>
@@ -568,9 +569,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNN-Tj-yHK">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YFd-ve-FSf">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V50-mk-tH8">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                                            </imageView>
+                                            </scrollView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-Ki-74n" userLabel="title">
                                                 <rect key="frame" x="10" y="340" width="300" height="21"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -632,13 +633,14 @@
                                             <constraint firstAttribute="trailing" secondItem="2GU-Ki-74n" secondAttribute="trailing" constant="10" id="0dC-Qk-lfe"/>
                                             <constraint firstItem="ktI-Mm-4Go" firstAttribute="top" secondItem="qWQ-ZQ-C3J" secondAttribute="bottom" constant="20" id="483-CX-vsY"/>
                                             <constraint firstItem="qWQ-ZQ-C3J" firstAttribute="top" secondItem="ljI-yD-hkd" secondAttribute="bottom" constant="20" id="4Ca-iG-Odn"/>
-                                            <constraint firstItem="YFd-ve-FSf" firstAttribute="height" secondItem="dNN-Tj-yHK" secondAttribute="width" id="4tP-g7-h2w"/>
+                                            <constraint firstItem="V50-mk-tH8" firstAttribute="width" secondItem="dNN-Tj-yHK" secondAttribute="width" id="4Or-Kl-IUM"/>
                                             <constraint firstAttribute="trailing" secondItem="ktI-Mm-4Go" secondAttribute="trailing" id="6Nq-zK-RlM"/>
                                             <constraint firstItem="ljI-yD-hkd" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="CMd-di-sc3"/>
-                                            <constraint firstAttribute="trailing" secondItem="YFd-ve-FSf" secondAttribute="trailing" id="FI4-oo-t5t"/>
                                             <constraint firstAttribute="trailing" secondItem="htV-bn-u1Y" secondAttribute="trailing" constant="10" id="Gh5-pu-2Qx"/>
                                             <constraint firstItem="nxA-Z0-M4e" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" id="GkM-rL-W3i"/>
                                             <constraint firstItem="nxA-Z0-M4e" firstAttribute="width" secondItem="dNN-Tj-yHK" secondAttribute="width" multiplier="0.495" id="Hnk-m9-QZi"/>
+                                            <constraint firstItem="V50-mk-tH8" firstAttribute="height" secondItem="dNN-Tj-yHK" secondAttribute="width" id="IRg-zr-uXB"/>
+                                            <constraint firstItem="2GU-Ki-74n" firstAttribute="top" secondItem="V50-mk-tH8" secondAttribute="bottom" constant="20" id="InT-QJ-Rxo"/>
                                             <constraint firstItem="OTS-4G-tfW" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="K9H-Wi-M8v"/>
                                             <constraint firstAttribute="trailing" secondItem="ljI-yD-hkd" secondAttribute="trailing" constant="10" id="QWb-JC-f3I"/>
                                             <constraint firstItem="htV-bn-u1Y" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="RnC-xg-SdO"/>
@@ -650,11 +652,10 @@
                                             <constraint firstItem="htV-bn-u1Y" firstAttribute="top" secondItem="2GU-Ki-74n" secondAttribute="bottom" constant="20" id="cq6-tC-Ykm"/>
                                             <constraint firstAttribute="bottom" secondItem="nxA-Z0-M4e" secondAttribute="bottom" id="cqN-FC-uSb"/>
                                             <constraint firstItem="ljI-yD-hkd" firstAttribute="top" secondItem="OTS-4G-tfW" secondAttribute="bottom" constant="20" id="ctQ-HZ-0Qx"/>
-                                            <constraint firstItem="2GU-Ki-74n" firstAttribute="top" secondItem="YFd-ve-FSf" secondAttribute="bottom" constant="20" id="mew-yx-K00"/>
-                                            <constraint firstItem="YFd-ve-FSf" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" id="omM-eT-a3S"/>
+                                            <constraint firstItem="V50-mk-tH8" firstAttribute="top" secondItem="dNN-Tj-yHK" secondAttribute="top" id="fIL-lq-SWB"/>
                                             <constraint firstAttribute="bottom" secondItem="PJk-pO-8lR" secondAttribute="bottom" id="pEq-2I-lEv"/>
                                             <constraint firstAttribute="height" constant="1200" id="pVD-gH-end"/>
-                                            <constraint firstItem="YFd-ve-FSf" firstAttribute="top" secondItem="dNN-Tj-yHK" secondAttribute="top" id="qsR-tU-SYk"/>
+                                            <constraint firstItem="V50-mk-tH8" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" id="rR5-vq-fTo"/>
                                             <constraint firstItem="qWQ-ZQ-C3J" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="snO-P6-cMs"/>
                                             <constraint firstAttribute="trailing" secondItem="qWQ-ZQ-C3J" secondAttribute="trailing" constant="10" id="sq2-tG-8Qs"/>
                                             <constraint firstItem="PJk-pO-8lR" firstAttribute="width" secondItem="dNN-Tj-yHK" secondAttribute="width" multiplier="0.495" id="ucq-CV-biK"/>
@@ -699,10 +700,10 @@
                         <outlet property="bookmarkEditButton" destination="PJk-pO-8lR" id="Qxm-lv-S56"/>
                         <outlet property="dateLabel" destination="qWQ-ZQ-C3J" id="RiZ-jV-BIp"/>
                         <outlet property="locationLabel" destination="ljI-yD-hkd" id="iZ6-cr-yOF"/>
-                        <outlet property="mainPicture" destination="YFd-ve-FSf" id="gHI-0g-ybr"/>
                         <outlet property="mapView" destination="ktI-Mm-4Go" id="iei-WU-ASd"/>
                         <outlet property="messageButton" destination="nxA-Z0-M4e" id="apc-vN-BVm"/>
                         <outlet property="priceLabel" destination="OTS-4G-tfW" id="gvK-QZ-MbH"/>
+                        <outlet property="scrollView" destination="V50-mk-tH8" id="eag-aR-ByG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcP-CE-t3n" userLabel="First Responder" sceneMemberID="firstResponder"/>

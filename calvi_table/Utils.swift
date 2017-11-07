@@ -22,6 +22,15 @@ class Utils {
         }
     }
     
+    static func getAllPictureUrls(str: String) -> [String] {
+        var urlList: [String] = []
+        let ind = str.characters.split{$0 == ","}.map(String.init)
+        for i in ind {
+            urlList.append(i)
+        }
+        return urlList
+    }
+    
     static func getUserToken() -> String {
         
         let defaults:UserDefaults = UserDefaults.standard
