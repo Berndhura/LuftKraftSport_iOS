@@ -29,7 +29,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
    
     @IBOutlet weak var titleText: UITextField!
     
-    @IBOutlet weak var decriptionText: UITextView!
+    @IBOutlet weak var decriptionText: UITextViewFixed!
     
     @IBOutlet weak var price: UITextField!
    
@@ -40,8 +40,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBAction func saveNewAd(_ sender: Any) {
         
         if isEditMode {
+            saveArticleButton.isEnabled = false
             updateArticle()
         } else {
+            saveArticleButton.isEnabled = false
             getLatLng(address: location.text!)
         }
     }
@@ -53,9 +55,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var currentImageView: UIImageView?
     
     var currentImageNumber: Int = 0
-    
-    //TODO scheiß weil was wenn mehrmals das selbe bild geändert wird?
-    var imageSize: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -297,10 +296,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func uploadImagesForNewAd(response: DataResponse<Any>) {
         
-        imageSize  = 0
-     
-        //print(response)
-        
         //get new ID from response
         var dict: NSDictionary!
         dict = response.result.value as! NSDictionary
@@ -313,8 +308,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
         
         print(adImages.count)
+        
         var i = 0
-        //todo imgArray
+        
+        //TODO nicht alle werden hochgeladen leider
         for img in adImages {
         
             i += 1
@@ -326,7 +323,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             ]
             
             Alamofire.upload(multipartFormData: { (multipartFormData) in
-                multipartFormData.append(imageData, withName: "file", fileName: "swift_file\(i).jpeg", mimeType: "image/jpeg")
+                multipartFormData.append(imageData, withName: "file", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
                 for (key, value) in parameters {
                     multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                 }
@@ -382,6 +379,18 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func prepareForms() {
  
         self.titleText.placeholder = "Was verkaufst du..."
-        //self.decriptionText.placeholder = "maul"
+        self.decriptionText.placeholder = "Beschreibe dein Angebot..."
+        self.price.placeholder = "Preis..."
+    }
+}
+
+@IBDesignable class UITextViewFixed: UITextView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setup()
+    }
+    func setup() {
+        textContainerInset = UIEdgeInsets.zero
+        textContainer.lineFragmentPadding = 0
     }
 }

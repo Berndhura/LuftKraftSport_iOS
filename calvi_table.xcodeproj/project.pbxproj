@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */; };
 		206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */; };
+		270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */; };
 		271820471F9A74FF00F0CB6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 271820461F9A74FF00F0CB6A /* GoogleService-Info.plist */; };
 		271DF0B61FA34D4B0048580D /* Urls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271DF0B51FA34D4B0048580D /* Urls.swift */; };
 		273E6E111F671F0D0036A445 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273E6E101F671F0D0036A445 /* LoginController.swift */; };
@@ -55,6 +56,7 @@
 		1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_table.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		27048BEB1F7AD95500835C40 /* calvi_table.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = calvi_table.entitlements; sourceTree = "<group>"; };
+		270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		271820461F9A74FF00F0CB6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		271DF0B51FA34D4B0048580D /* Urls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Urls.swift; sourceTree = "<group>"; };
 		273E6E101F671F0D0036A445 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				274DA64F1F8FDE2B001DD34F /* Utils.swift */,
 				271DF0B51FA34D4B0048580D /* Urls.swift */,
+				270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
 				274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */,
+				270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */,
 				2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */,
 				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
 				271DF0B61FA34D4B0048580D /* Urls.swift in Sources */,

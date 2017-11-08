@@ -192,7 +192,7 @@
         <!--Anbieten-->
         <scene sceneID="O69-ie-Fg1">
             <objects>
-                <viewController storyboardIdentifier="newArticleController" id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newArticleController" modalTransitionStyle="flipHorizontal" id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YIA-Ju-SDd"/>
                         <viewControllerLayoutGuide type="bottom" id="qPP-i4-BmW"/>
@@ -245,34 +245,34 @@
                                                     <constraint firstAttribute="height" constant="1" id="am0-05-qT2"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fML-4B-sjO">
-                                                <rect key="frame" x="10" y="64" width="355" height="161"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fML-4B-sjO" customClass="UITextViewFixed" customModule="calvi_table" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="64" width="355" height="121"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4H-xc-xrc" userLabel="devider3">
-                                                <rect key="frame" x="0.0" y="235" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="195" width="375" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="gK8-JU-Qdo"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123" placeholder="Preis..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-PG-IKu">
-                                                <rect key="frame" x="10" y="246" width="355" height="17"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Preis..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-PG-IKu">
+                                                <rect key="frame" x="10" y="206" width="355" height="17"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcr-kU-YdM" userLabel="devider4">
-                                                <rect key="frame" x="0.0" y="273" width="375" height="1"/>
+                                                <rect key="frame" x="0.0" y="233" width="375" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="9Yf-Ea-MaV"/>
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="loitz" placeholder="Standort..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAT-1p-12S">
-                                                <rect key="frame" x="10" y="284" width="355" height="17"/>
+                                                <rect key="frame" x="10" y="244" width="355" height="17"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -304,7 +304,7 @@
                                             <constraint firstItem="kqm-TF-G8q" firstAttribute="leading" secondItem="MSQ-Nh-oJ0" secondAttribute="leading" id="eTX-0h-uGi"/>
                                             <constraint firstItem="fML-4B-sjO" firstAttribute="top" secondItem="kqm-TF-G8q" secondAttribute="bottom" constant="10" id="hAA-p0-7hr"/>
                                             <constraint firstAttribute="trailing" secondItem="Ese-s6-RDB" secondAttribute="trailing" id="xQa-dj-bzo"/>
-                                            <constraint firstItem="fML-4B-sjO" firstAttribute="height" secondItem="MSQ-Nh-oJ0" secondAttribute="height" multiplier="0.4" id="zaD-E2-Xj0"/>
+                                            <constraint firstItem="fML-4B-sjO" firstAttribute="height" secondItem="MSQ-Nh-oJ0" secondAttribute="height" multiplier="0.3" id="zaD-E2-Xj0"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBQ-BS-DXb">
@@ -358,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0o-om-WZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282.39999999999998" y="933.28335832083962"/>
+            <point key="canvasLocation" x="145" y="934"/>
         </scene>
         <!--Suche-->
         <scene sceneID="tne-QT-ifu">

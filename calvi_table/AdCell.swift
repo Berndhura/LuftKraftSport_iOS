@@ -106,6 +106,7 @@ class AdCell: UITableViewCell {
         
         //open edit article wit articleId
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
         let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
         vc.articleId = articleId
         vc.pictureUrl = pictureURL
@@ -117,7 +118,15 @@ class AdCell: UITableViewCell {
         //vc.priceFromAd = self.price.text!
         //vc.locationFromAd = self.location!
         vc.isEditMode = true
+        
         UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+        let nvc: UINavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+        
+        //nvc.popViewController(animated: false)
+        //nvc.pushViewController(vc, animated: true)
+        
+        print(nvc.tabBarController?.viewControllers?.count)
+       // nvc.navigationController?.pushViewController(vc, animated: true)
        
     }
 
@@ -130,7 +139,7 @@ class AdCell: UITableViewCell {
     
         let userToken = Utils.getUserToken()
         
-        self.profileImage.image = nil
+        self.profileImage.image = UIImage(named: "account_placeholder")
         
         if userToken != "" {
         
