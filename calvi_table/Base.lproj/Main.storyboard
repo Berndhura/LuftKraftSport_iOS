@@ -158,7 +158,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf" userLabel="Image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf" userLabel="Image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
                                 <rect key="frame" x="64" y="84" width="248" height="248"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-Z4-xSL" userLabel="Name">
@@ -210,31 +210,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sf-KF-4Zc" userLabel="imageView">
                                         <rect key="frame" x="0.0" y="8" width="375" height="108"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="FGz-Pr-ufD" userLabel="imageOne">
-                                                <rect key="frame" x="2" y="0.0" width="108" height="108"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="hqS-dj-L3s" userLabel="ImageTwo">
-                                                <rect key="frame" x="115" y="0.0" width="108" height="108"/>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="s5i-a7-dUN" userLabel="imageThree">
-                                                <rect key="frame" x="225" y="0.0" width="108" height="108"/>
-                                            </imageView>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKF-aK-fsW">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                            </scrollView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="height" secondItem="0sf-KF-4Zc" secondAttribute="height" id="3Fy-wS-h5k"/>
-                                            <constraint firstItem="hqS-dj-L3s" firstAttribute="leading" secondItem="FGz-Pr-ufD" secondAttribute="trailing" constant="5" id="A4b-Vu-idi"/>
-                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="height" secondItem="hqS-dj-L3s" secondAttribute="height" id="I1s-o1-kqE"/>
-                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="width" secondItem="0sf-KF-4Zc" secondAttribute="height" id="JOn-l1-To6"/>
-                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="centerY" secondItem="0sf-KF-4Zc" secondAttribute="centerY" id="KGk-8P-fU2"/>
-                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="width" secondItem="hqS-dj-L3s" secondAttribute="width" id="PRE-Bt-U3C"/>
-                                            <constraint firstItem="s5i-a7-dUN" firstAttribute="centerY" secondItem="0sf-KF-4Zc" secondAttribute="centerY" id="RWS-7c-o16"/>
-                                            <constraint firstItem="FGz-Pr-ufD" firstAttribute="leading" secondItem="0sf-KF-4Zc" secondAttribute="leading" constant="2" id="Xvr-Qq-if2"/>
-                                            <constraint firstItem="s5i-a7-dUN" firstAttribute="height" secondItem="hqS-dj-L3s" secondAttribute="height" id="a1t-r1-JBq"/>
-                                            <constraint firstItem="s5i-a7-dUN" firstAttribute="width" secondItem="hqS-dj-L3s" secondAttribute="width" id="i1b-Vd-rSJ"/>
-                                            <constraint firstItem="s5i-a7-dUN" firstAttribute="leading" secondItem="hqS-dj-L3s" secondAttribute="trailing" constant="2" id="low-kP-4Ey"/>
-                                            <constraint firstItem="hqS-dj-L3s" firstAttribute="centerY" secondItem="0sf-KF-4Zc" secondAttribute="centerY" id="pqd-Tb-sFZ"/>
-                                            <constraint firstItem="hqS-dj-L3s" firstAttribute="height" secondItem="0sf-KF-4Zc" secondAttribute="height" id="uWX-LQ-fqV"/>
+                                            <constraint firstItem="jKF-aK-fsW" firstAttribute="leading" secondItem="0sf-KF-4Zc" secondAttribute="leading" id="1WH-ac-ueM"/>
+                                            <constraint firstAttribute="bottom" secondItem="jKF-aK-fsW" secondAttribute="bottom" id="J77-rO-9uQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="jKF-aK-fsW" secondAttribute="trailing" id="oh5-ZG-HrA"/>
+                                            <constraint firstItem="jKF-aK-fsW" firstAttribute="top" secondItem="0sf-KF-4Zc" secondAttribute="top" id="qLx-8D-ecc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSQ-Nh-oJ0" userLabel="textView">
@@ -364,9 +349,7 @@
                     <tabBarItem key="tabBarItem" title="Anbieten" image="plus" id="hi4-gC-d1e"/>
                     <connections>
                         <outlet property="decriptionText" destination="fML-4B-sjO" id="jSW-tu-hHg"/>
-                        <outlet property="image" destination="FGz-Pr-ufD" id="HI9-Ey-Kbc"/>
-                        <outlet property="imageThree" destination="s5i-a7-dUN" id="GKh-0a-k2h"/>
-                        <outlet property="imageTwo" destination="hqS-dj-L3s" id="6MJ-dH-KGC"/>
+                        <outlet property="imgScrollView" destination="jKF-aK-fsW" id="kC5-M1-uUT"/>
                         <outlet property="location" destination="ZAT-1p-12S" id="1gM-bx-2yX"/>
                         <outlet property="price" destination="rhr-PG-IKu" id="5U9-6K-Akb"/>
                         <outlet property="saveArticleButton" destination="zBQ-BS-DXb" id="hll-A9-UVa"/>
@@ -756,6 +739,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="account_placeholder" width="100" height="100"/>
         <image name="login" width="32" height="32"/>
         <image name="mail" width="32" height="32"/>
         <image name="new-file" width="32" height="32"/>

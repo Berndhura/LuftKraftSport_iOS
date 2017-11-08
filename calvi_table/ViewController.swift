@@ -52,7 +52,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         let refreshButton = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(refreshArticles))
         
         //login button in tabbar
-        let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(ViewController.openLoginPage))
+        let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(openLoginPage))
         
         //home button
         let homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(showMyArticle))

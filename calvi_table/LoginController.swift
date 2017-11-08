@@ -138,6 +138,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         dismiss(animated: true, completion: nil)
         //facebook sign out? TODO
+        
+        userImage.image = UIImage(named: "account_placeholder")
     }
     
     func goBackPressed() {

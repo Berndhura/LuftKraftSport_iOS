@@ -25,13 +25,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var lat: Double = 0.0
     public var lng: Double = 0.0
 
+    @IBOutlet weak var imgScrollView: UIScrollView!
    
-    @IBOutlet weak var image: UIImageView!
-    
-    @IBOutlet weak var imageTwo: UIImageView!
-    
-    @IBOutlet weak var imageThree: UIImageView!
-    
     @IBOutlet weak var titleText: UITextField!
     
     @IBOutlet weak var decriptionText: UITextView!
@@ -51,7 +46,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    var adButtonViews = [UIButton]()
+    
+    var adImages = [UIImage]()
+    
     var currentImageView: UIImageView?
+    
+    var currentImageNumber: Int = 0
     
     //TODO scheiß weil was wenn mehrmals das selbe bild geändert wird?
     var imageSize: Int = 0
@@ -69,96 +70,64 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
         
-        
-        //self.decriptionText.returnKeyType = UIReturnKeyType.done
-        
         if isEditMode {
             
             saveArticleButton.setTitle("Änderung speichern", for: .normal)
-            addGestureOnImages()
+            //addGestureOnImages()
             editArticle()
             
         } else {
         
-            addGestureOnImages()
+            setupImagesPlaceholder()
+            //addGestureOnImages()
             prepareForms()
         }
     }
     
-    func addGestureOnImages() {
+    func setupImagesPlaceholder() {
         
-        let tapGestureImgOne = UITapGestureRecognizer(target: self, action: #selector(imageTapped1))
-        let tapGestureImgTwo = UITapGestureRecognizer(target: self, action: #selector(imageTapped2))
-        let tapGestureImgThree = UITapGestureRecognizer(target: self, action: #selector(imageTapped3))
-         
+        let gapSize: CGFloat = 15
+        
+        for i in 0..<5 {
             
-        image.addGestureRecognizer(tapGestureImgOne)
-        image.isUserInteractionEnabled = true
-        image.layer.setValue(1, forKey: "imageNumber")
-
-        imageTwo.addGestureRecognizer(tapGestureImgTwo)
-        imageTwo.isUserInteractionEnabled = true
-        imageTwo.layer.setValue(2, forKey: "imageNumber")
-
-        imageThree.addGestureRecognizer(tapGestureImgThree)
-        imageThree.isUserInteractionEnabled = true
-        imageThree.layer.setValue(3, forKey: "imageNumber")
-
+            let imageButton = UIButton()
+            imageButton.setBackgroundImage(UIImage(named: "image_placeholder"), for: .normal)
+            imageButton.tag = i
+            imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
+            imageButton.contentMode = .scaleToFill
+            imageButton.isUserInteractionEnabled = true
+            
+            let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
+            imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
+            
+            //let space = UIView()
+            //space.frame = CGRect(x: xPosition + (gapSize + CGFloat(i)) , y: 0, width: gapSize, height: imgScrollView.frame.height)
+            //space.backgroundColor = UIColor.blue
+            
+            imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1) + (gapSize * CGFloat(i + 1))
+            imgScrollView.addSubview(imageButton)
+            //imgScrollView.addSubview(space)
+            adButtonViews.append(imageButton)
+        }
     }
     
-    func imageTapped1() {
+    func imageTapped(sender: UIButton) {
         
-        imageSize  += 1
+        //which image is clicked
+        currentImageNumber = sender.tag
         
         let picker = UIImagePickerController()
-        
-        self.currentImageView = image
-        
         picker.delegate = self
-        
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
     }
-    
-    func imageTapped2() {
-        
-        imageSize  += 1
-        
-        let picker = UIImagePickerController()
-        
-        self.currentImageView = imageTwo
-
-        
-        picker.delegate = self
-        
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        self.present(picker, animated: true, completion: nil)
-    }
-
-    
-    func imageTapped3() {
-        
-        imageSize  += 1
-        
-        let picker = UIImagePickerController()
-        
-        self.currentImageView = imageThree
-
-        picker.delegate = self
-        
-        picker.allowsEditing = false
-        picker.sourceType = .photoLibrary
-        self.present(picker, animated: true, completion: nil)
-    }
-
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            self.currentImageView?.image = chosenImage
+            adButtonViews[currentImageNumber].setImage(chosenImage, for: .normal)
+            adImages.append(chosenImage)
         }
         picker.dismiss(animated: true, completion: nil)
     }
@@ -167,7 +136,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         dismiss(animated: true, completion: nil)
     }
 
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField === titleText) {
             decriptionText.becomeFirstResponder()
@@ -216,33 +184,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
         
         getThemAll(urlList: urlList)
-        
-        let firstId = Utils.getPictureUrl(str: pictureUrl)
-        
-        //iteriere durch urllist ..... zeige images
-        
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(firstId)")
-        
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            
-            guard error == nil else {
-                print(error!)
-                return
-            }
-            
-            DispatchQueue.main.async(execute: {
-                //let imageToCache = UIImage(data:data!)
-                //if imageToCache != nil {
-                //    imageCache.setObject(imageToCache!, forKey: urlString as NSString)
-                self.image.image = UIImage(data: data!)
-            })
-            }.resume()
-
     }
     
     func getThemAll(urlList: [String]) {
-        
-        var imageArry = [UIImage]()
         
         for i in 0..<urlList.count {
             
@@ -257,17 +201,39 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 
                 DispatchQueue.main.async(execute: {
 
-                    imageArry.append(UIImage(data: data!)!)
+                    self.adImages.append(UIImage(data: data!)!)
+                    
+                    if (i == urlList.count-1) {
+                        self.showPictures()
+                    }
+                    
                 })
             }.resume()
         }
         print("sd") //nix drinne weil asyncron :-(
     }
 
+    func showPictures() {
+        
+        for i in 0..<adImages.count {
+            let imageView = UIImageView()
+            
+            imageView.image = adImages[i]
+            imageView.contentMode = .scaleAspectFill
+
+            let xPosition = self.imgScrollView.frame.height * CGFloat(i)
+            imageView.frame = CGRect(x: xPosition , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
+            
+            //imageView.bounds = imageView.frame.insetBy(dx: 5, dy: 5)
+            
+            imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1)
+            imgScrollView.addSubview(imageView)
+            //adImageViews.append(imageView)
+        }
+    }
     
     
     func updateArticle() {
-     
      
         let userToken = Utils.getUserToken()
         
@@ -320,7 +286,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             "type": "Point",
             "coordinates": [coordinate.latitude, coordinate.longitude]]
         
-        print(params)
+        //print(params)
 
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -346,56 +312,54 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
         
-        let imageData = UIImageJPEGRepresentation(self.image.image!, 0.5)!
+        print(adImages.count)
+        var i = 0
+        //todo imgArray
+        for img in adImages {
         
-        let parameters = [
-            "file_name": "swift_file.jpeg"
-        ]
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageData, withName: "file", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
-            for (key, value) in parameters {
-                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-            }
-        }, to: url!)
-        { (result) in
-            switch result {
-            case .success(let upload, _, _):
-                
-                upload.uploadProgress(closure: { (Progress) in
-                   // print("Upload Progress: \(Progress.fractionCompleted)")
-                })
-                
-                upload.responseJSON { response in
-                    //self.delegate?.showSuccessAlert()
-                   // print(response.request)  // original URL request
-                   // print(response.response) // URL response
-                    //print(response.data)     // server data
-                   // print(response.result)   // result of response serialization
-                    //                        self.showSuccesAlert()
-                    //self.removeImage("frame", fileExtension: "txt")
-                    //if let JSON = response.result.value {
-                    //    print("JSON: \(JSON)")
-                    //}
-                    
-                    //return to main list
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
-                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window?.rootViewController = tabBarController
-
-                }
-                
-            case .failure(let encodingError):
-                //self.delegate?.showFailAlert()
-                print(encodingError)
-            }
+            i += 1
             
+            let imageData = UIImageJPEGRepresentation(img, 0.5)!
+            
+            let parameters = [
+                "file_name": "swift_file.jpeg"
+            ]
+            
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                multipartFormData.append(imageData, withName: "file", fileName: "swift_file\(i).jpeg", mimeType: "image/jpeg")
+                for (key, value) in parameters {
+                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+                }
+            }, to: url!)
+            { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    
+                    upload.uploadProgress(closure: { (Progress) in
+                    //print("Upload Progress: \(Progress.fractionCompleted)")
+                    })
+                    
+                    upload.responseJSON { response in
+                    
+                        print("------------------------------")
+                        print("upload image: \(i) ")
+                        
+                    }
+                    
+                case .failure(let encodingError):
+                    //self.delegate?.showFailAlert()
+                    print(encodingError)
+                }
+            }
         }
-        
-        //back to main..
-        //let chatController: ChatViewController = (segue.destination as? ChatViewController)!
-        
+        /*if i == self.adImages.count {
+            //return to main list
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = tabBarController
+        }*/
+
     }
     
     func getLatLng(address: String) {
