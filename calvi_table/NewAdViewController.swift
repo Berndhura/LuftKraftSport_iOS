@@ -99,13 +99,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
             imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
             
-            //let space = UIView()
-            //space.frame = CGRect(x: xPosition + (gapSize + CGFloat(i)) , y: 0, width: gapSize, height: imgScrollView.frame.height)
-            //space.backgroundColor = UIColor.blue
-            
             imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1) + (gapSize * CGFloat(i + 1))
             imgScrollView.addSubview(imageButton)
-            //imgScrollView.addSubview(space)
             adButtonViews.append(imageButton)
         }
     }
@@ -214,20 +209,24 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     func showPictures() {
         
+        let gapSize: CGFloat = 5
+        
         for i in 0..<adImages.count {
-            let imageView = UIImageView()
             
-            imageView.image = adImages[i]
-            imageView.contentMode = .scaleAspectFill
+            let imageButton = UIButton()
+            imageButton.setBackgroundImage(adImages[i], for: .normal)
+            imageButton.tag = i
+            imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
+            imageButton.contentMode = .scaleToFill
+            imageButton.isUserInteractionEnabled = true
+            imageButton.contentMode = .scaleAspectFill
 
-            let xPosition = self.imgScrollView.frame.height * CGFloat(i)
-            imageView.frame = CGRect(x: xPosition , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
+            let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
+            imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
             
-            //imageView.bounds = imageView.frame.insetBy(dx: 5, dy: 5)
-            
-            imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1)
-            imgScrollView.addSubview(imageView)
-            //adImageViews.append(imageView)
+            imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1) + (gapSize * CGFloat(i + 1))
+            imgScrollView.addSubview(imageButton)
+            adButtonViews.append(imageButton)
         }
     }
     
@@ -341,6 +340,14 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                         print("------------------------------")
                         print("upload image: \(i) ")
                         
+                        if i == self.adImages.count {
+                            //return to main list
+                            let sb = UIStoryboard(name: "Main", bundle: nil)
+                            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            appDelegate.window?.rootViewController = tabBarController
+                        }
+                        
                     }
                     
                 case .failure(let encodingError):
@@ -349,14 +356,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 }
             }
         }
-        /*if i == self.adImages.count {
-            //return to main list
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = tabBarController
-        }*/
-
     }
     
     func getLatLng(address: String) {

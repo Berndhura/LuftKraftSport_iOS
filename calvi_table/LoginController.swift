@@ -31,7 +31,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 215/255, green: 233/255, blue: 242/255, alpha: 1.0)
+        //view.backgroundColor = UIColor(red: 215/255, green: 233/255, blue: 242/255, alpha: 1.0)
         
         //google sign in button
         initGoogleSignInButton()
@@ -61,6 +61,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
 
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.colorScheme = GIDSignInButtonColorScheme.dark
+        signInButton.style = GIDSignInButtonStyle.wide
+        signInButton.layer.cornerRadius = 4
         
         let margins = view.layoutMarginsGuide
         
@@ -102,6 +104,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         backBtn.translatesAutoresizingMaskIntoConstraints = false
         backBtn.backgroundColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         backBtn.setTitle("Zurück", for: .normal)
+        backBtn.layer.cornerRadius = 4
         
         backBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         view.addSubview(backBtn)
@@ -118,6 +121,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         logoutBtn.translatesAutoresizingMaskIntoConstraints = false
         logoutBtn.backgroundColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         logoutBtn.setTitle("Logout", for: .normal)
+        logoutBtn.layer.cornerRadius = 4
         
         logoutBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         view.addSubview(logoutBtn)
