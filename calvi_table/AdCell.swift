@@ -115,7 +115,7 @@ class AdCell: UITableViewCell {
         //vc.date = self.date
         //vc.lat = self.lat!
         //vc.lng = self.lng!
-        //vc.priceFromAd = self.price.text!
+        vc.priceFromAd = Utils.getPriceFromTextField(priceString: self.price.text!)
         //vc.locationFromAd = self.location!
         vc.isEditMode = true
         

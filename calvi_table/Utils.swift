@@ -13,6 +13,20 @@ import SystemConfiguration
 
 class Utils {
     
+    static func getPriceFromTextField(priceString: String) -> Int {
+        
+        let ind = priceString.characters.split{$0 == " "}.map(String.init)
+        if ind.count > 0 {
+            if let price: Int = Int(ind[0]) {
+                return price
+            } else {
+                return 0
+            }
+        } else {
+            return 0
+        }
+}
+    
     static func getPictureUrl(str: String) -> String {
         let ind = str.characters.split{$0 == ","}.map(String.init)
         if ind.count > 0 {
