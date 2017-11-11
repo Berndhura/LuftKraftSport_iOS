@@ -37,6 +37,12 @@ class AdCell: UITableViewCell {
     
     public var desc: String = ""
     
+    public var dateRawValue: Double = 0
+    
+    public var lat: Double?
+    
+    public var lng: Double?
+    
     public var userId: String?  {
         didSet {
             loadProfileImage(userId: userId!)
@@ -112,22 +118,15 @@ class AdCell: UITableViewCell {
         vc.pictureUrl = pictureURL
         vc.titleFromAd = self.title.text!
         vc.descFromAd = self.desc
-        //vc.date = self.date
-        //vc.lat = self.lat!
-        //vc.lng = self.lng!
+        vc.date = dateRawValue
+        vc.lat = lat!   //TODO optional, was wenn nicht da?? dann crash hier!
+        vc.lng = lng!
         vc.priceFromAd = Utils.getPriceFromTextField(priceString: self.price.text!)
-        //vc.locationFromAd = self.location!
+        vc.locationFromAd = location.text!
         vc.isEditMode = true
         
         UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
-        let nvc: UINavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-        
-        //nvc.popViewController(animated: false)
-        //nvc.pushViewController(vc, animated: true)
-        
-        print(nvc.tabBarController?.viewControllers?.count)
-       // nvc.navigationController?.pushViewController(vc, animated: true)
-       
+        //let nvc: UINavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavBarController") as! UINavigationControlle
     }
 
     

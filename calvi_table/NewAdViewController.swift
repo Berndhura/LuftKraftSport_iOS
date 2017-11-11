@@ -166,21 +166,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func editArticle() {
         
-        self.titleText.text = titleFromAd
-        self.decriptionText.text = descFromAd
-        self.price.text = String(describing: priceFromAd)
-    
-        
-        //images
-        //print(pictureUrl)
-        //self.image.sd_setImage(with: URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(pictureUrl)"))
+        titleText.text = titleFromAd
+        decriptionText.text = descFromAd
+        price.text = String(describing: priceFromAd)
+        location.text = locationFromAd
         
         let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
         
-        getThemAll(urlList: urlList)
+        requestAllAdPictures(urlList: urlList)
     }
     
-    func getThemAll(urlList: [String]) {
+    func requestAllAdPictures(urlList: [String]) {
         
         for i in 0..<urlList.count {
             
@@ -197,14 +193,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
                     self.adImages.append(UIImage(data: data!)!)
                     
-                    if (i == urlList.count-1) {
+                    // async request, possible that last request comes first -> only show pictures
+                    // when all pics are downloaded   
+                    // TODO better request each image during swipeing gesture
+                    if (self.adImages.count == urlList.count) {
                         self.showPictures()
                     }
-                    
                 })
             }.resume()
         }
-        print("sd") //nix drinne weil asyncron :-(
     }
 
     func showPictures() {
@@ -312,8 +309,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //TODO nicht alle werden hochgeladen leider
         for img in adImages {
-        
-            i += 1
             
             let imageData = UIImageJPEGRepresentation(img, 0.5)!
             
@@ -322,7 +317,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             ]
             
             Alamofire.upload(multipartFormData: { (multipartFormData) in
-                multipartFormData.append(imageData, withName: "file", fileName: "swift_file.jpeg", mimeType: "image/jpeg")
+                multipartFormData.append(imageData, withName: "file", fileName: "file\(i).jpeg", mimeType: "image/jpeg")
                 for (key, value) in parameters {
                     multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                 }
@@ -337,10 +332,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     
                     upload.responseJSON { response in
                     
+                        i += 1
                         print("------------------------------")
                         print("upload image: \(i) ")
+                        print(response)
                         
                         if i == self.adImages.count {
+                            print("returning")
                             //return to main list
                             let sb = UIStoryboard(name: "Main", bundle: nil)
                             let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController

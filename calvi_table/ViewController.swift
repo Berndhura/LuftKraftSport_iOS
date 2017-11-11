@@ -327,6 +327,8 @@ extension ViewController: UITableViewDataSource {
         
         //location
         cell?.location?.text = currentAd.location
+        cell?.lat = currentAd.lat
+        cell?.lng = currentAd.lng
         
         //date
         cell?.date?.text = getFormatedDate(date: currentAd.date)
