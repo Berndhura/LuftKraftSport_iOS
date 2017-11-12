@@ -305,54 +305,56 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         print(adImages.count)
         
-        var i = 0
-        
         //TODO nicht alle werden hochgeladen leider
-        for img in adImages {
+        let parameters = ["file_name": "swift_file.jpeg"]
+        
+        for img in self.adImages {
             
-            let imageData = UIImageJPEGRepresentation(img, 0.5)!
-            
-            let parameters = [
-                "file_name": "swift_file.jpeg"
-            ]
-            
-            Alamofire.upload(multipartFormData: { (multipartFormData) in
-                multipartFormData.append(imageData, withName: "file", fileName: "file\(i).jpeg", mimeType: "image/jpeg")
-                for (key, value) in parameters {
-                    multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-                }
-            }, to: url!)
-            { (result) in
-                switch result {
-                case .success(let upload, _, _):
+            //DispatchQueue.main.async(execute: {
+
+                Alamofire.upload(multipartFormData: { (multipartFormData) in
                     
-                    upload.uploadProgress(closure: { (Progress) in
-                    //print("Upload Progress: \(Progress.fractionCompleted)")
-                    })
+                    print(url)
                     
-                    upload.responseJSON { response in
+                    let imageData = UIImageJPEGRepresentation(img, 0.5)!
+                    multipartFormData.append(imageData, withName: "file", fileName: "file\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
                     
-                        i += 1
-                        print("------------------------------")
-                        print("upload image: \(i) ")
-                        print(response)
-                        
-                        if i == self.adImages.count {
-                            print("returning")
-                            //return to main list
-                            let sb = UIStoryboard(name: "Main", bundle: nil)
-                            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            appDelegate.window?.rootViewController = tabBarController
-                        }
-                        
+                    for (key, value) in parameters {
+                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                     }
                     
-                case .failure(let encodingError):
-                    //self.delegate?.showFailAlert()
-                    print(encodingError)
+                    print(parameters)
+                    
+                }, to: url!)
+                { (result) in
+                    switch result {
+                    case .success(let upload, _, _):
+                        
+                        upload.uploadProgress(closure: { (Progress) in
+                        //print("Upload Progress: \(Progress.fractionCompleted)")
+                        })
+                        
+                        upload.responseJSON { response in
+                            
+                            print(response)
+                        
+                            /*if i == self.adImages.count {
+                                print("returning")
+                                //return to main list
+                                let sb = UIStoryboard(name: "Main", bundle: nil)
+                                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.window?.rootViewController = tabBarController
+                            }*/
+                            
+                        }
+                        
+                    case .failure(let encodingError):
+                        //self.delegate?.showFailAlert()
+                        print(encodingError)
+                    }
                 }
-            }
+           // })
         }
     }
     
