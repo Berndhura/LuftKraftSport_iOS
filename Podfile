@@ -18,6 +18,8 @@ target 'calvi_table' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'Alamofire'
+    pod 'RxSwift',    '~> 3.0'
+    pod 'RxCocoa',    '~> 3.0'
 
   target 'calvi_tableTests' do
     inherit! :search_paths

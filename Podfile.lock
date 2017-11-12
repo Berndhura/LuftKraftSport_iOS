@@ -105,6 +105,9 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.3.0)
+  - RxCocoa (3.6.1):
+    - RxSwift (~> 3.6)
+  - RxSwift (3.6.1)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -120,6 +123,8 @@ DEPENDENCIES:
   - Firebase/Storage
   - Google/SignIn
   - JSQMessagesViewController
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
   - SDWebImage
 
 SPEC CHECKSUMS:
@@ -151,8 +156,10 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
+  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
+  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 8b1cd3c76817b9ccf51bf918998b4e22bcac1076
+PODFILE CHECKSUM: a0d054a86e54f9267cdc21c72352d28960499b1e
 
 COCOAPODS: 1.2.1

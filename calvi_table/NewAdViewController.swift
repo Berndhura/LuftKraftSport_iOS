@@ -11,6 +11,7 @@ import Alamofire
 import CoreLocation
 import AddressBookUI
 import SDWebImage
+import RxSwift
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
@@ -305,59 +306,90 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         print(adImages.count)
         
-        //TODO nicht alle werden hochgeladen leider
-        let parameters = ["file_name": "swift_file.jpeg"]
-        
         for img in self.adImages {
             
-            //DispatchQueue.main.async(execute: {
-
-                Alamofire.upload(multipartFormData: { (multipartFormData) in
-                    
-                    print(url)
-                    
-                    let imageData = UIImageJPEGRepresentation(img, 0.5)!
-                    multipartFormData.append(imageData, withName: "file", fileName: "file\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-                    
-                    for (key, value) in parameters {
-                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-                    }
-                    
-                    print(parameters)
-                    
-                }, to: url!)
-                { (result) in
-                    switch result {
-                    case .success(let upload, _, _):
-                        
-                        upload.uploadProgress(closure: { (Progress) in
-                        //print("Upload Progress: \(Progress.fractionCompleted)")
-                        })
-                        
-                        upload.responseJSON { response in
-                            
-                            print(response)
-                        
-                            /*if i == self.adImages.count {
-                                print("returning")
-                                //return to main list
-                                let sb = UIStoryboard(name: "Main", bundle: nil)
-                                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                                appDelegate.window?.rootViewController = tabBarController
-                            }*/
-                            
-                        }
-                        
-                    case .failure(let encodingError):
-                        //self.delegate?.showFailAlert()
-                        print(encodingError)
-                    }
-                }
-           // })
+            uploadImage(url: url!, image: img)
+            Thread.sleep(forTimeInterval: 1)
         }
     }
     
+    func uploadImage(url: URL, image: UIImage) {
+        
+        print("UPLOADING...........")
+        
+        let parameters = ["file": "swift_file.jpeg"]
+        
+        let imageData = UIImageJPEGRepresentation(image, 0.1)!
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
+            multipartFormData.append(imageData, withName: "file", fileName: "file\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+            
+            for (key, value) in parameters {
+                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+        }, to: url)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (Progress) in
+                    //print("Upload Progress: \(Progress.fractionCompleted)")
+                })
+                
+                upload.responseJSON { response in
+                    
+                    print(response)
+                    
+                    /*if i == self.adImages.count {
+                     print("returning")
+                     //return to main list
+                     let sb = UIStoryboard(name: "Main", bundle: nil)
+                     let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                     appDelegate.window?.rootViewController = tabBarController
+                     }*/
+                    
+                }
+                
+            case .failure(let encodingError):
+                //self.delegate?.showFailAlert()
+                print(encodingError)
+            }
+        }
+    }
+    
+    func wrapper() -> Observable<String> {
+        
+        return Observable.create { observer in
+            
+            let URL = try! URLRequest(url: "http://example.com", method: .post)
+            
+            Alamofire.upload(
+                multipartFormData: { formData in
+                    // multiaprt
+            },
+                with: URL,
+                encodingCompletion: { encodingResult in
+                    
+                    switch encodingResult {
+                        
+                    case .success(let upload, _, _):
+                        upload.responseJSON { response in
+                            // convert response in something of SomeResponseType
+                            // ...
+                            observer.onNext("String")
+                            observer.onCompleted()
+                        }
+                    case .failure(let encodingError):
+                        observer.onError(encodingError)
+                    }
+            })
+            
+            return Disposables.create()
+        }
+    }
+
     func getLatLng(address: String) {
         
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
