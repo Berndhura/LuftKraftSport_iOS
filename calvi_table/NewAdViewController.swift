@@ -12,6 +12,7 @@ import CoreLocation
 import AddressBookUI
 import SDWebImage
 import RxSwift
+import SVProgressHUD
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
@@ -42,6 +43,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         if isEditMode {
             saveArticleButton.isEnabled = false
+            SVProgressHUD.show()
             updateArticle()
         } else {
             saveArticleButton.isEnabled = false
@@ -344,12 +346,14 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     /*if i == self.adImages.count {
                      print("returning")
                      //return to main list
+                     */
                      let sb = UIStoryboard(name: "Main", bundle: nil)
                      let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
                      let appDelegate = UIApplication.shared.delegate as! AppDelegate
                      appDelegate.window?.rootViewController = tabBarController
-                     }*/
                     
+                    SVProgressHUD.dismiss()
+                
                 }
                 
             case .failure(let encodingError):
