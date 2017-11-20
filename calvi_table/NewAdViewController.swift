@@ -43,11 +43,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         if isEditMode {
             saveArticleButton.isEnabled = false
-            SVProgressHUD.show()
+            SVProgressHUD.show(withStatus: "Anzeige wird geändert...")
             updateArticle()
         } else {
             saveArticleButton.isEnabled = false
             getLatLng(address: location.text!)
+            SVProgressHUD.show(withStatus: "Neue Anzeige wird erstellt...")
         }
     }
     
