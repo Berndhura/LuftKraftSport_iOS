@@ -18,6 +18,10 @@ class MessagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let refreshMessages = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(fetchMessages))
+        
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages], animated: true)
+        
         if isLoggedIn() {
         
             fetchMessages()
@@ -37,9 +41,10 @@ class MessagesController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        tabBarController?.title = "WTF soll ich das machen"
+        fetchMessages()
+        //tabBarController?.title = "WTF soll ich das machen"
     }
-
+    
     
     func isLoggedIn() -> Bool {
         
@@ -82,10 +87,12 @@ class MessagesController: UIViewController {
           //  if jsonString.contains("Unauthorized") {
                 //nothing here TODO show info to user - unauthorized
            // } else {
-                let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
             
+            let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
+            //print(json)
             
-                //print(json)
+            //clear messages
+            self.messages.removeAll()
             
                 for dictionary in json as! [[String: Any]] {
                     
@@ -121,7 +128,7 @@ class MessagesController: UIViewController {
         if segue.identifier == "openChat" {
             let chatController: ChatViewController = (segue.destination as? ChatViewController)!
             let cell: UITableViewCell? = sender as? UITableViewCell
-            //self.tabBarController?.title = "Partner: "
+            tabBarController?.title = ""
             
             if cell != nil {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)

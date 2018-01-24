@@ -274,7 +274,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         if segue.identifier == "showDetailView" {
             let detailViewController: DetailViewController = (segue.destination as? DetailViewController)!
             let cell: UITableViewCell? = sender as? UITableViewCell
-            
+            tabBarController?.title = ""
             if cell != nil {
                 let indexPath: IndexPath? = self.tableView.indexPath(for: cell!)
                 if indexPath != nil {

@@ -33,7 +33,7 @@ class ChatViewController: JSQMessagesViewController {
         
         fetchChat()
 
-        
+
         // messages from someone else
         //addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
         // messages sent from local sender
