@@ -23,8 +23,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var searchString: String?
     
+    //refresh button in tabbar
+    let refreshButton = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(refreshArticles))
+    
     override func viewDidAppear(_ animated: Bool) {
         adaptTitle(adsCount: ads.count)
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton], animated: true)
+        refreshArticles()
     }
     
     override func viewDidLoad() {
@@ -47,9 +52,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         tabBarController?.title = "Luftkraftsport"
         
         //tabBarController?.toolbarItems.
-        
-        //refresh button in tabbar
-        let refreshButton = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(refreshArticles))
         
         //login button in tabbar
         let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(openLoginPage))
