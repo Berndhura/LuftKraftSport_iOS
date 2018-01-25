@@ -21,6 +21,7 @@ target 'calvi_table' do
     pod 'RxSwift',    '~> 3.0'
     pod 'RxCocoa',    '~> 3.0'
     pod 'SVProgressHUD'
+    pod 'SwiftyJSON'
 
   target 'calvi_tableTests' do
     inherit! :search_paths

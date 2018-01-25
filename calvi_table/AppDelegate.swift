@@ -11,6 +11,7 @@ import Firebase
 import FacebookLogin
 import FBSDKLoginKit
 import UserNotifications
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,8 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 options: authOptions,
                 completionHandler: {_, _ in })
         } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
         
@@ -194,6 +194,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         print(userInfo)
         
+        //prepare notification to open message view
+        let notif = JSON(userInfo)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "myNotif"), object: nil)
+        //https://stackoverflow.com/questions/31610896/controlling-which-view-controller-loads-after-receiving-a-push-notification-in-s
+        
+        // This is where you read your JSON to know what kind of notification you received, for example :
+
         // Change this to your preferred presentation option
         completionHandler([.alert, .badge, .sound])
     }

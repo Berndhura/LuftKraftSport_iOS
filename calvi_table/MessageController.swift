@@ -41,7 +41,7 @@ class MessagesController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchMessages()
+        //fetchMessages()
         //tabBarController?.title = "WTF soll ich das machen"
     }
     
