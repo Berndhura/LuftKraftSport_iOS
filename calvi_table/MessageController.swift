@@ -18,6 +18,8 @@ class MessagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerObservers()
+        
         let refreshMessages = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(fetchMessages))
         
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages], animated: true)
@@ -40,10 +42,22 @@ class MessagesController: UIViewController {
         }
     }
     
+    func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
+    }
+    
+    
+    func showNewMessage() {
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         //fetchMessages()
         //tabBarController?.title = "WTF soll ich das machen"
+         NotificationCenter.default.removeObserver(self)
     }
+    
+    
     
     
     func isLoggedIn() -> Bool {

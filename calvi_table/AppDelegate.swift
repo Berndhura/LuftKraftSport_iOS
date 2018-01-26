@@ -196,11 +196,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         //prepare notification to open message view
         let notif = JSON(userInfo)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "myNotif"), object: nil)
-        //https://stackoverflow.com/questions/31610896/controlling-which-view-controller-loads-after-receiving-a-push-notification-in-s
+        let name = Notification.Name(rawValue: Constants.gotPushNotification)
+        NotificationCenter.default.post(name: name, object: nil)
         
-        // This is where you read your JSON to know what kind of notification you received, for example :
-
+        
         // Change this to your preferred presentation option
         completionHandler([.alert, .badge, .sound])
     }
