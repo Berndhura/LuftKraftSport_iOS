@@ -48,6 +48,7 @@ class MessagesController: UIViewController {
     
     
     func showNewMessage() {
+        print("angekommen")
         
     }
     
