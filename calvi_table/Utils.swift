@@ -65,6 +65,16 @@ class Utils {
         }
     }
     
+    static func getUserName() -> String {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        if let userName = defaults.string(forKey: "userName") {
+            return userName
+        } else {
+            return ""
+        }
+    }
+    
     static func getUserProfilePicture() -> String {
         
         let defaults:UserDefaults = UserDefaults.standard

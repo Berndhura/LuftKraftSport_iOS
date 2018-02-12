@@ -29,7 +29,10 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        refreshTabBar()
         
         //view.backgroundColor = UIColor(red: 215/255, green: 233/255, blue: 242/255, alpha: 1.0)
         
@@ -43,11 +46,37 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         initBackButton()
         
         //logout button
-        initLogoutButton()
+        if Utils.getUserToken() != "" {
+            initLogoutButton()
+        }
         
         if Utils.getUserToken() != "" {
             showUserProfile()
         }
+        
+        if Utils.getUserToken() != "" {
+            hideLoginButtons()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        refreshTabBar()
+    }
+    
+    func refreshTabBar() {
+        
+        //show user name
+        tabBarController?.title = ""
+        
+        if Utils.getUserToken() == "" {
+            tabBarController?.title = "Bitte anmelden!"
+        } else {
+            tabBarController?.title = "Angemeldet"
+        }
+        
+        //remove tabbar items
+        self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
+
     }
     
     func initGoogleSignInButton() {
@@ -144,6 +173,10 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         //facebook sign out? TODO
         
         userImage.image = UIImage(named: "account_placeholder")
+        
+        self.refreshTabBar()
+        
+        self.showLoginButtons()
     }
     
     func goBackPressed() {
@@ -159,6 +192,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         let profilePicture = Utils.getUserProfilePicture()
         self.userImage.sd_setImage(with: URL(string: profilePicture))
+        
+        let profileName = Utils.getUserName()
+        self.userName.text = "Willkommen " + profileName
     }
     
     
@@ -217,6 +253,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             }
             let fullName = dict["name"]! as! String
             self.userName.text = "Willkommen " + fullName
+            self.refreshTabBar()
         })
     }
     
@@ -259,15 +296,33 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             saveUserDetails(user: user)
             Utils.updateDeviceToken()
             
+            self.refreshTabBar()
+            
+            hideLoginButtons()
+            
         } else {
             print("\(error.localizedDescription)")
         }
     }
+    
+    func hideLoginButtons() {
+        
+        signInButton.isHidden = true
+        loginButton.isHidden = true
+    }
+    
+    func showLoginButtons() {
+        
+        signInButton.isHidden = false
+        loginButton.isHidden = false
+    }
+
     
     func saveUserDetails(user: GIDGoogleUser) {
         
         let defaults:UserDefaults = UserDefaults.standard
         defaults.set(user.authentication.idToken, forKey: "userToken")
         defaults.set(user.userID, forKey: "userId")
+        defaults.set(user.profile.name, forKey: "userName")
     }
 }

@@ -53,13 +53,12 @@ class MessagesController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        self.tabBarController?.title = "Messages: " + String(self.messages.count)
         //fetchMessages()
-        //tabBarController?.title = "WTF soll ich das machen"
-         NotificationCenter.default.removeObserver(self)
+        
+        NotificationCenter.default.removeObserver(self)
     }
-    
-    
-    
     
     func isLoggedIn() -> Bool {
         

@@ -87,6 +87,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.tabBarController?.title = "Erstelle eine Anzeige"
+    }
+
+    
     func setupImagesPlaceholder() {
         
         let gapSize: CGFloat = 15
