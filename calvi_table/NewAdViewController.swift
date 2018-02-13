@@ -89,8 +89,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.tabBarController?.title = "Erstelle eine Anzeige"
+        refreshTabBar()
     }
+    
+    func refreshTabBar() {
+        
+        self.tabBarController?.title = "Erstelle eine Anzeige"
+
+        //remove tabbar items
+        self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
+    }
+
 
     
     func setupImagesPlaceholder() {

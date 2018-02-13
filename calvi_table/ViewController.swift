@@ -26,11 +26,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     //refresh button in tabbar
     let refreshButton = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(refreshArticles))
     
-    override func viewDidAppear(_ animated: Bool) {
-        adaptTitle(adsCount: ads.count)
-        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton], animated: true)
-        refreshArticles()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +71,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.searchBar.placeholder = "Suche dein Material..."
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        adaptTitle(adsCount: ads.count)
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton], animated: true)
+        //refreshArticles()
     }
     
     func updateSearchResults(for searchController: UISearchController) {

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/NewAdViewController.swift"
-            timestampString = "540163821.743976"
+            timestampString = "540246943.560176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
             landmarkName = "wrapper()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ViewController.swift"
-            timestampString = "538521965.359475"
+            timestampString = "540247225.205393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "refreshArticles()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ViewController.swift"
-            timestampString = "538521965.359475"
+            timestampString = "540247225.205393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
             landmarkName = "fetchAds(type:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ViewController.swift"
-            timestampString = "538521965.359475"
+            timestampString = "540247225.205393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "fetchAds(type:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ViewController.swift"
-            timestampString = "540163889.447174"
+            timestampString = "540247225.205393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ViewController.swift"
-            timestampString = "540164001.711212"
+            timestampString = "540247225.205393"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
