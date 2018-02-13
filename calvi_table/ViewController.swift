@@ -24,8 +24,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     var searchString: String?
     
     //refresh button in tabbar
-    let refreshButton = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(refreshArticles))
-    
+    var refreshButton: UIBarButtonItem?
+    var loginButton: UIBarButtonItem?
+    var homeButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,21 +46,21 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         tabBarController?.title = "Luftkraftsport"
-        
-        //tabBarController?.toolbarItems.
+    
+        //refresh ads button in tabbar
+        refreshButton = UIBarButtonItem.init(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(ViewController.refreshArticles))
         
         //login button in tabbar
-        let loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(openLoginPage))
+        loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(self.openLoginPage))
         
         //home button
-        let homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(showMyArticle))
+        homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(self.showMyArticle))
         
         if isLoggedIn() {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton, homeButton], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, homeButton!], animated: true)
         } else {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton, loginButton], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, loginButton!], animated: true)
         }
-        
         
         tableView?.backgroundColor = UIColor.gray
         
@@ -76,8 +77,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     override func viewDidAppear(_ animated: Bool) {
         
         adaptTitle(adsCount: ads.count)
-        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton], animated: true)
-        //refreshArticles()
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
+        
+        if isLoggedIn() {
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, homeButton!], animated: true)
+        } else {
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, loginButton!], animated: true)
+        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -181,6 +187,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     }
     
     func fetchAds(type: String) {
+        
+        print("fetching ads........................")
         
         //TODO das ist mist, alamofire in extra func rufen?? wahrscheinlich...
         var url: URL

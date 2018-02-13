@@ -15,14 +15,16 @@ class MessagesController: UIViewController {
     
     var messages: [MessageOverview] = []
     
+    var refreshMessages: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerObservers()
         
-        let refreshMessages = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(fetchMessages))
+        refreshMessages = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(MessagesController.fetchMessages))
         
-        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages], animated: true)
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         
         if isLoggedIn() {
         
@@ -49,15 +51,20 @@ class MessagesController: UIViewController {
     
     func showNewMessage() {
         print("angekommen")
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         self.tabBarController?.title = "Messages: " + String(self.messages.count)
-        //fetchMessages()
+        
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         
         NotificationCenter.default.removeObserver(self)
+        
+        if isLoggedIn() {
+         
+            fetchMessages()
+        }
     }
     
     func isLoggedIn() -> Bool {
@@ -75,6 +82,8 @@ class MessagesController: UIViewController {
     }
     
     func fetchMessages() {
+        
+        print("fetching messages.............")
         
         let userToken = Utils.getUserToken()
         
@@ -134,8 +143,7 @@ class MessagesController: UIViewController {
                 self.tableView.reloadData()
                 self.tabBarController?.title = "Messages: " + String(self.messages.count)
             })
-            
-            }.resume()
+        }.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
