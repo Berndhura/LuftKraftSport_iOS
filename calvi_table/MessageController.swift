@@ -44,15 +44,6 @@ class MessagesController: UIViewController {
         }
     }
     
-    func registerObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
-    }
-    
-    
-    func showNewMessage() {
-        print("angekommen")
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         
         self.tabBarController?.title = "Messages: " + String(self.messages.count)
@@ -62,9 +53,19 @@ class MessagesController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         
         if isLoggedIn() {
-         
+            
             fetchMessages()
         }
+    }
+    
+    
+    func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
+    }
+    
+    
+    func showNewMessage() {
+        print("angekommen")
     }
     
     func isLoggedIn() -> Bool {
@@ -219,7 +220,7 @@ extension MessagesController: UITableViewDataSource {
                     imageCache.setObject(image!, forKey: urlString as NSString)
                     cell?.bild.image = image
                 })
-                }.resume()
+            }.resume()
         }
         
         return cell!

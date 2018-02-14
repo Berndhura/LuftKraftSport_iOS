@@ -76,7 +76,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         //remove tabbar items
         self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
-
     }
     
     func initGoogleSignInButton() {
@@ -254,6 +253,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             let fullName = dict["name"]! as! String
             self.userName.text = "Willkommen " + fullName
             self.refreshTabBar()
+            self.hideLoginButtons()
         })
     }
     

@@ -73,17 +73,34 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
         
-        if isEditMode {
-            
-            saveArticleButton.setTitle("Änderung speichern", for: .normal)
-            //addGestureOnImages()
-            editArticle()
-            
-        } else {
+        if isLoggedIn() {
         
-            setupImagesPlaceholder()
-            //addGestureOnImages()
-            prepareForms()
+            if isEditMode {
+                
+                saveArticleButton.setTitle("Änderung speichern", for: .normal)
+                //addGestureOnImages()
+                editArticle()
+                
+            } else {
+            
+                setupImagesPlaceholder()
+                //addGestureOnImages()
+                prepareForms()
+            }
+        }
+    }
+    
+    func isLoggedIn() -> Bool {
+        
+        if Utils.getUserToken() == "" {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+            self.navigationController?.popViewController(animated: false)
+            self.navigationController?.pushViewController(newViewController, animated: true)
+            return false
+        } else {
+            //user in
+            return true
         }
     }
     
