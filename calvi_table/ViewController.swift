@@ -301,6 +301,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     detailViewController.articleId = ad.articleId
                     detailViewController.lat = ad.lat
                     detailViewController.lng = ad.lng
+                    detailViewController.myBookmarks = self.myBookmarks
                 }
             }
         }

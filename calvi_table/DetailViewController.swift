@@ -26,6 +26,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     
     var imageArry = [UIImage]()
     
+    public var myBookmarks: [Int32] = []
+    
     @IBOutlet weak var anzeigeTitel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var beschreibung: UILabel!
@@ -45,6 +47,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         {
             UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
         }
+        
+        //TODO ???? häääää??? was soll das hier???
     }
 
     @IBOutlet weak var bookmarkEditButton: UIButton!
@@ -54,9 +58,20 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         let userIdFromDefaults = Utils.getUserId()
         
         if userId == userIdFromDefaults {
+            //own article -> just edit possible
             editArticle(articleId: articleId!)
         } else {
-            bookmarkArticle(articleId: articleId!)
+            //not own article -> bookmark or unbookmark
+            
+            if myBookmarks.contains(articleId!) {
+                //unbookmark
+                unBookmarkArticle(articleId: articleId!)
+                bookmarkEditButton.setTitle("Bookmark", for: .normal)
+            } else {
+                //bookmark this article
+                bookmarkArticle(articleId: articleId!)
+                bookmarkEditButton.setTitle("Unbookmark", for: .normal)
+            }
         }
     }
    
@@ -101,6 +116,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             if userId == userIdFromDefaults {
                 messageButton.setTitle("Löschen" , for: .normal)
                 bookmarkEditButton.setTitle("Bearbeiten", for: .normal)
+            } else {
+                //already bookmarked? adapt button title
+                if myBookmarks.contains(articleId!) {
+                    bookmarkEditButton.setTitle("Vergessen", for: .normal)
+                } else {
+                    bookmarkEditButton.setTitle("Bookmark", for: .normal)
+                }
             }
         }
         
@@ -131,28 +153,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             self.locationLabel.text = location
         }
         
-       /* if pictureUrl != nil {
-            
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(pictureUrl ?? "3797")")
-            
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async(execute: {
-                    let image = UIImage(data: data!)
-                    self.mainPicture.image = image
-                })
-                }.resume()
-            }
-            */
-        
         getThemAll(urlList: Utils.getAllPictureUrls(str: pictureUrl!))
-
-        
     }
     
     func getThemAll(urlList: [String]) {
@@ -189,7 +190,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             
             scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
             scrollView.addSubview(imageView)
-            
         }
     }
     
@@ -241,6 +241,25 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                 print(response)
                 self.showAlert()
         }
+    }
+    
+    func unBookmarkArticle(articleId: Int32) {
+        
+        let userToken = Utils.getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/\(articleId)?token=\(userToken)")
+        
+        Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response)
+                self.showUnBookmarkInfo()
+        }
+    }
+    
+    func showUnBookmarkInfo() {
+        let alert = UIAlertController(title: "Artikel wird vergessen!", message: nil, preferredStyle: .actionSheet)
+        self.present(alert, animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     func showAlert() {

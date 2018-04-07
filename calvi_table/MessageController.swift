@@ -132,7 +132,7 @@ class MessagesController: UIViewController {
                     
                     let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
                     
-                    //print(ad.urls)
+                    print(message)
                     
                     self.messages.append(msg)
                 }
