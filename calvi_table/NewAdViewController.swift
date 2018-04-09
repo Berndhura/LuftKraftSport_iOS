@@ -61,6 +61,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var currentImageNumber: Int = 0
     
     override func viewDidLoad() {
+
         super.viewDidLoad()
         
         decriptionText.delegate = self
@@ -88,6 +89,16 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 prepareForms()
             }
         }
+        
+        //swipe to go back
+        let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.backTo))
+        backSwipe.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(backSwipe)
+    }
+    
+    func backTo(sender: String) {
+        
+        self.navigationController!.popViewController(animated: true)
     }
     
     func isLoggedIn() -> Bool {
