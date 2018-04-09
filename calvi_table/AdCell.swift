@@ -64,7 +64,7 @@ class AdCell: UITableViewCell {
                     //nothing here, if request did not work? show user info!
             }
             bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
-            removeArticelFromBokkmarkList(id: articleId)
+            removeArticelFromBookmarkList(id: articleId)
             
         } else {
             //create bookmark
@@ -184,7 +184,7 @@ class AdCell: UITableViewCell {
 
     }
     
-    func removeArticelFromBokkmarkList(id: Int32) {
+    func removeArticelFromBookmarkList(id: Int32) {
         
         var pos: Int = 0
         for i: Int32 in myBookmarks {

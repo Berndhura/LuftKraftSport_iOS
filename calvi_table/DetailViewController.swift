@@ -62,15 +62,16 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             editArticle(articleId: articleId!)
         } else {
             //not own article -> bookmark or unbookmark
-            
             if myBookmarks.contains(articleId!) {
                 //unbookmark
                 unBookmarkArticle(articleId: articleId!)
-                bookmarkEditButton.setTitle("Bookmark", for: .normal)
+                bookmarkEditButton.setTitle("Merken", for: .normal)
+                removeArticelFromBookmarkList(id: articleId!)
             } else {
                 //bookmark this article
                 bookmarkArticle(articleId: articleId!)
-                bookmarkEditButton.setTitle("Unbookmark", for: .normal)
+                bookmarkEditButton.setTitle("Vergessen", for: .normal)
+                myBookmarks.append(articleId!)
             }
         }
     }
@@ -121,7 +122,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                 if myBookmarks.contains(articleId!) {
                     bookmarkEditButton.setTitle("Vergessen", for: .normal)
                 } else {
-                    bookmarkEditButton.setTitle("Bookmark", for: .normal)
+                    bookmarkEditButton.setTitle("Merken", for: .normal)
                 }
             }
         }
@@ -176,6 +177,19 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
                     }
                 })
             }.resume()
+        }
+    }
+    
+    func removeArticelFromBookmarkList(id: Int32) {
+        
+        var pos: Int = 0
+        for i: Int32 in myBookmarks {
+            if articleId == i {
+                myBookmarks.remove(at: pos)
+                return
+            } else {
+                pos = pos + 1
+            }
         }
     }
 
@@ -259,13 +273,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     func showUnBookmarkInfo() {
         let alert = UIAlertController(title: "Artikel wird vergessen!", message: nil, preferredStyle: .actionSheet)
         self.present(alert, animated: true, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     func showAlert() {
         let alert = UIAlertController(title: "Artikel ist gemerkt!", message: nil, preferredStyle: .actionSheet)
         self.present(alert, animated: true, completion: nil)
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     func deleteArticle(articleId: Int32) {
