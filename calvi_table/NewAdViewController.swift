@@ -92,13 +92,14 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //swipe to go back
         let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.backTo))
-        backSwipe.direction = UISwipeGestureRecognizerDirection.right
+        backSwipe.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(backSwipe)
+        //self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    func backTo(sender: String) {
-        
-        self.navigationController!.popViewController(animated: true)
+    func backTo(gesture: UISwipeGestureRecognizer) {
+        //TODO funzt noch nicht
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func isLoggedIn() -> Bool {
