@@ -201,8 +201,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-cY-bBo">
-                                <rect key="frame" x="16" y="64" width="343" height="554"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-cY-bBo">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLl-ab-H54" userLabel="mainView">
                                 <rect key="frame" x="0.0" y="64" width="375" height="539"/>
@@ -234,6 +234,7 @@
                                             </view>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Was verkaufst Du..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3H-Bd-Oj9" userLabel="title">
                                                 <rect key="frame" x="10" y="26" width="355" height="17"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -247,7 +248,7 @@
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fML-4B-sjO" customClass="UITextViewFixed" customModule="calvi_table" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="64" width="355" height="121"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -353,12 +354,13 @@
                         <outlet property="location" destination="ZAT-1p-12S" id="1gM-bx-2yX"/>
                         <outlet property="price" destination="rhr-PG-IKu" id="5U9-6K-Akb"/>
                         <outlet property="saveArticleButton" destination="zBQ-BS-DXb" id="hll-A9-UVa"/>
+                        <outlet property="scrollView" destination="bmD-cY-bBo" id="Y6k-f1-N5d"/>
                         <outlet property="titleText" destination="C3H-Bd-Oj9" id="0Sy-Fo-Uwd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0o-om-WZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="934"/>
+            <point key="canvasLocation" x="144.80000000000001" y="933.28335832083962"/>
         </scene>
         <!--Suche-->
         <scene sceneID="tne-QT-ifu">

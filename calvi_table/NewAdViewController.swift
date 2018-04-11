@@ -52,6 +52,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    //scrollview
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    // reset default size
+    var scrollViewHeight: CGFloat = 0
+    
+    // keyboard frame size
+    var keyboard = CGRect()
+    
     var adButtonViews = [UIButton]()
     
     var adImages = [UIImage]()
@@ -95,6 +104,25 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         backSwipe.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(backSwipe)
         //self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        // scrollview frame size
+        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        scrollView.contentSize.height = self.view.frame.height
+        scrollViewHeight = scrollView.frame.height
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard), name: .UIKeyboardDidShow, object: nil)
+        
+    }
+    
+    func showKeyboard(notification: NSNotification) {
+    
+        //define keyboard size
+        keyboard = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)!
+        
+        //move up UI
+        UIView.animate(withDuration: 0.5) {
+            self.scrollView.frame.size.height = self.scrollViewHeight - self.keyboard.height
+        }
     }
     
     func backTo(gesture: UISwipeGestureRecognizer) {
