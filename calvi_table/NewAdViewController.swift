@@ -27,14 +27,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var lat: Double = 0.0
     public var lng: Double = 0.0
 
+    
     @IBOutlet weak var imgScrollView: UIScrollView!
-   
+    
     @IBOutlet weak var titleText: UITextField!
     
     @IBOutlet weak var decriptionText: UITextViewFixed!
     
     @IBOutlet weak var price: UITextField!
-   
+    
     @IBOutlet weak var location: UITextField!
     
     @IBOutlet weak var saveArticleButton: UIButton!
@@ -51,6 +52,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             SVProgressHUD.show(withStatus: "Neue Anzeige wird erstellt...")
         }
     }
+    
+    //to hide keyboard when tapped
+    var hideTap: UITapGestureRecognizer!
     
     //scrollview
     @IBOutlet weak var scrollView: UIScrollView!
@@ -78,7 +82,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.delegate = self
         location.delegate = self
         
-        titleText.returnKeyType = UIReturnKeyType.next
+        titleText.returnKeyType = UIReturnKeyType.continue
         decriptionText.returnKeyType = UIReturnKeyType.next
         price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
@@ -86,19 +90,18 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isLoggedIn() {
         
             if isEditMode {
-                
                 saveArticleButton.setTitle("Änderung speichern", for: .normal)
                 //addGestureOnImages()
                 editArticle()
                 
             } else {
-            
                 setupImagesPlaceholder()
                 //addGestureOnImages()
                 prepareForms()
             }
         }
         
+        //TODO does not work at all
         //swipe to go back
         let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.backTo))
         backSwipe.direction = UISwipeGestureRecognizerDirection.left
@@ -110,19 +113,51 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         scrollView.contentSize.height = self.view.frame.height
         scrollViewHeight = scrollView.frame.height
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard), name: .UIKeyboardWillChangeFrame, object: nil)
         
+        //declare hide keyboard tap
+        hideTap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardTap))
+        hideTap.numberOfTapsRequired = 1
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(hideTap)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    //hide keyboard if tapped
+    func hideKeyboardTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+        print("hide Keyboard")
     }
     
     func showKeyboard(notification: NSNotification) {
+        
+        print("showKeyboard")
     
         //define keyboard size
         keyboard = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)!
+        print("keyboard: \(keyboard.height)")
         
         //move up UI
-        UIView.animate(withDuration: 0.5) {
-            self.scrollView.frame.size.height = self.scrollViewHeight - self.keyboard.height
-        }
+        //UIView.animate(withDuration: 0.5) {
+            //self.scrollView.frame.size.height = self.scrollViewHeight - self.keyboard.height
+        //}
+        view.frame.origin.y = -self.keyboard.height
+    }
+    
+    func hideKeyboard(notification: NSNotification) {
+        
+        //move down UI
+        //UIView.animate(withDuration: 0.5) {
+        //    self.scrollView.frame.size.height = self.view.frame.height
+        //}
+        view.frame.origin.y = 0
     }
     
     func backTo(gesture: UISwipeGestureRecognizer) {
@@ -153,11 +188,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         self.tabBarController?.title = "Erstelle eine Anzeige"
 
-        //remove tabbar items
+        //remove tabbar items 
         self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
     }
-
-
     
     func setupImagesPlaceholder() {
         
@@ -205,7 +238,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField === titleText) {
             decriptionText.becomeFirstResponder()
@@ -220,13 +253,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             print("senden")
         }
         /*- jo das passt ausser next in beschreibung weil kein kein textfiled sondern textview!!
-        - scollbar machen sonst ist bei eingabe das textfeld nict zu sehen
-        - 3 bilder auswählbar mach_vm_read_entry
-        - bearbeiten der anzeige, nicht neu abspeichern
-        - alles allignen abstand bilder von top
-        - schriftgrösse?
-        standort eingabe richtig so? was wenn quatscheingegeben?
-        - */
+         - scollbar machen sonst ist bei eingabe das textfeld nict zu sehen
+         - 3 bilder auswählbar mach_vm_read_entry
+         - bearbeiten der anzeige, nicht neu abspeichern
+         - alles allignen abstand bilder von top
+         - schriftgrösse?
+         standort eingabe richtig so? was wenn quatscheingegeben?
+         - */
         return true
     }
     
@@ -266,7 +299,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 }
                 
                 DispatchQueue.main.async(execute: {
-
+                    
                     self.adImages.append(UIImage(data: data!)!)
                     
                     // async request, possible that last request comes first -> only show pictures
@@ -276,7 +309,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                         self.showPictures()
                     }
                 })
-            }.resume()
+                }.resume()
         }
     }
 
@@ -305,7 +338,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     func updateArticle() {
-     
+        
         let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
@@ -319,7 +352,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         params["location"] = [
             "type": "Point",
-            "coordinates": [47.0, 13.5]]
+            "coordinates": [47.0, 13.5]]  //TODO location -> lat,lng
         
         
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
@@ -332,10 +365,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 appDelegate.window?.rootViewController = tabBarController
         }
         
-       /* update, der bestehenden ad,
-        dazu bilder  updaten
-        flag welches bild angefasst wurdd
-        */
+        /* update, der bestehenden ad,
+         dazu bilder  updaten
+         flag welches bild angefasst wurdd
+         */
     }
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {
@@ -420,13 +453,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                      print("returning")
                      //return to main list
                      */
-                     let sb = UIStoryboard(name: "Main", bundle: nil)
-                     let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                     appDelegate.window?.rootViewController = tabBarController
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController = tabBarController
                     
                     SVProgressHUD.dismiss()
-                
+                    
                 }
                 
             case .failure(let encodingError):
