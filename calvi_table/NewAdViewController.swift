@@ -62,9 +62,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     // reset default size
     var scrollViewHeight: CGFloat = 0
     
-    // keyboard frame size
-    var keyboard = CGRect()
-    
     var adButtonViews = [UIButton]()
     
     var adImages = [UIImage]()
@@ -82,7 +79,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.delegate = self
         location.delegate = self
         
-        titleText.returnKeyType = UIReturnKeyType.continue
+        //TODO next hier wieder benutzen
+        //titleText.returnKeyType = UIReturnKeyType.next
         decriptionText.returnKeyType = UIReturnKeyType.next
         price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
@@ -113,9 +111,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         scrollView.contentSize.height = self.view.frame.height
         scrollViewHeight = scrollView.frame.height
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.hideKeyboard), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showKeyboard), name: .UIKeyboardWillChangeFrame, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillChangeFrame, object: nil)
         
         //declare hide keyboard tap
         hideTap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardTap))
@@ -136,28 +134,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         print("hide Keyboard")
     }
     
-    func showKeyboard(notification: NSNotification) {
+    func keyboardWillChange(notification: NSNotification) {
+        //get keyboard size for device
+        let keyboard = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)!
         
-        print("showKeyboard")
-    
-        //define keyboard size
-        keyboard = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)!
-        print("keyboard: \(keyboard.height)")
-        
-        //move up UI
-        //UIView.animate(withDuration: 0.5) {
-            //self.scrollView.frame.size.height = self.scrollViewHeight - self.keyboard.height
-        //}
-        view.frame.origin.y = -self.keyboard.height
-    }
-    
-    func hideKeyboard(notification: NSNotification) {
-        
-        //move down UI
-        //UIView.animate(withDuration: 0.5) {
-        //    self.scrollView.frame.size.height = self.view.frame.height
-        //}
-        view.frame.origin.y = 0
+        if (notification.name == .UIKeyboardWillShow || notification.name == .UIKeyboardWillChangeFrame) {
+            print("showKeyboard")
+            view.frame.origin.y = -keyboard.height
+        } else {
+            print("hideKeyboard")
+            view.frame.origin.y = 0
+        }
     }
     
     func backTo(gesture: UISwipeGestureRecognizer) {
@@ -241,7 +228,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField === titleText) {
-            decriptionText.becomeFirstResponder()
+            //TODO wieder auf weiter umstellen oder bei return keyboard verschwinden lassen?
+            self.view.endEditing(true)
+            //decriptionText.becomeFirstResponder()
         } else if (textField === decriptionText) {
             price.resignFirstResponder()
         } else if (textField === price) {
