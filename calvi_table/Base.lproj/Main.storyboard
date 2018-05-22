@@ -228,36 +228,52 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7N-jh-hUd">
-                                                <rect key="frame" x="0.0" y="562" width="375" height="30"/>
-                                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Abspeichern">
-                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="saveNewAd:" destination="yDh-be-Uo9" eventType="touchUpInside" id="Ui1-Z3-GZ1"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="31G-g7-d2A" userLabel="Stack View Buttons">
+                                                <rect key="frame" x="0.0" y="552" width="375" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-ph-owY">
+                                                        <rect key="frame" x="0.0" y="10" width="186.5" height="30"/>
+                                                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <state key="normal" title="Speichern">
+                                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="saveNewAd:" destination="yDh-be-Uo9" eventType="touchUpInside" id="vlD-n8-pNk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68K-kb-e8s" userLabel="BackButton">
+                                                        <rect key="frame" x="188.5" y="10" width="186.5" height="30"/>
+                                                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Abbrechen">
+                                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="abortEditing:" destination="yDh-be-Uo9" eventType="touchUpInside" id="ucG-Lo-KEK"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="y7N-jh-hUd" secondAttribute="trailing" id="0Hp-XV-NsF"/>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="top" secondItem="k8p-Fj-RwT" secondAttribute="bottom" constant="8" id="5n6-CZ-0SY"/>
-                                            <constraint firstItem="y7N-jh-hUd" firstAttribute="top" secondItem="7Hz-7n-4zb" secondAttribute="bottom" constant="20" id="6My-fJ-Tif"/>
+                                            <constraint firstItem="31G-g7-d2A" firstAttribute="top" secondItem="7Hz-7n-4zb" secondAttribute="bottom" constant="10" id="891-Rr-nqp"/>
                                             <constraint firstAttribute="trailing" secondItem="OcD-cJ-fyX" secondAttribute="trailing" constant="8" id="AtO-Tc-Dgg"/>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" constant="8" id="Bdr-U3-IWt"/>
+                                            <constraint firstAttribute="trailing" secondItem="31G-g7-d2A" secondAttribute="trailing" id="HYw-LZ-Ruu"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="top" secondItem="Mfg-3u-W9p" secondAttribute="bottom" constant="8" id="KoC-E0-Sev"/>
                                             <constraint firstAttribute="trailing" secondItem="k8p-Fj-RwT" secondAttribute="trailing" constant="8" id="M6G-6r-VPV"/>
-                                            <constraint firstAttribute="bottom" secondItem="y7N-jh-hUd" secondAttribute="bottom" constant="25" id="MHB-7l-nM5"/>
                                             <constraint firstAttribute="trailing" secondItem="QqS-qY-KmL" secondAttribute="trailing" constant="8" id="NWx-gP-fH9"/>
                                             <constraint firstAttribute="trailing" secondItem="7Hz-7n-4zb" secondAttribute="trailing" constant="8" id="PWI-qK-McX"/>
                                             <constraint firstItem="QqS-qY-KmL" firstAttribute="top" secondItem="Av7-fU-T5x" secondAttribute="top" constant="8" id="TdK-ab-IPK"/>
+                                            <constraint firstItem="31G-g7-d2A" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="aRT-2K-stE"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="top" secondItem="OcD-cJ-fyX" secondAttribute="bottom" constant="8" id="fqg-U4-Fwm"/>
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="top" secondItem="QqS-qY-KmL" secondAttribute="bottom" constant="20" id="i68-b4-Sjg"/>
-                                            <constraint firstItem="y7N-jh-hUd" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="jz2-Ly-jgs"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" constant="8" id="kGW-4k-vqQ"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" constant="8" id="kwT-p3-qxy"/>
                                             <constraint firstItem="QqS-qY-KmL" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" constant="8" id="nnZ-Ch-def"/>
+                                            <constraint firstAttribute="bottom" secondItem="31G-g7-d2A" secondAttribute="bottom" constant="15" id="qoJ-x9-iYh"/>
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" constant="8" id="r8y-ew-zK6"/>
                                             <constraint firstAttribute="trailing" secondItem="Mfg-3u-W9p" secondAttribute="trailing" constant="8" id="xp4-fo-jo7"/>
                                         </constraints>
@@ -286,12 +302,12 @@
                     <tabBarItem key="tabBarItem" title="Anbieten" image="plus" id="hi4-gC-d1e"/>
                     <size key="freeformSize" width="375" height="730"/>
                     <connections>
+                        <outlet property="backButton" destination="68K-kb-e8s" id="HEk-8c-vXf"/>
                         <outlet property="decriptionText" destination="OcD-cJ-fyX" id="RRz-Pc-VQt"/>
                         <outlet property="imgScrollView" destination="QqS-qY-KmL" id="Jdk-Kh-gGW"/>
                         <outlet property="location" destination="7Hz-7n-4zb" id="Dor-Pq-blu"/>
                         <outlet property="price" destination="k8p-Fj-RwT" id="zXr-lj-05v"/>
-                        <outlet property="saveArticleButton" destination="y7N-jh-hUd" id="GCW-NL-rLx"/>
-                        <outlet property="scrollView" destination="dbg-h7-KWc" id="Cle-Dk-P3k"/>
+                        <outlet property="saveArticleButton" destination="4c1-ph-owY" id="cYI-2C-zcF"/>
                         <outlet property="titleText" destination="Mfg-3u-W9p" id="f22-sU-UOi"/>
                     </connections>
                 </viewController>

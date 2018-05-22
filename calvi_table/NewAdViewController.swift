@@ -41,7 +41,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var saveArticleButton: UIButton!
     
     @IBAction func saveNewAd(_ sender: Any) {
-        
         if isEditMode {
             saveArticleButton.isEnabled = false
             SVProgressHUD.show(withStatus: "Anzeige wird geändert...")
@@ -53,14 +52,16 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    @IBOutlet weak var backButton: UIButton!
+    
+    @IBAction func abortEditing(_ sender: Any) {
+        //TODO funzt nur wenn die Tab Bar Items auch da sind! Dann aber sehr gut!!! selbst die Daten sind noch da, nach wechsel back back
+        //TODO falls die nicht da sind, wie beim editieren vom Ad ??? was dann???
+        self.tabBarController?.selectedIndex = 0
+    }
+    
     //to hide keyboard when tapped
     var hideTap: UITapGestureRecognizer!
-    
-    //scrollview
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    // reset default size
-    var scrollViewHeight: CGFloat = 0
     
     var adButtonViews = [UIButton]()
     
@@ -106,11 +107,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.view.addGestureRecognizer(backSwipe)
         //self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        // scrollview frame size
-        scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        scrollView.contentSize.height = self.view.frame.height
-        scrollViewHeight = scrollView.frame.height
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillChangeFrame, object: nil)
@@ -139,7 +135,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let keyboard = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)!
         
         if (notification.name == .UIKeyboardWillShow || notification.name == .UIKeyboardWillChangeFrame) {
-            print("showKeyboard")
+                print("showKeyboard")
             view.frame.origin.y = -keyboard.height
         } else {
             print("hideKeyboard")
@@ -508,7 +504,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func prepareForms() {
  
-        self.titleText.placeholder = "Was verkaufst du..."
+        self.titleText.placeholder = NSLocalizedString("title_placeholder", comment: "Was soll hier hin")
         self.decriptionText.placeholder = "Beschreibe dein Angebot..."
         self.price.placeholder = "Preis..."
     }

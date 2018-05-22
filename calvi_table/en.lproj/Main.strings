@@ -1,0 +1,74 @@
+
+/* Class = "UILabel"; text = "title"; ObjectID = "2GU-Ki-74n"; */
+"2GU-Ki-74n.text" = "Title for your article...";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "2xY-rX-2Q0"; */
+"2xY-rX-2Q0.text" = "Name";
+
+/* Class = "UITextField"; placeholder = "Location..."; ObjectID = "7Hz-7n-4zb"; */
+"7Hz-7n-4zb.placeholder" = "Location...";
+
+/* Class = "UITabBarItem"; title = "Suche"; ObjectID = "BRl-jb-NO6"; */
+"BRl-jb-NO6.title" = "Suche";
+
+/* Class = "UILabel"; text = "Name Nachnache"; ObjectID = "JkC-Xc-UbG"; */
+"JkC-Xc-UbG.text" = "Name Nachnache";
+
+/* Class = "UITextField"; placeholder = "Titel..."; ObjectID = "Mfg-3u-W9p"; */
+"Mfg-3u-W9p.placeholder" = "Titel...";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "OTS-4G-tfW"; */
+"OTS-4G-tfW.text" = "price";
+
+/* Class = "UIButton"; normalTitle = "Bookmark"; ObjectID = "PJk-pO-8lR"; */
+"PJk-pO-8lR.normalTitle" = "Bookmark";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "R2l-oE-iwT"; */
+"R2l-oE-iwT.text" = "date";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "SSn-2C-ab2"; */
+"SSn-2C-ab2.text" = "price";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "UJq-Na-9OF"; */
+"UJq-Na-9OF.text" = "location";
+
+/* Class = "UILabel"; text = "23.08.17"; ObjectID = "Umc-El-g1F"; */
+"Umc-El-g1F.text" = "23.08.17";
+
+/* Class = "UILabel"; text = "Bla sülz bitte surfbrett 100 liter ganz gelb"; ObjectID = "g6T-fa-gux"; */
+"g6T-fa-gux.text" = "Bla sülz bitte surfbrett 100 liter ganz gelb";
+
+/* Class = "UIButton"; normalTitle = "Share"; ObjectID = "h5I-8D-tVD"; */
+"h5I-8D-tVD.normalTitle" = "Share";
+
+/* Class = "UITabBarItem"; title = "Anbieten"; ObjectID = "hi4-gC-d1e"; */
+"hi4-gC-d1e.title" = "Anbieten";
+
+/* Class = "UILabel"; text = "beschreibung"; ObjectID = "htV-bn-u1Y"; */
+"htV-bn-u1Y.text" = "beschreibung";
+
+/* Class = "UITextField"; placeholder = "price..."; ObjectID = "k8p-Fj-RwT"; */
+"k8p-Fj-RwT.placeholder" = "price...";
+
+/* Class = "UILabel"; text = "location"; ObjectID = "ljI-yD-hkd"; */
+"ljI-yD-hkd.text" = "location";
+
+/* Class = "UITabBarItem"; title = "Nachrichten"; ObjectID = "mKE-vv-HxX"; */
+"mKE-vv-HxX.title" = "Nachrichten";
+
+/* Class = "UITabBarItem"; title = "Anmelden"; ObjectID = "nQs-aG-x1w"; */
+"nQs-aG-x1w.title" = "Anmelden";
+
+/* Class = "UIButton"; normalTitle = "Nachricht"; ObjectID = "nxA-Z0-M4e"; */
+"nxA-Z0-M4e.normalTitle" = "Nachricht";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "qWQ-ZQ-C3J"; */
+"qWQ-ZQ-C3J.text" = "date";
+
+/* Class = "UILabel"; text = "titel"; ObjectID = "rW5-ia-zSd"; */
+"rW5-ia-zSd.text" = "titel";
+
+/* Class = "UIButton"; normalTitle = "Abspeichern"; ObjectID = "y7N-jh-hUd"; */
+"y7N-jh-hUd.normalTitle" = "Abspeichern";
+
+"title_placeholder" = "Title for your fooking ad"
