@@ -504,7 +504,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func prepareForms() {
  
-        self.titleText.placeholder = NSLocalizedString("title_placeholder", comment: "Was soll hier hin")
+        self.titleText.placeholder = NSLocalizedString("mKE-vv-HxX.title", comment: "")
         self.decriptionText.placeholder = "Beschreibe dein Angebot..."
         self.price.placeholder = "Preis..."
     }

@@ -110,7 +110,7 @@ class AdCell: UITableViewCell {
     
     @IBAction func editArticle(_ sender: Any) {
         
-        //open edit article wit articleId
+        //open edit article with articleId
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
@@ -125,8 +125,10 @@ class AdCell: UITableViewCell {
         vc.locationFromAd = location.text!
         vc.isEditMode = true
         
-        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
-        //let nvc: UINavigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavBarController") as! UINavigationControlle
+        //TODO how to get Tabcontroller here???
+        //self.tabBarController?.selectedIndex = 3
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true)
     }
 
     
