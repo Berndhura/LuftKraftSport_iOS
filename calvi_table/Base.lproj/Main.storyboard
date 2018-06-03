@@ -357,15 +357,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i6Q-1Y-Z4j">
-                                                    <rect key="frame" x="127" y="270" width="24" height="24"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqs-LX-frS" userLabel="buttonView">
                                                     <rect key="frame" x="20" y="346.33333333333331" width="414" height="50"/>
                                                     <subviews>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29h-DX-NKo" userLabel="delete">
-                                                            <rect key="frame" x="356" y="0.0" width="50" height="50"/>
+                                                            <rect key="frame" x="348" y="0.0" width="50" height="50"/>
                                                             <state key="normal" image="round-delete-button"/>
                                                             <connections>
                                                                 <action selector="deleteArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="xRZ-nw-Mfe"/>
@@ -390,7 +386,7 @@
                                                     <constraints>
                                                         <constraint firstItem="juY-iZ-GIN" firstAttribute="height" secondItem="PSH-0c-dEr" secondAttribute="height" id="2Mz-Wp-8qe"/>
                                                         <constraint firstAttribute="height" constant="50" id="9O5-oK-QP0"/>
-                                                        <constraint firstAttribute="trailing" secondItem="29h-DX-NKo" secondAttribute="trailing" constant="8" id="Int-i8-Ybc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="29h-DX-NKo" secondAttribute="trailing" constant="16" id="Int-i8-Ybc"/>
                                                         <constraint firstItem="juY-iZ-GIN" firstAttribute="width" secondItem="PSH-0c-dEr" secondAttribute="width" id="W2k-aO-egf"/>
                                                         <constraint firstItem="29h-DX-NKo" firstAttribute="height" secondItem="juY-iZ-GIN" secondAttribute="height" id="cUO-2Z-YBf"/>
                                                         <constraint firstItem="juY-iZ-GIN" firstAttribute="leading" secondItem="Hqs-LX-frS" secondAttribute="leading" id="jgw-au-z6M"/>
