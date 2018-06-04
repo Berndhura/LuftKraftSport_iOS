@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Cc-aP-1RD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="608.79999999999995" y="-722.78860569715152"/>
+            <point key="canvasLocation" x="-375" y="808"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="vKY-bs-H4X">
@@ -139,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEB-gx-ijc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1466" y="-723"/>
+            <point key="canvasLocation" x="446" y="814"/>
         </scene>
         <!--Anmelden-->
         <scene sceneID="8f8-na-VX6">
@@ -179,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1023" y="935"/>
+            <point key="canvasLocation" x="-1917" y="814"/>
         </scene>
         <!--Anbieten-->
         <scene sceneID="O69-ie-Fg1">
@@ -313,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0o-om-WZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="930.13493253373315"/>
+            <point key="canvasLocation" x="-1167" y="811"/>
         </scene>
         <!--Suche-->
         <scene sceneID="tne-QT-ifu">
@@ -467,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="608.69565217391312" y="6.5217391304347831"/>
+            <point key="canvasLocation" x="-374" y="7"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Qbk-Zk-5uH">
@@ -483,9 +483,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNN-Tj-yHK">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1150"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V50-mk-tH8">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V50-mk-tH8">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             </scrollView>
+                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="XBx-Rm-Bng">
+                                                <rect key="frame" x="140" y="283" width="39" height="37"/>
+                                                <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="currentPageIndicatorTintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </pageControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-Ki-74n" userLabel="title">
                                                 <rect key="frame" x="10" y="340" width="300" height="20.333333333333314"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -573,7 +578,9 @@
                                             <constraint firstAttribute="trailing" secondItem="OTS-4G-tfW" secondAttribute="trailing" constant="10" id="YQc-zF-OjS"/>
                                             <constraint firstItem="htV-bn-u1Y" firstAttribute="top" secondItem="2GU-Ki-74n" secondAttribute="bottom" constant="20" id="cq6-tC-Ykm"/>
                                             <constraint firstItem="ljI-yD-hkd" firstAttribute="top" secondItem="OTS-4G-tfW" secondAttribute="bottom" constant="20" id="ctQ-HZ-0Qx"/>
+                                            <constraint firstItem="XBx-Rm-Bng" firstAttribute="centerX" secondItem="dNN-Tj-yHK" secondAttribute="centerX" id="exb-zJ-2YI"/>
                                             <constraint firstItem="V50-mk-tH8" firstAttribute="top" secondItem="dNN-Tj-yHK" secondAttribute="top" id="fIL-lq-SWB"/>
+                                            <constraint firstItem="XBx-Rm-Bng" firstAttribute="bottom" secondItem="V50-mk-tH8" secondAttribute="bottom" id="gny-wc-JZE"/>
                                             <constraint firstAttribute="trailing" secondItem="OKb-Gn-ZoK" secondAttribute="trailing" id="mGF-VK-yVd"/>
                                             <constraint firstItem="V50-mk-tH8" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" id="rR5-vq-fTo"/>
                                             <constraint firstItem="qWQ-ZQ-C3J" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="snO-P6-cMs"/>
@@ -622,13 +629,14 @@
                         <outlet property="locationLabel" destination="ljI-yD-hkd" id="iZ6-cr-yOF"/>
                         <outlet property="mapView" destination="ktI-Mm-4Go" id="iei-WU-ASd"/>
                         <outlet property="messageButton" destination="WPK-dt-qIX" id="6fe-3E-ObD"/>
+                        <outlet property="pageControl" destination="XBx-Rm-Bng" id="AvP-0Z-wti"/>
                         <outlet property="priceLabel" destination="OTS-4G-tfW" id="gvK-QZ-MbH"/>
                         <outlet property="scrollView" destination="V50-mk-tH8" id="eag-aR-ByG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcP-CE-t3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1464" y="290.55472263868069"/>
+            <point key="canvasLocation" x="377" y="-162"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vgR-jU-Z3W">
@@ -649,7 +657,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-KY-2hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1023" y="7"/>
+            <point key="canvasLocation" x="-1916" y="7"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0W4-G7-JRy">
@@ -671,7 +679,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6k-xE-Tgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-257.97101449275362" y="6.5217391304347831"/>
+            <point key="canvasLocation" x="-1168" y="7"/>
         </scene>
     </scenes>
     <resources>

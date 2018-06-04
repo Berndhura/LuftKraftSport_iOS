@@ -11,7 +11,7 @@ import Alamofire
 import MapKit
 
 
-class DetailViewController: UIViewController, MKMapViewDelegate {
+class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate {
     
     var articleTitle: String?
     var pictureUrl: String?
@@ -35,6 +35,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
     
     @IBAction func shareArticle(_ sender: Any) {
         
@@ -110,6 +112,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
         
         super.viewDidLoad()
         
+        scrollView.delegate = self
+        
         prepareMap()
         
         if userId != nil {
@@ -154,7 +158,15 @@ class DetailViewController: UIViewController, MKMapViewDelegate {
             self.locationLabel.text = location
         }
         
+        //configure page controller with number of images
+        pageControl.numberOfPages = Utils.getAllPictureUrls(str: pictureUrl!).count
+        
         getThemAll(urlList: Utils.getAllPictureUrls(str: pictureUrl!))
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let displayWidth = self.view.frame.width
+        pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(displayWidth))
     }
     
     func getThemAll(urlList: [String]) {
