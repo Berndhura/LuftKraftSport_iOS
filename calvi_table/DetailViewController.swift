@@ -202,7 +202,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     func addImageToScrollView(imageNumber: Int) {
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
-        print(url!)
         let imageView = UIImageView()
         imageView.sd_imageTransition = .fade
         imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in

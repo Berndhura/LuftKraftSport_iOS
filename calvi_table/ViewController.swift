@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Firebase
+import SDWebImage
 
 class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -375,30 +376,8 @@ extension ViewController: UITableViewDataSource {
         
         let url = URL(string: urlString)
         
-        cell?.bild.image = UIImage(named: "lks_logo_1024x1024")
-        
-        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
-            cell?.bild.image = imageFromCache
-            
-        } else {
-        
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async(execute: {
-                    let imageToCache = UIImage(data:data!)
-                    if imageToCache != nil {
-                        imageCache.setObject(imageToCache!, forKey: urlString as NSString)
-                        cell?.bild.image = imageToCache
-                    }
-                })
-            }.resume()
-        }
-        
+        cell?.bild.sd_setImage(with: url!, placeholderImage: UIImage(named: "lks_logo_1024x1024"))
+
         //is my article
         if (currentAd.userId == Utils.getUserId()) {
             cell?.editButton.isHidden = false
