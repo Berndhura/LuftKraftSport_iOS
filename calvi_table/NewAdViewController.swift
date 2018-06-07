@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import CoreLocation
 import AddressBookUI
-import SDWebImage
 import RxSwift
 import SVProgressHUD
 

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import MapKit
+import SDWebImage
 
 
 class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate {
@@ -24,7 +25,11 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     var lat: Double?
     var lng: Double?
     
-    var imageArry = [UIImage]()
+    var imageCount = 0
+    
+    var allImagesLoaded = false
+    
+    var imageNumberList = [String]()
     
     public var myBookmarks: [Int32] = []
     
@@ -112,6 +117,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         super.viewDidLoad()
         
+        imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
+        
         scrollView.delegate = self
         
         prepareMap()
@@ -161,61 +168,53 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         //configure page controller with number of images
         pageControl.numberOfPages = Utils.getAllPictureUrls(str: pictureUrl!).count
         
-        getThemAll(urlList: Utils.getAllPictureUrls(str: pictureUrl!))
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let displayWidth = self.view.frame.width
-        pageControl.currentPage = Int(scrollView.contentOffset.x / CGFloat(displayWidth))
-    }
-    
-    func getThemAll(urlList: [String]) {
+        imageNumberList = Utils.getAllPictureUrls(str: pictureUrl!)
         
-        for i in 0..<urlList.count {
-            
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
-            
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async(execute: {
-                    self.imageArry.append(UIImage(data: data!)!)
-                    if (i == urlList.count-1) {
-                        self.showPictures()
-                    }
-                })
-            }.resume()
-        }
-    }
-    
-    func removeArticelFromBookmarkList(id: Int32) {
+        prepareScrollView()
         
-        var pos: Int = 0
-        for i: Int32 in myBookmarks {
-            if articleId == i {
-                myBookmarks.remove(at: pos)
-                return
-            } else {
-                pos = pos + 1
-            }
-        }
+        //show first image
+        addImageToScrollView(imageNumber: 0)
     }
 
-    func showPictures() {
+    func prepareScrollView() {
+        //resize scrollView to image count
+        let imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
+        self.scrollView.contentSize.width = self.scrollView.frame.width * CGFloat(imageCount)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let displayWidth = self.view.frame.width
         
-        for i in 0..<imageArry.count {
-            let imageView = UIImageView()
-            imageView.image = imageArry[i]
+        //print("page: ", Int(scrollView.contentOffset.x / CGFloat(displayWidth)))
+        let page = Int(scrollView.contentOffset.x / CGFloat(displayWidth))
+        
+        //load next image only if not shown or already loaded
+        if ((page + 1 < imageCount) && !allImagesLoaded) {
+            addImageToScrollView(imageNumber: page + 1)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+    }
+    
+    func addImageToScrollView(imageNumber: Int) {
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
+        print(url!)
+        let imageView = UIImageView()
+        imageView.sd_imageTransition = .fade
+        imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in
             imageView.contentMode = .scaleAspectFit
-            let xPosition = self.view.frame.width * CGFloat(i)
+            let xPosition = self.view.frame.width * CGFloat(imageNumber)
             imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.width)
+            self.scrollView.addSubview(imageView)
             
-            scrollView.contentSize.width = scrollView.frame.width * CGFloat(i + 1)
-            scrollView.addSubview(imageView)
+            //in case last image is downloaded -> stop adding images to scrollview
+            if (imageNumber + 1 == self.imageCount) {
+                self.allImagesLoaded = true
+            }
         }
     }
     
@@ -240,7 +239,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func editArticle(articleId: Int32) {
         
-        //open edit article wit articleId
+        //open edit article with articleId
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
         vc.articleId = self.articleId!
@@ -254,6 +253,19 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         vc.pictureUrl = self.pictureUrl!
         vc.isEditMode = true
         self.navigationController?.present(vc, animated: true, completion: nil)
+    }
+    
+    func removeArticelFromBookmarkList(id: Int32) {
+        
+        var pos: Int = 0
+        for i: Int32 in myBookmarks {
+            if articleId == i {
+                myBookmarks.remove(at: pos)
+                return
+            } else {
+                pos = pos + 1
+            }
+        }
     }
     
     func bookmarkArticle(articleId: Int32) {

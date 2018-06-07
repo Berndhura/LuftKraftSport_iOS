@@ -8,7 +8,7 @@ target 'calvi_table' do
   # Pods for calvi_table
 	
     pod 'Google/SignIn'
-    pod 'SDWebImage'
+    pod 'SDWebImage', '~> 4.3.0'
     pod 'Firebase/Storage'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'

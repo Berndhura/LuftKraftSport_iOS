@@ -31,6 +31,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO besser in appdelegate???
+        SDWebImageDownloader.shared().setValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", forHTTPHeaderField: "Accept")
+        
         checkLoginStatus()
         
         getMyBookmaks(type: "all")
@@ -176,7 +179,11 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     if res.contains("Unauthorized") {
                         //nix
                     } else {
-                        self.myBookmarks = response.result.value! as! [Int32]
+                        if let res = response.result.value {
+                            self.myBookmarks = res as! [Int32]  //TODO crash hier wenn netzwerk verbunden aber kein service, wahrscheinlich wie bei ALLEN requests!!!
+                        } else {
+                            self.myBookmarks = []
+                        }
                     }
                     self.fetchAds(type: type)
             }
