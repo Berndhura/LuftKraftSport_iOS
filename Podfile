@@ -19,6 +19,7 @@ target 'calvi_table' do
     pod 'SwiftyJSON'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
+    #pod 'MessageKit'
 
   target 'calvi_tableTests' do
     inherit! :search_paths

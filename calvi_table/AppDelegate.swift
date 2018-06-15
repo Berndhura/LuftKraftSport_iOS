@@ -173,7 +173,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([.alert, .badge, .sound])
+        completionHandler([.alert, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -184,11 +184,27 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        print(response.notification.request.content.userInfo)
         
-        // Print full message.
-        print(userInfo)
+        //TODO: wenn typ "message" sonst add vorschlag: details view
+        forwardMessageToChat(userInfo: userInfo)
         
         completionHandler()
+    }
+    
+    func forwardMessageToChat(userInfo: [AnyHashable: Any]) {
+        
+        let name = userInfo[AnyHashable("name")] as? String
+        let articleId = userInfo[AnyHashable("articleId")] as? String
+        let sender = userInfo[AnyHashable("sender")] as? String
+        
+        //open Chat ViewController
+        let chatController = ChatViewController()
+        chatController.sender = sender!
+        chatController.articleId = Int64(articleId!)!
+        chatController.partnerName = name!
+        
+        window?.rootViewController?.present(chatController, animated: true, completion: nil)
     }
 }
 // [END ios_10_message_handling]
