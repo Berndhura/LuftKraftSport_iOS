@@ -97,7 +97,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @objc func refreshToken(notification: NSNotification) {
         let refreshToken = InstanceID.instanceID().token()
-        print("##########################################################     Token: ", refreshToken)
+        print("FMC Token: ", refreshToken)
+        Utils.saveDeviceFmcToken(fcmToken: refreshToken!)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -172,7 +173,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([])
+        completionHandler([.alert, .badge, .sound])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
