@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import JSQMessagesViewController
 import Alamofire
 
@@ -20,7 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     
     //private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
-    private var newMessageRefHandle: DatabaseHandle?
+   // private var newMessageRefHandle: FIRDatabaseHandle?
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()

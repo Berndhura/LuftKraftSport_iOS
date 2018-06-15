@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MessagesController: UIViewController {
     
@@ -52,7 +53,6 @@ class MessagesController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         
         if isLoggedIn() {
-            
             fetchMessages()
         }
     }
@@ -131,8 +131,7 @@ class MessagesController: UIViewController {
                     
                     let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
                     
-                    print(message)
-                    
+                    //print(message)
                     self.messages.append(msg)
                 }
           //  }
@@ -195,32 +194,8 @@ extension MessagesController: UITableViewDataSource {
     
         //image
         let imageId = messages[indexPath.item].url
-        
-        let urlString = "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/"
-        
-        let url = URL(string: urlString)
-        
-        cell?.bild.image = UIImage(named: "lks_logo_1024x1024")
-        
-        if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
-            cell?.bild.image = imageFromCache
-            
-        } else {
-            
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async(execute: {
-                    let image = UIImage(data: data!)
-                    imageCache.setObject(image!, forKey: urlString as NSString)
-                    cell?.bild.image = image
-                })
-            }.resume()
-        }
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/")
+        cell?.bild.sd_setImage(with: url!, placeholderImage: UIImage(named: "lks_logo_1024x1024"))
         
         return cell!
     }

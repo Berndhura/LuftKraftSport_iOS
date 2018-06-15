@@ -31,7 +31,6 @@
 		27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13111F46FC5E0073C0E9 /* AdCell.swift */; };
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
-		27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */; };
 		27FF9BD5201B33CE00D50983 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF9BD4201B33CE00D50983 /* Constants.swift */; };
 		76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */; };
 /* End PBXBuildFile section */
@@ -89,7 +88,6 @@
 		27FE13131F46FF110073C0E9 /* Ad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		27FE13151F47122F0073C0E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "calvi_table-Bridging-Header.h"; sourceTree = "<group>"; };
-		27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lks-Bridging-Header.m"; sourceTree = "<group>"; };
 		27FF9BD4201B33CE00D50983 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 				27CE4FC71F44749E00FD4166 /* taylor_swift_blank_space.jpg */,
 				27CE4FA21F446E6500FD4166 /* LaunchScreen.storyboard */,
 				27CE4FA51F446E6500FD4166 /* Info.plist */,
-				27FE13591F6417200073C0E9 /* lks-Bridging-Header.m */,
 				27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */,
 			);
 			path = calvi_table;
@@ -456,7 +453,6 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
@@ -476,7 +472,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
@@ -548,7 +543,6 @@
 				274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */,
 				270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */,
 				2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */,
-				27FE135A1F6417200073C0E9 /* lks-Bridging-Header.m in Sources */,
 				271DF0B61FA34D4B0048580D /* Urls.swift in Sources */,
 				279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */,
 				27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */,

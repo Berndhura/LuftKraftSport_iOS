@@ -8,12 +8,7 @@ target 'calvi_table' do
   # Pods for calvi_table
 	
     pod 'Google/SignIn'
-    pod 'SDWebImage', '~> 4.3.0'
-    pod 'Firebase/Storage'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Database'
-    pod 'Firebase/Core'
-    pod 'Firebase/Messaging'
+    pod 'SDWebImage'
     pod 'JSQMessagesViewController'
     pod 'FacebookCore'
     pod 'FacebookLogin'
@@ -22,6 +17,8 @@ target 'calvi_table' do
     pod 'RxCocoa',    '~> 3.0'
     pod 'SVProgressHUD'
     pod 'SwiftyJSON'
+    pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
 
   target 'calvi_tableTests' do
     inherit! :search_paths
