@@ -328,6 +328,8 @@ extension ViewController: UITableViewDataSource {
         
         var cell: AdCell? = tableView.dequeueReusableCell(withIdentifier: "AdCell") as? AdCell
         
+        cell?.mainViewController = self
+        
         if cell == nil {
             cell = AdCell(style: .default, reuseIdentifier: "AdCell")
         }

@@ -51,6 +51,8 @@ class AdCell: UITableViewCell {
     
     public var myBookmarks: [Int32] = []
     
+    var mainViewController: ViewController?
+    
     @IBAction func addBookmark(_ sender: Any) {
      
         let userToken = Utils.getUserToken()
@@ -109,11 +111,10 @@ class AdCell: UITableViewCell {
     }
     
     @IBAction func editArticle(_ sender: Any) {
-        
         //open edit article with articleId
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
+        
         vc.articleId = articleId
         vc.pictureUrl = pictureURL
         vc.titleFromAd = self.title.text!
@@ -125,10 +126,7 @@ class AdCell: UITableViewCell {
         vc.locationFromAd = location.text!
         vc.isEditMode = true
         
-        //TODO how to get Tabcontroller here???
-        //self.tabBarController?.selectedIndex = 3
-        
-        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true)
+        mainViewController!.navigationController?.pushViewController(vc, animated: true)
     }
 
     

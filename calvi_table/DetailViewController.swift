@@ -238,8 +238,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func editArticle(articleId: Int32) {
         
-        //open edit article with articleId
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
         let vc = storyBoard.instantiateViewController(withIdentifier: "newArticleController") as! NewAdViewController
         vc.articleId = self.articleId!
         vc.titleFromAd = self.articleTitle!
@@ -251,7 +251,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         vc.locationFromAd = self.location!
         vc.pictureUrl = self.pictureUrl!
         vc.isEditMode = true
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func removeArticelFromBookmarkList(id: Int32) {
