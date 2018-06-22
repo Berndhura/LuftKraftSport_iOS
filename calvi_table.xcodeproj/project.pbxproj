@@ -17,6 +17,7 @@
 		2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B41F744A620009CDCB /* MessageOverview.swift */; };
 		2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B91F7455C00009CDCB /* MessageCell.swift */; };
 		274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DA64F1F8FDE2B001DD34F /* Utils.swift */; };
+		27930C5C20DCF26F006BC154 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27930C5A20DCF26F006BC154 /* Localizable.strings */; };
 		279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C761F7943BA004E2525 /* ChatViewController.swift */; };
 		279F0C791F7D2F1D004E2525 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C781F7D2F1D004E2525 /* Message.swift */; };
 		27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4F991F446E6500FD4166 /* AppDelegate.swift */; };
@@ -67,6 +68,10 @@
 		2748C4B41F744A620009CDCB /* MessageOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageOverview.swift; sourceTree = "<group>"; };
 		2748C4B91F7455C00009CDCB /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		274DA64F1F8FDE2B001DD34F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		27930C5B20DCF26F006BC154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		27930C5D20DCFDDF006BC154 /* de-DE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "de-DE"; path = "de-DE.lproj/Main.strings"; sourceTree = "<group>"; };
+		27930C5E20DCFDE1006BC154 /* de-DE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "de-DE"; path = "de-DE.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		27930C5F20DCFDE3006BC154 /* de-DE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "de-DE"; path = "de-DE.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		279F0C761F7943BA004E2525 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		279F0C781F7D2F1D004E2525 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		27CE4F961F446E6500FD4166 /* calvi_table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calvi_table.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +140,7 @@
 				27FE13151F47122F0073C0E9 /* DetailViewController.swift */,
 				279F0C761F7943BA004E2525 /* ChatViewController.swift */,
 				27454F5D1F824F1B008AA35A /* NewAdViewController.swift */,
+				27930C5A20DCF26F006BC154 /* Localizable.strings */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"de-DE",
 			);
 			mainGroup = 27CE4F8D1F446E6500FD4166;
 			productRefGroup = 27CE4F971F446E6500FD4166 /* Products */;
@@ -380,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27CE4FC81F44749E00FD4166 /* taylor_swift_blank_space.jpg in Resources */,
+				27930C5C20DCF26F006BC154 /* Localizable.strings in Resources */,
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
@@ -584,12 +592,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		27930C5A20DCF26F006BC154 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27930C5B20DCF26F006BC154 /* en */,
+				27930C5F20DCFDE3006BC154 /* de-DE */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		27CE4F9D1F446E6500FD4166 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				27CE4F9E1F446E6500FD4166 /* Base */,
 				2705B6C720B36440004B36E9 /* en */,
 				2705B6C820B36550004B36E9 /* de */,
+				27930C5D20DCFDDF006BC154 /* de-DE */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -599,6 +617,7 @@
 			children = (
 				27CE4FA31F446E6500FD4166 /* Base */,
 				2705B6C920B36551004B36E9 /* de */,
+				27930C5E20DCFDE1006BC154 /* de-DE */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

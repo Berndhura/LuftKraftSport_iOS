@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  calvi_table
+
+  Created by bernd wichura on 22.06.18.
+  Copyright © 2018 bernd wichura. All rights reserved.
+*/
+
+"new_article_titel" = "Title for your ad...";
+"new_article_description" = "Describe your ad...";
+"new_article_price" = "Price...";
+

@@ -86,17 +86,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         location.returnKeyType = UIReturnKeyType.send
         
         if isLoggedIn() {
-        
             if isEditMode {
                 saveArticleButton.setTitle("Änderung speichern", for: .normal)
                 //addGestureOnImages()
                 editArticle()
-                
             } else {
                 setupImagesPlaceholder()
                 //addGestureOnImages()
                 prepareForms()
             }
+        } else {
+            openLogin()
         }
         
         //TODO does not work at all
@@ -121,6 +121,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        refreshTabBar()
     }
     
     //hide keyboard if tapped
@@ -150,27 +154,22 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func isLoggedIn() -> Bool {
         
         if Utils.getUserToken() == "" {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-            self.navigationController?.popViewController(animated: false)
-            self.navigationController?.pushViewController(newViewController, animated: true)
-            return false
+           return false
         } else {
-            //user in
             return true
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        refreshTabBar()
+    func openLogin() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     func refreshTabBar() {
-        
         self.tabBarController?.title = "Erstelle eine Anzeige"
-
-        //remove tabbar items 
+        //remove tabbar items
         self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
     }
     
@@ -361,21 +360,18 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
         
-        let price = "69"
+        let price = self.price.text!
         
         var params = [
             "price": String(price)! as Any,
             "title": titleText.text! as Any,
-            "description": decriptionText.text,
-            "date": "12312323"
+            "description": decriptionText.text
         ] as [String : Any]
         
         params["location"] = [
             "type": "Point",
             "coordinates": [coordinate.latitude, coordinate.longitude]]
         
-        //print(params)
-
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
@@ -388,20 +384,33 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //get new ID from response
         var dict: NSDictionary!
         dict = response.result.value as! NSDictionary
-        let articleId = dict["id"]!
         
-        print("neue articleID: " + String(describing: articleId))
-        
-        let userToken = Utils.getUserToken()
-        
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
-        
-        print(adImages.count)
-        
-        for img in self.adImages {
+        if let articleId = dict["id"] {
             
-            uploadImage(url: url!, image: img)
-            Thread.sleep(forTimeInterval: 1)
+            print("neue articleID: " + String(describing: articleId))
+            
+            let userToken = Utils.getUserToken()
+            
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
+            
+            print(adImages.count)
+            
+            for img in self.adImages {
+                
+                uploadImage(url: url!, image: img)
+                Thread.sleep(forTimeInterval: 1)
+            }
+        } else {
+            //something went wrong with inital creation of new article, stop progress and inform user
+            SVProgressHUD.dismiss()
+            
+            let alertProblem = UIAlertController(title: "Problem", message: "", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "ok", style: .default) { (action) in
+                print("was nun?")
+            }
+            alertProblem.addAction(ok)
+            present(alertProblem, animated: true, completion: nil)
         }
     }
     
@@ -502,10 +511,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func prepareForms() {
- 
-        self.titleText.placeholder = NSLocalizedString("mKE-vv-HxX.title", comment: "")
-        self.decriptionText.placeholder = "Beschreibe dein Angebot..."
-        self.price.placeholder = "Preis..."
+        
+        self.titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
+        self.decriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
+        self.price.placeholder = NSLocalizedString("new_article_price", comment: "")
     }
 }
 

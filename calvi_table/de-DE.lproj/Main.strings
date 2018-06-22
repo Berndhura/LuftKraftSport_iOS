@@ -1,12 +1,21 @@
 
 /* Class = "UILabel"; text = "title"; ObjectID = "2GU-Ki-74n"; */
-"2GU-Ki-74n.text" = "Title for your article...";
+"2GU-Ki-74n.text" = "title";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "2xY-rX-2Q0"; */
 "2xY-rX-2Q0.text" = "Name";
 
+/* Class = "UIButton"; normalTitle = "Speichern"; ObjectID = "4c1-ph-owY"; */
+"4c1-ph-owY.normalTitle" = "Speichern";
+
+/* Class = "UIButton"; normalTitle = "Abbrechen"; ObjectID = "68K-kb-e8s"; */
+"68K-kb-e8s.normalTitle" = "Abbrechen";
+
 /* Class = "UITextField"; placeholder = "Location..."; ObjectID = "7Hz-7n-4zb"; */
 "7Hz-7n-4zb.placeholder" = "Location...";
+
+/* Class = "UIButton"; normalTitle = "Merken"; ObjectID = "8dW-vi-HHq"; */
+"8dW-vi-HHq.normalTitle" = "Merken";
 
 /* Class = "UITabBarItem"; title = "Suche"; ObjectID = "BRl-jb-NO6"; */
 "BRl-jb-NO6.title" = "Suche";
@@ -20,9 +29,6 @@
 /* Class = "UILabel"; text = "price"; ObjectID = "OTS-4G-tfW"; */
 "OTS-4G-tfW.text" = "price";
 
-/* Class = "UIButton"; normalTitle = "Bookmark"; ObjectID = "PJk-pO-8lR"; */
-"PJk-pO-8lR.normalTitle" = "Bookmark";
-
 /* Class = "UILabel"; text = "date"; ObjectID = "R2l-oE-iwT"; */
 "R2l-oE-iwT.text" = "date";
 
@@ -34,6 +40,9 @@
 
 /* Class = "UILabel"; text = "23.08.17"; ObjectID = "Umc-El-g1F"; */
 "Umc-El-g1F.text" = "23.08.17";
+
+/* Class = "UIButton"; normalTitle = "Nachricht"; ObjectID = "WPK-dt-qIX"; */
+"WPK-dt-qIX.normalTitle" = "Nachricht";
 
 /* Class = "UILabel"; text = "Bla sülz bitte surfbrett 100 liter ganz gelb"; ObjectID = "g6T-fa-gux"; */
 "g6T-fa-gux.text" = "Bla sülz bitte surfbrett 100 liter ganz gelb";
@@ -59,15 +68,8 @@
 /* Class = "UITabBarItem"; title = "Anmelden"; ObjectID = "nQs-aG-x1w"; */
 "nQs-aG-x1w.title" = "Anmelden";
 
-/* Class = "UIButton"; normalTitle = "Nachricht"; ObjectID = "nxA-Z0-M4e"; */
-"nxA-Z0-M4e.normalTitle" = "Nachricht";
-
 /* Class = "UILabel"; text = "date"; ObjectID = "qWQ-ZQ-C3J"; */
 "qWQ-ZQ-C3J.text" = "date";
 
 /* Class = "UILabel"; text = "titel"; ObjectID = "rW5-ia-zSd"; */
 "rW5-ia-zSd.text" = "titel";
-
-/* Class = "UIButton"; normalTitle = "Abspeichern"; ObjectID = "y7N-jh-hUd"; */
-"y7N-jh-hUd.normalTitle" = "Abspeichern";
-
