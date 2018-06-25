@@ -25,8 +25,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var date: Double = 0.0
     public var lat: Double = 0.0
     public var lng: Double = 0.0
-
     
+    var latLngChanged = false
+
     @IBOutlet weak var imgScrollView: UIScrollView!
     
     @IBOutlet weak var titleText: UITextField!
@@ -115,6 +116,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         hideTap.numberOfTapsRequired = 1
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap)
+        
+        //add observer for location: only get new location name in case it is changed
+        //does not work: every new letter observer hits -> better get lat/lng before send request
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.getLatLngFromLocationName), name: .UITextFieldTextDidChange, object: nil)
     }
     
     deinit {
@@ -236,7 +241,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             print("senden")
         }
         /*- jo das passt ausser next in beschreibung weil kein kein textfiled sondern textview!!
-         - scollbar machen sonst ist bei eingabe das textfeld nict zu sehen
+        
          - 3 bilder auswählbar mach_vm_read_entry
          - bearbeiten der anzeige, nicht neu abspeichern
          - alles allignen abstand bilder von top
@@ -322,36 +327,46 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func updateArticle() {
         
-        let userToken = Utils.getUserToken()
+        let address = location.text!
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
-        
-        var params = [
-            "id": articleId,
-            "price": price.text! as Any,
-            "title": titleText.text! as Any,
-            "description": decriptionText.text! as Any
-            ] as [String : Any]
-        
-        params["location"] = [
-            "type": "Point",
-            "coordinates": [47.0, 13.5]]  //TODO location -> lat,lng
-        
-        
-        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                debugPrint(response)
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            if (placemarks?.count)! > 0 {
+                let placemark = placemarks?[0]
+                let location = placemark?.location
+                let coordinate = location?.coordinate
+                //update location with green tick behind location name so it is clear that lat/lng are ok for user
+                self.updateLocation(coordinate: Coordinate(lat: coordinate!.latitude, lng: coordinate!.longitude))
                 
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController = tabBarController
-        }
-        
-        /* update, der bestehenden ad,
-         dazu bilder  updaten
-         flag welches bild angefasst wurdd
-         */
+                let userToken = Utils.getUserToken()
+                
+                let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
+                
+                var params = [
+                    "id": self.articleId,
+                    "price": self.price.text! as Any,
+                    "title": self.titleText.text! as Any,
+                    "description": self.decriptionText.text! as Any
+                    ] as [String : Any]
+                
+                params["location"] = [
+                    "type": "Point",
+                    "coordinates": [coordinate!.latitude, coordinate!.longitude]]
+                
+                Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
+                    .responseJSON { response in
+                        debugPrint(response)
+                        
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.window?.rootViewController = tabBarController
+                }
+            }
+        })
     }
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {
@@ -462,35 +477,30 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    func wrapper() -> Observable<String> {
-        
-        return Observable.create { observer in
-            
-            let URL = try! URLRequest(url: "http://example.com", method: .post)
-            
-            Alamofire.upload(
-                multipartFormData: { formData in
-                    // multiaprt
-            },
-                with: URL,
-                encodingCompletion: { encodingResult in
-                    
-                    switch encodingResult {
-                        
-                    case .success(let upload, _, _):
-                        upload.responseJSON { response in
-                            // convert response in something of SomeResponseType
-                            // ...
-                            observer.onNext("String")
-                            observer.onCompleted()
-                        }
-                    case .failure(let encodingError):
-                        observer.onError(encodingError)
-                    }
-            })
-            
-            return Disposables.create()
-        }
+    func getLatLngFromLocationName(notification: NSNotification) {
+        let address = location.text!
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            if (placemarks?.count)! > 0 {
+                let placemark = placemarks?[0]
+                let location = placemark?.location
+                let coordinate = location?.coordinate
+                //update location with green tick behind location name so it is clear that lat/lng are ok for user
+                self.updateLocation(coordinate: Coordinate(lat: coordinate!.latitude, lng: coordinate!.longitude))
+            }
+        })
+    }
+    
+    func updateLocation(coordinate: Coordinate) {
+        //TODO show icon on rigth side of textfield to indicate that lat/lng are ok
+        /*var imageView = UIImageView()
+        var image = UIImage(named: "home")
+        imageView.image = image
+        location.rightView = imageView
+        location.rightViewMode = .always*/
     }
 
     func getLatLng(address: String) {

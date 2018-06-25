@@ -120,7 +120,12 @@ class AdCell: UITableViewCell {
         vc.titleFromAd = self.title.text!
         vc.descFromAd = self.desc
         vc.date = dateRawValue
-        vc.lat = lat!   //TODO optional, was wenn nicht da?? dann crash hier!
+        /*if let vc.lat = lat {
+            } else {
+            
+        }*/
+        vc.lat = lat!
+        //TODO optional, was wenn nicht da?? dann crash hier!
         vc.lng = lng!
         vc.priceFromAd = Utils.getPriceFromTextField(priceString: self.price.text!)
         vc.locationFromAd = location.text!
