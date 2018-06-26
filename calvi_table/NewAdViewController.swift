@@ -219,6 +219,16 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             adImages.append(chosenImage)
         }
         picker.dismiss(animated: true, completion: nil)
+        
+        if isEditMode {
+            //upload current picture
+            let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+            let userToken = Utils.getUserToken()
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
+            uploadImage(url: url!, image: image!)
+            
+            //TODO: altes bild vorher löschen
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -345,10 +355,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 
                 let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
                 
+                let pictureUrls = self.pictureUrl
+                //TODO was wenn mehr als ein bild, was wenn welche geloescht?
                 var params = [
                     "id": self.articleId,
                     "price": self.price.text! as Any,
                     "title": self.titleText.text! as Any,
+                    "urls" : pictureUrls as Any,
                     "description": self.decriptionText.text! as Any
                     ] as [String : Any]
                 
@@ -414,6 +427,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 
                 uploadImage(url: url!, image: img)
                 Thread.sleep(forTimeInterval: 1)
+                //TODO reactive ansatz hier nutzen!! schleife mit thread.sleep ist braunkack
             }
         } else {
             //something went wrong with inital creation of new article, stop progress and inform user
@@ -461,13 +475,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                      print("returning")
                      //return to main list
                      */
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
-                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window?.rootViewController = tabBarController
-                    
+                    if self.isEditMode {
+                        // nothing here - stay here
+                    } else {
+                        let sb = UIStoryboard(name: "Main", bundle: nil)
+                        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.window?.rootViewController = tabBarController
+                    }
                     SVProgressHUD.dismiss()
-                    
                 }
                 
             case .failure(let encodingError):

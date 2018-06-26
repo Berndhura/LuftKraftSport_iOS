@@ -201,19 +201,25 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func addImageToScrollView(imageNumber: Int) {
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
-        let imageView = UIImageView()
-        imageView.sd_imageTransition = .fade
-        imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in
-            imageView.contentMode = .scaleAspectFit
-            let xPosition = self.view.frame.width * CGFloat(imageNumber)
-            imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.width)
-            self.scrollView.addSubview(imageView)
-            
-            //in case last image is downloaded -> stop adding images to scrollview
-            if (imageNumber + 1 == self.imageCount) {
-                self.allImagesLoaded = true
+        print(imageNumber)
+        if (imageNumberList.count > 0) {
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
+            let imageView = UIImageView()
+            imageView.sd_imageTransition = .fade
+            imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in
+                imageView.contentMode = .scaleAspectFit
+                let xPosition = self.view.frame.width * CGFloat(imageNumber)
+                imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.width)
+                self.scrollView.addSubview(imageView)
+                
+                //in case last image is downloaded -> stop adding images to scrollview
+                if (imageNumber + 1 == self.imageCount) {
+                    self.allImagesLoaded = true
+                }
             }
+        } else {
+            //TODO now image, shocehwolder
+            
         }
     }
     
