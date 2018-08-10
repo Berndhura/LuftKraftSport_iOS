@@ -371,7 +371,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             "price": String(price)! as Any,
             "title": titleText.text! as Any,
             "description": decriptionText.text
-        ] as [String : Any]
+            ] as [String : Any]
         
         params["location"] = [
             "type": "Point",

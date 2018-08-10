@@ -145,8 +145,8 @@ class ArticlePresenter {
                 let location = placemark?.location
                 let coordinate = location?.coordinate
                 print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
-                //todo hier muss es weiter gehen -> createNewAd
-                //self.createNewAd(coordinate: coordinate!)
+                
+                self.userView?.createNewAd(coordinate: coordinate!)
             }
         })
     }
