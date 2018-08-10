@@ -118,6 +118,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         super.viewDidLoad()
         
         imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
+        print("picture urls: ")
+        print(pictureUrl!)
         
         scrollView.delegate = self
         
@@ -282,7 +284,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print(response)
                 self.showAlert()
         }
     }
@@ -295,7 +296,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print(response)
                 self.showUnBookmarkInfo()
         }
     }
@@ -323,12 +323,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         refreshAlert.addAction(UIAlertAction(title: "Löschen", style: .default, handler: { (action: UIAlertAction!) in
             Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
-                    debugPrint(response)
+                    //debugPrint(response)
+                    print ("--------------LÖSCHE----------------")
                     //return to main list
                     let sb = UIStoryboard(name: "Main", bundle: nil)
                     let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window?.rootViewController = tabBarController
+                    //appDelegate.window?.rootViewController = tabBarController
             }
         }))
         
@@ -355,7 +356,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
                 
                 Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                     .responseJSON { response in
-                        debugPrint(response)
                 }
 
             } else {

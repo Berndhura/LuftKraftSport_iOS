@@ -15,7 +15,7 @@ class Utils {
     
     static func getPriceFromTextField(priceString: String) -> Int {
         
-        let ind = priceString.characters.split{$0 == " "}.map(String.init)
+        let ind = priceString.split{$0 == " "}.map(String.init)
         if ind.count > 0 {
             if let price: Int = Int(ind[0]) {
                 return price
@@ -28,19 +28,19 @@ class Utils {
 }
     
     static func getPictureUrl(str: String) -> String {
-        let ind = str.characters.split{$0 == ","}.map(String.init)
+        let ind = str.split{$0 == ","}.map(String.init)
         if ind.count > 0 {
             return ind[0]
         } else {
-            return "1"
+            return "1"  //TODO was soll passieren wenn keine id existiert
         }
     }
     
     static func getAllPictureUrls(str: String) -> [String] {
         var urlList: [String] = []
-        let ind = str.characters.split{$0 == ","}.map(String.init)
+        let ind = str.split{$0 == ","}.map(String.init)
         for i in ind {
-            urlList.append(i)
+            urlList.append(i.trimmingCharacters(in: .whitespaces))
         }
         return urlList
     }

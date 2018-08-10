@@ -12,6 +12,7 @@ import CoreLocation
 import AddressBookUI
 import RxSwift
 import SVProgressHUD
+import SDWebImage
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
@@ -27,6 +28,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var lng: Double = 0.0
     
     var latLngChanged = false
+    
+    fileprivate let presenter = ArticlePresenter()
 
     @IBOutlet weak var imgScrollView: UIScrollView!
     
@@ -47,7 +50,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             updateArticle()
         } else {
             saveArticleButton.isEnabled = false
-            getLatLng(address: location.text!)
+            presenter.getLatLng(address: location.text!)
             SVProgressHUD.show(withStatus: "Neue Anzeige wird erstellt...")
         }
     }
@@ -74,6 +77,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        presenter.attachView(self)
+        
+        presenter.init_data(pictureUrl: pictureUrl, isEditMode: isEditMode)
         
         decriptionText.delegate = self
         titleText.delegate = self
@@ -90,6 +97,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             if isEditMode {
                 saveArticleButton.setTitle("Änderung speichern", for: .normal)
                 //addGestureOnImages()
+                print("GERO: PictureURL:" + pictureUrl)
                 editArticle()
             } else {
                 setupImagesPlaceholder()
@@ -99,13 +107,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         } else {
             openLogin()
         }
-        
-        //TODO does not work at all
-        //swipe to go back
-        let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.backTo))
-        backSwipe.direction = UISwipeGestureRecognizerDirection.left
-        self.view.addGestureRecognizer(backSwipe)
-        //self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillHide, object: nil)
@@ -149,11 +150,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             print("hideKeyboard")
             view.frame.origin.y = 0
         }
-    }
-    
-    func backTo(gesture: UISwipeGestureRecognizer) {
-        //TODO funzt noch nicht
-        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func isLoggedIn() -> Bool {
@@ -221,15 +217,18 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         picker.dismiss(animated: true, completion: nil)
         
         if isEditMode {
-            //upload current picture
-            let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-            let userToken = Utils.getUserToken()
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
-            uploadImage(url: url!, image: image!)
+            let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
             
-            //TODO: altes bild vorher löschen
+            print("GERO: " + urlList[currentImageNumber])
+            
+            presenter.deleteImage(articleId: articleId, imageId: Int(urlList[currentImageNumber])!, info: info)
+            //upload current picture move this to callback from delete image!!!
         }
     }
+    //delete raus
+    
+    //delete imige id from list raus
+
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -278,47 +277,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.text = String(describing: priceFromAd)
         location.text = locationFromAd
         
+        //get all image urls and load images
         let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
-        
-        requestAllAdPictures(urlList: urlList)
-    }
-    
-    func requestAllAdPictures(urlList: [String]) {
-        
-        for i in 0..<urlList.count {
-            
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
-            
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                
-                guard error == nil else {
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async(execute: {
-                    
-                    self.adImages.append(UIImage(data: data!)!)
-                    
-                    // async request, possible that last request comes first -> only show pictures
-                    // when all pics are downloaded   
-                    // TODO better request each image during swipeing gesture
-                    if (self.adImages.count == urlList.count) {
-                        self.showPictures()
-                    }
-                })
-                }.resume()
-        }
+        showPictures(urlList: urlList)
     }
 
-    func showPictures() {
+    func showPictures(urlList: [String]) {
         
         let gapSize: CGFloat = 5
         
-        for i in 0..<adImages.count {
+        for i in 0..<urlList.count {
             
             let imageButton = UIButton()
-            imageButton.setBackgroundImage(adImages[i], for: .normal)
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
+            imageButton.sd_setImage(with: url!, for: .normal, completed: nil)
             imageButton.tag = i
             imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
             imageButton.contentMode = .scaleToFill
@@ -349,19 +321,24 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 let location = placemark?.location
                 let coordinate = location?.coordinate
                 //update location with green tick behind location name so it is clear that lat/lng are ok for user
-                self.updateLocation(coordinate: Coordinate(lat: coordinate!.latitude, lng: coordinate!.longitude))
+                //self.updateLocation(coordinate: Coordinate(lat: coordinate!.latitude, lng: coordinate!.longitude))
                 
                 let userToken = Utils.getUserToken()
                 
                 let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
                 
                 let pictureUrls = self.pictureUrl
+                print("picture URLS--------------------------------")
+                print(pictureUrls)
                 //TODO was wenn mehr als ein bild, was wenn welche geloescht?
+                
                 var params = [
                     "id": self.articleId,
                     "price": self.price.text! as Any,
                     "title": self.titleText.text! as Any,
-                    "urls" : pictureUrls as Any,
+                    //no image changes/edits/delete -> only use old ones
+                    //if URLs string is empty do not set URLS -> URLs are NULL
+                    "urls" : ((pictureUrls != "") ? pictureUrls as Any : nil),
                     "description": self.decriptionText.text! as Any
                     ] as [String : Any]
                 
@@ -425,7 +402,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             
             for img in self.adImages {
                 
-                uploadImage(url: url!, image: img)
+                presenter.uploadImage(url: url!, image: img)
                 Thread.sleep(forTimeInterval: 1)
                 //TODO reactive ansatz hier nutzen!! schleife mit thread.sleep ist braunkack
             }
@@ -443,101 +420,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    func uploadImage(url: URL, image: UIImage) {
-        
-        print("UPLOADING...........")
-        
-        let parameters = ["file": "swift_file.jpeg"]
-        
-        let imageData = UIImageJPEGRepresentation(image, 0.1)!
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            
-            multipartFormData.append(imageData, withName: "file", fileName: "file\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-            
-            for (key, value) in parameters {
-                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-            }
-        }, to: url)
-        { (result) in
-            switch result {
-            case .success(let upload, _, _):
-                
-                upload.uploadProgress(closure: { (Progress) in
-                    //print("Upload Progress: \(Progress.fractionCompleted)")
-                })
-                
-                upload.responseJSON { response in
-                    
-                    print(response)
-                    
-                    /*if i == self.adImages.count {
-                     print("returning")
-                     //return to main list
-                     */
-                    if self.isEditMode {
-                        // nothing here - stay here
-                    } else {
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.window?.rootViewController = tabBarController
-                    }
-                    SVProgressHUD.dismiss()
-                }
-                
-            case .failure(let encodingError):
-                //self.delegate?.showFailAlert()
-                print(encodingError)
-            }
-        }
-    }
-    
-    func getLatLngFromLocationName(notification: NSNotification) {
-        let address = location.text!
-        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if error != nil {
-                print(error as Any)
-                return
-            }
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                let coordinate = location?.coordinate
-                //update location with green tick behind location name so it is clear that lat/lng are ok for user
-                self.updateLocation(coordinate: Coordinate(lat: coordinate!.latitude, lng: coordinate!.longitude))
-            }
-        })
-    }
-    
-    func updateLocation(coordinate: Coordinate) {
-        //TODO show icon on rigth side of textfield to indicate that lat/lng are ok
-        /*var imageView = UIImageView()
-        var image = UIImage(named: "home")
-        imageView.image = image
-        location.rightView = imageView
-        location.rightViewMode = .always*/
-    }
-
-    func getLatLng(address: String) {
-        
-        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if error != nil {
-                print(error as Any)
-                return
-            }
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                let coordinate = location?.coordinate
-                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
-                self.createNewAd(coordinate: coordinate!)
-            }
-        })
-    }
     
     func prepareForms() {
-        
         self.titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
         self.decriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
         self.price.placeholder = NSLocalizedString("new_article_price", comment: "")
