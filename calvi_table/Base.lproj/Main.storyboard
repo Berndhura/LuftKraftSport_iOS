@@ -196,13 +196,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-qY-KmL" userLabel="imgScrollView">
-                                                <rect key="frame" x="8" y="8" width="359" height="250"/>
+                                                <rect key="frame" x="8" y="8" width="359" height="150"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="250" id="w2f-9d-qHr"/>
+                                                    <constraint firstAttribute="height" constant="150" id="w2f-9d-qHr"/>
                                                 </constraints>
                                             </scrollView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Titel..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-3u-W9p">
-                                                <rect key="frame" x="0.0" y="278" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="178" width="375" height="31"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="lFI-Vr-i90"/>
@@ -212,7 +212,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartQuotesType="yes"/>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OcD-cJ-fyX" customClass="UITextViewFixed" customModule="calvi_table" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="317" width="375" height="150"/>
+                                                <rect key="frame" x="0.0" y="217" width="375" height="150"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="aSX-Gu-3rd"/>
@@ -221,7 +221,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="price..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-Fj-RwT">
-                                                <rect key="frame" x="0.0" y="475" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="375" width="375" height="31"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="ZRG-z9-oQD"/>
@@ -231,7 +231,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Hz-7n-4zb">
-                                                <rect key="frame" x="0.0" y="514" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="414" width="375" height="31"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="J5Q-Eh-IgZ"/>
@@ -240,11 +240,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="31G-g7-d2A" userLabel="Stack View Buttons">
-                                                <rect key="frame" x="0.0" y="555" width="375" height="62"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="31G-g7-d2A" userLabel="Stack View Buttons">
+                                                <rect key="frame" x="0.0" y="455" width="375" height="162"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-ph-owY">
-                                                        <rect key="frame" x="0.0" y="16" width="186.66666666666666" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="30"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Speichern">
                                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,7 +254,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68K-kb-e8s" userLabel="BackButton">
-                                                        <rect key="frame" x="188.66666666666663" y="16" width="186.33333333333337" height="30"/>
+                                                        <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="30"/>
                                                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Abbrechen">
                                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -267,7 +267,7 @@
                                                 <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="top" secondItem="k8p-Fj-RwT" secondAttribute="bottom" constant="8" id="5n6-CZ-0SY"/>
                                             <constraint firstItem="31G-g7-d2A" firstAttribute="top" secondItem="7Hz-7n-4zb" secondAttribute="bottom" constant="10" id="891-Rr-nqp"/>

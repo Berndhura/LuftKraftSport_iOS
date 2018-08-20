@@ -193,6 +193,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
             imageButton.contentMode = .scaleToFill
             imageButton.isUserInteractionEnabled = true
+            imageButton.layer.cornerRadius = 20
+            imageButton.layer.masksToBounds = true
             
             let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
             imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
