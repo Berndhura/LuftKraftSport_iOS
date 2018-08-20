@@ -33,6 +33,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     public var myBookmarks: [Int32] = []
     
+    var didLoadContent: Bool = false
+    
     @IBOutlet weak var anzeigeTitel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var beschreibung: UILabel!
@@ -172,6 +174,17 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         imageNumberList = Utils.getAllPictureUrls(str: pictureUrl!)
         
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard self.didLoadContent == false else {
+            return
+        }
+        
+        self.didLoadContent = true
+        
         prepareScrollView()
         
         //show first image
@@ -207,9 +220,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         if (imageNumberList.count > 0) {
             let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
             let imageView = UIImageView()
+            imageView.contentMode = .scaleAspectFit
+            imageView.clipsToBounds = true
             imageView.sd_imageTransition = .fade
             imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in
-                imageView.contentMode = .scaleAspectFit
                 let xPosition = self.view.frame.width * CGFloat(imageNumber)
                 imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.width)
                 self.scrollView.addSubview(imageView)

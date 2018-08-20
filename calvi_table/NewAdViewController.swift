@@ -13,6 +13,7 @@ import AddressBookUI
 import RxSwift
 import SVProgressHUD
 import SDWebImage
+import PromiseKit
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
 
@@ -70,6 +71,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var adImages = [UIImage]()
     
+    var changedImages = [Bool]()
+    
     var currentImageView: UIImageView?
     
     var currentImageNumber: Int = 0
@@ -77,6 +80,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        for i in 0..<5 {
+            changedImages.append(false)
+        }
 
         presenter.attachView(self)
         
@@ -221,18 +228,24 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             
             print("GERO: " + urlList[currentImageNumber])
             
-            presenter.deleteImage(articleId: articleId, imageId: Int(urlList[currentImageNumber])!, info: info)
-            //upload current picture move this to callback from delete image!!!
+            //store image into image list
+            adImages.append((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
+            
+            changedImages[currentImageNumber] = true
+            
+            
+            //welche bilder werden gelöscht .-> alte bilder in eine liste dann löschen .. dann update
+            
+            //delete  image ist raus: alle bilder vom picker werden in adImages abgespeichert und erst zum schluss hochgeladen "Abspeichern"
+            //presenter.deleteImage(articleId: articleId, imageId: Int(urlList[currentImageNumber])!, info: info)
         }
     }
-    //delete raus
     
-    //delete imige id from list raus
-
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField === titleText) {
@@ -391,21 +404,21 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         dict = response.result.value as! NSDictionary
         
         if let articleId = dict["id"] {
-            
-            print("neue articleID: " + String(describing: articleId))
-            
             let userToken = Utils.getUserToken()
-            
             let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
-            
-            print(adImages.count)
-            
-            for img in self.adImages {
+           
+            when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)}).done { ([Any]) in
+                SVProgressHUD.dismiss()
                 
-                presenter.uploadImage(url: url!, image: img)
-                Thread.sleep(forTimeInterval: 1)
-                //TODO reactive ansatz hier nutzen!! schleife mit thread.sleep ist braunkack
+                print("holla")
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = tabBarController
+                
             }
+            
+            
         } else {
             //something went wrong with inital creation of new article, stop progress and inform user
             SVProgressHUD.dismiss()

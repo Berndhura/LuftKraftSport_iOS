@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SVProgressHUD
 import CoreLocation
+import PromiseKit
 
 
 class ArticlePresenter {
@@ -42,7 +43,7 @@ class ArticlePresenter {
                 let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
                 
                 //TODO richtig hier -> upload kommt auch in presenter
-                self.uploadImage(url: url!, image: image!)
+                //self.uploadImage(url: url!, image: image!)
         }
     }
     
@@ -74,67 +75,43 @@ class ArticlePresenter {
         print("GERO: bearbeitete imige urls: " + self.pictureUrl)
     }
     
-    func uploadImage(url: URL, image: UIImage) {
+   
+    //PromiseKit upload for image
+    func uploadImagePromise(url: URL, image: UIImage) -> Promise<Any> {
         
-        print("UPLOADING...........")
+        Thread.sleep(forTimeInterval: 1)
         
+        // shrink image for upload to server
         let parameters = ["file": "swift_file.jpeg"]
-        
         let imageData = UIImageJPEGRepresentation(image, 0.1)!
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            
-            multipartFormData.append(imageData, withName: "file", fileName: "file\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
-            
-            for (key, value) in parameters {
-                multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
-            }
-        }, to: url)
-        { (result) in
-            switch result {
-            case .success(let upload, _, _):
-                
-                upload.uploadProgress(closure: { (Progress) in
-                    //print("Upload Progress: \(Progress.fractionCompleted)")
-                })
-                
-                upload.responseJSON { response in
-                    
-                    print(response)
-                    
-                    /*if i == self.adImages.count {
-                     print("returning")
-                     //return to main list
-                     */
-                    if self.isEditMode {
-                        //TODO neue bild id aus response muss mit auf die liste!!
-                        var dict: NSDictionary!
-                        dict = response.result.value as! NSDictionary
-                        
-                        if let imageId = dict["id"] {
-                            print("GERO: neue image id: " + String(describing: imageId))
-                            
-                            //add new id to imageUrls
-                            //self.addImageIdToList(imageId: String(describing: imageId))
-                        }
-                    } else {
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.window?.rootViewController = tabBarController
+        print("im uploadPromise!!!")
+        print(imageData.count)
+        return Promise { seal in
+            Alamofire.upload(
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append(imageData, withName: "file", fileName: "file\(Date().timeIntervalSince1970).jpeg", mimeType: "image/jpeg")
+                    for (key, value) in parameters {
+                        multipartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
                     }
-                    SVProgressHUD.dismiss()
+            }, to: url) { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload
+                        .validate()
+                        .responseJSON { response in
+                            //deactivete Progress
+                            print("fertig upload")
+                            SVProgressHUD.dismiss()
+                    }
+                case .failure(let error):
+                    print(error)
                 }
-                
-            case .failure(let encodingError):
-                //self.delegate?.showFailAlert()
-                print(encodingError)
             }
         }
     }
     
+
     func getLatLng(address: String) {
-        
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
                 print(error as Any)
