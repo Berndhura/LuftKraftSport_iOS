@@ -47,21 +47,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBAction func saveNewAd(_ sender: Any) {
         if isEditMode {
             saveArticleButton.isEnabled = false
-            SVProgressHUD.show(withStatus: "Anzeige wird geändert...")
+            SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
             updateArticle()
         } else {
             saveArticleButton.isEnabled = false
             presenter.getLatLng(address: location.text!)
-            SVProgressHUD.show(withStatus: "Neue Anzeige wird erstellt...")
+            SVProgressHUD.show(withStatus: NSLocalizedString("new_artivcle_create_ad", comment: ""))
         }
-    }
-    
-    @IBOutlet weak var backButton: UIButton!
-    
-    @IBAction func abortEditing(_ sender: Any) {
-        //TODO funzt nur wenn die Tab Bar Items auch da sind! Dann aber sehr gut!!! selbst die Daten sind noch da, nach wechsel back back
-        //TODO falls die nicht da sind, wie beim editieren vom Ad ??? was dann???
-        self.tabBarController?.selectedIndex = 0
     }
     
     //to hide keyboard when tapped
@@ -81,7 +73,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
         super.viewDidLoad()
         
-        for i in 0..<5 {
+        for _ in 0...4 {
             changedImages.append(false)
         }
 
@@ -94,19 +86,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.delegate = self
         location.delegate = self
         
-        //TODO next hier wieder benutzen
-        //titleText.returnKeyType = UIReturnKeyType.next
+        
+        titleText.returnKeyType = UIReturnKeyType.next
         decriptionText.returnKeyType = UIReturnKeyType.next
         price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
         
         if isLoggedIn() {
             if isEditMode {
-                saveArticleButton.setTitle("Änderung speichern", for: .normal)
+                saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
                 //addGestureOnImages()
                 print("GERO: PictureURL:" + pictureUrl)
                 editArticle()
             } else {
+                saveArticleButton.setTitle(NSLocalizedString("new_article_save_button", comment: ""), for: .normal)
                 setupImagesPlaceholder()
                 //addGestureOnImages()
                 prepareForms()
@@ -176,7 +169,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func refreshTabBar() {
-        self.tabBarController?.title = "Erstelle eine Anzeige"
+        self.tabBarController?.title = NSLocalizedString("new_article_tab_bar_title", comment: "")
         //remove tabbar items
         self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
     }
@@ -286,6 +279,14 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     
     func editArticle() {
+        
+        //for space on left side
+        let leftView = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
+        leftView.backgroundColor = .clear
+        
+        titleText.leftView = leftView
+        titleText.leftViewMode = .always
+        titleText.contentVerticalAlignment = .center
         
         titleText.text = titleFromAd
         decriptionText.text = descFromAd
@@ -437,9 +438,23 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     func prepareForms() {
-        self.titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
-        self.decriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
-        self.price.placeholder = NSLocalizedString("new_article_price", comment: "")
+        //for space on left side
+        let leftView = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
+        leftView.backgroundColor = .clear
+        
+        titleText.leftView = leftView
+        titleText.leftViewMode = .always
+        titleText.contentVerticalAlignment = .center
+        titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
+        
+        decriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
+    
+        let leftViewPrice = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
+        leftViewPrice.backgroundColor = .clear
+        price.placeholder = NSLocalizedString("new_article_price", comment: "")
+        //price.leftView = leftView
+        //price.leftViewMode = .always
+        //price.contentVerticalAlignment = .center
     }
 }
 

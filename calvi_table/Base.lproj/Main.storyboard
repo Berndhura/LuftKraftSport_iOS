@@ -184,8 +184,8 @@
         <!--Anbieten-->
         <scene sceneID="O69-ie-Fg1">
             <objects>
-                <viewController storyboardIdentifier="newArticleController" modalTransitionStyle="flipHorizontal" id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wki-kV-52y">
+                <viewController storyboardIdentifier="newArticleController" modalTransitionStyle="flipHorizontal" hidesBottomBarWhenPushed="YES" id="yDh-be-Uo9" customClass="NewAdViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Wki-kV-52y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="730"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -196,7 +196,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-qY-KmL" userLabel="imgScrollView">
-                                                <rect key="frame" x="8" y="8" width="359" height="150"/>
+                                                <rect key="frame" x="0.0" y="8" width="375" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="w2f-9d-qHr"/>
                                                 </constraints>
@@ -244,23 +244,13 @@
                                                 <rect key="frame" x="0.0" y="455" width="375" height="162"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-ph-owY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Speichern">
                                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="saveNewAd:" destination="yDh-be-Uo9" eventType="touchUpInside" id="vlD-n8-pNk"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68K-kb-e8s" userLabel="BackButton">
-                                                        <rect key="frame" x="188.66666666666663" y="0.0" width="186.33333333333337" height="30"/>
-                                                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Abbrechen">
-                                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="abortEditing:" destination="yDh-be-Uo9" eventType="touchUpInside" id="ucG-Lo-KEK"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -276,7 +266,7 @@
                                             <constraint firstAttribute="trailing" secondItem="31G-g7-d2A" secondAttribute="trailing" id="HYw-LZ-Ruu"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="top" secondItem="Mfg-3u-W9p" secondAttribute="bottom" constant="8" id="KoC-E0-Sev"/>
                                             <constraint firstAttribute="trailing" secondItem="k8p-Fj-RwT" secondAttribute="trailing" id="M6G-6r-VPV"/>
-                                            <constraint firstAttribute="trailing" secondItem="QqS-qY-KmL" secondAttribute="trailing" constant="8" id="NWx-gP-fH9"/>
+                                            <constraint firstAttribute="trailing" secondItem="QqS-qY-KmL" secondAttribute="trailing" id="NWx-gP-fH9"/>
                                             <constraint firstAttribute="trailing" secondItem="7Hz-7n-4zb" secondAttribute="trailing" id="PWI-qK-McX"/>
                                             <constraint firstItem="QqS-qY-KmL" firstAttribute="top" secondItem="Av7-fU-T5x" secondAttribute="top" constant="8" id="TdK-ab-IPK"/>
                                             <constraint firstItem="31G-g7-d2A" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="aRT-2K-stE"/>
@@ -284,7 +274,7 @@
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="top" secondItem="QqS-qY-KmL" secondAttribute="bottom" constant="20" id="i68-b4-Sjg"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="kGW-4k-vqQ"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="kwT-p3-qxy"/>
-                                            <constraint firstItem="QqS-qY-KmL" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" constant="8" id="nnZ-Ch-def"/>
+                                            <constraint firstItem="QqS-qY-KmL" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="nnZ-Ch-def"/>
                                             <constraint firstAttribute="bottom" secondItem="31G-g7-d2A" secondAttribute="bottom" id="qoJ-x9-iYh"/>
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="r8y-ew-zK6"/>
                                             <constraint firstAttribute="trailing" secondItem="Mfg-3u-W9p" secondAttribute="trailing" id="xp4-fo-jo7"/>
@@ -311,10 +301,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rVG-cT-Dna"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="Anbieten" image="plus" id="hi4-gC-d1e"/>
                     <size key="freeformSize" width="375" height="730"/>
                     <connections>
-                        <outlet property="backButton" destination="68K-kb-e8s" id="HEk-8c-vXf"/>
                         <outlet property="decriptionText" destination="OcD-cJ-fyX" id="RRz-Pc-VQt"/>
                         <outlet property="imgScrollView" destination="QqS-qY-KmL" id="Jdk-Kh-gGW"/>
                         <outlet property="location" destination="7Hz-7n-4zb" id="Dor-Pq-blu"/>
@@ -700,7 +690,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account_placeholder" width="100" height="100"/>
+        <image name="account_placeholder" width="167" height="167"/>
         <image name="delete-32" width="32" height="32"/>
         <image name="edit-32" width="32" height="32"/>
         <image name="login" width="32" height="32"/>

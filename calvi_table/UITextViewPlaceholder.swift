@@ -93,5 +93,4 @@ extension UITextViewFixed: UITextViewDelegate {
         self.resizePlaceholder()
         self.delegate = self
     }
-    
 }

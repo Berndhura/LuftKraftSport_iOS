@@ -9,3 +9,9 @@
 "new_article_titel" = "Titel deiner Anzeige...";
 "new_article_description" = "Beschreibe dein Angebot...";
 "new_article_price" = "Preis...";
+"new_article_change_button" = "Anzeige wird geändert...";
+"new_artivcle_create_ad" = "Neue Anzeige wird erstellt...";
+"new_article_save_button" = "Speichern";
+"new_article_save_changes_button" = "Änderungen speichern";
+"new_article_tab_bar_title" = "Erstelle eine Anzeige";
+
