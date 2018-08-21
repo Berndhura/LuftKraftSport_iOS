@@ -8,6 +8,8 @@
 
 import UIKit
 import SDWebImage
+import Alamofire
+import SwiftyJSON
 
 class MessagesController: UIViewController {
     
@@ -26,22 +28,28 @@ class MessagesController: UIViewController {
         
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         
-        if isLoggedIn() {
         
-            fetchMessages()
-
-            //table
-            self.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 0.0, right: 0.0)
-            self.tableView.dataSource = self
-            self.tableView.delegate = self
-            
-            //navigationItem.title = "Messages: " + String(messages.count)
-            
-            //navigationController?.hidesBarsOnSwipe = true
-            
-            tableView?.backgroundColor = UIColor.gray
-            navigationController?.navigationBar.isTranslucent = true
-        }
+        self.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 0.0, right: 0.0)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        //navigationItem.title = "Messages: " + String(messages.count)
+        
+        //navigationController?.hidesBarsOnSwipe = true
+        
+        tableView?.backgroundColor = UIColor.gray
+        navigationController?.navigationBar.isTranslucent = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //begin ignoring events until the information is finished being fetched
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        fetchMessages()
+        
+        //information is now fetched, so allow interaction
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,20 +59,6 @@ class MessagesController: UIViewController {
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         
         NotificationCenter.default.removeObserver(self)
-        
-        if isLoggedIn() {
-            fetchMessages()
-        }
-    }
-    
-    
-    func registerObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
-    }
-    
-    
-    func showNewMessage() {
-        print("angekommen")
     }
     
     func isLoggedIn() -> Bool {
@@ -83,68 +77,57 @@ class MessagesController: UIViewController {
     
     func fetchMessages() {
         
-        print("fetching messages.............")
-        
-        let userToken = Utils.getUserToken()
-        
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
-        
-        URLSession.shared.dataTask(with: url!) { data, response, error in
+        if isLoggedIn() {
             
-            guard error == nil else {
-                print(error!)
-                return
+            var localMsg: [MessageOverview] = []
+            
+            let userToken = Utils.getUserToken()
+            
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
+            
+            Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    
+                    switch response.result {
+                    case .success:
+                        let jsonData = JSON(response.result.value ?? "default")
+                        for (_ , value) in jsonData {
+                            
+                            let message = value["message"].string
+                            let name = value["name"].string
+                            let urlList = value["url"].string
+                            let url = Utils.getPictureUrl(str: urlList!)
+                            let idFrom = value["idFrom"].string
+                            let idTo = value["idTo"].string
+                            let date = value["date"].double
+                            let articleId = value["articleId"].int64
+                            let chatPartner = value["chatPartner"].string
+                            
+                            let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                            
+                            localMsg.append(msg)
+                        }
+                    case .failure(let error):
+                        print(error)
+                    }
+                    self.messages = localMsg
+                    self.tableView.reloadData()
+                    self.tabBarController?.title = "Messages: " + String(self.messages.count)
+                    self.navigationItem.title = "Messages: " + String(self.messages.count)
             }
-            
-            guard let data = data else {
-                print("Data is empty")
-                return
-            }
-            
-            
-            //TODO fals falscher user - crash hier! NSArray vs NSDictionary wie?
-            //let jsonDictionary = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
-            
-           // let jsonString = String(describing: jsonDictionary)
-            
-          //  if jsonString.contains("Unauthorized") {
-                //nothing here TODO show info to user - unauthorized
-           // } else {
-            
-            let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
-            //print(json)
-            
-            //clear messages
-            self.messages.removeAll()
-            
-                for dictionary in json as! [[String: Any]] {
-                    
-                    let message = dictionary["message"] as? String
-                    let name = dictionary["name"] as? String
-                    let urlList = dictionary["url"] as? String
-                    let url = Utils.getPictureUrl(str: urlList!)
-                    let idFrom = dictionary["idFrom"] as? String
-                    let idTo = dictionary["idTo"] as? String
-                    let date = dictionary["date"] as? Double
-                    let articleId = dictionary["articleId"] as? Int64
-                    let chatPartner = dictionary["chatPartner"] as? String
-                    
-                    let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
-                    
-                    //print(message)
-                    self.messages.append(msg)
-                }
-          //  }
-            
-            self.navigationItem.title = "Messages: " + String(self.messages.count)
-            
-            DispatchQueue.main.async(execute: {
-                self.tableView.reloadData()
-                self.tabBarController?.title = "Messages: " + String(self.messages.count)
-            })
-        }.resume()
+        }
     }
     
+    func registerObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
+    }
+    
+    
+    func showNewMessage() {
+        print("angekommen")
+    }
+    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openChat" {
             let chatController: ChatViewController = (segue.destination as? ChatViewController)!
