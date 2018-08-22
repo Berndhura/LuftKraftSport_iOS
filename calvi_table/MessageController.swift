@@ -28,18 +28,16 @@ class MessagesController: UIViewController {
         
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         
-        
         self.tableView.contentInset = UIEdgeInsets(top: 64.0, left: 0.0, bottom: 0.0, right: 0.0)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        //navigationItem.title = "Messages: " + String(messages.count)
-        
-        //navigationController?.hidesBarsOnSwipe = true
-        
         tableView?.backgroundColor = UIColor.gray
         navigationController?.navigationBar.isTranslucent = true
         
+        if !DeviceType.IS_IPHONE_5 {
+             tableView.contentInset = UIEdgeInsets.zero
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
