@@ -100,8 +100,13 @@ class ArticlePresenter {
                         .validate()
                         .responseJSON { response in
                             //deactivete Progress
-                            print("fertig upload")
                             SVProgressHUD.dismiss()
+                            
+                            //go back to main list
+                            let sb = UIStoryboard(name: "Main", bundle: nil)
+                            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            appDelegate.window?.rootViewController = tabBarController
                     }
                 case .failure(let error):
                     print(error)

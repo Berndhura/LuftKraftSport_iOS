@@ -410,15 +410,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             let userToken = Utils.getUserToken()
             let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
            
-            when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)}).done { ([Any]) in
-                SVProgressHUD.dismiss()
-                
-                print("holla")
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.window?.rootViewController = tabBarController
-                
+            when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
+                .done { ([Any]) in
+                    //und nu
             }
             
             
