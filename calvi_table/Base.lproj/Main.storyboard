@@ -348,9 +348,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OGD-Gd-Ehb" userLabel="profile_image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="11" width="44" height="45"/>
+                                                    <rect key="frame" x="8" y="11" width="45" height="45"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="44" id="gqL-0a-g33"/>
+                                                        <constraint firstAttribute="width" secondItem="OGD-Gd-Ehb" secondAttribute="height" multiplier="1:1" id="IgU-Ys-AEb"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-oE-iwT" userLabel="date">
@@ -366,13 +366,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJq-Na-9OF" userLabel="location">
-                                                    <rect key="frame" x="60" y="13.999999999999998" width="326" height="20.333333333333329"/>
+                                                    <rect key="frame" x="61" y="13.999999999999998" width="325" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xY-rX-2Q0" userLabel="user_name">
-                                                    <rect key="frame" x="60" y="39.333333333333336" width="326" height="18.666666666666664"/>
+                                                    <rect key="frame" x="61" y="39.333333333333336" width="325" height="18.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
