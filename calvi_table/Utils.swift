@@ -45,6 +45,7 @@ class Utils {
         return urlList
     }
     
+    
     static func getUserToken() -> String {
         
         let defaults:UserDefaults = UserDefaults.standard

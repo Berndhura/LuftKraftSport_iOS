@@ -28,7 +28,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var lat: Double = 0.0
     public var lng: Double = 0.0
     
-    var latLngChanged = false
+    var isLocationChanged = false
     
     fileprivate let presenter = ArticlePresenter()
 
@@ -92,6 +92,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
         
+        location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: UIControlEvents.editingChanged)
+
+        
         if isLoggedIn() {
             if isEditMode {
                 saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
@@ -127,6 +130,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc func locationDidChange(_ textField: UITextField) {
+        isLocationChanged = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -322,57 +329,97 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    func getNewLocationDetails() {
+        if let address = location.text {
+            CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                    //TODO was im fehlerfall, default lat lng ? speichern darf nicht abbrechen deshalb
+                }
+                if (placemarks?.count)! > 0 {
+                    let placemark = placemarks?[0]
+                    let location = placemark?.location
+                    self.lat = (location?.coordinate.latitude)!
+                    self.lng = (location?.coordinate.longitude)!  //coordinate!.latitude, coordinate!.longitude
+                }
+            })
+        } else {
+            //location Nil
+            //TODO what now with location?
+            //lat lng????
+        }
+    }
+    
     
     func updateArticle() {
         
-        let address = location.text!
+        if isLocationChanged {
+            getNewLocationDetails()
+        }
+                
+        let userToken = Utils.getUserToken()
         
-        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if error != nil {
-                print(error as Any)
-                return
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
+        
+        print("picture URLS   OLD--------------------------------")
+        print(self.pictureUrl)
+        
+        self.deleteImageFromListAndServer()
+        print("picture URLS   NEW--------------------------------")
+        print(self.pictureUrl)
+        
+        let newPictureUrls = self.pictureUrl
+        
+        self.uploadNewImagesToAd()
+        
+        var params = [
+            "id": self.articleId,
+            "price": self.price.text! as Any,
+            "title": self.titleText.text! as Any,
+            //no image changes/edits/delete -> only use old ones
+            //if URLs string is empty do not set URLS -> URLs are NULL
+            "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),   //wenn geändert, die ides von den BEREITS gelöschten müssen hier raus!! und der rest wird mitgegben
+            "description": self.decriptionText.text! as Any
+            ] as [String : Any]
+        
+        params["location"] = [
+            "type": "Point",
+            "coordinates": [lat, lng]]
+        
+        Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                debugPrint(response)
+                
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.window?.rootViewController = tabBarController
+        }
+    }
+    
+    
+    func uploadNewImagesToAd() {
+        let userToken = Utils.getUserToken()
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
+        
+        when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
+            .done { ([Any]) in
+                //und nu
+        }
+    }
+    
+    func deleteImageFromListAndServer() {
+        for i in 0...4 {
+            if changedImages[i] {
+                //image changed, delete old once
+                let id = Int(presenter.getImageId(forPosition: i))
+                let newPictureUrl = presenter.deleteImageIdFromList(imageId: id!)
+                //new imageUrl String
+                self.pictureUrl = newPictureUrl
+                presenter.deleteImage(articleId: articleId, imageId: id!)
             }
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                let coordinate = location?.coordinate
-                //update location with green tick behind location name so it is clear that lat/lng are ok for user
-                //self.updateLocation(coordinate: Coordinate(lat: coordinate!.latitude, lng: coordinate!.longitude))
-                
-                let userToken = Utils.getUserToken()
-                
-                let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
-                
-                let pictureUrls = self.pictureUrl
-                print("picture URLS--------------------------------")
-                print(pictureUrls)
-                //TODO was wenn mehr als ein bild, was wenn welche geloescht?
-                
-                var params = [
-                    "id": self.articleId,
-                    "price": self.price.text! as Any,
-                    "title": self.titleText.text! as Any,
-                    //no image changes/edits/delete -> only use old ones
-                    //if URLs string is empty do not set URLS -> URLs are NULL
-                    "urls" : ((pictureUrls != "") ? pictureUrls as Any : nil),
-                    "description": self.decriptionText.text! as Any
-                    ] as [String : Any]
-                
-                params["location"] = [
-                    "type": "Point",
-                    "coordinates": [coordinate!.latitude, coordinate!.longitude]]
-                
-                Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
-                    .responseJSON { response in
-                        debugPrint(response)
-                        
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
-                        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.window?.rootViewController = tabBarController
-                }
-            }
-        })
+        }
     }
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {

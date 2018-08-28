@@ -347,7 +347,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taylor_swift_blank_space" translatesAutoresizingMaskIntoConstraints="NO" id="OGD-Gd-Ehb" userLabel="profile_image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OGD-Gd-Ehb" userLabel="profile_image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="11" width="44" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="gqL-0a-g33"/>
@@ -697,6 +697,5 @@
         <image name="mail" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
         <image name="search-30" width="30" height="30"/>
-        <image name="taylor_swift_blank_space" width="1280" height="720"/>
     </resources>
 </document>

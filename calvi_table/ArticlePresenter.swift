@@ -28,26 +28,18 @@ class ArticlePresenter {
         self.isEditMode = isEditMode
     }
     
-    func deleteImage(articleId: Int32, imageId: Int, info: [String: Any]) {
+    
+    func deleteImage(articleId: Int32, imageId: Int) {
+        
         let userToken = Utils.getUserToken()
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/\(imageId)/deletePicture?token=\(userToken)")
         Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
-                
-                //first delete image from local image list
-                self.deleteImageIdFromList(imageId: imageId)
-                //then upload new image to server
-                let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-                let userToken = Utils.getUserToken()
-                let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
-                
-                //TODO richtig hier -> upload kommt auch in presenter
-                //self.uploadImage(url: url!, image: image!)
         }
     }
     
-    func deleteImageIdFromList(imageId: Int) {
+    func deleteImageIdFromList(imageId: Int) -> String {
         
         var urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
         var pos = 0
@@ -72,7 +64,13 @@ class ArticlePresenter {
             print("pictureURL: ")
         }
         
-        print("GERO: bearbeitete imige urls: " + self.pictureUrl)
+        print("GERO: bearbeitete image urls: " + self.pictureUrl)
+        return pictureUrl
+    }
+    
+    func getImageId(forPosition: Int) -> String {
+        let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
+        return urlList[forPosition]
     }
     
    
@@ -102,11 +100,13 @@ class ArticlePresenter {
                             //deactivete Progress
                             SVProgressHUD.dismiss()
                             
-                            //go back to main list
-                            let sb = UIStoryboard(name: "Main", bundle: nil)
-                            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            appDelegate.window?.rootViewController = tabBarController
+                            //go back to main list if is not edit mode
+                            if !self.isEditMode {
+                                let sb = UIStoryboard(name: "Main", bundle: nil)
+                                let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.window?.rootViewController = tabBarController
+                            }
                     }
                 case .failure(let error):
                     print(error)

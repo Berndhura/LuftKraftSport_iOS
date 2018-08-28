@@ -263,7 +263,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     urls = ""
                 }
                 
-                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location!, date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng)
+                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng)
                 
                 self.ads.append(ad)
             }
