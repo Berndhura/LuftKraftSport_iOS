@@ -27,16 +27,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/NewAdViewController.swift"
-            timestampString = "557176751.04601"
+            timestampString = "557178770.727923"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
-            landmarkName = "getNewLocationDetails()"
+            startingLineNumber = "391"
+            endingLineNumber = "391"
+            landmarkName = "updateArticle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "calvi_table/ArticlePresenter.swift"
+            timestampString = "557177205.8870569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "getImageId(forPosition:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,13 +63,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/NewAdViewController.swift"
-            timestampString = "557176751.046597"
+            timestampString = "557178770.728551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
-            landmarkName = "updateArticle()"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "getNewLocationDetails()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "calvi_table.NewAdViewController.getNewLocationDetails() -&gt; ()"
+                  moduleName = "calvi_table"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/conan/Desktop/LuftKraftSport_iOS/calvi_table/NewAdViewController.swift"
+                  timestampString = "557178771.210027"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335"
+                  offsetFromSymbolStart = "640">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;__ObjC.CLPlacemark&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in calvi_table.NewAdViewController.getNewLocationDetails() -&gt; ()"
+                  moduleName = "calvi_table"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/conan/Desktop/LuftKraftSport_iOS/calvi_table/NewAdViewController.swift"
+                  timestampString = "557178771.21531"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "336"
+                  endingLineNumber = "336"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

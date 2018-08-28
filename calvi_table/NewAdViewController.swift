@@ -30,6 +30,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var isLocationChanged = false
     
+    let gapSize: CGFloat = 5
+    
     fileprivate let presenter = ArticlePresenter()
 
     @IBOutlet weak var imgScrollView: UIScrollView!
@@ -183,8 +185,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func setupImagesPlaceholder() {
         
-        let gapSize: CGFloat = 15
-        
         for i in 0..<5 {
             
             let imageButton = UIButton()
@@ -307,8 +307,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     func showPictures(urlList: [String]) {
         
-        let gapSize: CGFloat = 5
-        
         for i in 0..<urlList.count {
             
             let imageButton = UIButton()
@@ -319,6 +317,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             imageButton.contentMode = .scaleToFill
             imageButton.isUserInteractionEnabled = true
             imageButton.contentMode = .scaleAspectFill
+            imageButton.layer.cornerRadius = 20
+            imageButton.layer.masksToBounds = true
+
 
             let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
             imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
@@ -406,6 +407,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
             .done { ([Any]) in
                 //und nu
+            }.catch { error in
+                print(error)
         }
     }
     
@@ -460,9 +463,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
                 .done { ([Any]) in
                     //und nu
+                }.catch { error in
+                    print(error)
             }
-            
-            
         } else {
             //something went wrong with inital creation of new article, stop progress and inform user
             SVProgressHUD.dismiss()
