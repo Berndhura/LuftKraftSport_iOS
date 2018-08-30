@@ -281,7 +281,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     }
     
     func getPictureUrl(str: String) -> String {
-        let ind = str.characters.split{$0 == ","}.map(String.init)
+        let ind = str.split{$0 == ","}.map(String.init)
         if ind.count > 0 {
             return ind[0]
         } else {

@@ -31,11 +31,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/NewAdViewController.swift"
-            timestampString = "557178770.727923"
+            timestampString = "557266989.985823"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "updateArticle()"
             landmarkType = "7">
          </BreakpointContent>
@@ -47,7 +47,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/ArticlePresenter.swift"
-            timestampString = "557177205.8870569"
+            timestampString = "557181226.0679539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -63,11 +63,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/NewAdViewController.swift"
-            timestampString = "557178770.728551"
+            timestampString = "557266989.986095"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "getNewLocationDetails()"
             landmarkType = "7">
             <Locations>
@@ -79,11 +79,11 @@
                   moduleName = "calvi_table"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/conan/Desktop/LuftKraftSport_iOS/calvi_table/NewAdViewController.swift"
-                  timestampString = "557178771.210027"
+                  timestampString = "557328065.405726"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
                   offsetFromSymbolStart = "640">
                </Location>
                <Location
@@ -94,14 +94,30 @@
                   moduleName = "calvi_table"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/conan/Desktop/LuftKraftSport_iOS/calvi_table/NewAdViewController.swift"
-                  timestampString = "557178771.21531"
+                  timestampString = "557328065.408954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "336"
-                  endingLineNumber = "336"
+                  startingLineNumber = "335"
+                  endingLineNumber = "335"
                   offsetFromSymbolStart = "28">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "calvi_table/NewAdViewController.swift"
+            timestampString = "557266989.986199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "showPictures(urlList:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

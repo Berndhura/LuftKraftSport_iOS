@@ -316,7 +316,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
             imageButton.contentMode = .scaleToFill
             imageButton.isUserInteractionEnabled = true
-            imageButton.contentMode = .scaleAspectFill
             imageButton.layer.cornerRadius = 20
             imageButton.layer.masksToBounds = true
 

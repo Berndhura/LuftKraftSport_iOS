@@ -481,66 +481,66 @@
             <objects>
                 <viewController storyboardIdentifier="detailViewController" id="W1h-Wv-7it" customClass="DetailViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3eW-mU-Kqt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="1150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zib-El-y7p">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="1150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNN-Tj-yHK">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1172.3333333333333"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V50-mk-tH8">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="496.66666666666669"/>
                                             </scrollView>
                                             <pageControl opaque="NO" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="XBx-Rm-Bng">
-                                                <rect key="frame" x="140" y="283" width="39" height="37"/>
+                                                <rect key="frame" x="187" y="459.66666666666669" width="39" height="37"/>
                                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="currentPageIndicatorTintColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </pageControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-Ki-74n" userLabel="title">
-                                                <rect key="frame" x="10" y="340" width="300" height="20.333333333333314"/>
+                                                <rect key="frame" x="10" y="516.66666666666663" width="394" height="20.333333333333371"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="beschreibung" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="27" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htV-bn-u1Y">
-                                                <rect key="frame" x="10" y="380.33333333333331" width="300" height="20.333333333333314"/>
+                                                <rect key="frame" x="10" y="557" width="394" height="20.333333333333371"/>
                                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTS-4G-tfW">
-                                                <rect key="frame" x="10" y="420.66666666666669" width="300" height="20.333333333333314"/>
+                                                <rect key="frame" x="10" y="597.33333333333337" width="394" height="20.333333333333371"/>
                                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ljI-yD-hkd">
-                                                <rect key="frame" x="10" y="461" width="300" height="20.333333333333314"/>
+                                                <rect key="frame" x="10" y="637.66666666666663" width="394" height="20.333333333333371"/>
                                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWQ-ZQ-C3J">
-                                                <rect key="frame" x="10" y="501.33333333333331" width="300" height="20.333333333333314"/>
+                                                <rect key="frame" x="10" y="678" width="394" height="20.333333333333371"/>
                                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ktI-Mm-4Go">
-                                                <rect key="frame" x="0.0" y="541.66666666666663" width="320" height="320"/>
+                                                <rect key="frame" x="0.0" y="718.33333333333337" width="414" height="414.00000000000011"/>
                                             </mapView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OKb-Gn-ZoK">
-                                                <rect key="frame" x="0.0" y="871.66666666666663" width="320" height="278.33333333333337"/>
+                                                <rect key="frame" x="0.0" y="1142.3333333333333" width="414" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPK-dt-qIX">
-                                                        <rect key="frame" x="0.0" y="124.33333333333337" width="159" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="206" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Nachricht">
                                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -550,7 +550,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dW-vi-HHq">
-                                                        <rect key="frame" x="161" y="124.33333333333337" width="159" height="30"/>
+                                                        <rect key="frame" x="208" y="0.0" width="206" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Merken">
                                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -572,7 +572,7 @@
                                             <constraint firstItem="ljI-yD-hkd" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="CMd-di-sc3"/>
                                             <constraint firstItem="OKb-Gn-ZoK" firstAttribute="top" secondItem="ktI-Mm-4Go" secondAttribute="bottom" constant="10" id="EpK-Kx-vyD"/>
                                             <constraint firstAttribute="trailing" secondItem="htV-bn-u1Y" secondAttribute="trailing" constant="10" id="Gh5-pu-2Qx"/>
-                                            <constraint firstItem="V50-mk-tH8" firstAttribute="height" secondItem="dNN-Tj-yHK" secondAttribute="width" id="IRg-zr-uXB"/>
+                                            <constraint firstItem="V50-mk-tH8" firstAttribute="height" secondItem="dNN-Tj-yHK" secondAttribute="width" multiplier="1.2" id="IRg-zr-uXB"/>
                                             <constraint firstItem="2GU-Ki-74n" firstAttribute="top" secondItem="V50-mk-tH8" secondAttribute="bottom" constant="20" id="InT-QJ-Rxo"/>
                                             <constraint firstItem="OTS-4G-tfW" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" constant="10" id="K9H-Wi-M8v"/>
                                             <constraint firstItem="OKb-Gn-ZoK" firstAttribute="leading" secondItem="dNN-Tj-yHK" secondAttribute="leading" id="NEM-o1-z0B"/>
@@ -627,7 +627,6 @@
                         <viewLayoutGuide key="safeArea" id="aO7-hG-MVs"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="1150"/>
                     <connections>
                         <outlet property="anzeigeTitel" destination="2GU-Ki-74n" id="ZPb-T2-TFn"/>
                         <outlet property="beschreibung" destination="htV-bn-u1Y" id="eIg-ug-Irq"/>

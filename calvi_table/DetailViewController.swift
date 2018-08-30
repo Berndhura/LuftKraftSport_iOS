@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import MapKit
 import SDWebImage
+import SVProgressHUD
 
 
 class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate {
@@ -216,26 +217,26 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func addImageToScrollView(imageNumber: Int) {
         
-        print(imageNumber)
         if (imageNumberList.count > 0) {
             let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
             let imageView = UIImageView()
-            imageView.contentMode = .scaleAspectFit
+            imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             imageView.sd_imageTransition = .fade
+            SVProgressHUD.show()
             imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in
-                let xPosition = self.view.frame.width * CGFloat(imageNumber)
-                imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.width)
-                self.scrollView.addSubview(imageView)
                 
+                let xPosition = self.view.frame.width * CGFloat(imageNumber)
+                imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
+                self.scrollView.addSubview(imageView)
                 //in case last image is downloaded -> stop adding images to scrollview
                 if (imageNumber + 1 == self.imageCount) {
                     self.allImagesLoaded = true
                 }
+                SVProgressHUD.dismiss()
             }
         } else {
-            //TODO now image, shocehwolder
-            
+            //TODO now image, placeholder?
         }
     }
     
