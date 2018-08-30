@@ -1,2 +1,2 @@
 # LuftKraftSport_iOS
-[[https://github.com/Berndhura/LuftKraftSport_iOS/screenshot.png|alt=octocat]]
+[[https://github.com/Berndhura/LuftKraftSport_iOS/screenshot.png]]
