@@ -29,6 +29,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var lng: Double = 0.0
     
     var isLocationChanged = false
+    var newImagesAdded = false
     
     let gapSize: CGFloat = 5
     
@@ -184,25 +185,27 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func setupImagesPlaceholder() {
-        
-        for i in 0..<5 {
-            
-            let imageButton = UIButton()
-            imageButton.setBackgroundImage(UIImage(named: "image_placeholder"), for: .normal)
-            imageButton.tag = i
-            imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
-            imageButton.contentMode = .scaleToFill
-            imageButton.isUserInteractionEnabled = true
-            imageButton.layer.cornerRadius = 20
-            imageButton.layer.masksToBounds = true
-            
-            let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
-            imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
-            
-            imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1) + (gapSize * CGFloat(i + 1))
-            imgScrollView.addSubview(imageButton)
-            adButtonViews.append(imageButton)
+        for i in 0...4 {
+            imagePlaceholder(imageNumber: i)
         }
+    }
+    
+    func imagePlaceholder(imageNumber: Int) {
+        let imageButton = UIButton()
+        imageButton.setBackgroundImage(UIImage(named: "image_placeholder"), for: .normal)
+        imageButton.tag = imageNumber
+        imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
+        imageButton.contentMode = .scaleToFill
+        imageButton.isUserInteractionEnabled = true
+        imageButton.layer.cornerRadius = 20
+        imageButton.layer.masksToBounds = true
+        
+        let xPosition = self.imgScrollView.frame.height * CGFloat(imageNumber) + (gapSize * CGFloat(imageNumber + 1))
+        imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
+        
+        imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(imageNumber + 1) + (gapSize * CGFloat(imageNumber + 1))
+        imgScrollView.addSubview(imageButton)
+        adButtonViews.append(imageButton)
     }
     
     func imageTapped(sender: UIButton) {
@@ -228,12 +231,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isEditMode {
             let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
             
-            print("GERO: " + urlList[currentImageNumber])
+            //currentimage number von neuem bild ist natürlich nicht in der urlList!!!!
+            //deshalb hier ????
+            //print("GERO: " + urlList[currentImageNumber])
             
             //store image into image list
             adImages.append((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
             
-            changedImages[currentImageNumber] = true
+            //only for existing images
+            if (currentImageNumber < urlList.count) {
+                changedImages[currentImageNumber] = true
+            } else {
+                imagePlaceholder(imageNumber: currentImageNumber + 1)  //new placeholder 
+            }
+            
             
             
             //welche bilder werden gelöscht .-> alte bilder in eine liste dann löschen .. dann update
@@ -327,6 +338,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             imgScrollView.addSubview(imageButton)
             adButtonViews.append(imageButton)
         }
+        
+        //one more image placeholder to upload new images
+        if (urlList.count < 5) {
+            imagePlaceholder(imageNumber: urlList.count)   //TODO urllist.count muss weiter hoch gezählt werden
+        }
     }
     
     func getNewLocationDetails() {
@@ -372,6 +388,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let newPictureUrls = self.pictureUrl
         
         self.uploadNewImagesToAd()
+        
+        //ws wenn nur neue bilder hinzugefügt worden sind?
         
         var params = [
             "id": self.articleId,
