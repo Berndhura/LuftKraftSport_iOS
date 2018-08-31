@@ -66,6 +66,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var adImages = [UIImage]()
     
+    var imagesToDelete = [String]()
+    
     var changedImages = [Bool]()
     
     var currentImageView: UIImageView?
@@ -220,6 +222,24 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.present(picker, animated: true, completion: nil)
     }
     
+    func deleteBtnTapped(sender: UIButton) {
+        let imageNumber = presenter.getImageId(forPosition: sender.tag)
+        print(imageNumber)
+        
+        //remove image from view
+        sender.removeFromSuperview()
+        let subViews = imgScrollView.subviews
+        for subView in subViews {
+            if subView.tag == sender.tag {
+                //subView.removeFromSuperview()
+                subView.alpha = 0.3
+            }
+        }
+        //add image number to list for delete
+        imagesToDelete.append(imageNumber)
+        self.pictureUrl = presenter.deleteImageIdFromList(imageId: Int(imageNumber)!)
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -242,7 +262,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             if (currentImageNumber < urlList.count) {
                 changedImages[currentImageNumber] = true
             } else {
-                imagePlaceholder(imageNumber: currentImageNumber + 1)  //new placeholder 
+                imagePlaceholder(imageNumber: currentImageNumber + 1)  //new placeholder
             }
             
             
@@ -324,25 +344,37 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
             imageButton.sd_setImage(with: url!, for: .normal, completed: nil)
             imageButton.tag = i
-            imageButton.addTarget(self, action: #selector(imageTapped), for: .allTouchEvents)
+            imageButton.addTarget(self, action: #selector(imageTapped), for: .touchDown)
             imageButton.contentMode = .scaleToFill
             imageButton.isUserInteractionEnabled = true
             imageButton.layer.cornerRadius = 20
             imageButton.layer.masksToBounds = true
-
-
+        
             let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
-            imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
+            imageButton.frame = CGRect(x: xPosition, y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
             
             imgScrollView.contentSize.width = imgScrollView.frame.height * CGFloat(i + 1) + (gapSize * CGFloat(i + 1))
             imgScrollView.addSubview(imageButton)
             adButtonViews.append(imageButton)
+            
+            imgScrollView.addSubview(deleteButton(tag: i, xPosition: xPosition))
         }
         
         //one more image placeholder to upload new images
         if (urlList.count < 5) {
             imagePlaceholder(imageNumber: urlList.count)   //TODO urllist.count muss weiter hoch gezählt werden
         }
+    }
+    
+    func deleteButton(tag: Int, xPosition: CGFloat) -> UIButton {
+        let deleteBtn = UIButton()
+        deleteBtn.setImage(#imageLiteral(resourceName: "delete_icon_white"), for: .normal)
+        let imgHight = imgScrollView.frame.height / 4
+        let xPosDelBtn = xPosition + 3 * imgHight
+        deleteBtn.frame = CGRect(x: xPosDelBtn, y: 0, width: imgHight, height: imgHight)
+        deleteBtn.tag = tag
+        deleteBtn.addTarget(self, action: #selector(deleteBtnTapped), for: .touchDown)
+        return deleteBtn
     }
     
     func getNewLocationDetails() {
@@ -439,6 +471,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 self.pictureUrl = newPictureUrl
                 presenter.deleteImage(articleId: articleId, imageId: id!)
             }
+        }
+        
+        for img in imagesToDelete {
+            let id = Int(img)
+            presenter.deleteImage(articleId: articleId, imageId: id!)
         }
     }
     
