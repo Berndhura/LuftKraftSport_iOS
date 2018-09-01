@@ -121,6 +121,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         super.viewDidLoad()
         
+        increaseViewsForAd()
+        
         imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
        
         scrollView.delegate = self
@@ -189,6 +191,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         //show first image
         addImageToScrollView(imageNumber: 0)
+    }
+    
+    func increaseViewsForAd() {
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId!)/increaseViewCount")
+        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+        }
     }
     
 
