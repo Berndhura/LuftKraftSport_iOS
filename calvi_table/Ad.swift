@@ -20,4 +20,5 @@ struct Ad {
     var articleId: Int32
     var lat: Double
     var lng: Double
+    var views: Int
 }

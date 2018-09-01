@@ -258,12 +258,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 let latLng = coordinates["coordinates"] as! [Double]
                 let lat = latLng[0]
                 let lng = latLng[1]
+                let views = dictionary["views"] as? Int
                 
                 if urls == nil {
                     urls = ""
                 }
                 
-                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng)
+                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng, views: views!)
                 
                 self.ads.append(ad)
             }
@@ -310,6 +311,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     detailViewController.lat = ad.lat
                     detailViewController.lng = ad.lng
                     detailViewController.myBookmarks = self.myBookmarks
+                    detailViewController.views = ad.views
                 }
             }
         }
@@ -347,6 +349,9 @@ extension ViewController: UITableViewDataSource {
         
         //title
         cell?.title?.text = currentAd.title
+        
+        //views
+        cell?.views?.text = String(describing: currentAd.views)
         
         //location
         cell?.location?.text = currentAd.location

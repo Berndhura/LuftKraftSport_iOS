@@ -15,6 +15,8 @@ class AdCell: UITableViewCell {
     
     @IBOutlet weak var profileName: UILabel!
     
+    @IBOutlet weak var views: UILabel!
+    
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var deleteButton: UIButton!

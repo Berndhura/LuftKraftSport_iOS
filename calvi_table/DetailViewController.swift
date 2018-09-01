@@ -25,6 +25,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     var articleId: Int32?
     var lat: Double?
     var lng: Double?
+    var views: Int?
     
     var imageCount = 0
     
@@ -121,9 +122,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         super.viewDidLoad()
         
         imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
-        print("picture urls: ")
-        print(pictureUrl!)
-        
+       
         scrollView.delegate = self
         
         prepareMap()
@@ -191,6 +190,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         //show first image
         addImageToScrollView(imageNumber: 0)
     }
+    
 
     func prepareScrollView() {
         //resize scrollView to image count

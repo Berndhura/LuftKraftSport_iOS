@@ -381,16 +381,16 @@
                                                     <rect key="frame" x="8" y="354.33333333333331" width="398" height="50"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OsP-QU-lKH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="95.666666666666671" height="50"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9Y-Dr-qzx" userLabel="bookmark">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="50"/>
                                                                     <connections>
                                                                         <action selector="addBookmark:" destination="fbH-nU-18z" eventType="touchUpInside" id="hqc-Fn-OyV"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfr-qD-I6M" userLabel="edit">
-                                                                    <rect key="frame" x="99.333333333333343" y="0.0" width="97.333333333333343" height="50"/>
+                                                                    <rect key="frame" x="49" y="0.0" width="46.666666666666657" height="50"/>
                                                                     <state key="normal" image="edit-32"/>
                                                                     <connections>
                                                                         <action selector="editArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="yhk-xP-nRn"/>
@@ -398,8 +398,18 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-PV-vqg">
+                                                            <rect key="frame" x="100.66666666666669" y="0.0" width="96" height="50"/>
+                                                            <state key="normal" title="Button" image="views"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-7W-ejw">
+                                                            <rect key="frame" x="201.66666666666666" y="0.0" width="95.666666666666657" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNC-bU-wCk" userLabel="delete">
-                                                            <rect key="frame" x="201.66666666666663" y="0.0" width="196.33333333333337" height="50"/>
+                                                            <rect key="frame" x="302.33333333333331" y="0.0" width="95.666666666666686" height="50"/>
                                                             <state key="normal" image="delete-32"/>
                                                             <connections>
                                                                 <action selector="deleteArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="gYX-yc-YFJ"/>
@@ -451,6 +461,7 @@
                                             <outlet property="profileImage" destination="OGD-Gd-Ehb" id="tdz-lu-0eD"/>
                                             <outlet property="profileName" destination="2xY-rX-2Q0" id="RId-BX-eBO"/>
                                             <outlet property="title" destination="rW5-ia-zSd" id="z1x-sb-4SM"/>
+                                            <outlet property="views" destination="Hwl-7W-ejw" id="Ghx-9C-RbI"/>
                                             <segue destination="W1h-Wv-7it" kind="show" identifier="showDetailView" id="N4T-zU-gsS"/>
                                         </connections>
                                     </tableViewCell>
@@ -696,5 +707,6 @@
         <image name="mail" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
         <image name="search-30" width="30" height="30"/>
+        <image name="views" width="30" height="30"/>
     </resources>
 </document>
