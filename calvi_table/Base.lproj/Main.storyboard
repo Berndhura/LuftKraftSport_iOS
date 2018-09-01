@@ -354,13 +354,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-oE-iwT" userLabel="date">
-                                                    <rect key="frame" x="8" y="438.33333333333331" width="398" height="18"/>
+                                                    <rect key="frame" x="8" y="466.66666666666669" width="398" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSn-2C-ab2">
-                                                    <rect key="frame" x="8" y="464.33333333333331" width="398" height="18"/>
+                                                    <rect key="frame" x="8" y="492.66666666666669" width="398" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -381,16 +381,16 @@
                                                     <rect key="frame" x="8" y="354.33333333333331" width="398" height="50"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OsP-QU-lKH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="95.666666666666671" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="50"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9Y-Dr-qzx" userLabel="bookmark">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="50"/>
                                                                     <connections>
                                                                         <action selector="addBookmark:" destination="fbH-nU-18z" eventType="touchUpInside" id="hqc-Fn-OyV"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfr-qD-I6M" userLabel="edit">
-                                                                    <rect key="frame" x="49" y="0.0" width="46.666666666666657" height="50"/>
+                                                                    <rect key="frame" x="99.333333333333343" y="0.0" width="97.333333333333343" height="50"/>
                                                                     <state key="normal" image="edit-32"/>
                                                                     <connections>
                                                                         <action selector="editArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="yhk-xP-nRn"/>
@@ -398,18 +398,8 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-PV-vqg">
-                                                            <rect key="frame" x="100.66666666666669" y="0.0" width="96" height="50"/>
-                                                            <state key="normal" title="Button" image="views"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-7W-ejw">
-                                                            <rect key="frame" x="201.66666666666666" y="0.0" width="95.666666666666657" height="50"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNC-bU-wCk" userLabel="delete">
-                                                            <rect key="frame" x="302.33333333333331" y="0.0" width="95.666666666666686" height="50"/>
+                                                            <rect key="frame" x="201.66666666666663" y="0.0" width="196.33333333333337" height="50"/>
                                                             <state key="normal" image="delete-32"/>
                                                             <connections>
                                                                 <action selector="deleteArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="gYX-yc-YFJ"/>
@@ -420,23 +410,32 @@
                                                         <constraint firstAttribute="height" constant="50" id="e9C-hc-BXd"/>
                                                     </constraints>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-7W-ejw">
+                                                    <rect key="frame" x="8" y="438.33333333333331" width="398" height="20.333333333333314"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8c5-48-ceK" firstAttribute="top" secondItem="zn6-gS-HTW" secondAttribute="bottom" constant="8" id="1Gn-kc-8ZZ"/>
                                                 <constraint firstItem="OGD-Gd-Ehb" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="1sH-lE-Soa"/>
                                                 <constraint firstItem="2xY-rX-2Q0" firstAttribute="top" secondItem="UJq-Na-9OF" secondAttribute="bottom" constant="5" id="4eG-3F-QZD"/>
+                                                <constraint firstItem="Hwl-7W-ejw" firstAttribute="top" secondItem="rW5-ia-zSd" secondAttribute="bottom" constant="8" id="5Mu-Hm-zYg"/>
                                                 <constraint firstAttribute="trailing" secondItem="SSn-2C-ab2" secondAttribute="trailing" constant="8" id="7i5-po-Nb8"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="7jt-bO-F53"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="3" id="8aj-rW-HOD"/>
                                                 <constraint firstAttribute="trailing" secondItem="R2l-oE-iwT" secondAttribute="trailing" constant="8" id="CYk-nh-BMH"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="OGD-Gd-Ehb" secondAttribute="bottom" constant="5" id="DQD-50-Jg5"/>
                                                 <constraint firstAttribute="trailing" secondItem="rW5-ia-zSd" secondAttribute="trailing" constant="8" id="FTd-GK-KIO"/>
+                                                <constraint firstItem="Hwl-7W-ejw" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="GZy-yz-lNt"/>
                                                 <constraint firstItem="2xY-rX-2Q0" firstAttribute="leading" secondItem="OGD-Gd-Ehb" secondAttribute="trailing" constant="8" id="L6R-JD-Myg"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="2xY-rX-2Q0" secondAttribute="bottom" constant="3" id="N7u-ti-AbZ"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" id="UmJ-55-Bss"/>
                                                 <constraint firstItem="SSn-2C-ab2" firstAttribute="top" secondItem="R2l-oE-iwT" secondAttribute="bottom" constant="8" id="VAV-bu-mWD"/>
                                                 <constraint firstItem="OGD-Gd-Ehb" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" id="XiL-HO-Zg8"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="top" secondItem="8c5-48-ceK" secondAttribute="bottom" constant="8" id="aeJ-qx-ICR"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hwl-7W-ejw" secondAttribute="trailing" constant="8" id="c8z-r2-wzT"/>
                                                 <constraint firstItem="R2l-oE-iwT" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="cGH-db-D58"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="height" secondItem="6IU-NM-KFW" secondAttribute="height" multiplier="0.6" id="cgw-sw-mIW"/>
                                                 <constraint firstItem="UJq-Na-9OF" firstAttribute="leading" secondItem="OGD-Gd-Ehb" secondAttribute="trailing" constant="8" id="edn-cK-wqa"/>
@@ -446,7 +445,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="zn6-gS-HTW" secondAttribute="trailing" id="lSw-8C-iqt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2xY-rX-2Q0" secondAttribute="trailing" constant="8" id="qJB-0a-Iii"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="UJq-Na-9OF" secondAttribute="trailing" constant="8" id="rIn-Rl-vK7"/>
-                                                <constraint firstItem="R2l-oE-iwT" firstAttribute="top" secondItem="rW5-ia-zSd" secondAttribute="bottom" constant="8" id="ruP-Oo-k42"/>
+                                                <constraint firstItem="R2l-oE-iwT" firstAttribute="top" secondItem="Hwl-7W-ejw" secondAttribute="bottom" constant="8" id="vYx-Y4-aJ8"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="50" id="wys-ms-RfW"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -485,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-374" y="7"/>
+            <point key="canvasLocation" x="-375.36231884057975" y="6.5217391304347831"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Qbk-Zk-5uH">
@@ -707,6 +706,5 @@
         <image name="mail" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
         <image name="search-30" width="30" height="30"/>
-        <image name="views" width="30" height="30"/>
     </resources>
 </document>

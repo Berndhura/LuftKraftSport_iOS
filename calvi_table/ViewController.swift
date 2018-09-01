@@ -351,7 +351,7 @@ extension ViewController: UITableViewDataSource {
         cell?.title?.text = currentAd.title
         
         //views
-        cell?.views?.text = String(describing: currentAd.views)
+        cell?.views?.text = "Views: " + String(describing: currentAd.views)
         
         //location
         cell?.location?.text = currentAd.location
