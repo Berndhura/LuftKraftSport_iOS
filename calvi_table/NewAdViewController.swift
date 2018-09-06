@@ -251,11 +251,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isEditMode {
             let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
             
-            //currentimage number von neuem bild ist natürlich nicht in der urlList!!!!
-            //deshalb hier ????
-            //print("GERO: " + urlList[currentImageNumber])
-            
-            //store image into image list
             adImages.append((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
             
             //only for existing images
@@ -264,13 +259,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             } else {
                 imagePlaceholder(imageNumber: currentImageNumber + 1)  //new placeholder
             }
-            
-            
-            
-            //welche bilder werden gelöscht .-> alte bilder in eine liste dann löschen .. dann update
-            
-            //delete  image ist raus: alle bilder vom picker werden in adImages abgespeichert und erst zum schluss hochgeladen "Abspeichern"
-            //presenter.deleteImage(articleId: articleId, imageId: Int(urlList[currentImageNumber])!, info: info)
         }
     }
     
@@ -448,7 +436,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    
+    /**
+     Uploads all images from adImages to server
+     Uses the presenter and PromiseKit
+     
+     Returns: nothing
+    */
     func uploadNewImagesToAd() {
         let userToken = Utils.getUserToken()
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
@@ -462,17 +455,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func deleteImageFromListAndServer() {
+        
+        //falls images geändert wurden also alte löschen, locale imageliste updaten
         for i in 0...4 {
             if changedImages[i] {
                 //image changed, delete old once
                 let id = Int(presenter.getImageId(forPosition: i))
-                let newPictureUrl = presenter.deleteImageIdFromList(imageId: id!)
+                let newPictureUrl = presenter.deleteImageIdFromList(imageId: id!)  //TODO NEU wird von liste gelöscht, beginned mit 0 meistens dann hocharbeiten; problem: liste ist dann um eins usw veriingert und wenn wir bei 4 zb ankommen (position des alten bildes von imagePicker ist die liste der localen bilder zu klein!! out of range error... lösung?: machen wie beim "nur bilder löschen"! also "altes" bild in imagesToDelete hinzufügen und dann alle löschen (auch local in der liste)
                 //new imageUrl String
                 self.pictureUrl = newPictureUrl
                 presenter.deleteImage(articleId: articleId, imageId: id!)
             }
         }
         
+        //falls nur images gelöscht wurden:
         for img in imagesToDelete {
             let id = Int(img)
             presenter.deleteImage(articleId: articleId, imageId: id!)
