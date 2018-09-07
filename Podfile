@@ -20,6 +20,7 @@ target 'calvi_table' do
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'PromiseKit/Alamofire'
+    pod 'IQKeyboardManagerSwift'
     #pod 'MessageKit'
 
   target 'calvi_tableTests' do

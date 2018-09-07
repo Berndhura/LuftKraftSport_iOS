@@ -59,9 +59,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    //to hide keyboard when tapped
-    var hideTap: UITapGestureRecognizer!
-    
     var adButtonViews = [UIButton]()
     
     var adImages = [UIImage]()
@@ -90,13 +87,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         initImageIdDict()
         
-        titleText.returnKeyType = UIReturnKeyType.next
-        decriptionText.returnKeyType = UIReturnKeyType.next
-        price.returnKeyType = UIReturnKeyType.next
         location.returnKeyType = UIReturnKeyType.send
         
         location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: UIControlEvents.editingChanged)
-
         
         if isLoggedIn() {
             if isEditMode {
@@ -113,28 +106,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         } else {
             openLogin()
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChange), name: .UIKeyboardWillChangeFrame, object: nil)
-        
-        //declare hide keyboard tap
-        hideTap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardTap))
-        hideTap.numberOfTapsRequired = 1
-        self.view.isUserInteractionEnabled = true
-        self.view.addGestureRecognizer(hideTap)
-        
-        //add observer for location: only get new location name in case it is changed
-        //does not work: every new letter observer hits -> better get lat/lng before send request
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.getLatLngFromLocationName), name: .UITextFieldTextDidChange, object: nil)
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillChangeFrame, object: nil)
-    }
-    
+
     @objc func locationDidChange(_ textField: UITextField) {
         isLocationChanged = true
     }
@@ -152,27 +126,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    //hide keyboard if tapped
-    func hideKeyboardTap(recognizer: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-        print("hide Keyboard")
-    }
-    
-    func keyboardWillChange(notification: NSNotification) {
-        //get keyboard size for device
-        let keyboard = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)!
-        
-        if (notification.name == .UIKeyboardWillShow || notification.name == .UIKeyboardWillChangeFrame) {
-                print("showKeyboard")
-            view.frame.origin.y = -keyboard.height
-        } else {
-            print("hideKeyboard")
-            view.frame.origin.y = 0
-        }
-    }
     
     func isLoggedIn() -> Bool {
-        
+    
         if Utils.getUserToken() == "" {
            return false
         } else {
@@ -218,7 +174,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func imageTapped(sender: UIButton) {
-        
         //which image is clicked
         currentImageNumber = sender.tag
         
@@ -231,7 +186,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func deleteBtnTapped(sender: UIButton) {
         let imageNumber = imageIdDict[sender.tag]
-        print(imageNumber!)
         
         //remove image from view
         sender.removeFromSuperview()
@@ -247,8 +201,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         self.pictureUrl = presenter.deleteImageIdFromList(imageId: Int(imageNumber!)!)
     }
     
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         //add new images to adImages and adapt list for existing images
         if isEditMode {
             let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
@@ -288,9 +242,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if (textField === titleText) {
             //TODO wieder auf weiter umstellen oder bei return keyboard verschwinden lassen?
             self.view.endEditing(true)
-            //decriptionText.becomeFirstResponder()
+            decriptionText.becomeFirstResponder()
         } else if (textField === decriptionText) {
-            price.resignFirstResponder()
+            price.becomeFirstResponder()
         } else if (textField === price) {
             location.becomeFirstResponder()
         }
@@ -299,27 +253,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             // tab forward logic here
             print("senden")
         }
-        /*- jo das passt ausser next in beschreibung weil kein kein textfiled sondern textview!!
-        
-         - 3 bilder auswählbar mach_vm_read_entry
-         - bearbeiten der anzeige, nicht neu abspeichern
-         - alles allignen abstand bilder von top
-         - schriftgrösse?
-         standort eingabe richtig so? was wenn quatscheingegeben?
-         - */
+       
         return true
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if text == "\n" {
-            price.resignFirstResponder()
-            print("maul2")
-        }
-        return true;
-    }
 
-    
     func editArticle() {
         
         //for space on left side
@@ -432,7 +370,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             "title": self.titleText.text! as Any,
             //no image changes/edits/delete -> only use old ones
             //if URLs string is empty do not set URLS -> URLs are NULL
-            "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),   //wenn geändert, die ides von den BEREITS gelöschten müssen hier raus!! und der rest wird mitgegben
+            "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),   
             "description": self.decriptionText.text! as Any
             ] as [String : Any]
         
@@ -554,6 +492,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.placeholder = NSLocalizedString("new_article_price", comment: "")
     }
 }
+
 
 @IBDesignable class UITextViewFixed: UITextView {
     override func layoutSubviews() {
