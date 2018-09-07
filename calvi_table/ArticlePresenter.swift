@@ -35,7 +35,7 @@ class ArticlePresenter {
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/\(imageId)/deletePicture?token=\(userToken)")
         Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
-                debugPrint(response)
+                //debugPrint(response)
         }
     }
     
@@ -66,11 +66,6 @@ class ArticlePresenter {
         
         print("GERO: bearbeitete image urls: " + self.pictureUrl)
         return pictureUrl
-    }
-    
-    func getImageId(forPosition: Int) -> String {
-        let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
-        return urlList[forPosition]
     }
     
    

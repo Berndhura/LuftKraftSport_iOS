@@ -68,7 +68,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     var imagesToDelete = [String]()
     
-    var changedImages = [Bool]()
+    //holds imageId for corresponding position (key)
+    var imageIdDict : [Int: String] = [:]
     
     var currentImageView: UIImageView?
     
@@ -77,10 +78,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
 
         super.viewDidLoad()
-        
-        for _ in 0...4 {
-            changedImages.append(false)
-        }
 
         presenter.attachView(self)
         
@@ -91,6 +88,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.delegate = self
         location.delegate = self
         
+        initImageIdDict()
         
         titleText.returnKeyType = UIReturnKeyType.next
         decriptionText.returnKeyType = UIReturnKeyType.next
@@ -143,6 +141,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidAppear(_ animated: Bool) {
         refreshTabBar()
+    }
+    
+    func initImageIdDict() {
+        let imageIds:[String] = Utils.getAllPictureUrls(str: pictureUrl)
+        var i = 0
+        for id in imageIds {
+            imageIdDict[i] = id
+            i+=1
+        }
     }
     
     //hide keyboard if tapped
@@ -223,8 +230,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func deleteBtnTapped(sender: UIButton) {
-        let imageNumber = presenter.getImageId(forPosition: sender.tag)
-        print(imageNumber)
+        let imageNumber = imageIdDict[sender.tag]
+        print(imageNumber!)
         
         //remove image from view
         sender.removeFromSuperview()
@@ -236,30 +243,39 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
         }
         //add image number to list for delete
-        imagesToDelete.append(imageNumber)
-        self.pictureUrl = presenter.deleteImageIdFromList(imageId: Int(imageNumber)!)
+        imagesToDelete.append(imageNumber!)
+        self.pictureUrl = presenter.deleteImageIdFromList(imageId: Int(imageNumber!)!)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            adButtonViews[currentImageNumber].setImage(chosenImage, for: .normal)
-            adImages.append(chosenImage)
-        }
-        picker.dismiss(animated: true, completion: nil)
-        
+        //add new images to adImages and adapt list for existing images
         if isEditMode {
             let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
+            
+            if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                adButtonViews[currentImageNumber].setImage(chosenImage, for: .normal)
+            }
             
             adImages.append((info[UIImagePickerControllerOriginalImage] as? UIImage)!)
             
             //only for existing images
             if (currentImageNumber < urlList.count) {
-                changedImages[currentImageNumber] = true
+                let imageNumber = imageIdDict[currentImageNumber]
+                imagesToDelete.append(imageNumber!)
+                self.pictureUrl = presenter.deleteImageIdFromList(imageId: Int(imageNumber!)!)
+            //new image was added -> show new placeholder
             } else {
-                imagePlaceholder(imageNumber: currentImageNumber + 1)  //new placeholder
+                imagePlaceholder(imageNumber: currentImageNumber + 1)
+            }
+        } else {
+            //just add new images to adImages list for a new ad
+            if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+                adButtonViews[currentImageNumber].setImage(chosenImage, for: .normal)
+                adImages.append(chosenImage)
             }
         }
+        picker.dismiss(animated: true, completion: nil)
     }
     
     
@@ -409,8 +425,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         self.uploadNewImagesToAd()
         
-        //ws wenn nur neue bilder hinzugefügt worden sind?
-        
+
         var params = [
             "id": self.articleId,
             "price": self.price.text! as Any,
@@ -445,6 +460,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func uploadNewImagesToAd() {
         let userToken = Utils.getUserToken()
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
+        print("new images anzahl: ")
+        print(adImages.count)
         
         when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
             .done { ([Any]) in
@@ -455,20 +472,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func deleteImageFromListAndServer() {
-        
-        //falls images geändert wurden also alte löschen, locale imageliste updaten
-        for i in 0...4 {
-            if changedImages[i] {
-                //image changed, delete old once
-                let id = Int(presenter.getImageId(forPosition: i))
-                let newPictureUrl = presenter.deleteImageIdFromList(imageId: id!)  //TODO NEU wird von liste gelöscht, beginned mit 0 meistens dann hocharbeiten; problem: liste ist dann um eins usw veriingert und wenn wir bei 4 zb ankommen (position des alten bildes von imagePicker ist die liste der localen bilder zu klein!! out of range error... lösung?: machen wie beim "nur bilder löschen"! also "altes" bild in imagesToDelete hinzufügen und dann alle löschen (auch local in der liste)
-                //new imageUrl String
-                self.pictureUrl = newPictureUrl
-                presenter.deleteImage(articleId: articleId, imageId: id!)
-            }
-        }
-        
-        //falls nur images gelöscht wurden:
         for img in imagesToDelete {
             let id = Int(img)
             presenter.deleteImage(articleId: articleId, imageId: id!)
