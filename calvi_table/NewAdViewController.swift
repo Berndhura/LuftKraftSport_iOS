@@ -90,6 +90,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         location.returnKeyType = UIReturnKeyType.send
         
         location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: UIControlEvents.editingChanged)
+        titleText.addTarget(self, action: #selector(NewAdViewController.titleDidChange(_:)), for: .editingDidEnd)
         
         if isLoggedIn() {
             if isEditMode {
@@ -111,6 +112,19 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     @objc func locationDidChange(_ textField: UITextField) {
         isLocationChanged = true
+    }
+
+    @objc func titleDidChange(_ textField: UITextField) {
+        guard let string = textField.text else { return }
+        
+        if (string.isEmpty || string.count < 5) {
+            titleText.layer.borderColor = UIColor.red.cgColor
+            titleText.layer.borderWidth = 1.0
+        }
+        if (!string.isEmpty || string.count > 5) {
+            titleText.layer.borderColor = UIColor.green.cgColor
+            titleText.layer.borderWidth = 1.0
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -239,21 +253,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if (textField === titleText) {
-            //TODO wieder auf weiter umstellen oder bei return keyboard verschwinden lassen?
-            self.view.endEditing(true)
-            decriptionText.becomeFirstResponder()
-        } else if (textField === decriptionText) {
-            price.becomeFirstResponder()
-        } else if (textField === price) {
-            location.becomeFirstResponder()
-        }
-        
         if (textField.returnKeyType == UIReturnKeyType.send) {
             // tab forward logic here
             print("senden")
         }
-       
         return true
     }
     
@@ -352,18 +355,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
         
-        print("picture URLS   OLD--------------------------------")
-        print(self.pictureUrl)
-        
         self.deleteImageFromListAndServer()
-        print("picture URLS   NEW--------------------------------")
-        print(self.pictureUrl)
         
         let newPictureUrls = self.pictureUrl
         
         self.uploadNewImagesToAd()
         
-
         var params = [
             "id": self.articleId,
             "price": self.price.text! as Any,
