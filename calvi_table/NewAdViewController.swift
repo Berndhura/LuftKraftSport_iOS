@@ -39,7 +39,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var titleText: UITextField!
     
-    @IBOutlet weak var descriptionText: UITextViewFixed!
+    @IBOutlet weak var decriptionText: UITextViewFixed!
     
     @IBOutlet weak var price: UITextField!
     
@@ -80,7 +80,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         presenter.init_data(pictureUrl: pictureUrl, isEditMode: isEditMode)
         
-        descriptionText.delegate = self
+        decriptionText.delegate = self
         titleText.delegate = self
         price.delegate = self
         location.delegate = self
@@ -91,7 +91,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: UIControlEvents.editingChanged)
         titleText.addTarget(self, action: #selector(NewAdViewController.titleDidChange(_:)), for: .editingDidEnd)
-        //descriptionText.addTarget(self, action: #selector(NewAdViewController.desciptionDidChange(_:)), for: .editingDidEnd)
         
         if isLoggedIn() {
             if isEditMode {
@@ -264,31 +263,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     func editArticle() {
         
-        //for space on left side: title
+        //for space on left side
         let leftView = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
         leftView.backgroundColor = .clear
+        
         titleText.leftView = leftView
         titleText.leftViewMode = .always
         titleText.contentVerticalAlignment = .center
+        
         titleText.text = titleFromAd
-        
-        //description
-        descriptionText.text = descFromAd
-        
-        //price
-        let leftViewPrice = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
-        leftViewPrice.backgroundColor = .clear
-        price.leftView = leftView
-        price.leftViewMode = .always
-        price.contentVerticalAlignment = .center
+        decriptionText.text = descFromAd
         price.text = String(describing: priceFromAd)
-        
-        //location
-        let leftViewLocation = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
-        leftViewLocation.backgroundColor = .clear
-        location.leftView = leftViewLocation
-        location.leftViewMode = .always
-        location.contentVerticalAlignment = .center
         location.text = locationFromAd
         
         //get all image urls and load images
@@ -383,7 +368,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             //no image changes/edits/delete -> only use old ones
             //if URLs string is empty do not set URLS -> URLs are NULL
             "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),   
-            "description": self.descriptionText.text! as Any
+            "description": self.decriptionText.text! as Any
             ] as [String : Any]
         
         params["location"] = [
@@ -439,7 +424,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         var params = [
             "price": String(price)! as Any,
             "title": titleText.text! as Any,
-            "description": descriptionText.text
+            "description": decriptionText.text
             ] as [String : Any]
         
         params["location"] = [
@@ -494,7 +479,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         titleText.contentVerticalAlignment = .center
         titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
         
-        descriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
+        decriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
     
         let leftViewPrice = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
         leftViewPrice.backgroundColor = .clear
