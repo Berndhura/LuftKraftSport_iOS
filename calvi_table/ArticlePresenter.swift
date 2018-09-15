@@ -19,7 +19,7 @@ class ArticlePresenter {
     fileprivate var pictureUrl: String = ""
     fileprivate var isEditMode: Bool = false
     
-    func attachView(_ view: NewAdViewController){
+    func attachView(_ view: NewAdViewController) {
         userView = view
     }
     
@@ -72,13 +72,10 @@ class ArticlePresenter {
     //PromiseKit upload for image
     func uploadImagePromise(url: URL, image: UIImage) -> Promise<Any> {
         
-        Thread.sleep(forTimeInterval: 1)
-        
         // shrink image for upload to server
         let parameters = ["file": "swift_file.jpeg"]
         let imageData = UIImageJPEGRepresentation(image, 0.1)!
-        print("im uploadPromise!!!")
-        print(imageData.count)
+       
         return Promise { seal in
             Alamofire.upload(
                 multipartFormData: { multipartFormData in

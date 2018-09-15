@@ -39,7 +39,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var titleText: UITextField!
     
-    @IBOutlet weak var decriptionText: UITextViewFixed!
+    @IBOutlet weak var descriptionText: UITextViewFixed!
     
     @IBOutlet weak var price: UITextField!
     
@@ -80,7 +80,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         presenter.init_data(pictureUrl: pictureUrl, isEditMode: isEditMode)
         
-        decriptionText.delegate = self
+        descriptionText.delegate = self
         titleText.delegate = self
         price.delegate = self
         location.delegate = self
@@ -272,7 +272,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         titleText.contentVerticalAlignment = .center
         
         titleText.text = titleFromAd
-        decriptionText.text = descFromAd
+        descriptionText.text = descFromAd
         price.text = String(describing: priceFromAd)
         location.text = locationFromAd
         
@@ -307,7 +307,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //one more image placeholder to upload new images
         if (urlList.count < 5) {
-            imagePlaceholder(imageNumber: urlList.count)   //TODO urllist.count muss weiter hoch gezählt werden
+            imagePlaceholder(imageNumber: urlList.count)
         }
     }
     
@@ -368,7 +368,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             //no image changes/edits/delete -> only use old ones
             //if URLs string is empty do not set URLS -> URLs are NULL
             "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),   
-            "description": self.decriptionText.text! as Any
+            "description": self.descriptionText.text! as Any
             ] as [String : Any]
         
         params["location"] = [
@@ -424,7 +424,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         var params = [
             "price": String(price)! as Any,
             "title": titleText.text! as Any,
-            "description": decriptionText.text
+            "description": descriptionText.text
             ] as [String : Any]
         
         params["location"] = [
@@ -479,7 +479,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         titleText.contentVerticalAlignment = .center
         titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
         
-        decriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
+        descriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
     
         let leftViewPrice = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
         leftViewPrice.backgroundColor = .clear
