@@ -16,7 +16,7 @@ import SDWebImage
 import PromiseKit
 
 class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
-
+    
     public var articleId: Int32 = 0
     public var isEditMode: Bool = false
     public var titleFromAd: String = ""
@@ -34,7 +34,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     let gapSize: CGFloat = 5
     
     fileprivate let presenter = ArticlePresenter()
-
+    
     @IBOutlet weak var imgScrollView: UIScrollView!
     
     @IBOutlet weak var titleText: UITextField!
@@ -73,9 +73,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var currentImageNumber: Int = 0
     
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
-
+        
         presenter.attachView(self)
         
         presenter.init_data(pictureUrl: pictureUrl, isEditMode: isEditMode)
@@ -109,11 +109,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-
+    
     @objc func locationDidChange(_ textField: UITextField) {
         isLocationChanged = true
     }
-
+    
     @objc func titleDidChange(_ textField: UITextField) {
         guard let string = textField.text else { return }
         
@@ -142,9 +142,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     func isLoggedIn() -> Bool {
-    
+        
         if Utils.getUserToken() == "" {
-           return false
+            return false
         } else {
             return true
         }
@@ -232,7 +232,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 let imageNumber = imageIdDict[currentImageNumber]
                 imagesToDelete.append(imageNumber!)
                 self.pictureUrl = presenter.deleteImageIdFromList(imageId: Int(imageNumber!)!)
-            //new image was added -> show new placeholder
+                //new image was added -> show new placeholder
             } else {
                 imagePlaceholder(imageNumber: currentImageNumber + 1)
             }
@@ -260,27 +260,41 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return true
     }
     
-
+    
     func editArticle() {
         
         //for space on left side
         let leftView = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
         leftView.backgroundColor = .clear
-        
         titleText.leftView = leftView
         titleText.leftViewMode = .always
         titleText.contentVerticalAlignment = .center
-        
         titleText.text = titleFromAd
+        
+        //description
         descriptionText.text = descFromAd
+        
+        //price
+        let leftViewPrice = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
+        leftViewPrice.backgroundColor = .clear
+        price.leftView = leftViewPrice
+        price.leftViewMode = .always
+        price.contentVerticalAlignment = .center
         price.text = String(describing: priceFromAd)
+        
+        //location
+        let leftViewLoc = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
+        leftViewLoc.backgroundColor = .clear
+        location.leftView = leftViewLoc
+        location.leftViewMode = .always
+        location.contentVerticalAlignment = .center
         location.text = locationFromAd
         
         //get all image urls and load images
         let urlList: [String] = Utils.getAllPictureUrls(str: pictureUrl)
         showPictures(urlList: urlList)
     }
-
+    
     func showPictures(urlList: [String]) {
         
         for i in 0..<urlList.count {
@@ -294,7 +308,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             imageButton.isUserInteractionEnabled = true
             imageButton.layer.cornerRadius = 20
             imageButton.layer.masksToBounds = true
-        
+            
             let xPosition = self.imgScrollView.frame.height * CGFloat(i) + (gapSize * CGFloat(i + 1))
             imageButton.frame = CGRect(x: xPosition, y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
             
@@ -350,7 +364,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isLocationChanged {
             getNewLocationDetails()
         }
-                
+        
         let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
@@ -367,7 +381,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             "title": self.titleText.text! as Any,
             //no image changes/edits/delete -> only use old ones
             //if URLs string is empty do not set URLS -> URLs are NULL
-            "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),   
+            "urls" : ((newPictureUrls != "") ? newPictureUrls as Any : nil),
             "description": self.descriptionText.text! as Any
             ] as [String : Any]
         
@@ -391,7 +405,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
      Uses the presenter and PromiseKit
      
      Returns: nothing
-    */
+     */
     func uploadNewImagesToAd() {
         let userToken = Utils.getUserToken()
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
@@ -447,7 +461,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if let articleId = dict["id"] {
             let userToken = Utils.getUserToken()
             let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
-           
+            
             when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
                 .done { ([Any]) in
                     //und nu
@@ -473,14 +487,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         //for space on left side
         let leftView = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
         leftView.backgroundColor = .clear
-        
         titleText.leftView = leftView
         titleText.leftViewMode = .always
         titleText.contentVerticalAlignment = .center
         titleText.placeholder = NSLocalizedString("new_article_titel", comment: "")
         
+        //description
         descriptionText.placeholder = NSLocalizedString("new_article_description", comment: "")
-    
+        
+        //price
         let leftViewPrice = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
         leftViewPrice.backgroundColor = .clear
         price.leftView = leftViewPrice
