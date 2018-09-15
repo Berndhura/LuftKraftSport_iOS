@@ -517,6 +517,14 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         price.leftViewMode = .always
         price.contentVerticalAlignment = .center
         price.placeholder = NSLocalizedString("new_article_price", comment: "")
+        
+        //location
+        let leftViewLoc = UILabel(frame: CGRect(x: 10, y: 0, width: 7, height: 26))
+        leftViewLoc.backgroundColor = .clear
+        location.leftView = leftViewLoc
+        location.leftViewMode = .always
+        location.contentVerticalAlignment = .center
+        location.placeholder = NSLocalizedString("new_article_location", comment: "")
     }
 }
 
