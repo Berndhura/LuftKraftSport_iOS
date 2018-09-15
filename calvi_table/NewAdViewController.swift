@@ -91,6 +91,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: UIControlEvents.editingChanged)
         titleText.addTarget(self, action: #selector(NewAdViewController.titleDidChange(_:)), for: .editingDidEnd)
+        price.addTarget(self, action: #selector(NewAdViewController.priceDidChange(_:)), for: .editingDidEnd)
         
         if isLoggedIn() {
             if isEditMode {
@@ -126,6 +127,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             titleText.layer.borderWidth = 1.0
         }
     }
+   
+    @objc func priceDidChange(_ textField: UITextField) {
+        guard let string = textField.text else { return }
+        
+        if (string.isEmpty) {
+            price.layer.borderColor = UIColor.red.cgColor
+            price.layer.borderWidth = 1.0
+        }
+        if (!string.isEmpty) {
+            price.layer.borderColor = UIColor.green.cgColor
+            price.layer.borderWidth = 1.0
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         refreshTabBar()
