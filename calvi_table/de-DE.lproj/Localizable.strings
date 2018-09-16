@@ -9,6 +9,10 @@
 
 "problem" = "Es gibt ein Problem!";
 
+"delete_article" = "Anzeige löschen!";
+"delete_article_confirm" = "Bist du dir sicher?";
+"delete_sure" = "Lösche!"
+
 "new_article_titel" = "Titel deiner Anzeige...";
 "new_article_description" = "Beschreibe dein Angebot...";
 "new_article_price" = "Preis...";
@@ -22,3 +26,4 @@
 "new article_useless_message" = "Mache bitte vernünftige Angaben für deine Anzeige!";
 "new_article_no_location_info" = "Es kann kein Ort bestimmt werden. Bitte gib einen Ort an";
 "new_article_no_network_for_location" = "Es gab ein Problem mit der Internet Verbindung. Verbinde dich mit dem Internet oder versuche es später noch einmal!";
+"new_article_upload_images" = "Bilder werden hochgeladen...";

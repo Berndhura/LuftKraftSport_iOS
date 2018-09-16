@@ -57,7 +57,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             saveArticleButton.isEnabled = false
             
             if validateInput() {
-                SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
                 updateArticle()
             } else {
                 showUselessInfo()
@@ -92,19 +91,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         presenter.attachView(self)
         
-        // Ask for Authorisation from the User.
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // For use in foreground
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation() 
-        }
-        
-        
+        initLocationManager()
         
         presenter.init_data(pictureUrl: pictureUrl, isEditMode: isEditMode)
         
@@ -133,6 +120,23 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
         } else {
             openLogin()
+        }
+    }
+    
+    func initLocationManager() {
+        
+        locationManager = CLLocationManager()
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -309,7 +313,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             if isEditMode {
                 if validateInput() {
                     self.saveArticleButton.isEnabled = false
-                    SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
                     updateArticle()
                 } else {
                     showUselessInfo()
@@ -317,7 +320,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             } else {
                 if validateInput() {
                     presenter.getLatLng(address: location.text!, locValue: locValue)
-                    SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
                 } else {
                     showUselessInfo()
                 }
@@ -455,9 +457,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             "type": "Point",
             "coordinates": [lat, lng]]
         
+        SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
+        
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
+                
+                SVProgressHUD.dismiss()
                 
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
@@ -495,6 +501,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {
         
+        //TODO each post request gets it's own progress: create, edit, picture upload etc
+        
         let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
@@ -511,9 +519,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             "type": "Point",
             "coordinates": [coordinate.latitude, coordinate.longitude]]
         
+        SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
+        
         Alamofire.request(url!, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseJSON { response in
                 debugPrint(response)
+                SVProgressHUD.dismiss()
                 self.uploadImagesForNewAd(response: response)
         }
     }

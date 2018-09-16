@@ -70,6 +70,8 @@ class ArticlePresenter {
         // shrink image for upload to server
         let parameters = ["file": "swift_file.jpeg"]
         let imageData = UIImageJPEGRepresentation(image, 0.1)!
+        
+        SVProgressHUD.show(withStatus: NSLocalizedString("new_article_upload_images", comment: ""))
        
         return Promise { seal in
             Alamofire.upload(
@@ -97,6 +99,7 @@ class ArticlePresenter {
                     }
                 case .failure(let error):
                     print(error)
+                    SVProgressHUD.dismiss()
                 }
             }
         }
@@ -122,7 +125,7 @@ class ArticlePresenter {
                     let location = placemark?.location
                     let coordinate = location?.coordinate
                     print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
-                    
+                
                     self.userView?.createNewAd(coordinate: coordinate!)
                 }
             })

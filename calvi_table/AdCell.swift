@@ -90,9 +90,9 @@ class AdCell: UITableViewCell {
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)?token=\(userToken)")
         
-        let refreshAlert = UIAlertController(title: "Artikel wird gelöscht!", message: "Nix mehr mit verkaufen.", preferredStyle: UIAlertControllerStyle.alert)
+        let refreshAlert = UIAlertController(title: NSLocalizedString("delete_article", comment: ""), message: NSLocalizedString("delete_article_confirm", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         
-        refreshAlert.addAction(UIAlertAction(title: "Löschen", style: .default, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: NSLocalizedString("delete_sure", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
             Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
                     debugPrint(response)
