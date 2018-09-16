@@ -50,12 +50,22 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBAction func saveNewAd(_ sender: Any) {
         if isEditMode {
             saveArticleButton.isEnabled = false
-            SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
-            updateArticle()
+            
+            if validateInput() {
+                SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
+                updateArticle()
+            } else {
+                showUselessInfo()
+            }
         } else {
             saveArticleButton.isEnabled = false
-            presenter.getLatLng(address: location.text!)
-            SVProgressHUD.show(withStatus: NSLocalizedString("new_artivcle_create_ad", comment: ""))
+            
+            if validateInput() {
+                presenter.getLatLng(address: location.text!)
+                SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
+            } else {
+                showUselessInfo()
+            }
         }
     }
     
@@ -96,13 +106,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isLoggedIn() {
             if isEditMode {
                 saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
-                //addGestureOnImages()
                 print("GERO: PictureURL:" + pictureUrl)
                 editArticle()
             } else {
                 saveArticleButton.setTitle(NSLocalizedString("new_article_save_button", comment: ""), for: .normal)
                 setupImagesPlaceholder()
-                //addGestureOnImages()
                 prepareForms()
             }
         } else {
@@ -127,6 +135,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             titleText.layer.borderWidth = 1.0
         }
     }
+    
    
     @objc func priceDidChange(_ textField: UITextField) {
         guard let string = textField.text else { return }
@@ -184,6 +193,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    
     func imagePlaceholder(imageNumber: Int) {
         let imageButton = UIButton()
         imageButton.setBackgroundImage(UIImage(named: "image_placeholder"), for: .normal)
@@ -202,6 +212,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         adButtonViews.append(imageButton)
     }
     
+    
     func imageTapped(sender: UIButton) {
         //which image is clicked
         currentImageNumber = sender.tag
@@ -212,6 +223,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
     }
+    
     
     func deleteBtnTapped(sender: UIButton) {
         let imageNumber = imageIdDict[sender.tag]
@@ -270,7 +282,22 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if (textField.returnKeyType == UIReturnKeyType.send) {
             // tab forward logic here
-            print("senden")
+            if isEditMode {
+                if validateInput() {
+                    self.saveArticleButton.isEnabled = false
+                    SVProgressHUD.show(withStatus: NSLocalizedString("new_article_change_button", comment: ""))
+                    updateArticle()
+                } else {
+                    showUselessInfo()
+                }
+            } else {
+                if validateInput() {
+                    presenter.getLatLng(address: location.text!)
+                    SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
+                } else {
+                    showUselessInfo()
+                }
+            }
         }
         return true
     }
@@ -467,6 +494,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    func validateInput() -> Bool {
+    
+        if (titleText.text!.isEmpty ||
+            descriptionText.text!.isEmpty ||
+            price.text!.isEmpty) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func uploadImagesForNewAd(response: DataResponse<Any>) {
         
         //get new ID from response
@@ -525,6 +563,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         location.leftViewMode = .always
         location.contentVerticalAlignment = .center
         location.placeholder = NSLocalizedString("new_article_location", comment: "")
+    }
+    
+    func showUselessInfo() {
+        let useLessAlert = UIAlertController(title: NSLocalizedString("new_article_useless_title", comment: ""), message: NSLocalizedString("new article_useless_message", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        useLessAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+            self.saveArticleButton.isEnabled = true
+            return
+        }))
+        UIApplication.shared.keyWindow?.rootViewController?.present(useLessAlert, animated: true, completion: nil)
     }
 }
 

@@ -11,8 +11,9 @@
 "new_article_price" = "Price...";
 "new_article_location" = "Location...";
 "new_article_change_button" = "Change ad...";
-"new_artivcle_create_ad" = "New ad is being created...";
+"new_article_create_ad" = "New ad is being created...";
 "new_article_save_button" = "Create";
 "new_article_save_changes_button" = "Save changes";
 "new_article_tab_bar_title" = "Create an ad";
-
+"new_article_useless_title" = "Useless inputs!";
+"new article_useless_message" = "Please create a proper Article";
