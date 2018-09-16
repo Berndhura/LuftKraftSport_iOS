@@ -46,8 +46,6 @@ class ArticlePresenter {
         for url in urlList {
             if url == String(imageId) {
                 urlList.remove(at: pos)
-                print("id removed!")
-                print(urlList)
             }
             pos = pos + 1
         }
@@ -61,10 +59,7 @@ class ArticlePresenter {
                 self.pictureUrl += "," + url
             }
             pos += 1
-            print("pictureURL: ")
         }
-        
-        print("GERO: bearbeitete image urls: " + self.pictureUrl)
         return pictureUrl
     }
     
@@ -108,20 +103,47 @@ class ArticlePresenter {
     }
     
 
-    func getLatLng(address: String) {
-        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if error != nil {
-                print(error as Any)
+    func getLatLng(address: String, locValue: CLLocationCoordinate2D?) {
+        if (!address.isEmpty) {
+            CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+                if error != nil {
+                    let alertProblem = UIAlertController(title: NSLocalizedString("problem", comment: ""), message: NSLocalizedString("new_article_no_network_for_location", comment: ""), preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "ok", style: .default) { (action) in
+                        self.userView?.saveArticleButton.isEnabled = true
+                        return
+                    }
+                    alertProblem.addAction(ok)
+                    self.userView?.present(alertProblem, animated: true, completion: nil)
+                    print(error as Any)
+                    return
+                }
+                if (placemarks?.count)! > 0 {
+                    let placemark = placemarks?[0]
+                    let location = placemark?.location
+                    let coordinate = location?.coordinate
+                    print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                    
+                    self.userView?.createNewAd(coordinate: coordinate!)
+                }
+            })
+        } else {
+            // Location text field was empty, use last know location
+            guard let lat = locValue?.latitude else {
+                //permission for location not granted AND input text field for location is empty -> show alert
+                let alertProblem = UIAlertController(title: NSLocalizedString("problem", comment: ""), message: NSLocalizedString("new_article_no_location_info", comment: ""), preferredStyle: .alert)
+                let ok = UIAlertAction(title: "ok", style: .default) { (action) in
+                    self.userView?.saveArticleButton.isEnabled = true
+                    return
+                }
+                alertProblem.addAction(ok)
+                self.userView?.present(alertProblem, animated: true, completion: nil)
                 return
             }
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                let coordinate = location?.coordinate
-                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+            guard let lng = locValue?.longitude else {return}
                 
-                self.userView?.createNewAd(coordinate: coordinate!)
-            }
-        })
+            let coordinate = CLLocationCoordinate2DMake(lat, lng)
+            SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
+            self.userView?.createNewAd(coordinate: coordinate)
+        }
     }
 }

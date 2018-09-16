@@ -15,7 +15,7 @@ import SVProgressHUD
 import SDWebImage
 import PromiseKit
 
-class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
+class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
     
     public var articleId: Int32 = 0
     public var isEditMode: Bool = false
@@ -29,8 +29,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var lng: Double = 0.0
     
     var isLocationChanged = false
+    
     var newImagesAdded = false
     
+    var locationManager: CLLocationManager!
+    
+    var locValue: CLLocationCoordinate2D?
+
     let gapSize: CGFloat = 5
     
     fileprivate let presenter = ArticlePresenter()
@@ -61,8 +66,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             saveArticleButton.isEnabled = false
             
             if validateInput() {
-                presenter.getLatLng(address: location.text!)
-                SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
+                presenter.getLatLng(address: location.text!, locValue: locValue)
             } else {
                 showUselessInfo()
             }
@@ -87,6 +91,20 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.viewDidLoad()
         
         presenter.attachView(self)
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation() 
+        }
+        
+        
         
         presenter.init_data(pictureUrl: pictureUrl, isEditMode: isEditMode)
         
@@ -116,6 +134,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         } else {
             openLogin()
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //TODO in NewAdVC oder ViewController oder app Delegate?
+        locValue = manager.location?.coordinate
+        //print("locationSAU = \(locValue.latitude) \(locValue.longitude)")
     }
     
     
@@ -292,7 +316,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 }
             } else {
                 if validateInput() {
-                    presenter.getLatLng(address: location.text!)
+                    presenter.getLatLng(address: location.text!, locValue: locValue)
                     SVProgressHUD.show(withStatus: NSLocalizedString("new_article_create_ad", comment: ""))
                 } else {
                     showUselessInfo()
