@@ -10,7 +10,7 @@
 
 "delete_article" = "Delete article";
 "delete_article_confirm" = "Are you sure to do this?";
-"delete_sure" = "Delete!"
+"delete_sure" = "Delete!";
 
 "new_article_titel" = "Title for your ad...";
 "new_article_description" = "Describe your ad...";

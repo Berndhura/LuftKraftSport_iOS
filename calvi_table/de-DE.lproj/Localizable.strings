@@ -11,7 +11,7 @@
 
 "delete_article" = "Anzeige löschen!";
 "delete_article_confirm" = "Bist du dir sicher?";
-"delete_sure" = "Lösche!"
+"delete_sure" = "Lösche!";
 
 "new_article_titel" = "Titel deiner Anzeige...";
 "new_article_description" = "Beschreibe dein Angebot...";
