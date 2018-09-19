@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseMessaging
 import FirebaseInstanceID
-import FacebookLogin
+import FBSDKCoreKit
 import FBSDKLoginKit
 import UserNotifications
 import SwiftyJSON

@@ -37,6 +37,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     var didLoadContent: Bool = false
     
+    var shareButton: UIBarButtonItem?
+    
     @IBOutlet weak var anzeigeTitel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var beschreibung: UILabel!
@@ -47,21 +49,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     @IBOutlet weak var pageControl: UIPageControl!
     
-    @IBAction func shareArticle(_ sender: Any) {
-        
-        let originalString = "First Whatsapp Share"
-        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
-        
-        let url  = URL(string: "whatsapp://send?text=\(escapedString!)")
-        
-        if UIApplication.shared.canOpenURL(url! as URL)
-        {
-            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
-        }
-        
-        //TODO ???? häääää??? was soll das hier???
-    }
-
     @IBOutlet weak var bookmarkEditButton: UIButton!
     
     @IBAction func bookmarkEditAction(_ sender: Any) {
@@ -128,6 +115,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         scrollView.delegate = self
         
         prepareMap()
+
+        //TODO no icon to see
+        shareButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(self.shareArticle))
+        tabBarController?.navigationItem.setRightBarButtonItems([shareButton!], animated: true)
         
         if userId != nil {
             let userIdFromDefaults = Utils.getUserId()
@@ -175,8 +166,6 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         pageControl.numberOfPages = Utils.getAllPictureUrls(str: pictureUrl!).count
         
         imageNumberList = Utils.getAllPictureUrls(str: pictureUrl!)
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -197,6 +186,20 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId!)/increaseViewCount")
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
+        }
+    }
+    
+    
+    func shareArticle(_ sender: Any) {
+        
+        let originalString = "First Whatsapp Share"
+        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
+        
+        let url  = URL(string: "whatsapp://send?text=\(escapedString!)")
+        
+        if UIApplication.shared.canOpenURL(url! as URL)
+        {
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
         }
     }
     

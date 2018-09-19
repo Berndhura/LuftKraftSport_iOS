@@ -20,9 +20,14 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     var myBookmarks: [Int32] = []
     
     var searchController: UISearchController!
+    
     var resultController = UITableViewController()
     
     var searchString: String?
+    
+    var isLoadingTableView = true
+    
+    var noMessagesLabel = UILabel()
     
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
@@ -44,6 +49,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         // -64 space for tabbar
         //self.tableView.contentInset = UIEdgeInsets(top: -64.0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        
+        tableView.separatorStyle = .none
         
         navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -323,6 +330,28 @@ let imageCache = NSCache<NSString, UIImage>()
 extension ViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if ads.count == 0 {
+            print("Null")
+            //tableView.tableFooterView = UIView(frame: CGRect.zero)
+            //tableView.backgroundColor = UIColor.clear
+            
+            noMessagesLabel.numberOfLines = 2
+            noMessagesLabel.textColor = UIColor.blue
+            noMessagesLabel.textAlignment = .center
+            noMessagesLabel.text = "Noch keine Anzeigen :-("
+            noMessagesLabel.tag = 1
+            
+            self.tableView.addSubview(noMessagesLabel)
+            
+            noMessagesLabel.translatesAutoresizingMaskIntoConstraints = false
+            noMessagesLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+            noMessagesLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+            tableView.backgroundColor = UIColor.clear
+        } else {
+            noMessagesLabel.removeFromSuperview()
+        }
+        
         return ads.count
     }
     

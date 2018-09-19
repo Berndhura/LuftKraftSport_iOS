@@ -467,7 +467,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -510,7 +510,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B778CE734C7D816B84A98957 /* [CP] Check Pods Manifest.lock */ = {
@@ -537,7 +537,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh",
 				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
@@ -548,7 +548,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -751,6 +751,7 @@
 				CODE_SIGN_ENTITLEMENTS = calvi_table/calvi_table.entitlements;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
 				INFOPLIST_FILE = calvi_table/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.wichura.lks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -769,6 +770,7 @@
 				CODE_SIGN_ENTITLEMENTS = calvi_table/calvi_table.entitlements;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
 				INFOPLIST_FILE = calvi_table/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.wichura.lks;
 				PRODUCT_NAME = "$(TARGET_NAME)";

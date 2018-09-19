@@ -1,22 +1,22 @@
 PODS:
-  - Alamofire (4.5.0)
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Alamofire (4.7.3)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
-  - FacebookCore (0.2.0):
-    - Bolts (~> 1.8)
-    - FBSDKCoreKit (~> 4.15)
-  - FacebookLogin (0.2.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.2)
-    - FBSDKCoreKit (~> 4.15)
-    - FBSDKLoginKit (~> 4.15)
-  - FBSDKCoreKit (4.24.0):
+  - Bolts/Tasks (1.9.0)
+  - FacebookCore (0.3.3):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.36)
+  - FacebookLogin (0.3.3):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.3.3)
+    - FBSDKCoreKit (~> 4.36)
+    - FBSDKLoginKit (~> 4.36)
+  - FBSDKCoreKit (4.36.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.24.0):
+  - FBSDKLoginKit (4.36.0):
     - FBSDKCoreKit
   - Firebase/Core (5.2.0):
     - Firebase/CoreOnly
@@ -87,14 +87,13 @@ PODS:
   - RxCocoa (3.6.1):
     - RxSwift (~> 3.6)
   - RxSwift (3.6.1)
-  - SDWebImage (4.3.3):
-    - SDWebImage/Core (= 4.3.3)
-  - SDWebImage/Core (4.3.3)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
   - SVProgressHUD (2.1.2)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Alamofire
   - FacebookCore
   - FacebookLogin
   - Firebase/Core
@@ -144,12 +143,12 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
-  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
-  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
-  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FacebookCore: 9ecbe48cfd37c91a93add7f8cec2b4a2c50a1eec
+  FacebookLogin: bdaea5789e9b364fa8a1990ba3bbba4fd2197415
+  FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
+  FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseCore: a3c87242451633fff8490183898075ce77d168d2
@@ -172,10 +171,10 @@ SPEC CHECKSUMS:
   Protobuf: 0fc0ad8bec688b2a3017a139953e01374fedbd5f
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
-  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: b29a3b432f79af5eda95c470eed23010ed84b86b
+PODFILE CHECKSUM: 7b848cfaa64612e6250a78661a05ca5ec4340dc9
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.1
