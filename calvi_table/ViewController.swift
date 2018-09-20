@@ -34,6 +34,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     var loginButton: UIBarButtonItem?
     var homeButton: UIBarButtonItem?
     
+    //paging  page": 0, "size": 10, "pages": 4, "total": 31,
+    let batchSize = 10
+    var totalItems = 0  // ALL ads available!!
+    var page = 0
+    var size = 0
+    var pages = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,8 +93,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        adaptTitle(adsCount: ads.count)
+        adaptTitle()
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         
         if isLoggedIn() {
@@ -107,6 +113,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         searchString = searchBar.text!
         self.searchController.dismiss(animated: true, completion: nil)
+        page = 0
         ads.removeAll()
         self.getMyBookmaks(type: "search")
     }
@@ -135,11 +142,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
         self.navigationController?.present(newViewController, animated: true, completion: nil)
-        
-        /*let sb = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = sb.instantiateViewController(withIdentifier: "loginPage") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = tabBarController*/
     }
     
     func refreshArticles() {
@@ -147,11 +149,12 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //todo searchbar auch an anderen stellen "" setzen!!
         self.searchController.searchBar.text = ""
         ads.removeAll()
+        page = 0
         getMyBookmaks(type: "all")
     }
     
     func showMyArticle() {
-        
+        page = 0
         ads.removeAll()
         getMyBookmaks(type: "my")
     }
@@ -210,17 +213,17 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         if type == "all" {
             //all articles
-            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30")!
+            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=\(page)&size=\(batchSize)")!
             
         } else if type == "search" {
             //search for article
             url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")!
-            print("http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")
+            print("http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")     //TODO Paging einbauen
             
         } else {
             //my articles
             let userToken = Utils.getUserToken()
-            let urlString = Urls.getMyArticles + "?token=\(userToken)&page=0&size=30"
+            let urlString = Urls.getMyArticles + "?token=\(userToken)&page=0&size=30"  //TODO Paging einbauen
             url = URL(string: urlString)!
         }
         
@@ -239,9 +242,15 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
             
             //print(json)
+            self.size = json["size"] as! Int
+            self.totalItems = json["total"] as! Int
+            self.pages = json["pages"] as! Int
+            
+            //page": 0, "size": 10, "pages": 4, "total": 31,
+            
             //todo auslagern hier
-            let total =  json["total"] as! Int
-            if total == 0 && type == "search" {
+            self.totalItems =  json["total"] as! Int
+            if self.totalItems == 0 && type == "search" {
                 
                 let alert = UIAlertController(title: "Suche erfolglos!", message: "Dies Suche hat leider kein Ergebnis gebracht :-(", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -249,7 +258,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 
                 self.tableView.backgroundColor = UIColor.white
             }
-
             
             for dictionary in json["ads"] as! [[String: Any]] {
                 
@@ -275,17 +283,17 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 
                 self.ads.append(ad)
             }
-
+            
             DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
-                self.adaptTitle(adsCount: self.ads.count)
+                self.adaptTitle()
             })
             
             }.resume()
     }
     
-    func adaptTitle(adsCount: Int) {
-        self.tabBarController?.title = "Anzeigen: " + String(self.ads.count)
+    func adaptTitle() {
+        self.tabBarController?.title = "Anzeigen: " + String(self.totalItems)
     }
     
     func getPictureUrl(str: String) -> String {
@@ -331,11 +339,10 @@ extension ViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        //TODO anzeige wenn kein Internet vorhanden
+        //TODO ein richtiges background bild machen, das hier ist nicht so schön
+        
         if ads.count == 0 {
-            print("Null")
-            //tableView.tableFooterView = UIView(frame: CGRect.zero)
-            //tableView.backgroundColor = UIColor.clear
-            
             noMessagesLabel.numberOfLines = 2
             noMessagesLabel.textColor = UIColor.blue
             noMessagesLabel.textAlignment = .center
@@ -353,6 +360,16 @@ extension ViewController: UITableViewDataSource {
         }
         
         return ads.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //page": 0, "size": 10, "pages": 4, "total": 31,
+        if (indexPath.row == ads.count - 1) { // last cell
+            if (totalItems > ads.count && page <= pages) { // more items to fetch
+                page += 1
+                fetchAds(type: "all")  //TODO allgemein den typen hier durchschleifen all, serach, bookmarks
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
