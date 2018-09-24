@@ -6,8 +6,9 @@
   Copyright © 2018 bernd wichura. All rights reserved.
 */
 
-
 "problem" = "Es gibt ein Problem!";
+
+"main_search_title" = "Suche dein Material...";
 
 "delete_article" = "Anzeige löschen!";
 "delete_article_confirm" = "Bist du dir sicher?";
@@ -29,3 +30,7 @@
 "new_article_upload_images" = "Bilder werden hochgeladen...";
 
 "login_main_title" = "Du musst Dich anmelden, um Anzeigen zu Erstellen und Nachrichten zu schreiben!";
+"login_google_button_text" = "Anmelden mit Google";
+"login_facebook_button_text" = "Anmelden mit Facebook";
+"login_go_back" = "Zurück";
+"login_logoutBtn" = "Abmelden";

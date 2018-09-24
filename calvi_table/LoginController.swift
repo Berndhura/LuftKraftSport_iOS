@@ -13,7 +13,7 @@ import FBSDKLoginKit
 
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
-    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userImage: RoundImageView!
     
     @IBOutlet weak var userName: UILabel!
     
@@ -37,6 +37,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         refreshTabBar()
         
         setMainLoginTitle()
+        userImage.image = UIImage(named: "lks_logo_1024x1024")
+        userImage.hasBorder(false)
         
         //google sign in button
         initGoogleSignInButton()
@@ -70,6 +72,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     func setMainLoginTitle() {
         if Utils.getUserToken() == "" {
             mainLoginTitle.text = NSLocalizedString("login_main_title", comment: "")
+            mainLoginTitle.textColor = appMainColorBlue
+            mainLoginTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
             mainLoginTitle.isHidden = false
         } else {
             mainLoginTitle.isHidden = true
@@ -99,7 +103,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         googleSignInBtn.addTarget(self, action: #selector(googleLogin), for: .touchDown)
         googleSignInBtn.translatesAutoresizingMaskIntoConstraints = false
         googleSignInBtn.backgroundColor = appMainColorBlue
-        googleSignInBtn.setTitle("Login mit Google", for: .normal)
+        googleSignInBtn.setTitle(NSLocalizedString("login_google_button_text", comment: ""), for: .normal)
         googleSignInBtn.layer.cornerRadius = 4
         view.addSubview(googleSignInBtn)
     
@@ -116,7 +120,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         facebookLoginBtn.addTarget(self, action: #selector(facebookLogin), for: .touchDown)
         facebookLoginBtn.translatesAutoresizingMaskIntoConstraints = false
         facebookLoginBtn.backgroundColor = appMainColorBlue
-        facebookLoginBtn.setTitle("Login mit Facebook", for: .normal)
+        facebookLoginBtn.setTitle(NSLocalizedString("login_facebook_button_text", comment: ""), for: .normal)
         facebookLoginBtn.layer.cornerRadius = 4
         view.addSubview(facebookLoginBtn)
         
@@ -134,7 +138,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         
         backBtn.translatesAutoresizingMaskIntoConstraints = false
         backBtn.backgroundColor = appMainColorBlue
-        backBtn.setTitle("Zurück", for: .normal)
+        backBtn.setTitle(NSLocalizedString("login_go_back", comment: ""), for: .normal)
         backBtn.layer.cornerRadius = 4
         
         backBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
@@ -151,7 +155,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         logoutBtn.addTarget(self, action: #selector(logoutPressed), for: .allTouchEvents)
         logoutBtn.translatesAutoresizingMaskIntoConstraints = false
         logoutBtn.backgroundColor = appMainColorBlue
-        logoutBtn.setTitle("Logout", for: .normal)
+        logoutBtn.setTitle(NSLocalizedString("login_logoutBtn", comment: ""), for: .normal)
         logoutBtn.layer.cornerRadius = 4
         
         logoutBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
@@ -178,7 +182,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
 
         dismiss(animated: true, completion: nil)
         
-        userImage.image = UIImage(named: "AppIcon")
+        userImage.image = UIImage(named: "lks_logo_1024x1024")
+        userImage.hasBorder(false)
         
         self.refreshTabBar()
         

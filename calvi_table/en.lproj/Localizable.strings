@@ -8,6 +8,8 @@
 
 "problem" = "There is a problem!";
 
+"main_search_title" = "Search...";
+
 "delete_article" = "Delete article";
 "delete_article_confirm" = "Are you sure to do this?";
 "delete_sure" = "Delete!";
@@ -28,3 +30,7 @@
 "new_article_upload_images" = "Uploading images...";
 
 "login_main_title" = "Please login to be able to create articles and to write messages!";
+"login_google_button_text" = "Login with Google";
+"login_facebook_button_text" = "Login with Facebook";
+"login_go_back" = "Back";
+"login_logoutBtn" = "Logout";

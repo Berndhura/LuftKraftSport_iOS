@@ -59,7 +59,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         tableView.separatorStyle = .none
         
-        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
+        navigationController?.navigationBar.barTintColor = appMainColorBlue
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //connect searchBar
         self.searchController = UISearchController(searchResultsController: self.resultController)
         self.tableView.tableHeaderView = self.searchController.searchBar
-        self.searchController.searchBar.placeholder = "Suche dein Material..."
+        self.searchController.searchBar.placeholder = NSLocalizedString("main_search_title", comment: "")
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
     }

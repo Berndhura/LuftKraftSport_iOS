@@ -29,24 +29,3 @@ class MessageCell: UITableViewCell {
         // Configure the view for the selected state
     }
 }
-
-class RoundImageView: UIImageView {
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let radius: CGFloat = self.frame.size.width / 2.0
-        self.layer.cornerRadius = radius
-        
-        self.layer.borderColor = UIColor.lightGray.cgColor
-        
-        self.layer.borderWidth = 1
-        
-        
-        let constraint: NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: self, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: 0.0)
-        
-        self.addConstraint(constraint)
-        
-        self.contentMode = UIViewContentMode.scaleAspectFill
-    }
-}
