@@ -90,8 +90,8 @@ PODS:
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
-  - SVProgressHUD (2.1.2)
-  - SwiftyJSON (3.1.4)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - FacebookCore
@@ -172,8 +172,8 @@ SPEC CHECKSUMS:
   RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
 PODFILE CHECKSUM: 7b848cfaa64612e6250a78661a05ca5ec4340dc9
 

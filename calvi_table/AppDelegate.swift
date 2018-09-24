@@ -27,10 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
     }
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        FBSDKLoginManager.initialize()
         
         IQKeyboardManager.shared.enable = true
         

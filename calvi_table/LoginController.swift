@@ -11,7 +11,7 @@ import Google
 import FacebookLogin
 import FBSDKLoginKit
 
-class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate, FBSDKLoginButtonDelegate {
+class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var userImage: UIImageView!
     
@@ -19,7 +19,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     let signInButton = GIDSignInButton()
     
-    let loginButton = FBSDKLoginButton()
+    let loginButton = UIButton()
     
     let backBtn = UIButton()
     
@@ -33,8 +33,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         super.viewDidLoad()
         
         refreshTabBar()
-        
-        //view.backgroundColor = UIColor(red: 215/255, green: 233/255, blue: 242/255, alpha: 1.0)
         
         //google sign in button
         initGoogleSignInButton()
@@ -64,7 +62,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     }
     
     func refreshTabBar() {
-        
         //show user name
         tabBarController?.title = ""
         
@@ -82,7 +79,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
-        //assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
@@ -105,24 +101,18 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     func initFacebookLoginButton() {
         
+        loginButton.addTarget(self, action: #selector(facebookLogin), for: .touchDown)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.delegate = self
+        loginButton.backgroundColor = appMainColorBlue
+        loginButton.setTitle("Login mit Facebook", for: .normal)
+        loginButton.layer.cornerRadius = 4
         view.addSubview(loginButton)
         
         let margins = view.layoutMarginsGuide
-        
         loginButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        
-        
         loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        
         loginButton.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -10).isActive = true
-        
-        //if the user is already logged in
-        if let _ = FBSDKAccessToken.current(){
-            //getFBUserData()
-        }
     }
     
     func initBackButton() {
@@ -130,7 +120,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         backBtn.addTarget(self, action: #selector(goBackPressed), for: .allTouchEvents)
         
         backBtn.translatesAutoresizingMaskIntoConstraints = false
-        backBtn.backgroundColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
+        backBtn.backgroundColor = appMainColorBlue
         backBtn.setTitle("Zurück", for: .normal)
         backBtn.layer.cornerRadius = 4
         
@@ -145,9 +135,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     func initLogoutButton() {
         
         logoutBtn.addTarget(self, action: #selector(logoutPressed), for: .allTouchEvents)
-        
         logoutBtn.translatesAutoresizingMaskIntoConstraints = false
-        logoutBtn.backgroundColor = UIColor(colorLiteralRed: 10/250, green: 100/250, blue: 200/250, alpha: 1)
+        logoutBtn.backgroundColor = appMainColorBlue
         logoutBtn.setTitle("Logout", for: .normal)
         logoutBtn.layer.cornerRadius = 4
         
@@ -168,8 +157,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
         //google
         GIDSignIn.sharedInstance().signOut()
         
+        //facebook
+        let loginManager = FBSDKLoginManager()
+        loginManager.logOut()
+
         dismiss(animated: true, completion: nil)
-        //facebook sign out? TODO
         
         userImage.image = UIImage(named: "account_placeholder")
         
@@ -179,7 +171,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     }
     
     func goBackPressed() {
-        
         //go back after login
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
@@ -198,15 +189,10 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
     
     
     func cleanUserInfo() {
-        
         self.userImage.sd_setImage(with: nil)
         self.userName.text = ""
     }
-
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("logout from facebook")
-    }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         
@@ -214,27 +200,29 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate,
             print(error)
             return
         }
-        
-        if let accesToken = FBSDKAccessToken.current() {
-            print(accesToken)
-            
+    }
+    
+    func facebookLogin() {
+        FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
+            self.getFacebookUserInfos()
         }
-        
+    }
+    
+    func getFacebookUserInfos() {
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.type(large)"]).start(completionHandler: { (conection, result, error) in
             
             if error != nil {
                 print(error!)
                 return
             }
-
-            //FB access token
+            
             let token = FBSDKAccessToken.current().tokenString
             self.saveUserToken(tokenString: token!)
             
             Utils.updateDeviceToken()
             
             var dict: NSDictionary!
-            dict = result as! NSDictionary
+            dict = result as? NSDictionary
             
             self.saveUserName(nameString: dict["name"]! as! String)
             self.saveUserId(idString: dict["id"]! as! String)
