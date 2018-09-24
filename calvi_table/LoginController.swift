@@ -17,9 +17,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     
     @IBOutlet weak var userName: UILabel!
     
-    let signInButton = GIDSignInButton()
+    @IBOutlet weak var mainLoginTitle: UITextView!
     
-    let loginButton = UIButton()
+    let googleSignInBtn = UIButton()
+    
+    let facebookLoginBtn = UIButton()
     
     let backBtn = UIButton()
     
@@ -33,6 +35,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         super.viewDidLoad()
         
         refreshTabBar()
+        
+        setMainLoginTitle()
         
         //google sign in button
         initGoogleSignInButton()
@@ -57,8 +61,19 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         }
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         refreshTabBar()
+    }
+    
+    
+    func setMainLoginTitle() {
+        if Utils.getUserToken() == "" {
+            mainLoginTitle.text = NSLocalizedString("login_main_title", comment: "")
+            mainLoginTitle.isHidden = false
+        } else {
+            mainLoginTitle.isHidden = true
+        }
     }
     
     func refreshTabBar() {
@@ -75,45 +90,43 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
     }
     
+    
     func initGoogleSignInButton() {
         
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
-
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.colorScheme = GIDSignInButtonColorScheme.dark
-        signInButton.style = GIDSignInButtonStyle.wide
-        signInButton.layer.cornerRadius = 4
-        
+        googleSignInBtn.addTarget(self, action: #selector(googleLogin), for: .touchDown)
+        googleSignInBtn.translatesAutoresizingMaskIntoConstraints = false
+        googleSignInBtn.backgroundColor = appMainColorBlue
+        googleSignInBtn.setTitle("Login mit Google", for: .normal)
+        googleSignInBtn.layer.cornerRadius = 4
+        view.addSubview(googleSignInBtn)
+    
         let margins = view.layoutMarginsGuide
-        
-        signInButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        
-        view.addSubview(signInButton)
-        
-        signInButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: -4).isActive = true
-        signInButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 4).isActive = true
-        signInButton.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
+        googleSignInBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        googleSignInBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        googleSignInBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        googleSignInBtn.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
     }
+    
     
     func initFacebookLoginButton() {
         
-        loginButton.addTarget(self, action: #selector(facebookLogin), for: .touchDown)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.backgroundColor = appMainColorBlue
-        loginButton.setTitle("Login mit Facebook", for: .normal)
-        loginButton.layer.cornerRadius = 4
-        view.addSubview(loginButton)
+        facebookLoginBtn.addTarget(self, action: #selector(facebookLogin), for: .touchDown)
+        facebookLoginBtn.translatesAutoresizingMaskIntoConstraints = false
+        facebookLoginBtn.backgroundColor = appMainColorBlue
+        facebookLoginBtn.setTitle("Login mit Facebook", for: .normal)
+        facebookLoginBtn.layer.cornerRadius = 4
+        view.addSubview(facebookLoginBtn)
         
         let margins = view.layoutMarginsGuide
-        loginButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        loginButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        loginButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        loginButton.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -10).isActive = true
+        facebookLoginBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        facebookLoginBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        facebookLoginBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        facebookLoginBtn.bottomAnchor.constraint(equalTo: googleSignInBtn.topAnchor, constant: -10).isActive = true
     }
+    
     
     func initBackButton() {
         
@@ -129,8 +142,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         let margins = view.layoutMarginsGuide
         backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        backBtn.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -10).isActive = true
+        backBtn.bottomAnchor.constraint(equalTo: facebookLoginBtn.topAnchor, constant: -10).isActive = true
     }
+    
     
     func initLogoutButton() {
         
@@ -147,6 +161,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         logoutBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
         logoutBtn.bottomAnchor.constraint(equalTo: backBtn.topAnchor, constant: -10).isActive = true
     }
+    
 
     func logoutPressed() {
         
@@ -163,11 +178,13 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
 
         dismiss(animated: true, completion: nil)
         
-        userImage.image = UIImage(named: "account_placeholder")
+        userImage.image = UIImage(named: "AppIcon")
         
         self.refreshTabBar()
         
         self.showLoginButtons()
+
+        self.setMainLoginTitle()
     }
     
     func goBackPressed() {
@@ -177,6 +194,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = tabBarController
     }
+    
     
     func showUserProfile() {
         
@@ -202,11 +220,13 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         }
     }
     
+    
     func facebookLogin() {
         FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, error) in
             self.getFacebookUserInfos()
         }
     }
+    
     
     func getFacebookUserInfos() {
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.type(large)"]).start(completionHandler: { (conection, result, error) in
@@ -242,34 +262,17 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             self.userName.text = "Willkommen " + fullName
             self.refreshTabBar()
             self.hideLoginButtons()
+            self.setMainLoginTitle()
         })
     }
     
-    func saveUserId(idString: String) {
-        let defaults:UserDefaults = UserDefaults.standard
-        defaults.set(idString, forKey: "userId")
-        defaults.synchronize()
+    
+    func googleLogin() {
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
     
-    func saveUserName(nameString: String) {
-        
-        let defaults:UserDefaults = UserDefaults.standard
-        defaults.set(nameString, forKey: "userName")
-    }
-    
-    func saveUserToken(tokenString: String) {
-        
-        let defaults:UserDefaults = UserDefaults.standard
-        defaults.set(tokenString, forKey: "userToken")
-        defaults.synchronize()
-    }
-    
-    func saveUsersProfileImage(profileUrl: String) {
-        
-        let defaults = UserDefaults.standard
-        defaults.set(profileUrl, forKey: "userImageUrl")
-        defaults.synchronize()
-    }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
@@ -288,21 +291,55 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             
             hideLoginButtons()
             
+            setMainLoginTitle()
+            
         } else {
             print("\(error.localizedDescription)")
         }
     }
     
+    
+    func saveUserId(idString: String) {
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(idString, forKey: "userId")
+        defaults.synchronize()
+    }
+    
+    
+    func saveUserName(nameString: String) {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(nameString, forKey: "userName")
+    }
+    
+    
+    func saveUserToken(tokenString: String) {
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(tokenString, forKey: "userToken")
+        defaults.synchronize()
+    }
+    
+    
+    func saveUsersProfileImage(profileUrl: String) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(profileUrl, forKey: "userImageUrl")
+        defaults.synchronize()
+    }
+    
+    
     func hideLoginButtons() {
         
-        signInButton.isHidden = true
-        loginButton.isHidden = true
+        googleSignInBtn.isHidden = true
+        facebookLoginBtn.isHidden = true
     }
+    
     
     func showLoginButtons() {
         
-        signInButton.isHidden = false
-        loginButton.isHidden = false
+        googleSignInBtn.isHidden = false
+        facebookLoginBtn.isHidden = false
     }
 
     
