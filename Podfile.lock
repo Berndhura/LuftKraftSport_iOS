@@ -91,7 +91,7 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - FacebookCore
@@ -106,7 +106,7 @@ DEPENDENCIES:
   - RxSwift (~> 3.0)
   - SDWebImage
   - SVProgressHUD
-  - SwiftyJSON
+  - SwiftyJSON (~> 3.1.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -173,8 +173,8 @@ SPEC CHECKSUMS:
   RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 7b848cfaa64612e6250a78661a05ca5ec4340dc9
+PODFILE CHECKSUM: 2b41053dafa8e333f58d9bf1729deeed10e1d99d
 
 COCOAPODS: 1.6.0.beta.1

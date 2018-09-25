@@ -15,7 +15,7 @@ target 'calvi_table' do
     pod 'RxSwift',    '~> 3.0'
     pod 'RxCocoa',    '~> 3.0'
     pod 'SVProgressHUD'
-    pod 'SwiftyJSON'
+    pod 'SwiftyJSON',    '~> 3.1.4'
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'PromiseKit/Alamofire'
