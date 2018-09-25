@@ -138,6 +138,106 @@
             </objects>
             <point key="canvasLocation" x="445" y="808"/>
         </scene>
+        <!--Impressum View Controller-->
+        <scene sceneID="iVo-Qf-R4h">
+            <objects>
+                <viewController storyboardIdentifier="impressumPage" id="ZSn-Zv-3OP" customClass="ImpressumViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yxw-KQ-aXB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9e-A5-gYh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Die Website www.chip.de ist ein Objekt der CHIP Digital GmbH, München. CHIP Digital GmbH ist ein Unternehmen der Hubert Burda Media.
+
+CHIP Digital GmbH
+St.-Martin-Straße 66
+81541 München
+
+Tel +49 (0)89 / 9250 4500
+Fax +49 (0)89 / 9250 4557
+Email: info@chip.de
+
+Jugendschutzbeauftragter: RA Dr. Stefan Söder (bitte nur für Anfragen mit Bezug zum Jugendschutz), SSB Söder Schwarz Berlinger, Rechtsanwälte PartG mbB, Arabellastraße 21, 81925 München, Tel.: +49 89 92 00 872-0, E-Mail: info@ssblaw.de
+
+Geschäftsführung: Thomas Koelzer (CEO), Philipp Brunner (COO)
+Verantwortlich i. S. v. § 55 Abs. 2 RStV: Tim Nocken und Lisa Brack,
+St.-Martin-Straße 66, 81541 München
+
+Registergericht München HRB 104168
+USt.-Ident.Nr. DE 155 289 492
+
+© Copyright 1996-2017, CHIP Digital GmbH, alle Rechte vorbehalten. Jegliche Vervielfältigung oder Weiterverbreitung in jedem Medium als Ganzes oder in Teilen bedarf der schriftlichen Zustimmung der CHIP Digital GmbH.
+
+Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit noch verpflichtet ist, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BU8-gO-rb8" firstAttribute="trailing" secondItem="q9e-A5-gYh" secondAttribute="trailing" id="3CO-w2-Gff"/>
+                            <constraint firstItem="q9e-A5-gYh" firstAttribute="top" secondItem="BU8-gO-rb8" secondAttribute="top" id="3Pn-i2-HSP"/>
+                            <constraint firstItem="q9e-A5-gYh" firstAttribute="leading" secondItem="BU8-gO-rb8" secondAttribute="leading" id="3fi-Px-Dm6"/>
+                            <constraint firstItem="BU8-gO-rb8" firstAttribute="bottom" secondItem="q9e-A5-gYh" secondAttribute="bottom" id="7tT-fR-ncu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BU8-gO-rb8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9m-rn-wot" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3385" y="1598"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="pyX-3g-CQD">
+            <objects>
+                <viewController id="nr7-mu-bNA" customClass="HomeViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u4a-Zh-814">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifM-ll-7Nf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awm-L3-NM0">
+                                        <rect key="frame" x="15" y="8" width="99" height="30"/>
+                                        <state key="normal" title="Impressum"/>
+                                        <connections>
+                                            <segue destination="ZSn-Zv-3OP" kind="show" id="fM0-5m-wIP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-SC-yvx">
+                                        <rect key="frame" x="15" y="46" width="99" height="30"/>
+                                        <state key="normal" title="Datenrichtlinie"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="awm-L3-NM0" secondAttribute="trailing" id="2Td-SP-Lpb"/>
+                                    <constraint firstItem="Bhy-SC-yvx" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="9Zh-xt-tZv"/>
+                                    <constraint firstItem="awm-L3-NM0" firstAttribute="top" secondItem="ifM-ll-7Nf" secondAttribute="top" constant="8" id="cav-QT-yzd"/>
+                                    <constraint firstItem="Bhy-SC-yvx" firstAttribute="top" secondItem="awm-L3-NM0" secondAttribute="bottom" constant="8" id="fjM-Ka-5Va"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bhy-SC-yvx" secondAttribute="trailing" id="pKM-iT-HVG"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bhy-SC-yvx" secondAttribute="bottom" constant="478" id="uWs-Kv-7z8"/>
+                                    <constraint firstItem="awm-L3-NM0" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="zkT-ve-Jqy"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ifM-ll-7Nf" firstAttribute="width" secondItem="OeD-aO-xaM" secondAttribute="width" id="9Xs-8N-Atc"/>
+                            <constraint firstItem="ifM-ll-7Nf" firstAttribute="height" secondItem="OeD-aO-xaM" secondAttribute="height" id="TDo-Lm-Hsi"/>
+                            <constraint firstItem="ifM-ll-7Nf" firstAttribute="top" secondItem="OeD-aO-xaM" secondAttribute="top" id="Vfr-T5-5AY"/>
+                            <constraint firstItem="ifM-ll-7Nf" firstAttribute="leading" secondItem="OeD-aO-xaM" secondAttribute="leading" id="bu4-aW-bal"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OeD-aO-xaM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="home" selectedImage="home" id="bU8-Fu-dyH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLt-gb-gWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2606" y="815"/>
+        </scene>
         <!--Anmelden-->
         <scene sceneID="8f8-na-VX6">
             <objects>
@@ -655,7 +755,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcP-CE-t3n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="377" y="-162"/>
+            <point key="canvasLocation" x="626" y="-135"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vgR-jU-Z3W">
@@ -694,6 +794,7 @@
                         <segue destination="Cch-lw-Akm" kind="relationship" relationship="viewControllers" id="Jiv-Wb-l6G"/>
                         <segue destination="fNo-fk-EtJ" kind="relationship" relationship="viewControllers" id="rT3-Di-bgs"/>
                         <segue destination="yDh-be-Uo9" kind="relationship" relationship="viewControllers" id="Dyg-Be-lzy"/>
+                        <segue destination="nr7-mu-bNA" kind="relationship" relationship="viewControllers" id="vBo-pb-zGd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6k-xE-Tgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -704,6 +805,7 @@
     <resources>
         <image name="delete-32" width="32" height="32"/>
         <image name="edit-32" width="32" height="32"/>
+        <image name="home" width="32" height="32"/>
         <image name="login" width="32" height="32"/>
         <image name="mail" width="32" height="32"/>
         <image name="plus" width="32" height="32"/>
