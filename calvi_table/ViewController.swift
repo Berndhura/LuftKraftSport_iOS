@@ -29,9 +29,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var noMessagesLabel = UILabel()
     
+    var callbackClosure: ((Void) -> Void)?
+
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
-    var homeButton: UIBarButtonItem?
     
     //paging  page": 0, "size": 10, "pages": 4, "total": 31,
     let batchSize = 10
@@ -67,11 +68,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //refresh ads button in tabbar
         refreshButton = UIBarButtonItem.init(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(ViewController.refreshArticles))
         
-        //home button
-        homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(self.showMyArticle))
-        
         if isLoggedIn() {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, homeButton!], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         } else {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         }
@@ -93,11 +91,15 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         
         if isLoggedIn() {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, homeButton!], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         } else {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         }
+        
+        //to get my article from homeViewController
+        callbackClosure?()
     }
+    
     
     func updateSearchResults(for searchController: UISearchController) {
      

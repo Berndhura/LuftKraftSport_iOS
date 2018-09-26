@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var myArticles: UIButton!
     
     @IBAction func myArticlesBtn(_ sender: Any) {
-        
+        showMyArticles()
     }
     
     @IBOutlet weak var login: UIButton!
@@ -32,13 +32,29 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         initLoginButton()
+        initMyArticlesButton()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         initLoginButton()
+        initMyArticlesButton()
     }
+    
+    
+    func initMyArticlesButton() {
+        if Utils.getUserToken() == "" {
+            if let _ = myArticles {
+                myArticles.removeFromSuperview()
+            }
+        } else {
+            if let btn = myArticles {
+                view.addSubview(btn)
+            }
+        }
+    }
+    
     
     func initLoginButton() {
         if Utils.getUserToken() == "" {
@@ -61,6 +77,7 @@ class HomeViewController: UIViewController {
             loginManager.logOut()
             
             self.initLoginButton()
+            self.initMyArticlesButton()
         }))
         
         logoutAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -75,5 +92,22 @@ class HomeViewController: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
         self.navigationController?.present(newViewController, animated: true, completion: nil)
+    }
+    
+    
+    func showMyArticles() {
+        if Utils.getUserToken() == "" {
+            loginUser()
+        } else {
+            //call VC with "my articles"
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
+            newViewController.callbackClosure = { [weak self] in
+                newViewController.showMyArticle()
+            }
+            self.navigationController?.pushViewController(newViewController, animated: true)
+            
+            //NotificationCenter.default.post(name: Notification.Name(rawValue: "myArticles"), object: nil)
+        }
     }
 }
