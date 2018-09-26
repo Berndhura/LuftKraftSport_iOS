@@ -187,7 +187,7 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9m-rn-wot" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3385" y="1598"/>
+            <point key="canvasLocation" x="-2742" y="1589"/>
         </scene>
         <!--Home-->
         <scene sceneID="pyX-3g-CQD">
@@ -200,34 +200,34 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifM-ll-7Nf">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-SC-yvx">
-                                        <rect key="frame" x="15" y="170" width="110" height="30"/>
-                                        <state key="normal" title="Datenrichtlinie"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-6E-Xzk">
-                                        <rect key="frame" x="15" y="10" width="110" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-6E-Xzk">
+                                        <rect key="frame" x="15" y="10" width="189" height="30"/>
                                         <state key="normal" title="Meine Anzeigen"/>
                                         <connections>
                                             <action selector="myArticlesBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="xmY-xi-QVy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qj1-7K-Ams">
-                                        <rect key="frame" x="15" y="50" width="110" height="30"/>
+                                        <rect key="frame" x="15" y="50" width="189" height="30"/>
                                         <state key="normal" title="Bookmarks"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMS-Xf-7fq">
-                                        <rect key="frame" x="15" y="90" width="110" height="30"/>
+                                        <rect key="frame" x="15" y="90" width="189" height="30"/>
                                         <state key="normal" title="loginout"/>
                                         <connections>
                                             <action selector="loginBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="9vb-l0-QJw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awm-L3-NM0">
-                                        <rect key="frame" x="15" y="130" width="110" height="30"/>
+                                        <rect key="frame" x="15" y="130" width="189" height="30"/>
                                         <state key="normal" title="Impressum"/>
                                         <connections>
                                             <segue destination="ZSn-Zv-3OP" kind="show" id="fM0-5m-wIP"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-SC-yvx">
+                                        <rect key="frame" x="15" y="170" width="189" height="30"/>
+                                        <state key="normal" title="Datenschutzbestimmungen"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -266,7 +266,7 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLt-gb-gWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2606" y="815"/>
+            <point key="canvasLocation" x="-1916" y="781.25937031484261"/>
         </scene>
         <!--Anmelden-->
         <scene sceneID="8f8-na-VX6">
@@ -277,16 +277,16 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf" userLabel="Image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
-                                <rect key="frame" x="64" y="148" width="247.5" height="247.5"/>
+                                <rect key="frame" x="64" y="104" width="247.5" height="247.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-Z4-xSL" userLabel="Name">
-                                <rect key="frame" x="36" y="405.5" width="303" height="0.0"/>
+                                <rect key="frame" x="36" y="361.5" width="303" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Main Login Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-Z8-3Zb" userLabel="mainTitle">
-                                <rect key="frame" x="10" y="74" width="355" height="54"/>
+                                <rect key="frame" x="10" y="30" width="355" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Hzv-eP-Ksw"/>
@@ -319,7 +319,7 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRF-Fh-vGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1917.5999999999999" y="813.64317841079469"/>
+            <point key="canvasLocation" x="1462" y="782"/>
         </scene>
         <!--Anbieten-->
         <scene sceneID="O69-ie-Fg1">
@@ -627,7 +627,7 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375.36231884057975" y="6.5217391304347831"/>
+            <point key="canvasLocation" x="-375" y="-135"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Qbk-Zk-5uH">
@@ -806,7 +806,7 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfb-KY-2hg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1916" y="7"/>
+            <point key="canvasLocation" x="-1916" y="-135"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0W4-G7-JRy">
@@ -824,12 +824,11 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                         <segue destination="nr7-mu-bNA" kind="relationship" relationship="viewControllers" id="vBo-pb-zGd"/>
                         <segue destination="yDh-be-Uo9" kind="relationship" relationship="viewControllers" id="Dyg-Be-lzy"/>
                         <segue destination="fNo-fk-EtJ" kind="relationship" relationship="viewControllers" id="rT3-Di-bgs"/>
-                        <segue destination="Cch-lw-Akm" kind="relationship" relationship="viewControllers" id="Jiv-Wb-l6G"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6k-xE-Tgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1168" y="7"/>
+            <point key="canvasLocation" x="-1167" y="-135"/>
         </scene>
     </scenes>
     <resources>

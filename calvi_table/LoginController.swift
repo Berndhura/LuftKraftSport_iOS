@@ -25,8 +25,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     
     let backBtn = UIButton()
     
-    let logoutBtn = UIButton()
-    
     let buttonHeight: CGFloat = 30
     
     
@@ -40,19 +38,14 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         userImage.image = UIImage(named: "lks_logo_1024x1024")
         userImage.hasBorder(false)
         
+        //back button
+        initBackButton()
+        
         //google sign in button
         initGoogleSignInButton()
         
         //facebook button
         initFacebookLoginButton()
-
-        //back button
-        initBackButton()
-        
-        //logout button
-        if Utils.getUserToken() != "" {
-            initLogoutButton()
-        }
         
         if Utils.getUserToken() != "" {
             showUserProfile()
@@ -95,26 +88,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     }
     
     
-    func initGoogleSignInButton() {
-        
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        
-        googleSignInBtn.addTarget(self, action: #selector(googleLogin), for: .touchDown)
-        googleSignInBtn.translatesAutoresizingMaskIntoConstraints = false
-        googleSignInBtn.backgroundColor = appMainColorBlue
-        googleSignInBtn.setTitle(NSLocalizedString("login_google_button_text", comment: ""), for: .normal)
-        googleSignInBtn.layer.cornerRadius = 4
-        view.addSubview(googleSignInBtn)
-    
-        let margins = view.layoutMarginsGuide
-        googleSignInBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        googleSignInBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        googleSignInBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        googleSignInBtn.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
-    }
-    
-    
     func initFacebookLoginButton() {
         
         facebookLoginBtn.addTarget(self, action: #selector(facebookLogin), for: .touchDown)
@@ -132,6 +105,27 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     }
     
     
+    func initGoogleSignInButton() {
+        
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        
+        googleSignInBtn.addTarget(self, action: #selector(googleLogin), for: .touchDown)
+        googleSignInBtn.translatesAutoresizingMaskIntoConstraints = false
+        googleSignInBtn.backgroundColor = appMainColorBlue
+        googleSignInBtn.setTitle(NSLocalizedString("login_google_button_text", comment: ""), for: .normal)
+        googleSignInBtn.layer.cornerRadius = 4
+        view.addSubview(googleSignInBtn)
+    
+        let margins = view.layoutMarginsGuide
+        googleSignInBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
+        googleSignInBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        googleSignInBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+        googleSignInBtn.bottomAnchor.constraint(equalTo: backBtn.topAnchor, constant: -10).isActive = true
+        
+    }
+    
+    
     func initBackButton() {
         
         backBtn.addTarget(self, action: #selector(goBackPressed), for: .allTouchEvents)
@@ -146,51 +140,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         let margins = view.layoutMarginsGuide
         backBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         backBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        backBtn.bottomAnchor.constraint(equalTo: facebookLoginBtn.topAnchor, constant: -10).isActive = true
+        backBtn.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor, constant: -10).isActive = true
     }
     
-    
-    func initLogoutButton() {
-        
-        logoutBtn.addTarget(self, action: #selector(logoutPressed), for: .allTouchEvents)
-        logoutBtn.translatesAutoresizingMaskIntoConstraints = false
-        logoutBtn.backgroundColor = appMainColorBlue
-        logoutBtn.setTitle(NSLocalizedString("login_logoutBtn", comment: ""), for: .normal)
-        logoutBtn.layer.cornerRadius = 4
-        
-        logoutBtn.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        view.addSubview(logoutBtn)
-        let margins = view.layoutMarginsGuide
-        logoutBtn.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        logoutBtn.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        logoutBtn.bottomAnchor.constraint(equalTo: backBtn.topAnchor, constant: -10).isActive = true
-    }
-    
-
-    func logoutPressed() {
-        
-        Utils.logoutUser()
-        
-        cleanUserInfo()
-        
-        //google
-        GIDSignIn.sharedInstance().signOut()
-        
-        //facebook
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-
-        dismiss(animated: true, completion: nil)
-        
-        userImage.image = UIImage(named: "lks_logo_1024x1024")
-        userImage.hasBorder(false)
-        
-        self.refreshTabBar()
-        
-        self.showLoginButtons()
-
-        self.setMainLoginTitle()
-    }
     
     func goBackPressed() {
         //go back after login
