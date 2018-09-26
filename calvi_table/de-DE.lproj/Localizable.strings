@@ -33,4 +33,6 @@
 "login_google_button_text" = "Anmelden mit Google";
 "login_facebook_button_text" = "Anmelden mit Facebook";
 "login_go_back" = "Zurück";
-"login_logoutBtn" = "Abmelden";
+"login_btn" = "Anmelden";
+"logout_btn" = "Abmelden";
+"confirm_logout_title" = "Wirklich abmelden von Luftkraftsport?";

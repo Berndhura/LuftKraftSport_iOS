@@ -25,7 +25,7 @@ class RoundImageView: UIImageView {
         
         self.addConstraint(constraint)
         
-        self.contentMode = UIViewContentMode.scaleAspectFit
+        self.contentMode = UIViewContentMode.scaleAspectFill
     }
     
     func hasBorder(_ border: Bool) {

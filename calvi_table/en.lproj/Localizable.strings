@@ -33,4 +33,8 @@
 "login_google_button_text" = "Login with Google";
 "login_facebook_button_text" = "Login with Facebook";
 "login_go_back" = "Back";
-"login_logoutBtn" = "Logout";
+"login_btn" = "Login";
+"logout_btn" = "Logout";
+"confirm_logout_title" = "Really logout from Luftkraftsport?";
+
+

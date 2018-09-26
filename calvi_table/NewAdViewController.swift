@@ -123,6 +123,18 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        refreshTabBar()
+        
+        if !isLoggedIn() {
+            openLogin()
+        }
+    }
+    
+    
     func initLocationManager() {
         
         locationManager = CLLocationManager()
@@ -178,10 +190,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        refreshTabBar()
-    }
     
     func initImageIdDict() {
         let imageIds:[String] = Utils.getAllPictureUrls(str: pictureUrl)

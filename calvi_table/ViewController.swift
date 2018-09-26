@@ -31,7 +31,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
-    var loginButton: UIBarButtonItem?
     var homeButton: UIBarButtonItem?
     
     //paging  page": 0, "size": 10, "pages": 4, "total": 31,
@@ -68,16 +67,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //refresh ads button in tabbar
         refreshButton = UIBarButtonItem.init(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(ViewController.refreshArticles))
         
-        //login button in tabbar
-        loginButton = UIBarButtonItem(image: UIImage(named: "ic_login_24dp"), style: .plain, target: self, action: #selector(self.openLoginPage))
-        
         //home button
         homeButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(self.showMyArticle))
         
         if isLoggedIn() {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, homeButton!], animated: true)
         } else {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, loginButton!], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         }
         
         tableView?.backgroundColor = UIColor.gray
@@ -99,7 +95,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         if isLoggedIn() {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, homeButton!], animated: true)
         } else {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!, loginButton!], animated: true)
+            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         }
     }
     
@@ -136,13 +132,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             return true
         }
     }
-    
-    func openLoginPage() {
-        
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-        self.navigationController?.present(newViewController, animated: true, completion: nil)
-    }
+
     
     func refreshArticles() {
         
