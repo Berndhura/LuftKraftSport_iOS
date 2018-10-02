@@ -11,12 +11,20 @@ import FBSDKLoginKit
 
 class HomeViewController: UIViewController {
     
+    
+    //bookmarked articles
+    @IBAction func bookmarksBtn(_ sender: Any) {
+        getBookmarkedArticles()
+    }
+
+    //my articles
     @IBOutlet weak var myArticles: UIButton!
     
     @IBAction func myArticlesBtn(_ sender: Any) {
         showMyArticles()
     }
     
+    //login
     @IBOutlet weak var login: UIButton!
     
     @IBAction func loginBtn(_ sender: Any) {
@@ -37,6 +45,8 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+         tabBarController?.title = ""
         
         initLoginButton()
         initMyArticlesButton()
@@ -80,7 +90,7 @@ class HomeViewController: UIViewController {
             self.initMyArticlesButton()
         }))
         
-        logoutAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
+        logoutAlert.addAction(UIAlertAction(title: NSLocalizedString("abort", comment: "") , style: .cancel, handler: { (action: UIAlertAction!) in
             return
         }))
         
@@ -102,12 +112,36 @@ class HomeViewController: UIViewController {
             //call VC with "my articles"
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
-            newViewController.callbackClosure = { [weak self] in
+            newViewController.callbackClosureMyArticles = { [weak self] in
                 newViewController.showMyArticle()
             }
             self.navigationController?.pushViewController(newViewController, animated: true)
-            
-            //NotificationCenter.default.post(name: Notification.Name(rawValue: "myArticles"), object: nil)
+        }
+    }
+    
+    func getBookmarkedArticles() {
+        if Utils.getUserToken() == "" {
+            loginUser()
+        } else {
+            //call VC with "my articles"
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
+            newViewController.callbackClosureBookmarks = { [weak self] in
+                newViewController.showBookmarkedArticles()
+            }
+            self.navigationController?.pushViewController(newViewController, animated: true)
+        }
+    }
+}
+
+
+class ButtonWithImage: UIButton {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if imageView != nil {
+            imageEdgeInsets = UIEdgeInsets(top: 5, left: (bounds.width - 35), bottom: 5, right: 5)
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: (imageView?.frame.width)!)
         }
     }
 }

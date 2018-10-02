@@ -7,8 +7,10 @@
 */
 
 "problem" = "There is a problem!";
+"abort" = "Abort";
 
 "main_search_title" = "Search...";
+"no_articles" = "No ads yet :-(";
 
 "delete_article" = "Delete article";
 "delete_article_confirm" = "Are you sure to do this?";
@@ -36,5 +38,8 @@
 "login_btn" = "Login";
 "logout_btn" = "Logout";
 "confirm_logout_title" = "Really logout from Luftkraftsport?";
+
+"messages_title" = "Messages: ";
+"no_messages" = "No messages yet!";
 
 

@@ -7,8 +7,10 @@
 */
 
 "problem" = "Es gibt ein Problem!";
+"abort" = "Abbrechen";
 
 "main_search_title" = "Suche dein Material...";
+"no_articles" = "Noch keine Anzeigen :-(";
 
 "delete_article" = "Anzeige löschen!";
 "delete_article_confirm" = "Bist du dir sicher?";
@@ -36,3 +38,6 @@
 "login_btn" = "Anmelden";
 "logout_btn" = "Abmelden";
 "confirm_logout_title" = "Wirklich abmelden von Luftkraftsport?";
+
+"messages_title" = "Nachrichten: ";
+"no_messages" = "Noch keine Nachrichten :-(";

@@ -29,7 +29,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var noMessagesLabel = UILabel()
     
-    var callbackClosure: ((Void) -> Void)?
+    var callbackClosureMyArticles: ((Void) -> Void)?
+    
+    var callbackClosureBookmarks: ((Void) -> Void)?
 
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
@@ -97,7 +99,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         }
         
         //to get my article from homeViewController
-        callbackClosure?()
+        callbackClosureMyArticles?()
+        callbackClosureBookmarks?()
     }
     
     
@@ -149,6 +152,12 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         page = 0
         ads.removeAll()
         getMyBookmaks(type: "my")
+    }
+    
+    func showBookmarkedArticles() {
+        page = 0
+        ads.removeAll()
+        getMyBookmaks(type: "bookmarked")
     }
 
     override func didReceiveMemoryWarning() {
@@ -212,6 +221,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")!
             print("http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")     //TODO Paging einbauen
             
+        } else if type == "bookmarked" {  //TODO: paging? eher nicht weil, obergrenze 30? bookmarks?
+            //search for bookmarked articles
+            let token = Utils.getUserToken()
+            url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")!
         } else {
             //my articles
             let userToken = Utils.getUserToken()
@@ -338,7 +351,7 @@ extension ViewController: UITableViewDataSource {
             noMessagesLabel.numberOfLines = 2
             noMessagesLabel.textColor = UIColor.blue
             noMessagesLabel.textAlignment = .center
-            noMessagesLabel.text = "Noch keine Anzeigen :-("
+            noMessagesLabel.text = NSLocalizedString("no_articles", comment: "")
             noMessagesLabel.tag = 1
             
             self.tableView.addSubview(noMessagesLabel)
