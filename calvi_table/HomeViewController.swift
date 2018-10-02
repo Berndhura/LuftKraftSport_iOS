@@ -39,6 +39,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshTabBar()
+        
         initLoginButton()
         initMyArticlesButton()
     }
@@ -46,11 +48,18 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-         tabBarController?.title = ""
+        refreshTabBar()
         
         initLoginButton()
         initMyArticlesButton()
     }
+    
+    func refreshTabBar() {
+        self.tabBarController?.title = "Home"
+        //remove tabbar items
+        self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
+    }
+
     
     
     func initMyArticlesButton() {
@@ -112,7 +121,7 @@ class HomeViewController: UIViewController {
             //call VC with "my articles"
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
-            newViewController.callbackClosureMyArticles = { [weak self] in
+            newViewController.callbackClosureMyArticles = { [] in
                 newViewController.showMyArticle()
             }
             self.navigationController?.pushViewController(newViewController, animated: true)

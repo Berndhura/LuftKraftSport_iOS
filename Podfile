@@ -25,6 +25,8 @@ target 'calvi_table' do
   target 'calvi_tableTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Google/SignIn'
+    pod 'Firebase/Core'
   end
 
   target 'calvi_tableUITests' do
