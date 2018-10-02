@@ -149,29 +149,17 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q9e-A5-gYh">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Die Website www.chip.de ist ein Objekt der CHIP Digital GmbH, München. CHIP Digital GmbH ist ein Unternehmen der Hubert Burda Media.
+                                <string key="text">Impressum
 
-CHIP Digital GmbH
-St.-Martin-Straße 66
-81541 München
+Bernd Wichura
+Gützkower Strasse 68
+17489 Greifswald
 
-Tel +49 (0)89 / 9250 4500
-Fax +49 (0)89 / 9250 4557
-Email: info@chip.de
+Telefon: +491711607887
+E-Mail: wichura@gmx.de
 
-Jugendschutzbeauftragter: RA Dr. Stefan Söder (bitte nur für Anfragen mit Bezug zum Jugendschutz), SSB Söder Schwarz Berlinger, Rechtsanwälte PartG mbB, Arabellastraße 21, 81925 München, Tel.: +49 89 92 00 872-0, E-Mail: info@ssblaw.de
-
-Geschäftsführung: Thomas Koelzer (CEO), Philipp Brunner (COO)
-Verantwortlich i. S. v. § 55 Abs. 2 RStV: Tim Nocken und Lisa Brack,
-St.-Martin-Straße 66, 81541 München
-
-Registergericht München HRB 104168
-USt.-Ident.Nr. DE 155 289 492
-
-© Copyright 1996-2017, CHIP Digital GmbH, alle Rechte vorbehalten. Jegliche Vervielfältigung oder Weiterverbreitung in jedem Medium als Ganzes oder in Teilen bedarf der schriftlichen Zustimmung der CHIP Digital GmbH.
-
-Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit noch verpflichtet ist, an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -188,6 +176,178 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9m-rn-wot" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2742" y="1589"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8MZ-vf-zTb">
+            <objects>
+                <viewController id="AY9-Ta-i6z" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xjC-w6-6l5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zUP-tC-Hnk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Datenschutzerklärung
+
+Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
+
+Gemäß Art. 4 Ziffer 1. der Verordnung (EU) 2016/679, also der Datenschutz-Grundverordnung (nachfolgend nur „DSGVO“ genannt), gilt als „Verarbeitung“ jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführter Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten, wie das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.
+
+Mit der nachfolgenden Datenschutzerklärung informieren wir Sie insbesondere über Art, Umfang, Zweck, Dauer und Rechtsgrundlage der Verarbeitung personenbezogener Daten, soweit wir entweder allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung entscheiden. Zudem informieren wir Sie nachfolgend über die von uns zu Optimierungszwecken sowie zur Steigerung der Nutzungsqualität eingesetzten Fremdkomponenten, soweit hierdurch Dritte Daten in wiederum eigener Verantwortung verarbeiten.
+
+Unsere Datenschutzerklärung ist wie folgt gegliedert:
+
+I. Informationen über uns als Verantwortliche
+II. Rechte der Nutzer und Betroffenen
+III. Informationen zur Datenverarbeitung
+
+I. Informationen über uns als Verantwortliche
+
+Verantwortlicher Anbieter dieses Internetauftritts im datenschutzrechtlichen Sinne ist:
+
+Musterfirma/Musterunternehmer
+Musterstraße 1
+12345 Musterstadt
+Deutschland
+
+Telefon: Telefonnummer
+Telefax: Faxnummer
+E-Mail: muster@mustermail.xy
+
+Datenschutzbeauftragte/r beim Anbieter ist:
+
+Maxie Musterfrau 
+
+[nachfolgende Angaben sind zu ergänzen, sofern ein Externer Datenschutzbeauftragter bestellt ist]
+
+Musterstraße 1
+12345 Musterstadt
+Deutschland
+
+Telefon: Telefonnummer
+Telefax: Faxnummer
+E-Mail: datenschutz@mustermail.xy
+
+II. Rechte der Nutzer und Betroffenen
+
+Mit Blick auf die nachfolgend noch näher beschriebene Datenverarbeitung haben die Nutzer und Betroffenen das Recht
+
+auf Bestätigung, ob sie betreffende Daten verarbeitet werden, auf Auskunft über die verarbeiteten Daten, auf weitere Informationen über die Datenverarbeitung sowie auf Kopien der Daten (vgl. auch Art. 15 DSGVO);
+auf Berichtigung oder Vervollständigung unrichtiger bzw. unvollständiger Daten (vgl. auch Art. 16 DSGVO);
+auf unverzügliche Löschung der sie betreffenden Daten (vgl. auch Art. 17 DSGVO), oder, alternativ, soweit eine weitere Verarbeitung gemäß Art. 17 Abs. 3 DSGVO erforderlich ist, auf Einschränkung der Verarbeitung nach Maßgabe von Art. 18 DSGVO;
+auf Erhalt der sie betreffenden und von ihnen bereitgestellten Daten und auf Übermittlung dieser Daten an andere Anbieter/Verantwortliche (vgl. auch Art. 20 DSGVO);
+auf Beschwerde gegenüber der Aufsichtsbehörde, sofern sie der Ansicht sind, dass die sie betreffenden Daten durch den Anbieter unter Verstoß gegen datenschutzrechtliche Bestimmungen verarbeitet werden (vgl. auch Art. 77 DSGVO).
+Darüber hinaus ist der Anbieter dazu verpflichtet, alle Empfänger, denen gegenüber Daten durch den Anbieter offengelegt worden sind, über jedwede Berichtigung oder Löschung von Daten oder die Einschränkung der Verarbeitung, die aufgrund der Artikel 16, 17 Abs. 1, 18 DSGVO erfolgt, zu unterrichten. Diese Verpflichtung besteht jedoch nicht, soweit diese Mitteilung unmöglich oder mit einem unverhältnismäßigen Aufwand verbunden ist. Unbeschadet dessen hat der Nutzer ein Recht auf Auskunft über diese Empfänger.
+
+Ebenfalls haben die Nutzer und Betroffenen nach Art. 21 DSGVO das Recht auf Widerspruch gegen die künftige Verarbeitung der sie betreffenden Daten, sofern die Daten durch den Anbieter nach Maßgabe von Art. 6 Abs. 1 lit. f) DSGVO verarbeitet werden. Insbesondere ist ein Widerspruch gegen die Datenverarbeitung zum Zwecke der Direktwerbung statthaft.
+
+III. Informationen zur Datenverarbeitung
+
+Ihre bei Nutzung unseres Internetauftritts verarbeiteten Daten werden gelöscht oder gesperrt, sobald der Zweck der Speicherung entfällt, der Löschung der Daten keine gesetzlichen Aufbewahrungspflichten entgegenstehen und nachfolgend keine anderslautenden Angaben zu einzelnen Verarbeitungsverfahren gemacht werden.
+
+„Google+“-Social-Plug-in
+
+In unserem Internetauftritt setzen wir das Plug-in des Social-Networks Google+ („Google Plus“) ein. Bei Google+ handelt es sich um einen Internetservice der Google LLC., 1600 Amphitheatre Parkway, Mountain View, CA 94043 USA, nachfolgend nur „Google“ genannt.
+
+Durch die Zertifizierung nach dem EU-US-Datenschutzschild („EU-US Privacy Shield“)
+
+https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&amp;status=Active
+
+garantiert Google, dass die Datenschutzvorgaben der EU auch bei der Verarbeitung von Daten in den USA eingehalten werden.
+
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Qualitätsverbesserung unseres Internetauftritts.
+
+Weitergehende Informationen über die möglichen Plug-ins sowie über deren jeweilige Funktionen hält Google unter
+
+https://developers.google.com/+/web/ 
+
+für Sie bereit.
+
+Sofern das Plug-in auf einer der von Ihnen besuchten Seiten unseres Internetauftritts hinterlegt ist, lädt Ihr Internet-Browser eine Darstellung des Plug-ins von den Servern von Google in den USA herunter. Aus technischen Gründen ist es dabei notwendig, dass Google Ihre IP-Adresse verarbeitet. Daneben werden aber auch Datum und Uhrzeit des Besuchs unserer Internetseiten erfasst.
+
+Sollten Sie bei Google eingeloggt sein, während Sie eine unserer mit dem Plug-in versehenen Internetseite besuchen, werden die durch das Plug-in gesammelten Informationen Ihres konkreten Besuchs von Google erkannt. Die so gesammelten Informationen weist Google womöglich Ihrem dortigen persönlichen Nutzerkonto zu. Sofern Sie also bspw. den sog. „Teilen“-Button von Google benutzen, werden diese Informationen in Ihrem Google-Nutzerkonto gespeichert und ggf. über die Plattform von Google veröffentlicht. Wenn Sie das verhindern möchten, müssen Sie sich entweder vor dem Besuch unseres Internetauftritts bei Google ausloggen oder die entsprechenden Einstellungen in Ihrem Google-Benutzerkonto vornehmen.
+
+Weitergehende Informationen über die Erhebung und Nutzung von Daten sowie Ihre diesbezüglichen Rechte und Schutzmöglichkeiten hält Google in den unter
+
+https://policies.google.com/privacy
+
+abrufbaren Datenschutzhinweisen bereit.
+
+Google-Maps
+
+In unserem Internetauftritt setzen wir Google Maps zur Darstellung unseres Standorts sowie zur Erstellung einer Anfahrtsbeschreibung ein. Es handelt sich hierbei um einen Dienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043 USA, nachfolgend nur „Google“ genannt.
+
+Durch die Zertifizierung nach dem EU-US-Datenschutzschild („EU-US Privacy Shield“)
+
+https://www.privacyshield.gov/participant?id=a2zt000000001L5AAI&amp;status=Active
+
+garantiert Google, dass die Datenschutzvorgaben der EU auch bei der Verarbeitung von Daten in den USA eingehalten werden.
+
+Um die Darstellung bestimmter Schriften in unserem Internetauftritt zu ermöglichen, wird bei Aufruf unseres Internetauftritts eine Verbindung zu dem Google-Server in den USA aufgebaut.
+
+Sofern Sie die in unseren Internetauftritt eingebundene Komponente Google Maps aufrufen, speichert Google über Ihren Internet-Browser ein Cookie auf Ihrem Endgerät. Um unseren Standort anzuzeigen und eine Anfahrtsbeschreibung zu erstellen, werden Ihre Nutzereinstellungen und -daten verarbeitet. Hierbei können wir nicht ausschließen, dass Google Server in den USA einsetzt.
+
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Optimierung der Funktionalität unseres Internetauftritts.
+
+Durch die so hergestellte Verbindung zu Google kann Google ermitteln, von welcher Website Ihre Anfrage gesendet worden ist und an welche IP-Adresse die Anfahrtsbeschreibung zu übermitteln ist.
+
+Sofern Sie mit dieser Verarbeitung nicht einverstanden sind, haben Sie die Möglichkeit, die Installation der Cookies durch die entsprechenden Einstellungen in Ihrem Internet-Browser zu verhindern. Einzelheiten hierzu finden Sie vorstehend unter dem Punkt „Cookies“.
+
+Zudem erfolgt die Nutzung von Google Maps sowie der über Google Maps erlangten Informationen nach den Google-Nutzungsbedingungen https://policies.google.com/terms?gl=DE&amp;hl=de und den Geschäftsbedingungen für Google Maps https://www.google.com/intl/de_de/help/terms_maps.html.
+
+Überdies bietet Google unter
+
+https://adssettings.google.com/authenticated
+
+https://policies.google.com/privacy
+
+weitergehende Informationen an.
+
+„Facebook“-Social-Plug-in
+
+In unserem Internetauftritt setzen wir das Plug-in des Social-Networks Facebook ein. Bei Facebook handelt es sich um einen Internetservice der facebook Inc., 1601 S. California Ave, Palo Alto, CA 94304, USA. In der EU wird dieser Service wiederum von der Facebook Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland, betrieben, nachfolgend beide nur „Facebook“ genannt.
+
+Durch die Zertifizierung nach dem EU-US-Datenschutzschild („EU-US Privacy Shield“)
+
+https://www.privacyshield.gov/participant?id=a2zt0000000GnywAAC&amp;status=Active
+
+garantiert Facebook, dass die Datenschutzvorgaben der EU auch bei der Verarbeitung von Daten in den USA eingehalten werden.
+
+Rechtsgrundlage ist Art. 6 Abs. 1 lit. f) DSGVO. Unser berechtigtes Interesse liegt in der Qualitätsverbesserung unseres Internetauftritts.
+
+Weitergehende Informationen über die möglichen Plug-ins sowie über deren jeweilige Funktionen hält Facebook unter
+
+https://developers.facebook.com/docs/plugins/
+
+für Sie bereit.
+
+Sofern das Plug-in auf einer der von Ihnen besuchten Seiten unseres Internetauftritts hinterlegt ist, lädt Ihr Internet-Browser eine Darstellung des Plug-ins von den Servern von Facebook in den USA herunter. Aus technischen Gründen ist es dabei notwendig, dass Facebook Ihre IP-Adresse verarbeitet. Daneben werden aber auch Datum und Uhrzeit des Besuchs unserer Internetseiten erfasst.
+
+Sollten Sie bei Facebook eingeloggt sein, während Sie eine unserer mit dem Plug-in versehenen Internetseite besuchen, werden die durch das Plug-in gesammelten Informationen Ihres konkreten Besuchs von Facebook erkannt. Die so gesammelten Informationen weist Facebook womöglich Ihrem dortigen persönlichen Nutzerkonto zu. Sofern Sie also bspw. den sog. „Gefällt mir“-Button von Facebook benutzen, werden diese Informationen in Ihrem Facebook-Nutzerkonto gespeichert und ggf. über die Plattform von Facebook veröffentlicht. Wenn Sie das verhindern möchten, müssen Sie sich entweder vor dem Besuch unseres Internetauftritts bei Facebook ausloggen oder durch den Einsatz eines Add-ons für Ihren Internetbrowser verhindern, dass das Laden des Facebook-Plug-in blockiert wird.
+
+Weitergehende Informationen über die Erhebung und Nutzung von Daten sowie Ihre diesbezüglichen Rechte und Schutzmöglichkeiten hält Facebook in den unter
+
+https://www.facebook.com/policy.php
+
+abrufbaren Datenschutzhinweisen bereit.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zUP-tC-Hnk" firstAttribute="top" secondItem="aSm-j3-gDw" secondAttribute="top" id="KC1-ur-NDv"/>
+                            <constraint firstItem="aSm-j3-gDw" firstAttribute="bottom" secondItem="zUP-tC-Hnk" secondAttribute="bottom" id="NrZ-18-b5L"/>
+                            <constraint firstItem="zUP-tC-Hnk" firstAttribute="leading" secondItem="aSm-j3-gDw" secondAttribute="leading" id="WJF-Al-lHn"/>
+                            <constraint firstItem="aSm-j3-gDw" firstAttribute="trailing" secondItem="zUP-tC-Hnk" secondAttribute="trailing" id="dok-B6-Jfj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aSm-j3-gDw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dHK-Ae-ovi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1873" y="1601"/>
         </scene>
         <!--Home-->
         <scene sceneID="pyX-3g-CQD">
@@ -237,6 +397,9 @@ Die CHIP Digital GmbH weist gemäß § 36 VSBG darauf hin, dass sie weder bereit
                                         <rect key="frame" x="15" y="186" width="223" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Datenschutzbestimmungen"/>
+                                        <connections>
+                                            <segue destination="AY9-Ta-i6z" kind="show" id="d1x-MN-KdX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
