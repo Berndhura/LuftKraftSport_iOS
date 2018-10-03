@@ -19,6 +19,10 @@ class MessagesController: UIViewController {
     
     var refreshMessages: UIBarButtonItem?
     
+    var noMessagesLabel = UILabel()
+    
+    var isLoadingTableView = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,11 +56,16 @@ class MessagesController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.tabBarController?.title = "Messages: " + String(self.messages.count)
+        self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
         
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         
-        NotificationCenter.default.removeObserver(self)
+        //TODO remove observer?
+        //NotificationCenter.default.addObserver(self, #selector(self.messageReceived), name: nil, object: nil)
+    }
+    
+    func messageReceived() {
+        print("push angekommen!")
     }
     
     func isLoggedIn() -> Bool {
@@ -70,6 +79,30 @@ class MessagesController: UIViewController {
         } else {
             //user in
             return true
+        }
+    }
+    
+    func checkForEmptyTable_remove() {
+        // Load empty state view if necessary.
+        //TODO add observer on tableview.count -> 0 meldung, sonst nachrichten
+        if tableView(tableView, numberOfRowsInSection: 1) == 0 {
+            
+            tableView.tableFooterView = UIView(frame: CGRect.zero)
+            tableView.backgroundColor = UIColor.clear
+            
+            noMessagesLabel.numberOfLines = 2
+            noMessagesLabel.textColor = UIColor.blue
+            noMessagesLabel.textAlignment = .center
+            noMessagesLabel.text = NSLocalizedString("no_messages", comment: "")
+            noMessagesLabel.tag = 1
+            
+            self.tableView.addSubview(noMessagesLabel)
+            
+            noMessagesLabel.translatesAutoresizingMaskIntoConstraints = false
+            noMessagesLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+            noMessagesLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+        } else {
+            noMessagesLabel.removeFromSuperview()
         }
     }
     
@@ -110,8 +143,9 @@ class MessagesController: UIViewController {
                     }
                     self.messages = localMsg
                     self.tableView.reloadData()
-                    self.tabBarController?.title = "Messages: " + String(self.messages.count)
-                    self.navigationItem.title = "Messages: " + String(self.messages.count)
+                    //TODO welches ist richtig?
+                    self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
+                    self.navigationItem.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
             }
         }
     }
@@ -122,6 +156,7 @@ class MessagesController: UIViewController {
     
     
     func showNewMessage() {
+        //TODO check in app delegate -> message tone usw
         print("angekommen")
     }
     
