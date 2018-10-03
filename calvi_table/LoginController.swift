@@ -66,7 +66,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         if Utils.getUserToken() == "" {
             mainLoginTitle.text = NSLocalizedString("login_main_title", comment: "")
             mainLoginTitle.textColor = appMainColorBlue
-            mainLoginTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 14)
+            mainLoginTitle.font = UIFont(name: "Verdana", size: 18)
             mainLoginTitle.isHidden = false
         } else {
             mainLoginTitle.isHidden = true

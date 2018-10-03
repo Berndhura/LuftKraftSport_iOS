@@ -16,7 +16,9 @@ class HomeViewController: UIViewController {
     @IBAction func bookmarksBtn(_ sender: Any) {
         getBookmarkedArticles()
     }
-
+    
+    @IBOutlet weak var bookmarks: UIButton!
+    
     //my articles
     @IBOutlet weak var myArticles: UIButton!
     
@@ -36,42 +38,39 @@ class HomeViewController: UIViewController {
         }
     }
     
+    //impressum
+    @IBOutlet weak var impressum: UIButton!
+    
+    //datenschutz
+    @IBOutlet weak var datenschutz: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshTabBar()
-        
+        setColors()
         initLoginButton()
-        initMyArticlesButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         refreshTabBar()
-        
         initLoginButton()
-        initMyArticlesButton()
+    }
+    
+    func setColors()  {
+        bookmarks.setTitleColor(appMainColorBlue, for: .normal)
+        login.setTitleColor(appMainColorBlue, for: .normal)
+        myArticles.setTitleColor(appMainColorBlue, for: .normal)
+        impressum.setTitleColor(appMainColorBlue, for: .normal)
+        datenschutz.setTitleColor(appMainColorBlue, for: .normal)
     }
     
     func refreshTabBar() {
         self.tabBarController?.title = "Home"
         //remove tabbar items
         self.tabBarController?.navigationItem.setRightBarButtonItems([], animated: true)
-    }
-
-    
-    
-    func initMyArticlesButton() {
-        if Utils.getUserToken() == "" {
-            if let _ = myArticles {
-                myArticles.removeFromSuperview()
-            }
-        } else {
-            if let btn = myArticles {
-                view.addSubview(btn)
-            }
-        }
     }
     
     
@@ -96,7 +95,6 @@ class HomeViewController: UIViewController {
             loginManager.logOut()
             
             self.initLoginButton()
-            self.initMyArticlesButton()
         }))
         
         logoutAlert.addAction(UIAlertAction(title: NSLocalizedString("abort", comment: "") , style: .cancel, handler: { (action: UIAlertAction!) in
@@ -135,7 +133,7 @@ class HomeViewController: UIViewController {
             //call VC with "my articles"
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
-            newViewController.callbackClosureBookmarks = { [weak self] in
+            newViewController.callbackClosureBookmarks = { [] in
                 newViewController.showBookmarkedArticles()
             }
             self.navigationController?.pushViewController(newViewController, animated: true)

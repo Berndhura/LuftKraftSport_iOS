@@ -188,7 +188,7 @@ Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlich
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zUP-tC-Hnk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Datenschutzerklärung
+                                <string key="text">Datenschutzerklärung
 
 Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
 
@@ -330,7 +330,7 @@ Weitergehende Informationen über die Erhebung und Nutzung von Daten sowie Ihre 
 
 https://www.facebook.com/policy.php
 
-abrufbaren Datenschutzhinweisen bereit.</mutableString>
+abrufbaren Datenschutzhinweisen bereit.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -347,7 +347,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHK-Ae-ovi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1873" y="1601"/>
+            <point key="canvasLocation" x="-1878" y="1588"/>
         </scene>
         <!--Home-->
         <scene sceneID="pyX-3g-CQD">
@@ -360,8 +360,9 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifM-ll-7Nf">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-6E-Xzk" customClass="UIButtom">
-                                        <rect key="frame" x="15" y="10" width="223" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-6E-Xzk">
+                                        <rect key="frame" x="15" y="10" width="247" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Meine Anzeigen">
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -370,32 +371,32 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qj1-7K-Ams">
-                                        <rect key="frame" x="15" y="54" width="223" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="15" y="54" width="247" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Bookmarks"/>
                                         <connections>
                                             <action selector="bookmarksBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="XTX-Ue-rGF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMS-Xf-7fq">
-                                        <rect key="frame" x="15" y="98" width="223" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="15" y="98" width="247" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="loginout"/>
                                         <connections>
                                             <action selector="loginBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="9vb-l0-QJw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awm-L3-NM0">
-                                        <rect key="frame" x="15" y="142" width="223" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="15" y="142" width="247" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Impressum"/>
                                         <connections>
                                             <segue destination="ZSn-Zv-3OP" kind="show" id="fM0-5m-wIP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-SC-yvx">
-                                        <rect key="frame" x="15" y="186" width="223" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="15" y="186" width="247" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Datenschutzbestimmungen"/>
                                         <connections>
                                             <segue destination="AY9-Ta-i6z" kind="show" id="d1x-MN-KdX"/>
@@ -433,7 +434,11 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="bU8-Fu-dyH"/>
                     <connections>
+                        <outlet property="bookmarks" destination="Qj1-7K-Ams" id="l6g-FG-bWW"/>
+                        <outlet property="datenschutz" destination="Bhy-SC-yvx" id="8Iw-YM-h1M"/>
+                        <outlet property="impressum" destination="awm-L3-NM0" id="AHE-Qq-obT"/>
                         <outlet property="login" destination="lMS-Xf-7fq" id="Sci-i3-Qve"/>
+                        <outlet property="myArticles" destination="oAx-6E-Xzk" id="dig-Fj-TzQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLt-gb-gWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -449,16 +454,16 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf" userLabel="Image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
-                                <rect key="frame" x="64" y="104" width="247.5" height="247.5"/>
+                                <rect key="frame" x="64" y="124" width="247.5" height="247.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-Z4-xSL" userLabel="Name">
-                                <rect key="frame" x="36" y="361.5" width="303" height="0.0"/>
+                                <rect key="frame" x="36" y="381.5" width="303" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Main Login Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-Z8-3Zb" userLabel="mainTitle">
-                                <rect key="frame" x="10" y="30" width="355" height="54"/>
+                                <rect key="frame" x="10" y="50" width="355" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Hzv-eP-Ksw"/>
@@ -471,7 +476,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                         <constraints>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="top" secondItem="uRn-4T-BMf" secondAttribute="bottom" constant="10" id="1Ai-oX-ERd"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="top" secondItem="vgb-Z8-3Zb" secondAttribute="bottom" constant="20" id="5fC-Nr-qUL"/>
-                            <constraint firstItem="vgb-Z8-3Zb" firstAttribute="top" secondItem="i8l-CK-K26" secondAttribute="top" constant="10" id="DLO-iR-JGm"/>
+                            <constraint firstItem="vgb-Z8-3Zb" firstAttribute="top" secondItem="i8l-CK-K26" secondAttribute="top" constant="30" id="DLO-iR-JGm"/>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="leading" secondItem="v5G-e0-8lp" secondAttribute="leadingMargin" constant="20" id="DxA-hn-TjQ"/>
                             <constraint firstItem="vgb-Z8-3Zb" firstAttribute="leading" secondItem="i8l-CK-K26" secondAttribute="leading" constant="10" id="F30-Lr-BcG"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="centerX" secondItem="i8l-CK-K26" secondAttribute="centerX" id="Igd-lx-RWz"/>
@@ -508,13 +513,13 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-qY-KmL" userLabel="imgScrollView">
-                                                <rect key="frame" x="0.0" y="8" width="375" height="150"/>
+                                                <rect key="frame" x="0.0" y="8" width="375" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="w2f-9d-qHr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="w2f-9d-qHr"/>
                                                 </constraints>
                                             </scrollView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Titel..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-3u-W9p">
-                                                <rect key="frame" x="0.0" y="178" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="128" width="375" height="31"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="lFI-Vr-i90"/>
@@ -527,7 +532,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OcD-cJ-fyX" customClass="UITextViewFixed" customModule="calvi_table" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="217" width="375" height="150"/>
+                                                <rect key="frame" x="0.0" y="167" width="375" height="150"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="aSX-Gu-3rd"/>
@@ -536,7 +541,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="price..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-Fj-RwT">
-                                                <rect key="frame" x="0.0" y="375" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="325" width="375" height="31"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="ZRG-z9-oQD"/>
@@ -546,7 +551,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Hz-7n-4zb">
-                                                <rect key="frame" x="0.0" y="414" width="375" height="31"/>
+                                                <rect key="frame" x="0.0" y="364" width="375" height="31"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="31" id="J5Q-Eh-IgZ"/>
@@ -555,42 +560,35 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="31G-g7-d2A" userLabel="Stack View Buttons">
-                                                <rect key="frame" x="0.0" y="455" width="375" height="162"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-ph-owY">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                                                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="Speichern">
-                                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="saveNewAd:" destination="yDh-be-Uo9" eventType="touchUpInside" id="vlD-n8-pNk"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-ph-owY">
+                                                <rect key="frame" x="0.0" y="587" width="375" height="30"/>
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Speichern">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveNewAd:" destination="yDh-be-Uo9" eventType="touchUpInside" id="vlD-n8-pNk"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="top" secondItem="k8p-Fj-RwT" secondAttribute="bottom" constant="8" id="5n6-CZ-0SY"/>
-                                            <constraint firstItem="31G-g7-d2A" firstAttribute="top" secondItem="7Hz-7n-4zb" secondAttribute="bottom" constant="10" id="891-Rr-nqp"/>
+                                            <constraint firstAttribute="bottom" secondItem="4c1-ph-owY" secondAttribute="bottom" id="9h5-q0-mY2"/>
                                             <constraint firstAttribute="trailing" secondItem="OcD-cJ-fyX" secondAttribute="trailing" id="AtO-Tc-Dgg"/>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="Bdr-U3-IWt"/>
-                                            <constraint firstAttribute="trailing" secondItem="31G-g7-d2A" secondAttribute="trailing" id="HYw-LZ-Ruu"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="top" secondItem="Mfg-3u-W9p" secondAttribute="bottom" constant="8" id="KoC-E0-Sev"/>
                                             <constraint firstAttribute="trailing" secondItem="k8p-Fj-RwT" secondAttribute="trailing" id="M6G-6r-VPV"/>
                                             <constraint firstAttribute="trailing" secondItem="QqS-qY-KmL" secondAttribute="trailing" id="NWx-gP-fH9"/>
                                             <constraint firstAttribute="trailing" secondItem="7Hz-7n-4zb" secondAttribute="trailing" id="PWI-qK-McX"/>
                                             <constraint firstItem="QqS-qY-KmL" firstAttribute="top" secondItem="Av7-fU-T5x" secondAttribute="top" constant="8" id="TdK-ab-IPK"/>
-                                            <constraint firstItem="31G-g7-d2A" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="aRT-2K-stE"/>
+                                            <constraint firstItem="4c1-ph-owY" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="YZb-Ih-USD"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="top" secondItem="OcD-cJ-fyX" secondAttribute="bottom" constant="8" id="fqg-U4-Fwm"/>
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="top" secondItem="QqS-qY-KmL" secondAttribute="bottom" constant="20" id="i68-b4-Sjg"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="kGW-4k-vqQ"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="kwT-p3-qxy"/>
                                             <constraint firstItem="QqS-qY-KmL" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="nnZ-Ch-def"/>
-                                            <constraint firstAttribute="bottom" secondItem="31G-g7-d2A" secondAttribute="bottom" id="qoJ-x9-iYh"/>
+                                            <constraint firstAttribute="trailing" secondItem="4c1-ph-owY" secondAttribute="trailing" id="oeu-in-Pt9"/>
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="r8y-ew-zK6"/>
                                             <constraint firstAttribute="trailing" secondItem="Mfg-3u-W9p" secondAttribute="trailing" id="xp4-fo-jo7"/>
                                         </constraints>
