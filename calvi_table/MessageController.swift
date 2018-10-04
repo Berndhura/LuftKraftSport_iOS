@@ -26,6 +26,8 @@ class MessagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.separatorStyle = .none
+        
         registerObservers()
         
         refreshMessages = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(MessagesController.fetchMessages))
@@ -82,29 +84,6 @@ class MessagesController: UIViewController {
         }
     }
     
-    func checkForEmptyTable_remove() {
-        // Load empty state view if necessary.
-        //TODO add observer on tableview.count -> 0 meldung, sonst nachrichten
-        if tableView(tableView, numberOfRowsInSection: 1) == 0 {
-            
-            tableView.tableFooterView = UIView(frame: CGRect.zero)
-            tableView.backgroundColor = UIColor.clear
-            
-            noMessagesLabel.numberOfLines = 2
-            noMessagesLabel.textColor = UIColor.blue
-            noMessagesLabel.textAlignment = .center
-            noMessagesLabel.text = NSLocalizedString("no_messages", comment: "")
-            noMessagesLabel.tag = 1
-            
-            self.tableView.addSubview(noMessagesLabel)
-            
-            noMessagesLabel.translatesAutoresizingMaskIntoConstraints = false
-            noMessagesLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-            noMessagesLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-        } else {
-            noMessagesLabel.removeFromSuperview()
-        }
-    }
     
     func fetchMessages() {
         
@@ -186,6 +165,24 @@ class MessagesController: UIViewController {
 extension MessagesController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if messages.count == 0 {
+            noMessagesLabel.numberOfLines = 2
+            noMessagesLabel.textColor = UIColor.blue
+            noMessagesLabel.textAlignment = .center
+            noMessagesLabel.text = NSLocalizedString("no_messages", comment: "")
+            noMessagesLabel.tag = 1
+            
+            self.tableView.addSubview(noMessagesLabel)
+            
+            noMessagesLabel.translatesAutoresizingMaskIntoConstraints = false
+            noMessagesLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+            noMessagesLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+            tableView.backgroundColor = UIColor.clear
+        } else {
+            noMessagesLabel.removeFromSuperview()
+        }
+        
         return messages.count
     }
     

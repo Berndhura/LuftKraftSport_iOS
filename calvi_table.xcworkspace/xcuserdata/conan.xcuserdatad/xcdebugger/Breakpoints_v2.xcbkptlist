@@ -31,11 +31,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/MessageController.swift"
-            timestampString = "560115728.428589"
+            timestampString = "560373069.129705"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "messageReceived()"
             landmarkType = "7">
          </BreakpointContent>
