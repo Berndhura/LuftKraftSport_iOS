@@ -70,7 +70,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //refresh ads button in tabbar
         refreshButton = UIBarButtonItem.init(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(ViewController.refreshArticles))
         
-        if isLoggedIn() {
+        if Utils.isLoggedIn() {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         } else {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
@@ -92,7 +92,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         adaptTitle()
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         
-        if isLoggedIn() {
+        if Utils.isLoggedIn() {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         } else {
             tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
@@ -125,16 +125,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             print("google sign in")
         } else {
             print("google out")
-        }
-    }
-    
-    func isLoggedIn() -> Bool {
-        
-        let userToken = Utils.getUserToken()
-        if userToken == "" {
-            return false
-        } else {
-            return true
         }
     }
 
@@ -419,10 +409,12 @@ extension ViewController: UITableViewDataSource {
         cell?.pictureURL = currentAd.urls
         
         //bookmark
-        if myBookmarks.contains(currentAd.articleId) {
-            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
-        } else {
-            cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
+        if Utils.isLoggedIn() {
+            if myBookmarks.contains(currentAd.articleId) {
+                cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
+            } else {
+                cell?.bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
+            }
         }
         
         cell?.myBookmarks = self.myBookmarks

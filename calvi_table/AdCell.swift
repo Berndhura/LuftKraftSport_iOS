@@ -59,28 +59,30 @@ class AdCell: UITableViewCell {
      
         let userToken = Utils.getUserToken()
         
-        if myBookmarks.contains(articleId) {
-            //remove bookmark
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/\(articleId)?token=\(userToken)")
-            
-            Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
-                .responseJSON { response in
-                    //nothing here, if request did not work? show user info!
+        if Utils.isLoggedIn() {
+            if myBookmarks.contains(articleId) {
+                //remove bookmark
+                let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/\(articleId)?token=\(userToken)")
+                
+                Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
+                    .responseJSON { response in
+                        //nothing here, if request did not work? show user info!
+                }
+                bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
+                removeArticelFromBookmarkList(id: articleId)
+                
+            } else {
+                //create bookmark
+                let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
+                
+                Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+                    .responseJSON { response in
+                        print(response)
+                        // self.showAlert()
+                }
+                bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
+                myBookmarks.append(articleId)
             }
-            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_outline_white_36pt"), for: .normal)
-            removeArticelFromBookmarkList(id: articleId)
-            
-        } else {
-            //create bookmark
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
-            
-            Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
-                .responseJSON { response in
-                    print(response)
-                    // self.showAlert()
-            }
-            bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
-            myBookmarks.append(articleId)
         }
     }
     

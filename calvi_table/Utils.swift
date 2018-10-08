@@ -13,6 +13,16 @@ import SystemConfiguration
 
 class Utils {
     
+    static func isLoggedIn() -> Bool {
+        
+        let userToken = Utils.getUserToken()
+        if userToken == "" {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     static func getPriceFromTextField(priceString: String) -> Int {
         
         let ind = priceString.split{$0 == " "}.map(String.init)

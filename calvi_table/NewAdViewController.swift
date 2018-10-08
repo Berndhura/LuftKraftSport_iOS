@@ -240,6 +240,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         imageButton.layer.cornerRadius = 20
         imageButton.layer.masksToBounds = true
         
+        //imgScrollView.translatesAutoresizingMaskIntoConstraints = false
+        //let height = (ScreenSize.SCREEN_WIDTH - 4 * gapSize) / 2
+        //imgScrollView.contentSize.height = 400//height
+        
+        
         let xPosition = self.imgScrollView.frame.height * CGFloat(imageNumber) + (gapSize * CGFloat(imageNumber + 1))
         imageButton.frame = CGRect(x: xPosition  , y: 0, width: imgScrollView.frame.height, height: imgScrollView.frame.height)
         

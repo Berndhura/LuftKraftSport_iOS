@@ -454,16 +454,16 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-4T-BMf" userLabel="Image" customClass="RoundImageView" customModule="calvi_table" customModuleProvider="target">
-                                <rect key="frame" x="64" y="124" width="247.5" height="247.5"/>
+                                <rect key="frame" x="64" y="154" width="247.5" height="247.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTd-Z4-xSL" userLabel="Name">
-                                <rect key="frame" x="36" y="381.5" width="303" height="0.0"/>
+                                <rect key="frame" x="36" y="411.5" width="303" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Main Login Title" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vgb-Z8-3Zb" userLabel="mainTitle">
-                                <rect key="frame" x="10" y="50" width="355" height="54"/>
+                                <rect key="frame" x="10" y="80" width="355" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="Hzv-eP-Ksw"/>
@@ -476,7 +476,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                         <constraints>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="top" secondItem="uRn-4T-BMf" secondAttribute="bottom" constant="10" id="1Ai-oX-ERd"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="top" secondItem="vgb-Z8-3Zb" secondAttribute="bottom" constant="20" id="5fC-Nr-qUL"/>
-                            <constraint firstItem="vgb-Z8-3Zb" firstAttribute="top" secondItem="i8l-CK-K26" secondAttribute="top" constant="30" id="DLO-iR-JGm"/>
+                            <constraint firstItem="vgb-Z8-3Zb" firstAttribute="top" secondItem="i8l-CK-K26" secondAttribute="top" constant="60" id="DLO-iR-JGm"/>
                             <constraint firstItem="VTd-Z4-xSL" firstAttribute="leading" secondItem="v5G-e0-8lp" secondAttribute="leadingMargin" constant="20" id="DxA-hn-TjQ"/>
                             <constraint firstItem="vgb-Z8-3Zb" firstAttribute="leading" secondItem="i8l-CK-K26" secondAttribute="leading" constant="10" id="F30-Lr-BcG"/>
                             <constraint firstItem="uRn-4T-BMf" firstAttribute="centerX" secondItem="i8l-CK-K26" secondAttribute="centerX" id="Igd-lx-RWz"/>
@@ -515,7 +515,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-qY-KmL" userLabel="imgScrollView">
                                                 <rect key="frame" x="0.0" y="8" width="375" height="100"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="w2f-9d-qHr"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="100" id="w2f-9d-qHr"/>
                                                 </constraints>
                                             </scrollView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Titel..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mfg-3u-W9p">
@@ -1004,10 +1004,10 @@ abrufbaren Datenschutzhinweisen bereit.</string>
     <resources>
         <image name="delete-32" width="32" height="32"/>
         <image name="edit-32" width="32" height="32"/>
-        <image name="home" width="32" height="32"/>
-        <image name="login" width="32" height="32"/>
-        <image name="mail" width="32" height="32"/>
-        <image name="plus" width="32" height="32"/>
+        <image name="home" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="login" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="mail" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="plus" width="25.600000381469727" height="25.600000381469727"/>
         <image name="search-30" width="30" height="30"/>
     </resources>
 </document>
