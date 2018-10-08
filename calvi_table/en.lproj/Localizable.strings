@@ -31,12 +31,15 @@
 "new_article_no_network_for_location" = "There was a problem to determine you position, please check your network connection or try again later!";
 "new_article_upload_images" = "Uploading images...";
 
+"login_to_bookmark" = "Please login to bookmark articles.";
+"login_to_message" = "Please login to write messages to other user.";
 "login_main_title" = "Please login to be able to create articles and to write messages!";
 "login_google_button_text" = "Login with Google";
 "login_facebook_button_text" = "Login with Facebook";
 "login_go_back" = "Back";
 "login_btn" = "Login";
 "logout_btn" = "Logout";
+"not_logged_in" = "Not logged in";
 "confirm_logout_title" = "Really logout from Luftkraftsport?";
 
 "messages_title" = "Messages: ";

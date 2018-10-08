@@ -67,11 +67,29 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
                 removeArticelFromBookmarkList(id: articleId!)
             } else {
                 //bookmark this article
-                bookmarkArticle(articleId: articleId!)
-                bookmarkEditButton.setTitle("Vergessen", for: .normal)
-                myBookmarks.append(articleId!)
+                if Utils.isLoggedIn() {
+                    bookmarkArticle(articleId: articleId!)
+                    bookmarkEditButton.setTitle("Vergessen", for: .normal)
+                    myBookmarks.append(articleId!)
+                } else {
+                    showLoginInfo(text: NSLocalizedString("login_to_bookmark", comment: ""))
+                }
             }
         }
+    }
+    
+    func showLoginInfo(text: String) {
+        let alert = UIAlertController(title: NSLocalizedString("not_logged_in", comment: ""), message: text, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("abort", comment: ""), style:.default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("login_btn", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+            self.navigationController?.present(newViewController, animated: true) {
+                print("feddich")
+                //TODO zurück zur vorherigen seite!!!
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
    
     @IBOutlet weak var messageButton: UIButton!
@@ -85,19 +103,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         } else {
             if Utils.getUserToken() == "" {
                 //not logged in
-                let alert = UIAlertController(title: "Nicht angemeldet!", message: "Um Nachrichten zu versenden, musst du dich anmleden.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Schließen", style:.default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Anmelden", style: .default, handler: { (action: UIAlertAction!) in
-                    //let newViewController = LoginController()
-                    //self.navigationController?.pushViewController(newViewController, animated: true)
-                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-                    self.navigationController?.present(newViewController, animated: true, completion: nil)
-                    //TODO mach login seite auf aber ohne navigation leider, keine möglichkeit nach login von der seite zu kommen
-                }))
-                
-                self.present(alert, animated: true, completion: nil)
-                
+                showLoginInfo(text: NSLocalizedString("login_to_message", comment: ""))
             } else {
                 sendMessage(articleId: articleId!, userIdFromArticle: userId!)
             }
