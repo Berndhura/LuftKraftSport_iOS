@@ -145,11 +145,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     
     
     func goBackPressed() {
-        //go back after login
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = tabBarController
+         dismiss(animated: true, completion: nil)
     }
     
     
