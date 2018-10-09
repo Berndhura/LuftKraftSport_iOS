@@ -89,6 +89,38 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         super.viewDidLoad()
         
+        if isLoggedIn() {
+            prepareView()
+        } else {
+            openLogin()
+        }
+    }
+    
+    
+   override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if !isLoggedIn() {
+            openLogin()
+        } else {
+            prepareView()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        refreshTabBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        //if not logged in -> loginVC pops up -> no login and back -> show main VC (index 0)
+        if !isLoggedIn() {
+            self.tabBarController?.selectedIndex = 0
+        }
+    }
+    
+    func prepareView() {
+        
         presenter.attachView(self)
         
         initLocationManager()
@@ -108,29 +140,14 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         titleText.addTarget(self, action: #selector(NewAdViewController.titleDidChange(_:)), for: .editingDidEnd)
         price.addTarget(self, action: #selector(NewAdViewController.priceDidChange(_:)), for: .editingDidEnd)
         
-        if isLoggedIn() {
-            if isEditMode {
-                saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
-                print("GERO: PictureURL:" + pictureUrl)
-                editArticle()
-            } else {
-                saveArticleButton.setTitle(NSLocalizedString("new_article_save_button", comment: ""), for: .normal)
-                setupImagesPlaceholder()
-                prepareForms()
-            }
+        if isEditMode {
+            saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
+            print("GERO: PictureURL:" + pictureUrl)
+            editArticle()
         } else {
-            openLogin()
-        }
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        refreshTabBar()
-        
-        if !isLoggedIn() {
-            openLogin()
+            saveArticleButton.setTitle(NSLocalizedString("new_article_save_button", comment: ""), for: .normal)
+            setupImagesPlaceholder()
+            prepareForms()
         }
     }
     
@@ -213,8 +230,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func openLogin() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-        self.navigationController?.popViewController(animated: false)
-        self.navigationController?.pushViewController(newViewController, animated: true)
+        self.navigationController?.present(newViewController, animated: false)
     }
     
     func refreshTabBar() {

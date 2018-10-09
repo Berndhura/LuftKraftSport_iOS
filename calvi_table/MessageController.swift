@@ -23,8 +23,48 @@ class MessagesController: UIViewController {
     
     var isLoadingTableView = true
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isLoggedIn() {
+            prepareView()
+        } else {
+            openLogin()
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !isLoggedIn() {
+            openLogin()
+        } else {
+            prepareView()
+        }
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
+        
+        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
+        
+        //TODO remove observer?
+        //NotificationCenter.default.addObserver(self, #selector(self.messageReceived), name: nil, object: nil)
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        //if not logged in -> loginVC pops up -> no login and back -> show main VC (index 0)
+        if !isLoggedIn() {
+            self.tabBarController?.selectedIndex = 0
+        }
+    }
+    
+    
+    func prepareView() {
         
         tableView.separatorStyle = .none
         
@@ -42,92 +82,76 @@ class MessagesController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         if !DeviceType.IS_IPHONE_5 {
-             tableView.contentInset = UIEdgeInsets.zero
+            tableView.contentInset = UIEdgeInsets.zero
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //begin ignoring events until the information is finished being fetched
-        UIApplication.shared.beginIgnoringInteractionEvents()
         
         fetchMessages()
-        
-        //information is now fetched, so allow interaction
-        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
-        
-        self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
-        
-        //TODO remove observer?
-        //NotificationCenter.default.addObserver(self, #selector(self.messageReceived), name: nil, object: nil)
+    
+    func openLogin() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+        self.navigationController?.present(newViewController, animated: false)
     }
     
-    func messageReceived() {
-        print("push angekommen!")
-    }
     
     func isLoggedIn() -> Bool {
         
         if Utils.getUserToken() == "" {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-            self.navigationController?.popViewController(animated: false)
-            self.navigationController?.pushViewController(newViewController, animated: true)
             return false
         } else {
-            //user in
             return true
         }
     }
     
     
+    func messageReceived() {
+        print("push angekommen!")
+    }
+    
+    
     func fetchMessages() {
+            
+        var localMsg: [MessageOverview] = []
         
-        if isLoggedIn() {
-            
-            var localMsg: [MessageOverview] = []
-            
-            let userToken = Utils.getUserToken()
-            
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
-            
-            Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
-                .responseJSON { response in
-                    
-                    switch response.result {
-                    case .success:
-                        let jsonData = JSON(response.result.value ?? "default")
-                        for (_ , value) in jsonData {
-                            
-                            let message = value["message"].string
-                            let name = value["name"].string
-                            let urlList = value["url"].string
-                            let url = Utils.getPictureUrl(str: urlList!)
-                            let idFrom = value["idFrom"].string
-                            let idTo = value["idTo"].string
-                            let date = value["date"].double
-                            let articleId = value["articleId"].int64
-                            let chatPartner = value["chatPartner"].string
-                            
-                            let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
-                            
-                            localMsg.append(msg)
-                        }
-                    case .failure(let error):
-                        print(error)
+        let userToken = Utils.getUserToken()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
+        
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.result.value ?? "default")
+                    for (_ , value) in jsonData {
+                        
+                        let message = value["message"].string
+                        let name = value["name"].string
+                        let urlList = value["url"].string
+                        let url = Utils.getPictureUrl(str: urlList!)
+                        let idFrom = value["idFrom"].string
+                        let idTo = value["idTo"].string
+                        let date = value["date"].double
+                        let articleId = value["articleId"].int64
+                        let chatPartner = value["chatPartner"].string
+                        
+                        let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                        
+                        localMsg.append(msg)
                     }
-                    self.messages = localMsg
-                    self.tableView.reloadData()
-                    //TODO welches ist richtig?
-                    self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
-                    self.navigationItem.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
-            }
+                case .failure(let error):
+                    print(error)
+                }
+                self.messages = localMsg
+                self.tableView.reloadData()
+                //TODO welches ist richtig?
+                self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
+                self.navigationItem.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
         }
     }
+    
     
     func registerObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
