@@ -481,7 +481,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -524,7 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B778CE734C7D816B84A98957 /* [CP] Check Pods Manifest.lock */ = {
@@ -553,7 +553,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-Defines-NSData+zlib/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -566,7 +566,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C3495AA0C0D4CFC5F86D346A /* [CP] Copy Pods Resources */ = {
@@ -577,7 +577,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh",
 				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
@@ -590,7 +590,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F09AA32DFABF0E337CEFA71F /* [CP] Copy Pods Resources */ = {
@@ -599,7 +599,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh",
 				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
@@ -610,7 +610,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
