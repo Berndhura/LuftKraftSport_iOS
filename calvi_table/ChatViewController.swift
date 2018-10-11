@@ -156,15 +156,17 @@ class ChatViewController: JSQMessagesViewController {
             for dictionary in json as! [[String: Any]] {
                 
                 let message = dictionary["message"] as? String
-                print(message!)
+                //print(message!)
                 
-                let date = dictionary["date"] as? Double
-                print(date!)
+                let date_double = dictionary["date"] as? Double
+                let date: Date = Date(timeIntervalSince1970: date_double!)
+                //TODO datum richtig ausgerechnet? wird aber nicht angezeigt
+                //print(date!)
                 
                 //let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["idFrom"] as? String
-                print(chatPartner!)
-                self.addMessage(withId: chatPartner!, name: self.partnerName!, text: message!)
+                //print(chatPartner!)
+                self.addMessage(withId: chatPartner!, name: self.partnerName!, text: message!, date: date)
                 
             }
             self.finishReceivingMessage()
@@ -212,8 +214,9 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
-    private func addMessage(withId id: String, name: String, text: String) {
-        if let message = JSQMessage(senderId: id, displayName: name, text: text) {
+    private func addMessage(withId id: String, name: String, text: String, date: Date) {
+        if let message = JSQMessage(senderId: id, senderDisplayName: name, date: date, text: text) {
+            //JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
         }
     }
