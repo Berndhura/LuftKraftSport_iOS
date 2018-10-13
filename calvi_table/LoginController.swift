@@ -145,7 +145,29 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     
     
     func goBackPressed() {
-         dismiss(animated: true, completion: nil)
+        
+        //TODO nur einfach zurück oder zurück zum letzten VC -> gemerkt in user defaults welcher index für welchen tab
+        // steht aber der falsche index drinnen dort im VC nach schauen warum falsch
+       /* if isLoggedIn() {
+            dismiss(animated: true) {
+                let defaults:UserDefaults = UserDefaults.standard
+                let idx = defaults.integer(forKey: "index")
+                self.tabBarController?.selectedIndex = 2
+                //funzt nicht ist ihm egal 
+            }
+        } else  {
+            dismiss(animated: true, completion: nil)
+        }*/
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func isLoggedIn() -> Bool {
+        
+        if Utils.getUserToken() == "" {
+            return false
+        } else {
+            return true
+        }
     }
     
     

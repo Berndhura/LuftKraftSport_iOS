@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshToken(notification:)), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
         
+        //TODO für chat wenn die notifi ankommt.... dannn hier? 
         if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil {
             // Do what you want to happen when a remote notification is tapped.
             print("IF OPEN APP FROM REMOTE NOTIFICATION IS TAPPED ----------------------------------------")
