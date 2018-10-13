@@ -78,7 +78,8 @@ class ChatViewController: JSQMessagesViewController {
         
         print(url!)
         
-        let message = JSQMessage(senderId: senderId!, displayName: senderDisplayName!, text: text!)
+        //let message = JSQMessage(senderId: senderId!, displayName: senderDisplayName!, text: text!)
+        let message =  JSQMessage(senderId: senderId!, senderDisplayName: senderDisplayName!, date: date!, text: text!)
         
         messages.append(message!)
         
@@ -158,10 +159,15 @@ class ChatViewController: JSQMessagesViewController {
                 let message = dictionary["message"] as? String
                 //print(message!)
                 
-                let date_double = dictionary["date"] as? Double
-                let date: Date = Date(timeIntervalSince1970: date_double!)
+                let date_org = dictionary["date"] as? Double
                 //TODO datum richtig ausgerechnet? wird aber nicht angezeigt
                 //print(date!)
+                let dateFormatter = DateFormatter()
+                dateFormatter.setLocalizedDateFormatFromTemplate("ddMMMyyyy")
+                dateFormatter.locale = Locale(identifier: "de_DE")
+                
+                let date = Date(timeIntervalSince1970: (date_org! / 1000.0))
+               // return dateFormatter.string(from: date)
                 
                 //let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["idFrom"] as? String
@@ -171,6 +177,10 @@ class ChatViewController: JSQMessagesViewController {
             }
             self.finishReceivingMessage()
         })
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        print("attachment")
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {

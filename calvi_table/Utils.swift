@@ -120,6 +120,17 @@ class Utils {
         }
     }
     
+    static func getFormatedDate(date: Double) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("ddMMMyyyy")
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        
+        let date = Date(timeIntervalSince1970: (date / 1000.0))
+        return dateFormatter.string(from: date)
+    }
+    
+    
     static func saveDeviceFmcToken(fcmToken: String) {
         let defaults:UserDefaults = UserDefaults.standard
         defaults.set(fcmToken, forKey: "deviceFcmToken")
