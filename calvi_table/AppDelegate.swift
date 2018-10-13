@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var navigationController: UINavigationController?
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
@@ -62,6 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Do what you want to happen when a remote notification is tapped.
             print("IF OPEN APP FROM REMOTE NOTIFICATION IS TAPPED ----------------------------------------")
         }
+        
+       // registerForPushNotifications()
+        
+        navigationController = application.windows[0].rootViewController as? UINavigationController
             
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -83,6 +88,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             annotation: annotation )
         
         return googleHandler || facebookHandler
+    }
+    
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            print("Permission granted: \(granted)")
+            // 1. Check if permission granted
+            guard granted else { return }
+            // 2. Attempt registration for remote notifications on the main thread
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
     }
     
    
@@ -175,12 +194,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        //TODO hier kommen die nachrichten an wenn registerfor... auskommentiert sit
         
         // Print full message.
         print(userInfo)
         
         // Change this to your preferred presentation option
-        completionHandler([.alert, .sound])
+        completionHandler([.alert, .sound, .badge])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -191,6 +211,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
+        
+        //TODO hier kommen die pushnachrichten an!!!!!!!!!!!!!!!
+        
+        
         print(response.notification.request.content.userInfo)
         
         //TODO: wenn typ "message" sonst add vorschlag: details view
@@ -211,7 +235,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         chatController.articleId = Int64(articleId!)!
         chatController.partnerName = name!
         
-        window?.rootViewController?.present(chatController, animated: true, completion: nil)
+        navigationController!.pushViewController(chatController, animated: true)
     }
 }
 // [END ios_10_message_handling]

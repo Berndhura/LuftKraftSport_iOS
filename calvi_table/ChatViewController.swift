@@ -78,7 +78,8 @@ class ChatViewController: JSQMessagesViewController {
         
         print(url!)
         
-        let message = JSQMessage(senderId: senderId!, displayName: senderDisplayName!, text: text!)
+        //let message = JSQMessage(senderId: senderId!, displayName: senderDisplayName!, text: text!)
+        let message =  JSQMessage(senderId: senderId!, senderDisplayName: senderDisplayName!, date: date!, text: text!)
         
         messages.append(message!)
         
@@ -156,19 +157,30 @@ class ChatViewController: JSQMessagesViewController {
             for dictionary in json as! [[String: Any]] {
                 
                 let message = dictionary["message"] as? String
-                print(message!)
+                //print(message!)
                 
-                let date = dictionary["date"] as? Double
-                print(date!)
+                let date_org = dictionary["date"] as? Double
+                //TODO datum richtig ausgerechnet? wird aber nicht angezeigt
+                //print(date!)
+                let dateFormatter = DateFormatter()
+                dateFormatter.setLocalizedDateFormatFromTemplate("ddMMMyyyy")
+                dateFormatter.locale = Locale(identifier: "de_DE")
+                
+                let date = Date(timeIntervalSince1970: (date_org! / 1000.0))
+               // return dateFormatter.string(from: date)
                 
                 //let articleId = dictionary["articleId"] as? Int64
                 let chatPartner = dictionary["idFrom"] as? String
-                print(chatPartner!)
-                self.addMessage(withId: chatPartner!, name: self.partnerName!, text: message!)
+                //print(chatPartner!)
+                self.addMessage(withId: chatPartner!, name: self.partnerName!, text: message!, date: date)
                 
             }
             self.finishReceivingMessage()
         })
+    }
+    
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        print("attachment")
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -212,8 +224,9 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
-    private func addMessage(withId id: String, name: String, text: String) {
-        if let message = JSQMessage(senderId: id, displayName: name, text: text) {
+    private func addMessage(withId id: String, name: String, text: String, date: Date) {
+        if let message = JSQMessage(senderId: id, senderDisplayName: name, date: date, text: text) {
+            //JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
         }
     }
