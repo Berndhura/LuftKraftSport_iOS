@@ -159,7 +159,7 @@ Telefon: +491711607887
 E-Mail: wichura@gmx.de
 
 Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -331,7 +331,7 @@ Weitergehende Informationen über die Erhebung und Nutzung von Daten sowie Ihre 
 https://www.facebook.com/policy.php
 
 abrufbaren Datenschutzhinweisen bereit.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>

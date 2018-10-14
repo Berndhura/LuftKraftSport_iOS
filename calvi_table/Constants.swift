@@ -9,7 +9,11 @@
 import UIKit
 
 class Constants {
+    static let gotPushNotification: String = "gotPushNotification"
     
-   static let gotPushNotification: String = "gotPushNotification"
-
+    //default lat,lng if those are not available
+    static let defaultLatitude = 53.551086
+    static let defaultLongitude = 9.993682
 }
+
+

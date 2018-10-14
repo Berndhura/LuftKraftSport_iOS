@@ -92,6 +92,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isLoggedIn() {
             prepareView()
         } else {
+            //TODO zum merken welcher VC der letzte war bevor login aufgeacht wird (index in User defaults)
+            //TODO dies hier auch in den VC für messageoverview
+            let ind = self.tabBarController?.selectedIndex
+            print(ind!)
+            let defaults:UserDefaults = UserDefaults.standard
+            defaults.set(ind, forKey: "index")
+            defaults.synchronize()
             openLogin()
         }
     }
@@ -100,14 +107,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if !isLoggedIn() {
-            //TODO zum merken welcher VC der letzte war bevor login aufgeacht wird (index in User defaults)
-            //TODO dies hier auch in den VC für messageoverview
-            let ind = self.tabBarController?.selectedIndex
-            print(ind!)
-            let defaults:UserDefaults = UserDefaults.standard
-            defaults.set(ind, forKey: "index")
-            defaults.synchronize()
-            
             openLogin()
         } else {
             prepareView()

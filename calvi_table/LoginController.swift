@@ -57,6 +57,14 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     }
     
     
+    /*override func viewWillAppear(_ animated: Bool) {
+        let ind = self.tabBarController?.selectedIndex
+        print(ind!)
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(ind, forKey: "index")
+        defaults.synchronize()
+    }*/
+    
     override func viewDidAppear(_ animated: Bool) {
         refreshTabBar()
     }
