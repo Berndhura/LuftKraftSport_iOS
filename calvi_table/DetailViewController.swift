@@ -122,9 +122,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         prepareMap()
 
-        //TODO no icon to see
-        shareButton = UIBarButtonItem(image: UIImage(named: "home"), style: .plain, target: self, action: #selector(self.shareArticle))
-        tabBarController?.navigationItem.setRightBarButtonItems([shareButton!], animated: true)
+        prepareShareButton()
         
         if userId != nil {
             let userIdFromDefaults = Utils.getUserId()
@@ -188,6 +186,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         addImageToScrollView(imageNumber: 0)
     }
     
+    
+    func prepareShareButton() {
+        shareButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(DetailViewController.shareArticle))
+        self.navigationItem.setRightBarButton(shareButton, animated: true)
+    }
+
+    
     func increaseViewsForAd() {
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId!)/increaseViewCount")
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
@@ -198,14 +203,22 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func shareArticle(_ sender: Any) {
         
+        //TODO richtigen linke schicken - alles andere geht nun
         let originalString = "First Whatsapp Share"
         let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
         
         let url  = URL(string: "whatsapp://send?text=\(escapedString!)")
         
-        if UIApplication.shared.canOpenURL(url! as URL)
-        {
-            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+           //no Whatsapp
+            let alertNoWhatsapp = UIAlertController(title: NSLocalizedString("problem", comment: ""), message: NSLocalizedString("no_whatsapp", comment: ""), preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .default) { (action) in
+                return
+            }
+            alertNoWhatsapp.addAction(ok)
+            present(alertNoWhatsapp, animated: true, completion: nil)
         }
     }
     

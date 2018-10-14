@@ -70,7 +70,7 @@ class MessagesController: UIViewController {
         
         registerObservers()
         
-        refreshMessages = UIBarButtonItem(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(MessagesController.fetchMessages))
+        refreshMessages = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(MessagesController.fetchMessages))
         
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
         

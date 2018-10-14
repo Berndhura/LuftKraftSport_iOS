@@ -68,13 +68,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         tabBarController?.title = "Luftkraftsport"
     
         //refresh ads button in tabbar
-        refreshButton = UIBarButtonItem.init(image: UIImage(named: "loading"), style: .plain, target: self, action: #selector(ViewController.refreshArticles))
+        refreshButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(ViewController.refreshArticles))
         
-        if Utils.isLoggedIn() {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
-        } else {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
-        }
+        tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
         
         tableView?.backgroundColor = UIColor.gray
         
@@ -91,12 +87,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     override func viewDidAppear(_ animated: Bool) {
         adaptTitle()
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
-        
-        if Utils.isLoggedIn() {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
-        } else {
-            tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
-        }
         
         //to get my article from homeViewController
         callbackClosureMyArticles?()
