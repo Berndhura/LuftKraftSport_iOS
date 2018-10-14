@@ -12,6 +12,7 @@
 "main_search_title" = "Search...";
 "no_articles" = "No ads yet :-(";
 "no_whatsapp" = "WhatsApp is not installed on your phone!";
+"whatsapp_share" = "Maybe that's something for you: ";
 
 "delete_article" = "Delete article";
 "delete_article_confirm" = "Are you sure to do this?";

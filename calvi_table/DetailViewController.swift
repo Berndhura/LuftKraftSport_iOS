@@ -203,8 +203,9 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func shareArticle(_ sender: Any) {
         
-        //TODO richtigen linke schicken - alles andere geht nun
-        let originalString = "First Whatsapp Share"
+        let id = self.articleId
+        let originalString = NSLocalizedString("whatsapp_share", comment: "") + "http://www.luftkraftsport.de/#/article/\(String(describing: id))/show"
+        
         let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
         
         let url  = URL(string: "whatsapp://send?text=\(escapedString!)")
@@ -212,7 +213,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         } else {
-           //no Whatsapp
+           //no Whatsapp - show it
             let alertNoWhatsapp = UIAlertController(title: NSLocalizedString("problem", comment: ""), message: NSLocalizedString("no_whatsapp", comment: ""), preferredStyle: .alert)
             let ok = UIAlertAction(title: "ok", style: .default) { (action) in
                 return

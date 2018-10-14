@@ -12,6 +12,7 @@
 "main_search_title" = "Suche dein Material...";
 "no_articles" = "Noch keine Anzeigen :-(";
 "no_whatsapp" = "WhatsApp ist auf deinem Telefon nicht installiert";
+"whatsapp_share" = "Hier das könnte etwas für Dich sein: ";
 
 "delete_article" = "Anzeige löschen!";
 "delete_article_confirm" = "Bist du dir sicher?";
