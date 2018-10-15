@@ -399,7 +399,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
                 
                 let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
                 
-                
+                //TODO crash oft hier beim ersten nachrichten schicken url ist nil
                 Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                     .responseJSON { response in
                 }
