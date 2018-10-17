@@ -177,10 +177,10 @@ Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlich
             </objects>
             <point key="canvasLocation" x="-2742" y="1589"/>
         </scene>
-        <!--View Controller-->
+        <!--Data Protection View Controller-->
         <scene sceneID="8MZ-vf-zTb">
             <objects>
-                <viewController id="AY9-Ta-i6z" sceneMemberID="viewController">
+                <viewController id="AY9-Ta-i6z" customClass="DataProtectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xjC-w6-6l5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,7 +188,7 @@ Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlich
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zUP-tC-Hnk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Datenschutzerklärung
+                                <mutableString key="text">Datenschutzerklärung
 
 Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
 
@@ -204,30 +204,19 @@ III. Informationen zur Datenverarbeitung
 
 I. Informationen über uns als Verantwortliche
 
-Verantwortlicher Anbieter dieses Internetauftritts im datenschutzrechtlichen Sinne ist:
+Verantwortlicher Anbieter dieser App im datenschutzrechtlichen Sinne ist:
 
-Musterfirma/Musterunternehmer
-Musterstraße 1
-12345 Musterstadt
+Bernd Wichura
+Gützkower Strasse 68 
+17489 Greifswald
 Deutschland
 
-Telefon: Telefonnummer
-Telefax: Faxnummer
-E-Mail: muster@mustermail.xy
+Telefon: 01711607887
+E-Mail: wichura@gmx.de
 
 Datenschutzbeauftragte/r beim Anbieter ist:
 
-Maxie Musterfrau 
-
-[nachfolgende Angaben sind zu ergänzen, sofern ein Externer Datenschutzbeauftragter bestellt ist]
-
-Musterstraße 1
-12345 Musterstadt
-Deutschland
-
-Telefon: Telefonnummer
-Telefax: Faxnummer
-E-Mail: datenschutz@mustermail.xy
+Bernd Wichura
 
 II. Rechte der Nutzer und Betroffenen
 
@@ -330,7 +319,7 @@ Weitergehende Informationen über die Erhebung und Nutzung von Daten sowie Ihre 
 
 https://www.facebook.com/policy.php
 
-abrufbaren Datenschutzhinweisen bereit.</string>
+abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -1004,10 +993,10 @@ abrufbaren Datenschutzhinweisen bereit.</string>
     <resources>
         <image name="delete-32" width="32" height="32"/>
         <image name="edit-32" width="32" height="32"/>
-        <image name="home" width="25.600000381469727" height="25.600000381469727"/>
-        <image name="login" width="25.600000381469727" height="25.600000381469727"/>
-        <image name="mail" width="25.600000381469727" height="25.600000381469727"/>
-        <image name="plus" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="home" width="32" height="32"/>
+        <image name="login" width="32" height="32"/>
+        <image name="mail" width="32" height="32"/>
+        <image name="plus" width="32" height="32"/>
         <image name="search-30" width="30" height="30"/>
     </resources>
 </document>

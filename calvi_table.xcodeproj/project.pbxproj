@@ -11,6 +11,7 @@
 		206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */; };
 		270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */; };
 		2711D3952177BA9F00A4416D /* UITableView+setEmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */; };
+		2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3962177BE2900A4416D /* DataProtectionViewController.swift */; };
 		2714E4FE21595531006A576B /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714E4FD21595531006A576B /* AppColors.swift */; };
 		2714E500215974DA006A576B /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714E4FF215974DA006A576B /* RoundImageView.swift */; };
 		2714E502215ABFB8006A576B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714E501215ABFB8006A576B /* HomeViewController.swift */; };
@@ -69,6 +70,7 @@
 		2705B6C920B36551004B36E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+setEmptyMessage.swift"; sourceTree = "<group>"; };
+		2711D3962177BE2900A4416D /* DataProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionViewController.swift; sourceTree = "<group>"; };
 		2714E4FD21595531006A576B /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		2714E4FF215974DA006A576B /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		2714E501215ABFB8006A576B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				27930C5A20DCF26F006BC154 /* Localizable.strings */,
 				2714E501215ABFB8006A576B /* HomeViewController.swift */,
 				2714E503215AD06E006A576B /* ImpressumViewController.swift */,
+				2711D3962177BE2900A4416D /* DataProtectionViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */,
 				2714E502215ABFB8006A576B /* HomeViewController.swift in Sources */,
+				2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
 				2714E504215AD06E006A576B /* ImpressumViewController.swift in Sources */,
 				274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */,
