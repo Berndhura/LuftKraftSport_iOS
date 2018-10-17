@@ -324,26 +324,11 @@ extension ViewController: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //TODO anzeige wenn kein Internet vorhanden
-        //TODO ein richtiges background bild machen, das hier ist nicht so schön
-        
         if ads.count == 0 {
-            noMessagesLabel.numberOfLines = 2
-            noMessagesLabel.textColor = UIColor.blue
-            noMessagesLabel.textAlignment = .center
-            noMessagesLabel.text = NSLocalizedString("no_articles", comment: "")
-            noMessagesLabel.tag = 1
-            
-            self.tableView.addSubview(noMessagesLabel)
-            
-            noMessagesLabel.translatesAutoresizingMaskIntoConstraints = false
-            noMessagesLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-            noMessagesLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-            tableView.backgroundColor = UIColor.clear
+            self.tableView.setEmptyMessage(NSLocalizedString("no_articles", comment: ""))
         } else {
-            noMessagesLabel.removeFromSuperview()
+            self.tableView.restore()
         }
-        
         return ads.count
     }
     

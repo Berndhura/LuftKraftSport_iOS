@@ -191,20 +191,9 @@ extension MessagesController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if messages.count == 0 {
-            noMessagesLabel.numberOfLines = 2
-            noMessagesLabel.textColor = UIColor.blue
-            noMessagesLabel.textAlignment = .center
-            noMessagesLabel.text = NSLocalizedString("no_messages", comment: "")
-            noMessagesLabel.tag = 1
-            
-            self.tableView.addSubview(noMessagesLabel)
-            
-            noMessagesLabel.translatesAutoresizingMaskIntoConstraints = false
-            noMessagesLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
-            noMessagesLabel.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
-            tableView.backgroundColor = UIColor.clear
+            self.tableView.setEmptyMessage(NSLocalizedString("no_messages", comment: ""))
         } else {
-            noMessagesLabel.removeFromSuperview()
+            self.tableView.restore()
         }
         
         return messages.count
