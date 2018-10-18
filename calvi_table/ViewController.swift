@@ -253,11 +253,17 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                         localAds.append(ad)
                     }
                 case .failure(let error):
+                    //todo nice error handling -> inform user but do not hassle user
+                    /*switch URLError.Code(rawValue: error.code) {
+                    case .some(.notConnectedToInternet):
+                        print("bix netz")
+                    }*/
                     print(error)
                 }
                 self.ads = localAds
                 self.tableView.reloadData()
-                self.adaptTitle()        }
+                self.adaptTitle()
+        }
     }
     
     
