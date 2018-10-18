@@ -112,7 +112,7 @@ class MessagesController: UIViewController {
     
     
     func fetchMessages() {
-            
+        
         var localMsg: [MessageOverview] = []
         
         let userToken = Utils.getUserToken()

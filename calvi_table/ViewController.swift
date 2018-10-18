@@ -189,6 +189,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         print("fetching ads........................")
         
+        var localAds: [Ad]  = []
+        
         //TODO das ist mist, alamofire in extra func rufen?? wahrscheinlich...
         var url: URL
         
@@ -266,10 +268,12 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 
                 let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng, views: views!)
                 
-                self.ads.append(ad)
+                //self.ads.append(ad)
+                localAds.append(ad)
             }
             
             DispatchQueue.main.async(execute: {
+                self.ads = localAds
                 self.tableView.reloadData()
                 self.adaptTitle()
             })
@@ -326,8 +330,10 @@ extension ViewController: UITableViewDataSource {
         
         if ads.count == 0 {
             self.tableView.setEmptyMessage(NSLocalizedString("no_articles", comment: ""))
+            self.searchController.searchBar.isHidden = true
         } else {
             self.tableView.restore()
+            self.searchController.searchBar.isHidden = false
         }
         return ads.count
     }
