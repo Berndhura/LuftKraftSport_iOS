@@ -257,7 +257,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 }
                 self.ads = localAds
                 self.tableView.reloadData()
-        }
+                self.adaptTitle()        }
     }
     
     
