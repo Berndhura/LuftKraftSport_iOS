@@ -10,6 +10,9 @@
 "abort" = "Abbrechen";
 "no_search_results" = "Suche erfolglos!";
 "no_search_results_details" = "Dies Suche hat leider kein Ergebnis gebracht :-(";
+"report_ad" = "Diese Anzeige melden aufgrund von unangebrachten Inhalt";
+"report" = "Melden";
+"ads" = "Anzeigen: ";
 
 "main_search_title" = "Suche dein Material...";
 "no_articles" = "Noch keine Anzeigen :-(";

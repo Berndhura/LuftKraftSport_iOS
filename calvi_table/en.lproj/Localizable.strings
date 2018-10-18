@@ -10,6 +10,9 @@
 "abort" = "Abort";
 "no_search_results" = "No Results!";
 "no_search_results_details" = "There are currently no ads for your search :-(";
+"report_ad" = "Report this ad due to inappropriate content";
+"report" = "Report";
+"ads" = "Ads: ";
 
 "main_search_title" = "Search...";
 "no_articles" = "No ads yet :-(";

@@ -188,7 +188,7 @@ Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlich
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zUP-tC-Hnk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Datenschutzerklärung
+                                <string key="text">Datenschutzerklärung
 
 Personenbezogene Daten (nachfolgend zumeist nur „Daten“ genannt) werden von uns nur im Rahmen der Erforderlichkeit sowie zum Zwecke der Bereitstellung eines funktionsfähigen und nutzerfreundlichen Internetauftritts, inklusive seiner Inhalte und der dort angebotenen Leistungen, verarbeitet.
 
@@ -319,7 +319,7 @@ Weitergehende Informationen über die Erhebung und Nutzung von Daten sowie Ihre 
 
 https://www.facebook.com/policy.php
 
-abrufbaren Datenschutzhinweisen bereit.</mutableString>
+abrufbaren Datenschutzhinweisen bereit.</string>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -668,13 +668,13 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJq-Na-9OF" userLabel="location">
-                                                    <rect key="frame" x="61" y="14" width="291" height="20.5"/>
+                                                    <rect key="frame" x="61" y="14" width="62.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xY-rX-2Q0" userLabel="user_name">
-                                                    <rect key="frame" x="61" y="39.5" width="291" height="18.5"/>
+                                                    <rect key="frame" x="61" y="39.5" width="40.5" height="18.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -718,6 +718,13 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhF-JO-ePe" userLabel="menu">
+                                                    <rect key="frame" x="318" y="10" width="50" height="41"/>
+                                                    <state key="normal" image="menu-vertical"/>
+                                                    <connections>
+                                                        <action selector="menuBtn:" destination="fbH-nU-18z" eventType="touchUpInside" id="Vuv-c7-bk5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8c5-48-ceK" firstAttribute="top" secondItem="zn6-gS-HTW" secondAttribute="bottom" constant="8" id="1Gn-kc-8ZZ"/>
@@ -733,9 +740,11 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                 <constraint firstItem="Hwl-7W-ejw" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="GZy-yz-lNt"/>
                                                 <constraint firstItem="2xY-rX-2Q0" firstAttribute="leading" secondItem="OGD-Gd-Ehb" secondAttribute="trailing" constant="8" id="L6R-JD-Myg"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="2xY-rX-2Q0" secondAttribute="bottom" constant="3" id="N7u-ti-AbZ"/>
+                                                <constraint firstItem="WhF-JO-ePe" firstAttribute="trailing" secondItem="6IU-NM-KFW" secondAttribute="trailingMargin" constant="8" id="UUi-EW-b3l"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" id="UmJ-55-Bss"/>
                                                 <constraint firstItem="SSn-2C-ab2" firstAttribute="top" secondItem="R2l-oE-iwT" secondAttribute="bottom" constant="8" id="VAV-bu-mWD"/>
                                                 <constraint firstItem="OGD-Gd-Ehb" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" id="XiL-HO-Zg8"/>
+                                                <constraint firstItem="WhF-JO-ePe" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="top" constant="10" id="Zig-yw-Jbz"/>
                                                 <constraint firstItem="rW5-ia-zSd" firstAttribute="top" secondItem="8c5-48-ceK" secondAttribute="bottom" constant="8" id="aeJ-qx-ICR"/>
                                                 <constraint firstAttribute="trailing" secondItem="Hwl-7W-ejw" secondAttribute="trailing" constant="8" id="c8z-r2-wzT"/>
                                                 <constraint firstItem="R2l-oE-iwT" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="cGH-db-D58"/>
@@ -744,9 +753,8 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                                                 <constraint firstAttribute="trailing" secondItem="8c5-48-ceK" secondAttribute="trailing" constant="8" id="fc2-WF-Kgs"/>
                                                 <constraint firstItem="8c5-48-ceK" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="hs2-cN-nNU"/>
                                                 <constraint firstItem="SSn-2C-ab2" firstAttribute="leading" secondItem="6IU-NM-KFW" secondAttribute="leading" constant="8" id="kfI-hI-xw2"/>
+                                                <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="WhF-JO-ePe" secondAttribute="bottom" constant="10" id="kuz-VP-ngB"/>
                                                 <constraint firstAttribute="trailing" secondItem="zn6-gS-HTW" secondAttribute="trailing" id="lSw-8C-iqt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="2xY-rX-2Q0" secondAttribute="trailing" constant="8" id="qJB-0a-Iii"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="UJq-Na-9OF" secondAttribute="trailing" constant="8" id="rIn-Rl-vK7"/>
                                                 <constraint firstItem="R2l-oE-iwT" firstAttribute="top" secondItem="Hwl-7W-ejw" secondAttribute="bottom" constant="8" id="vYx-Y4-aJ8"/>
                                                 <constraint firstItem="zn6-gS-HTW" firstAttribute="top" secondItem="6IU-NM-KFW" secondAttribute="topMargin" constant="50" id="wys-ms-RfW"/>
                                             </constraints>
@@ -786,7 +794,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-375" y="-135"/>
+            <point key="canvasLocation" x="-375.19999999999999" y="-135.38230884557723"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Qbk-Zk-5uH">
@@ -996,6 +1004,7 @@ abrufbaren Datenschutzhinweisen bereit.</mutableString>
         <image name="home" width="32" height="32"/>
         <image name="login" width="32" height="32"/>
         <image name="mail" width="32" height="32"/>
+        <image name="menu-vertical" width="50" height="50"/>
         <image name="plus" width="32" height="32"/>
         <image name="search-30" width="30" height="30"/>
     </resources>

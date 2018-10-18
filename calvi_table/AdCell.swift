@@ -143,7 +143,22 @@ class AdCell: UITableViewCell {
         
         mainViewController!.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
+    
+    @IBAction func menuBtn(_ sender: Any) {
+        let badAd = UIAlertController(title: NSLocalizedString("report_ad", comment: ""), message: NSLocalizedString("", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        
+        badAd.addAction(UIAlertAction(title: NSLocalizedString("report", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
+            //TODO melde diese ad an den admin zu prüfung
+        }))
+        
+        badAd.addAction(UIAlertAction(title: NSLocalizedString("abort", comment: "") , style: .cancel, handler: { (action: UIAlertAction!) in
+            return
+        }))
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(badAd, animated: true, completion: nil)
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

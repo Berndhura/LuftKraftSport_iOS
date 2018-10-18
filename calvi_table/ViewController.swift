@@ -190,7 +190,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         print("fetching ads........................")
         
-        var localAds: [Ad]  = []
+        //paging problem
+        //var localAds: [Ad]  = []
         
         var url: URL
         
@@ -250,7 +251,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                         
                         let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat!, lng: lng!, views: views!)
                         
-                        localAds.append(ad)
+                        self.ads.append(ad)
                     }
                 case .failure(let error):
                     //todo nice error handling -> inform user but do not hassle user
@@ -260,7 +261,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     }*/
                     print(error)
                 }
-                self.ads = localAds
+                //TODO paging problem
+                //self.ads = localAds
                 self.tableView.reloadData()
                 self.adaptTitle()
         }
@@ -268,7 +270,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     
     func adaptTitle() {
-        self.tabBarController?.title = "Anzeigen: " + String(self.totalItems)
+        self.tabBarController?.title = NSLocalizedString("ads", comment: "") + String(self.totalItems)
     }
     
     
