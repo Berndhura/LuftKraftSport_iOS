@@ -8,6 +8,8 @@
 
 "problem" = "Es gibt ein Problem!";
 "abort" = "Abbrechen";
+"no_search_results" = "Suche erfolglos!";
+"no_search_results_details" = "Dies Suche hat leider kein Ergebnis gebracht :-(";
 
 "main_search_title" = "Suche dein Material...";
 "no_articles" = "Noch keine Anzeigen :-(";

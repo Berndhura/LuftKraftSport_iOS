@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import Firebase
 import SDWebImage
+import SwiftyJSON
 
 class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -29,9 +30,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var noMessagesLabel = UILabel()
     
-    var callbackClosureMyArticles: ((Void) -> Void)?
+    var callbackClosureMyArticles: (() -> Void)?
     
-    var callbackClosureBookmarks: ((Void) -> Void)?
+    var callbackClosureBookmarks: (() -> Void)?
 
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
@@ -191,21 +192,19 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         var localAds: [Ad]  = []
         
-        //TODO das ist mist, alamofire in extra func rufen?? wahrscheinlich...
         var url: URL
         
         if type == "all" {
             //all articles
             url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=\(page)&size=\(batchSize)")!
-            
         } else if type == "search" {
             //search for article
             url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")!
-            print("http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")     //TODO Paging einbauen
-            
-        } else if type == "bookmarked" {  //TODO: paging? eher nicht weil, obergrenze 30? bookmarks?
-            //search for bookmarked articles
+            //TODO Paging einbauen
+        } else if type == "bookmarked" {
+            //bookmarks
             let token = Utils.getUserToken()
+            //TODO check url -> distance
             url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")!
         } else {
             //my articles
@@ -214,76 +213,58 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             url = URL(string: urlString)!
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            guard error == nil else {
-                print(error!)
-                return
-            }
-            
-            guard let data = data else {
-                print("Data is empty")
-                return
-            }
-            
-            let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String: Any]
-            
-            //print(json)
-            self.size = json["size"] as! Int
-            self.totalItems = json["total"] as! Int
-            self.pages = json["pages"] as! Int
-            
-            //page": 0, "size": 10, "pages": 4, "total": 31,
-            
-            //todo auslagern hier
-            self.totalItems =  json["total"] as! Int
-            if self.totalItems == 0 && type == "search" {
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
                 
-                let alert = UIAlertController(title: "Suche erfolglos!", message: "Dies Suche hat leider kein Ergebnis gebracht :-(", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
-                self.tableView.backgroundColor = UIColor.white
-            }
-            
-            for dictionary in json["ads"] as! [[String: Any]] {
-                
-                let title = dictionary["title"] as? String
-                let descriptions = dictionary["description"] as? String
-                let price = dictionary["price"] as? Int
-                let userId = dictionary["userId"] as? String
-                let location = dictionary["locationName"] as? String
-                let date = dictionary["date"] as? Double
-                let articleId = dictionary["id"] as? Int32
-                var urls = dictionary["urls"] as? String
-                let coordinates = dictionary["location"] as! [String: Any]
-                let latLng = coordinates["coordinates"] as! [Double]
-                let lat = latLng[0]
-                let lng = latLng[1]
-                let views = dictionary["views"] as? Int
-                
-                if urls == nil {
-                    urls = ""
+                switch response.result {
+                case .success:
+                    let json = JSON(response.result.value ?? "default")
+                    
+                    self.size = json["size"].int!
+                    self.totalItems = json["total"].int!
+                    self.pages = json["pages"].int!
+                    
+                    self.totalItems =  json["total"].int!
+                    if self.totalItems == 0 && type == "search" {
+                        self.showAlertForNoResults()
+                        self.tableView.backgroundColor = UIColor.white
+                    }
+                    
+                    for (_ , value) in json["ads"] {
+                        
+                        let title = value["title"].string
+                        let descriptions = value["description"].string
+                        let price = value["price"].int
+                        let userId = value["userId"].string
+                        let location = value["locationName"].string
+                        let date = value["date"].double
+                        let articleId = value["id"].int32
+                        var urls = value["urls"].string
+                        let lat =  value["location"]["coordinates"][0].double
+                        let lng =  value["location"]["coordinates"][1].double
+                        let views = value["views"].int
+                        
+                        if urls == nil {
+                            urls = ""
+                        }
+                        
+                        let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat!, lng: lng!, views: views!)
+                        
+                        localAds.append(ad)
+                    }
+                case .failure(let error):
+                    print(error)
                 }
-                
-                let ad = Ad(title: title!, desc: descriptions!, urls: urls!, price: price!, location: location ?? "", date: date!, userId: userId!, articleId: articleId!, lat: lat, lng: lng, views: views!)
-                
-                //self.ads.append(ad)
-                localAds.append(ad)
-            }
-            
-            DispatchQueue.main.async(execute: {
                 self.ads = localAds
                 self.tableView.reloadData()
-                self.adaptTitle()
-            })
-            
-            }.resume()
+        }
     }
+    
     
     func adaptTitle() {
         self.tabBarController?.title = "Anzeigen: " + String(self.totalItems)
     }
+    
     
     func getPictureUrl(str: String) -> String {
         let ind = str.split{$0 == ","}.map(String.init)
@@ -292,6 +273,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         } else {
             return "1"
         }
+    }
+    
+    
+    func showAlertForNoResults() {
+        let alert = UIAlertController(title: NSLocalizedString("no_search_results", comment: ""), message: NSLocalizedString("no_search_results_details", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 

@@ -8,6 +8,8 @@
 
 "problem" = "There is a problem!";
 "abort" = "Abort";
+"no_search_results" = "No Results!";
+"no_search_results_details" = "There are currently no ads for your search :-(";
 
 "main_search_title" = "Search...";
 "no_articles" = "No ads yet :-(";
