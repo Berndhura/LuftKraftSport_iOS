@@ -13,6 +13,7 @@
 "report_ad" = "Diese Anzeige melden aufgrund von unangebrachten Inhalt";
 "report" = "Melden";
 "ads" = "Anzeigen: ";
+"views" = "Angeschaut: ";
 
 "main_search_title" = "Suche dein Material...";
 "no_articles" = "Noch keine Anzeigen :-(";

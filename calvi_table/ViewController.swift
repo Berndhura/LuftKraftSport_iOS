@@ -257,7 +257,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     //todo nice error handling -> inform user but do not hassle user
                     /*switch URLError.Code(rawValue: error.code) {
                     case .some(.notConnectedToInternet):
-                        print("bix netz")
+                        print("nix netz")
                     }*/
                     print(error)
                 }
@@ -369,7 +369,7 @@ extension ViewController: UITableViewDataSource {
         cell?.title?.text = currentAd.title
         
         //views
-        cell?.views?.text = "Views: " + String(describing: currentAd.views)
+        cell?.views?.text = NSLocalizedString("views", comment: "") + String(describing: currentAd.views)
         
         //location
         cell?.location?.text = currentAd.location
