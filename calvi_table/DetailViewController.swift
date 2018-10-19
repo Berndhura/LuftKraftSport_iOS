@@ -203,7 +203,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func shareArticle(_ sender: Any) {
         
-        let id = self.articleId
+        let id = self.articleId!
         let originalString = NSLocalizedString("whatsapp_share", comment: "") + "http://www.luftkraftsport.de/#/article/\(String(describing: id))/show"
         
         let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
