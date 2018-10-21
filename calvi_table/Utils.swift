@@ -116,7 +116,7 @@ class Utils {
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
-                print(response)
+               // print(response)
         }
     }
     

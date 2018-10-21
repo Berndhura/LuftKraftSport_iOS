@@ -98,7 +98,7 @@ class ArticlePresenter {
                             }
                     }
                 case .failure(let error):
-                    print(error)
+                    //print(error)
                     SVProgressHUD.dismiss()
                 }
             }

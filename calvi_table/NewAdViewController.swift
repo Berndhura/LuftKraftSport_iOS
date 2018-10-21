@@ -103,15 +103,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    
-   override func viewWillAppear(_ animated: Bool) {
+    //problem: prepareView wird wieder aufgerufen wenn vom ImagePicker zurück -> keine Bilderanziege!!!
+    /*override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if !isLoggedIn() {
             openLogin()
         } else {
-            prepareView()
+           //prepareView()
         }
-    }
+    }*/
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

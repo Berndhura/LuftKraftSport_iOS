@@ -77,7 +77,7 @@ class AdCell: UITableViewCell {
                 
                 Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                     .responseJSON { response in
-                        print(response)
+                        //print(response)
                         // self.showAlert()
                 }
                 bookmarkButton.setImage(#imageLiteral(resourceName: "ic_star_white_36pt"), for: .normal)
