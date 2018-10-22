@@ -18,8 +18,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
     
-    //private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
-   // private var newMessageRefHandle: FIRDatabaseHandle?
+    let nc = NotificationCenter.default
     
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
@@ -28,17 +27,41 @@ class ChatViewController: JSQMessagesViewController {
         
         super.viewDidAppear(true)
         
+        whichChatIsOpen()
+        
+        nc.addObserver(self, selector: #selector(gettingMessage), name: Notification.Name(Constants.gotPushNotification), object: nil)
+        
         title = partnerName!
         
         fetchChat()
-
-
-        // messages from someone else
-        //addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
-        // messages sent from local sender
-        //addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
-        //addMessage(withId: senderId, name: "Me", text: "I like to run!")
-        // animates the receiving of a new message on the view
+    }
+    
+    func gettingMessage(_ notification: NSNotification) {
+        let messageText = notification.userInfo?["message"] as! String
+        let partnerName = notification.userInfo?["name"] as! String
+        let partnerId = notification.userInfo?["partnerId"] as! String
+        let date_org = 23123123.0
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("ddMMMyyyy")
+        dateFormatter.locale = Locale(identifier: "de_DE")
+        
+        let date = Date(timeIntervalSince1970: (date_org))
+        let mes =  JSQMessage(senderId: partnerId, senderDisplayName: partnerName, date: date, text: messageText)
+        messages.append(mes!)
+        self.finishSendingMessage()
+    }
+    
+    func whichChatIsOpen() {
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(articleId, forKey: "articleId")
+        defaults.set(sender, forKey: "senderId")
+        defaults.synchronize()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        Utils.eraseChatInfo()
+        nc.removeObserver(self, name: Notification.Name("mes"), object: nil)
     }
     
     override func viewDidLoad() {
@@ -53,15 +76,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
-        /*let itemRef = messageRef.childByAutoId() // 1
-        let messageItem = [ // 2
-            "senderId": senderId!,
-            "senderName": senderDisplayName!,
-            "text": text!,
-            ]
-        */
-        //itemRef.setValue(messageItem) // 3
         
         let messageToSend = text!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         print("message: " + messageToSend!)

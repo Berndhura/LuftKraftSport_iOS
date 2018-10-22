@@ -49,9 +49,6 @@ class MessagesController: UIViewController {
         self.tabBarController?.title = NSLocalizedString("messages_title", comment: "") + String(self.messages.count)
         
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshMessages!], animated: true)
-        
-        //TODO remove observer?
-        //NotificationCenter.default.addObserver(self, #selector(self.messageReceived), name: nil, object: nil)
     }
     
     
@@ -67,8 +64,6 @@ class MessagesController: UIViewController {
     func prepareView() {
         
         tableView.separatorStyle = .none
-        
-        registerObservers()
         
         refreshMessages = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(MessagesController.fetchMessages))
         
@@ -103,11 +98,6 @@ class MessagesController: UIViewController {
         } else {
             return true
         }
-    }
-    
-    
-    func messageReceived() {
-        print("push angekommen!")
     }
     
     
@@ -152,16 +142,6 @@ class MessagesController: UIViewController {
         }
     }
     
-    
-    func registerObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.showNewMessage), name: NSNotification.Name(rawValue: Constants.gotPushNotification), object: nil)
-    }
-    
-    
-    func showNewMessage() {
-        //TODO check in app delegate -> message tone usw
-        print("angekommen")
-    }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

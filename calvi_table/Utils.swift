@@ -95,6 +95,13 @@ class Utils {
             return ""
         }
     }
+    
+    static func eraseChatInfo() {
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set("", forKey: "articleId")
+        defaults.set("", forKey: "senderId")
+        defaults.synchronize()
+    }
 
     
     static func logoutUser() {
