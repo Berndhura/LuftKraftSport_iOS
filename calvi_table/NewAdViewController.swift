@@ -149,7 +149,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         if isEditMode {
             saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
-            print("GERO: PictureURL:" + pictureUrl)
             editArticle()
         } else {
             saveArticleButton.setTitle(NSLocalizedString("new_article_save_button", comment: ""), for: .normal)
@@ -537,8 +536,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     func createNewAd(coordinate: CLLocationCoordinate2D) {
         
-        //TODO each post request gets it's own progress: create, edit, picture upload etc
-        
         let userToken = Utils.getUserToken()
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
@@ -580,7 +577,16 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         //get new ID from response
         var dict: NSDictionary!
-        dict = response.result.value as! NSDictionary
+        dict = response.result.value as? NSDictionary
+        
+        //no images -> dismiss
+        if adImages.count == 0 {
+            saveArticleButton.isEnabled = true
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.rootViewController = tabBarController
+        }
         
         if let articleId = dict["id"] {
             let userToken = Utils.getUserToken()
