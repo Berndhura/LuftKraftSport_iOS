@@ -348,13 +348,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     }
     
     func showUnBookmarkInfo() {
-        let alert = UIAlertController(title: "Artikel wird vergessen!", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: NSLocalizedString("unbookmark_info", comment: ""), message: nil, preferredStyle: .actionSheet)
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Artikel ist gemerkt!", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: NSLocalizedString("bookmarked_info", comment: ""), message: nil, preferredStyle: .actionSheet)
         self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }
@@ -375,7 +375,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
             }
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: NSLocalizedString("abort", comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
             return
         }))
         

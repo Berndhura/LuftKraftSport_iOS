@@ -13,7 +13,9 @@
 "report_ad" = "Diese Anzeige melden aufgrund von unangebrachten Inhalt";
 "report" = "Melden";
 "ads" = "Anzeigen: ";
-"views" = "Angeschaut: ";
+"views" = "Angesehen: ";
+"bookmarked_info" = "Artikel ist gemerkt...";
+"unbookmark_info" = "Artikel von der Merkliste gelöscht...";
 
 "main_search_title" = "Suche dein Material...";
 "no_articles" = "Noch keine Anzeigen :-(";
