@@ -30,7 +30,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var login: UIButton!
     
     @IBAction func loginBtn(_ sender: Any) {
-        
         if Utils.getUserToken() == "" {
             loginUser()
         } else {

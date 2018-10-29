@@ -70,10 +70,15 @@ class ChatViewController: JSQMessagesViewController {
         self.senderId = Utils.getUserId()
         self.senderDisplayName = "CONAN"
         
+        
+        
         // No avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
+        //collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.init(width: 30, height: 30)
+        //collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.init(width: 30, height: 30)
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
     }
+    
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
@@ -245,7 +250,15 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
-    }
+    //TODO avatar image
+   /* override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        let defaults:UserDefaults = UserDefaults.standard
+        let url = defaults.string(forKey: "userImageUrl")
+        
+        let picture = UIImageView()
+        
+        picture.sd_setImage(with: URL(string: url!), placeholderImage: UIImage(named: "lks_logo_1024x1024"))
+        let avatar = JSQMessagesAvatarImage.avatar(with: picture.image!)
+        return avatar
+    }*/
 }

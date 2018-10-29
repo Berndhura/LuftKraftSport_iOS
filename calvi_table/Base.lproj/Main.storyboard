@@ -367,16 +367,8 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                             <action selector="bookmarksBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="XTX-Ue-rGF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMS-Xf-7fq">
-                                        <rect key="frame" x="15" y="98" width="247" height="34"/>
-                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
-                                        <state key="normal" title="loginout"/>
-                                        <connections>
-                                            <action selector="loginBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="9vb-l0-QJw"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awm-L3-NM0">
-                                        <rect key="frame" x="15" y="142" width="247" height="34"/>
+                                        <rect key="frame" x="15" y="147" width="247" height="34"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Impressum"/>
                                         <connections>
@@ -384,11 +376,19 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-SC-yvx">
-                                        <rect key="frame" x="15" y="186" width="247" height="34"/>
+                                        <rect key="frame" x="15" y="191" width="247" height="34"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Datenschutzbestimmungen"/>
                                         <connections>
                                             <segue destination="AY9-Ta-i6z" kind="show" id="d1x-MN-KdX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTW-nB-39W">
+                                        <rect key="frame" x="15" y="103" width="232" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                                        <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="nSt-gq-qT2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -397,17 +397,17 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                     <constraint firstAttribute="trailing" secondItem="oAx-6E-Xzk" secondAttribute="trailing" id="3DX-4e-JW4"/>
                                     <constraint firstAttribute="bottom" secondItem="Bhy-SC-yvx" secondAttribute="bottom" constant="325" id="57x-iE-2t7"/>
                                     <constraint firstItem="Qj1-7K-Ams" firstAttribute="top" secondItem="oAx-6E-Xzk" secondAttribute="bottom" constant="10" id="64x-ZR-alX"/>
-                                    <constraint firstItem="lMS-Xf-7fq" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="8cG-Xw-FFs"/>
                                     <constraint firstItem="Bhy-SC-yvx" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="9Zh-xt-tZv"/>
                                     <constraint firstItem="oAx-6E-Xzk" firstAttribute="top" secondItem="ifM-ll-7Nf" secondAttribute="top" constant="10" id="Fjp-cF-Jir"/>
                                     <constraint firstAttribute="trailing" secondItem="Qj1-7K-Ams" secondAttribute="trailing" id="RRF-kD-uVu"/>
+                                    <constraint firstItem="awm-L3-NM0" firstAttribute="top" secondItem="jTW-nB-39W" secondAttribute="bottom" constant="10" id="Ttg-nr-crl"/>
                                     <constraint firstItem="Qj1-7K-Ams" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="WrY-z9-8cs"/>
-                                    <constraint firstAttribute="trailing" secondItem="lMS-Xf-7fq" secondAttribute="trailing" id="h7C-bt-BC3"/>
-                                    <constraint firstItem="awm-L3-NM0" firstAttribute="top" secondItem="lMS-Xf-7fq" secondAttribute="bottom" constant="10" id="mgt-8l-fk4"/>
-                                    <constraint firstItem="lMS-Xf-7fq" firstAttribute="top" secondItem="Qj1-7K-Ams" secondAttribute="bottom" constant="10" id="o7b-rD-ppd"/>
+                                    <constraint firstItem="jTW-nB-39W" firstAttribute="top" secondItem="Qj1-7K-Ams" secondAttribute="bottom" constant="15" id="XVs-Fk-l30"/>
+                                    <constraint firstAttribute="trailing" secondItem="jTW-nB-39W" secondAttribute="trailing" constant="15" id="nnU-rO-R7b"/>
                                     <constraint firstAttribute="trailing" secondItem="Bhy-SC-yvx" secondAttribute="trailing" id="pKM-iT-HVG"/>
                                     <constraint firstItem="oAx-6E-Xzk" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="q8y-64-KPG"/>
                                     <constraint firstItem="Bhy-SC-yvx" firstAttribute="top" secondItem="awm-L3-NM0" secondAttribute="bottom" constant="10" id="qXN-dA-iJY"/>
+                                    <constraint firstItem="jTW-nB-39W" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="tho-xs-rqE"/>
                                     <constraint firstItem="awm-L3-NM0" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="zkT-ve-Jqy"/>
                                 </constraints>
                             </scrollView>
@@ -426,7 +426,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                         <outlet property="bookmarks" destination="Qj1-7K-Ams" id="l6g-FG-bWW"/>
                         <outlet property="datenschutz" destination="Bhy-SC-yvx" id="8Iw-YM-h1M"/>
                         <outlet property="impressum" destination="awm-L3-NM0" id="AHE-Qq-obT"/>
-                        <outlet property="login" destination="lMS-Xf-7fq" id="Sci-i3-Qve"/>
+                        <outlet property="login" destination="jTW-nB-39W" id="N4i-1x-3yU"/>
                         <outlet property="myArticles" destination="oAx-6E-Xzk" id="dig-Fj-TzQ"/>
                     </connections>
                 </viewController>
