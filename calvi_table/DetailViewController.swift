@@ -370,12 +370,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         refreshAlert.addAction(UIAlertAction(title: NSLocalizedString("delete_sure", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
             Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
-                    //return to main list
-                    let sb = UIStoryboard(name: "Main", bundle: nil)
-                    let tabBarController = sb.instantiateViewController(withIdentifier: "NavBarController") as! UINavigationController
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //appDelegate.window?.rootViewController = tabBarController
-                    //TODO warum nicht genutzt
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
             }
         }))
         

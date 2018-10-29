@@ -94,6 +94,10 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         callbackClosureBookmarks?()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     
     func updateSearchResults(for searchController: UISearchController) {
      
