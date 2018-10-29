@@ -256,7 +256,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
             imageView.clipsToBounds = true
             imageView.sd_imageTransition = .fade
             SVProgressHUD.show()
-            imageView.sd_setImage(with: url!, placeholderImage: nil, options: .progressiveDownload) { (image, error, imageType, url) in
+            imageView.sd_setImage(with: url!, placeholderImage: nil, options: .delayPlaceholder) { (image, error, imageType, url) in
                 
                 let xPosition = self.view.frame.width * CGFloat(imageNumber)
                 imageView.frame = CGRect(x: xPosition, y: 0, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
