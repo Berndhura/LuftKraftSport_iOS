@@ -48,7 +48,7 @@ class ChatViewController: JSQMessagesViewController {
         let date = Date(timeIntervalSince1970: (date_org))
         let mes =  JSQMessage(senderId: partnerId, senderDisplayName: partnerName, date: date, text: messageText)
         messages.append(mes!)
-        self.finishSendingMessage()
+        self.finishReceivingMessage()
     }
     
     func whichChatIsOpen() {

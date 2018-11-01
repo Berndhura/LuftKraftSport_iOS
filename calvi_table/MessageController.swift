@@ -115,19 +115,24 @@ class MessagesController: UIViewController {
                 switch response.result {
                 case .success:
                     let jsonData = JSON(response.result.value ?? "default")
+                    var urlImages = ""
                     for (_ , value) in jsonData {
                         
                         let message = value["message"].string
                         let name = value["name"].string
-                        let urlList = value["url"].string
-                        let url = Utils.getPictureUrl(str: urlList!)
+                        if let urlList = value["url"].string {
+                            urlImages = Utils.getPictureUrl(str: urlList)
+                        } else {
+                            urlImages = ""
+                        }
+                        //let url = Utils.getPictureUrl(str: urlList!)
                         let idFrom = value["idFrom"].string
                         let idTo = value["idTo"].string
                         let date = value["date"].double
                         let articleId = value["articleId"].int64
                         let chatPartner = value["chatPartner"].string
                         
-                        let msg = MessageOverview(name: name!, message: message!, url: url, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
+                        let msg = MessageOverview(name: name!, message: message!, url: urlImages, date: date!, idFrom: idFrom!, idTo: idTo!, articleId: articleId!, chatPartner: chatPartner!)
                         
                         localMsg.append(msg)
                     }

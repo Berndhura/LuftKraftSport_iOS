@@ -559,19 +559,28 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                     <action selector="saveNewAd:" destination="yDh-be-Uo9" eventType="touchUpInside" id="vlD-n8-pNk"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55A-Kg-q6z">
+                                                <rect key="frame" x="0.0" y="405" width="375" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="top" secondItem="k8p-Fj-RwT" secondAttribute="bottom" constant="8" id="5n6-CZ-0SY"/>
+                                            <constraint firstItem="55A-Kg-q6z" firstAttribute="top" secondItem="7Hz-7n-4zb" secondAttribute="bottom" constant="10" id="782-q7-EOO"/>
                                             <constraint firstAttribute="bottom" secondItem="4c1-ph-owY" secondAttribute="bottom" id="9h5-q0-mY2"/>
                                             <constraint firstAttribute="trailing" secondItem="OcD-cJ-fyX" secondAttribute="trailing" id="AtO-Tc-Dgg"/>
                                             <constraint firstItem="7Hz-7n-4zb" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="Bdr-U3-IWt"/>
                                             <constraint firstItem="OcD-cJ-fyX" firstAttribute="top" secondItem="Mfg-3u-W9p" secondAttribute="bottom" constant="8" id="KoC-E0-Sev"/>
+                                            <constraint firstItem="55A-Kg-q6z" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="Lwl-xw-b5T"/>
                                             <constraint firstAttribute="trailing" secondItem="k8p-Fj-RwT" secondAttribute="trailing" id="M6G-6r-VPV"/>
                                             <constraint firstAttribute="trailing" secondItem="QqS-qY-KmL" secondAttribute="trailing" id="NWx-gP-fH9"/>
                                             <constraint firstAttribute="trailing" secondItem="7Hz-7n-4zb" secondAttribute="trailing" id="PWI-qK-McX"/>
                                             <constraint firstItem="QqS-qY-KmL" firstAttribute="top" secondItem="Av7-fU-T5x" secondAttribute="top" constant="8" id="TdK-ab-IPK"/>
                                             <constraint firstItem="4c1-ph-owY" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="YZb-Ih-USD"/>
+                                            <constraint firstAttribute="trailing" secondItem="55A-Kg-q6z" secondAttribute="trailing" id="cfq-9V-PUf"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="top" secondItem="OcD-cJ-fyX" secondAttribute="bottom" constant="8" id="fqg-U4-Fwm"/>
                                             <constraint firstItem="Mfg-3u-W9p" firstAttribute="top" secondItem="QqS-qY-KmL" secondAttribute="bottom" constant="20" id="i68-b4-Sjg"/>
                                             <constraint firstItem="k8p-Fj-RwT" firstAttribute="leading" secondItem="Av7-fU-T5x" secondAttribute="leading" id="kGW-4k-vqQ"/>
@@ -609,6 +618,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                     <connections>
                         <outlet property="descriptionText" destination="OcD-cJ-fyX" id="RRz-Pc-VQt"/>
                         <outlet property="imgScrollView" destination="QqS-qY-KmL" id="Jdk-Kh-gGW"/>
+                        <outlet property="info" destination="55A-Kg-q6z" id="Aha-2g-SSW"/>
                         <outlet property="location" destination="7Hz-7n-4zb" id="Dor-Pq-blu"/>
                         <outlet property="price" destination="k8p-Fj-RwT" id="zXr-lj-05v"/>
                         <outlet property="saveArticleButton" destination="4c1-ph-owY" id="cYI-2C-zcF"/>
