@@ -52,6 +52,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var saveArticleButton: UIButton!
     
+    @IBOutlet weak var info: UILabel!
+    
     @IBAction func saveNewAd(_ sender: Any) {
         if isEditMode {
             saveArticleButton.isEnabled = false
@@ -137,6 +139,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         descriptionText.delegate = self
         titleText.delegate = self
         price.delegate = self
+        price.keyboardType = .numberPad
         location.delegate = self
         
         initImageIdDict()
@@ -203,13 +206,23 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @objc func priceDidChange(_ textField: UITextField) {
         guard let string = textField.text else { return }
         
-        if (string.isEmpty) {
+        if let _ = Int(string) {
+            if (!string.isEmpty) {
+                price.layer.borderColor = UIColor.green.cgColor
+                price.layer.borderWidth = 1.0
+                info.isHidden = true
+            }
+            if (string.isEmpty) {
+                price.layer.borderColor = UIColor.red.cgColor
+                price.layer.borderWidth = 1.0
+                info.text = "Preis darf nicht leer sein"
+                info.isHidden = false
+            }
+        } else {
             price.layer.borderColor = UIColor.red.cgColor
             price.layer.borderWidth = 1.0
-        }
-        if (!string.isEmpty) {
-            price.layer.borderColor = UIColor.green.cgColor
-            price.layer.borderWidth = 1.0
+            info.text = "Preis muss eine Zahl sein!"
+            info.isHidden = false
         }
     }
     
@@ -563,10 +576,17 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     func validateInput() -> Bool {
-    
+        
+        if let _ = Int(price.text!) {
+            if price.text!.isEmpty {
+                return false
+            }
+        } else {
+            return false
+        }
+        
         if (titleText.text!.isEmpty ||
-            descriptionText.text!.isEmpty ||
-            price.text!.isEmpty) {
+            descriptionText.text!.isEmpty) {
             return false
         } else {
             return true
@@ -659,7 +679,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         setup()
     }
     func setup() {
-        textContainerInset = UIEdgeInsets.zero
+        textContainerInset = UIEdgeInsetsMake(8, 5, 5, 5)
         textContainer.lineFragmentPadding = 0
     }
 }

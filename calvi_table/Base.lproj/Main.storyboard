@@ -526,7 +526,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="aSX-Gu-3rd"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="price..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-Fj-RwT">
@@ -710,9 +710,9 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNC-bU-wCk" userLabel="delete">
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNC-bU-wCk" userLabel="delete">
                                                             <rect key="frame" x="182" y="0.0" width="177" height="50"/>
-                                                            <state key="normal" image="delete-32"/>
+                                                            <state key="normal" image="delete"/>
                                                             <connections>
                                                                 <action selector="deleteArticle:" destination="fbH-nU-18z" eventType="touchUpInside" id="gYX-yc-YFJ"/>
                                                             </connections>
@@ -1009,7 +1009,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="delete-32" width="32" height="32"/>
+        <image name="delete" width="24" height="24"/>
         <image name="edit-32" width="32" height="32"/>
         <image name="home" width="32" height="32"/>
         <image name="login" width="32" height="32"/>

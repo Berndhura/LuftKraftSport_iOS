@@ -229,6 +229,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         let imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
         self.scrollView.contentSize.width = self.scrollView.frame.width * CGFloat(imageCount)
     }
+
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let displayWidth = self.view.frame.width
@@ -289,6 +290,21 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         mapView.isZoomEnabled = true
         
         mapView.addAnnotation(anno)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("fokit")
+        let lat = view.annotation?.coordinate.latitude
+        let lng = view.annotation?.coordinate.longitude
+        
+        let url  = URL(string: "comgooglemaps://?saddr=&daddr=\(Float(lat!)),\(Float(lng!))&directionsmode=driving")
+        
+        if UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            //UIApplication.shared.openURL(URL(string:"https://www.google.com/maps/@42.585444,13.007813,6z")!)
+        } else {
+            NSLog("Can't use com.google.maps://");
+        }
     }
     
     func editArticle(articleId: Int32) {

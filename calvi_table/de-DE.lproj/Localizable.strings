@@ -32,8 +32,8 @@
 "new_article_location" = "Wo...";
 "new_article_change_button" = "Anzeige wird geändert...";
 "new_article_create_ad" = "Neue Anzeige wird erstellt...";
-"new_article_save_button" = "Speichern";
-"new_article_save_changes_button" = "Änderungen speichern";
+"new_article_save_button" = "ANZEIGE AUFGEBEN";
+"new_article_save_changes_button" = "ÄNDERN DIESER ANZEIGE";
 "new_article_tab_bar_title" = "Erstelle eine Anzeige";
 "new_article_useless_title" = "Sinnlose Eingaben!";
 "new article_useless_message" = "Mache bitte vernünftige Angaben für deine Anzeige!";

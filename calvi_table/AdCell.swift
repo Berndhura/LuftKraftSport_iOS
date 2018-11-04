@@ -106,7 +106,7 @@ class AdCell: UITableViewCell {
             }
         }))
         
-        refreshAlert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action: UIAlertAction!) in
+        refreshAlert.addAction(UIAlertAction(title: NSLocalizedString("abort", comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
             return
         }))
         
