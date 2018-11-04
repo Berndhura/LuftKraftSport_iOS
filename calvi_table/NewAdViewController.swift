@@ -207,21 +207,23 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         guard let string = textField.text else { return }
         
         if let _ = Int(string) {
-            if (!string.isEmpty) {
-                price.layer.borderColor = UIColor.green.cgColor
-                price.layer.borderWidth = 1.0
-                info.isHidden = true
-            }
-            if (string.isEmpty) {
-                price.layer.borderColor = UIColor.red.cgColor
-                price.layer.borderWidth = 1.0
-                info.text = "Preis darf nicht leer sein"
-                info.isHidden = false
-            }
+            price.layer.borderColor = UIColor.green.cgColor
+            price.layer.borderWidth = 1.0
+            UIView.transition(with: view, duration: 0.75, options: .transitionCrossDissolve, animations: {
+                self.info.isHidden = true
+            })
+            
         } else {
             price.layer.borderColor = UIColor.red.cgColor
             price.layer.borderWidth = 1.0
-            info.text = "Preis muss eine Zahl sein!"
+            info.text = NSLocalizedString("validate_price_number", comment: "")
+            info.isHidden = false
+        }
+        
+        if (string.isEmpty) {
+            price.layer.borderColor = UIColor.red.cgColor
+            price.layer.borderWidth = 1.0
+            info.text = NSLocalizedString("validate_price_not_empty", comment: "")
             info.isHidden = false
         }
     }

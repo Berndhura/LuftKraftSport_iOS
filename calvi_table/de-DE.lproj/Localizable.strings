@@ -54,3 +54,6 @@
 
 "messages_title" = "Nachrichten: ";
 "no_messages" = "Noch keine Nachrichten :-(";
+
+"validate_price_number" = "Preis muss eine Zahl sein!";
+"validate_price_not_empty" = "Preis darf nicht leer sein";

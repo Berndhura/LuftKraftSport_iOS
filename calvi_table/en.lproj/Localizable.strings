@@ -55,4 +55,7 @@
 "messages_title" = "Messages: ";
 "no_messages" = "No messages yet!";
 
+"validate_price_number" = "Use numbers for Price!";
+"validate_price_not_empty" = "Price can not be empty!";
+
 
