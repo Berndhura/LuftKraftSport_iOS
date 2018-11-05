@@ -60,14 +60,14 @@ extension UITextViewFixed: UITextViewDelegate {
     /// - Parameter textView: The UITextView that got updated
     public func textViewDidChange(_ textView: UITextView) {
         if let placeholderLabel = self.viewWithTag(100) as? UILabel {
-            placeholderLabel.isHidden = self.text.characters.count > 0
+            placeholderLabel.isHidden = self.text.count > 0
         }
     }
     
     /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
     private func resizePlaceholder() {
         if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
-            let labelX = self.textContainer.lineFragmentPadding - 5
+            let labelX = self.textContainer.lineFragmentPadding 
             let labelY = self.textContainerInset.top - 2 - 5
             let labelWidth = self.frame.width - (labelX * 2)
             let labelHeight = placeholderLabel.frame.height
@@ -87,7 +87,7 @@ extension UITextViewFixed: UITextViewDelegate {
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.tag = 100
         
-        placeholderLabel.isHidden = self.text.characters.count > 0
+        placeholderLabel.isHidden = self.text.count > 0
         
         self.addSubview(placeholderLabel)
         self.resizePlaceholder()

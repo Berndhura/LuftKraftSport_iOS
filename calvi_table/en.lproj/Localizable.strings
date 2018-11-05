@@ -57,5 +57,7 @@
 
 "validate_price_number" = "Use numbers for Price!";
 "validate_price_not_empty" = "Price can not be empty!";
-
+"validate_title" = "Title must not be empty";
+"validate_location" = "Location is empty, last known location will be used";
+"progress_get_location" = "Getting location details...";
 

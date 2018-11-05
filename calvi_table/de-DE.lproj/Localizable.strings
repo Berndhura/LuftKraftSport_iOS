@@ -56,4 +56,7 @@
 "no_messages" = "Noch keine Nachrichten :-(";
 
 "validate_price_number" = "Preis muss eine Zahl sein!";
-"validate_price_not_empty" = "Preis darf nicht leer sein";
+"validate_price_not_empty" = "Preis darf nicht leer sein!";
+"validate_title" = "Titel darf nicht leer sein!";
+"validate_location" = "Der Ort ist leer, es wird die letzte bekannt Position genommen!";
+"progress_get_location" = "Ändere Ort...";

@@ -25,8 +25,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     public var pictureUrl: String = ""
     public var locationFromAd: String = ""
     public var date: Double = 0.0
-    public var lat: Double = 0.0
-    public var lng: Double = 0.0
+    
+    //set default lat, lng to Hamburg
+    public var lat: Double = 53.551086
+    public var lng: Double = 9.993682
     
     var isLocationChanged = false
     
@@ -146,9 +148,11 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         location.returnKeyType = UIReturnKeyType.send
         
-        location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: UIControlEvents.editingChanged)
+        location.addTarget(self, action: #selector(NewAdViewController.locationDidEnd(_:)), for: .editingDidEnd)
+        location.addTarget(self, action: #selector(NewAdViewController.locationDidChange(_:)), for: .editingChanged)
         titleText.addTarget(self, action: #selector(NewAdViewController.titleDidChange(_:)), for: .editingDidEnd)
         price.addTarget(self, action: #selector(NewAdViewController.priceDidChange(_:)), for: .editingDidEnd)
+        //descriptionText
         
         if isEditMode {
             saveArticleButton.setTitle(NSLocalizedString("new_article_save_changes_button", comment: ""), for: .normal)
@@ -189,16 +193,34 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         isLocationChanged = true
     }
     
+    @objc func locationDidEnd(_ textField: UITextField) {
+        
+        if let loc = textField.text {
+            if loc == "" {
+                info.text = NSLocalizedString("validate_location", comment: "")
+                info.isHidden = false
+            } else {
+                fadeInfoOut()
+            }
+        } else {
+            
+        }
+    }
+
+    
     @objc func titleDidChange(_ textField: UITextField) {
         guard let string = textField.text else { return }
         
         if (string.isEmpty || string.count < 5) {
             titleText.layer.borderColor = UIColor.red.cgColor
             titleText.layer.borderWidth = 1.0
+            info.text = NSLocalizedString("validate_title", comment: "")
+            info.isHidden = false
         }
         if (!string.isEmpty || string.count > 5) {
             titleText.layer.borderColor = UIColor.green.cgColor
             titleText.layer.borderWidth = 1.0
+            fadeInfoOut()
         }
     }
     
@@ -209,9 +231,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if let _ = Int(string) {
             price.layer.borderColor = UIColor.green.cgColor
             price.layer.borderWidth = 1.0
-            UIView.transition(with: view, duration: 0.75, options: .transitionCrossDissolve, animations: {
-                self.info.isHidden = true
-            })
+            fadeInfoOut()
             
         } else {
             price.layer.borderColor = UIColor.red.cgColor
@@ -226,6 +246,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             info.text = NSLocalizedString("validate_price_not_empty", comment: "")
             info.isHidden = false
         }
+    }
+    
+    func fadeInfoOut() {
+        UIView.transition(with: view, duration: 0.75, options: .transitionCrossDissolve, animations: {
+            self.info.isHidden = true
+        })
     }
     
     
@@ -454,34 +480,37 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return deleteBtn
     }
     
-    func getNewLocationDetails() {
-        if let address = location.text {
-            CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-                if error != nil {
-                    print(error as Any)
-                    return
-                    //TODO was im fehlerfall, default lat lng ? speichern darf nicht abbrechen deshalb
-                }
-                if (placemarks?.count)! > 0 {
-                    let placemark = placemarks?[0]
-                    let location = placemark?.location
-                    self.lat = (location?.coordinate.latitude)!
-                    self.lng = (location?.coordinate.longitude)!  //coordinate!.latitude, coordinate!.longitude
-                }
-            })
-        } else {
-            //location Nil
-            //TODO what now with location?
-            //lat lng????
-        }
-    }
-    
     
     func updateArticle() {
         
         if isLocationChanged {
-            getNewLocationDetails()
+            SVProgressHUD.show(withStatus: NSLocalizedString("progress_get_location", comment: ""))
+            if let address = location.text {
+                CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+                    if error != nil {
+                        print(error as Any)
+                        //something went wrong -> update ad anyway
+                        self.updateArticleWithLocation()
+                    }
+                    if (placemarks?.count)! > 0 {
+                        let placemark = placemarks?[0]
+                        let location = placemark?.location
+                        self.lat = (location?.coordinate.latitude)!
+                        self.lng = (location?.coordinate.longitude)!
+                        self.updateArticleWithLocation()
+                    }
+                })
+            } else {
+                //something went wrong -> update ad anyway
+                self.updateArticleWithLocation()
+            }
+        } else {
+            self.updateArticleWithLocation()
         }
+    }
+    
+    
+    func updateArticleWithLocation() {
         
         let userToken = Utils.getUserToken()
         
