@@ -253,6 +253,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         if (imageNumberList.count > 0) {
             let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
             let imageView = UIImageView()
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapImage(_:)))
+
+            imageView.addGestureRecognizer(tapGesture)
+            imageView.isUserInteractionEnabled = true
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
             imageView.sd_imageTransition = .fade
@@ -271,6 +275,38 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         } else {
             //TODO now image, placeholder?
         }
+    }
+    
+    var newImageView = UIImageView()
+    
+    @objc func tapImage(_ sender: UITapGestureRecognizer) {
+        let scrollVw = UIScrollView()
+        scrollVw.minimumZoomScale = 1.0
+        scrollVw.maximumZoomScale = 6.0
+        scrollVw.frame = UIScreen.main.bounds
+        
+        let imageView = sender.view as! UIImageView
+        newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        //scrollVw.addSubview(newImageView)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return newImageView
+    }
+    
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
     }
     
     func prepareMap() {
