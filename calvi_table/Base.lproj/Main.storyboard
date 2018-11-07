@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQg-6t-vH4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQg-6t-vH4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -501,7 +501,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Av7-fU-T5x" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-qY-KmL" userLabel="imgScrollView">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QqS-qY-KmL" userLabel="imgScrollView">
                                                 <rect key="frame" x="0.0" y="8" width="375" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="999" constant="100" id="w2f-9d-qHr"/>
@@ -514,7 +514,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                     <constraint firstAttribute="height" constant="31" id="lFI-Vr-i90"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartQuotesType="yes"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="doneAccessory" value="YES"/>
@@ -536,7 +536,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                     <constraint firstAttribute="height" constant="31" id="ZRG-z9-oQD"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Location..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Hz-7n-4zb">
@@ -546,12 +546,15 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                     <constraint firstAttribute="height" constant="31" id="J5Q-Eh-IgZ"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4c1-ph-owY">
-                                                <rect key="frame" x="0.0" y="587" width="375" height="30"/>
+                                                <rect key="frame" x="0.0" y="577" width="375" height="40"/>
                                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="jFT-Sb-Li8"/>
+                                                </constraints>
                                                 <state key="normal" title="Speichern">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -1009,13 +1012,13 @@ abrufbaren Datenschutzhinweisen bereit.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="delete" width="24" height="24"/>
+        <image name="delete" width="18" height="18"/>
         <image name="edit-32" width="32" height="32"/>
-        <image name="home" width="32" height="32"/>
-        <image name="login" width="32" height="32"/>
-        <image name="mail" width="32" height="32"/>
-        <image name="menu-vertical" width="50" height="50"/>
-        <image name="plus" width="32" height="32"/>
+        <image name="home" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="login" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="mail" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="menu-vertical" width="37.5" height="37.5"/>
+        <image name="plus" width="25.600000381469727" height="25.600000381469727"/>
         <image name="search-30" width="30" height="30"/>
     </resources>
 </document>
