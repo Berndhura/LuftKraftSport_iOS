@@ -10,6 +10,8 @@
 		1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */; };
 		206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */; };
 		270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */; };
+		270C74A12194C80000866CD0 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A02194C80000866CD0 /* Extensions+UIView.swift */; };
+		270C74A521961AD900866CD0 /* SearchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A421961AD900866CD0 /* SearchesController.swift */; };
 		2711D3952177BA9F00A4416D /* UITableView+setEmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */; };
 		2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3962177BE2900A4416D /* DataProtectionViewController.swift */; };
 		2714E4FE21595531006A576B /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714E4FD21595531006A576B /* AppColors.swift */; };
@@ -69,6 +71,8 @@
 		2705B6C820B36550004B36E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2705B6C920B36551004B36E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
+		270C74A02194C80000866CD0 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		270C74A421961AD900866CD0 /* SearchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchesController.swift; sourceTree = "<group>"; };
 		2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+setEmptyMessage.swift"; sourceTree = "<group>"; };
 		2711D3962177BE2900A4416D /* DataProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionViewController.swift; sourceTree = "<group>"; };
 		2714E4FD21595531006A576B /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		2711D3932177BA6300A4416D /* extentions */ = {
 			isa = PBXGroup;
 			children = (
+				270C74A02194C80000866CD0 /* Extensions+UIView.swift */,
 				2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */,
 			);
 			name = extentions;
@@ -177,6 +182,7 @@
 				2714E501215ABFB8006A576B /* HomeViewController.swift */,
 				2714E503215AD06E006A576B /* ImpressumViewController.swift */,
 				2711D3962177BE2900A4416D /* DataProtectionViewController.swift */,
+				270C74A421961AD900866CD0 /* SearchesController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -651,7 +657,9 @@
 				2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */,
 				2714E500215974DA006A576B /* RoundImageView.swift in Sources */,
 				271DF0B61FA34D4B0048580D /* Urls.swift in Sources */,
+				270C74A521961AD900866CD0 /* SearchesController.swift in Sources */,
 				279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */,
+				270C74A12194C80000866CD0 /* Extensions+UIView.swift in Sources */,
 				2714E4FE21595531006A576B /* AppColors.swift in Sources */,
 				27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */,
 				273E6E111F671F0D0036A445 /* LoginController.swift in Sources */,

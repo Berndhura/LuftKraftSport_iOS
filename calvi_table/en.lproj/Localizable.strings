@@ -61,3 +61,6 @@
 "validate_location" = "Location is empty, last known location will be used";
 "progress_get_location" = "Getting location details...";
 
+"show_searches" = "Show searches";
+"searches_explain" = "Wenn Du eine Suche speicherst, wirst Du benachrichtigt, wenn ein neuer Artikel eingestellt wird. Eine Übersicht deiner Suchen findest du unter 'Suchen Anzeigen'";
+

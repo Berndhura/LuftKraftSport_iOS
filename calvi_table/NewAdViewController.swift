@@ -646,6 +646,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
             when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
                 .done { ([Any]) in
                     //und nu
+                    //print("done image upload")
                 }.catch { error in
                     print(error)
             }

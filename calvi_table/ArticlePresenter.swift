@@ -87,6 +87,7 @@ class ArticlePresenter {
                         .validate()
                         .responseJSON { response in
                             //deactivete Progress
+                            print(response.description)
                             SVProgressHUD.dismiss()
                             
                             //go back to main list if is not edit mode

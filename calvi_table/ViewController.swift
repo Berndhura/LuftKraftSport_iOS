@@ -26,6 +26,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var searchString: String?
     
+    var lastSearch: [String] = []
+    
     var isLoadingTableView = true
     
     var noMessagesLabel = UILabel()
@@ -96,6 +98,110 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+   
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+
+        print("safe")
+        var safeAreaHight: CGFloat?
+        let window = UIApplication.shared.keyWindow
+        if #available(iOS 11.0, *) {
+            safeAreaHight = window?.safeAreaInsets.top
+            print(safeAreaHight!)
+        } else {
+            // Fallback on earlier versions
+            safeAreaHight = 0
+        }
+        
+        let v = UIView(frame: CGRect(x: 0, y: searchController.searchBar.frame.height + safeAreaHight!, width: searchController.searchBar.frame.width, height: 0.5 * (window?.screen.bounds.height)!))
+        v.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+        v.alpha = 0.95
+        
+        //aktuelle suchen
+        let currentSearchesBtn = UIButton()
+        currentSearchesBtn.backgroundColor = appMainColorBlue
+        currentSearchesBtn.setTitle(NSLocalizedString("show_searches", comment: ""), for: .normal)
+        currentSearchesBtn.addTarget(self, action: #selector(btnTapped), for: .touchDown)
+        
+        //gespeicherte Suchen (folgen)
+        let savedSearches = UIButton()
+        savedSearches.backgroundColor = appMainColorBlue
+        savedSearches.setTitle(NSLocalizedString("abgespeicherte", comment: ""), for: .normal)
+        savedSearches.addTarget(self, action: #selector(savedSearchesTapped), for: .touchDown)
+      
+        let stackView   = UIStackView(frame: CGRect(x: 0, y: 0, width: searchController.searchBar.frame.width, height: 50.0))
+        stackView.axis  = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.spacing = 5.0
+        stackView.addArrangedSubview(currentSearchesBtn)
+        stackView.addArrangedSubview(savedSearches)
+        
+        v.addSubview(stackView)
+        
+        searchController.view.addSubview(v)
+        
+        //last searches
+        
+        let lastSearchesStack   = UIStackView(frame: CGRect(x: 0, y: 160, width: searchController.searchBar.frame.width, height: 250.0))
+        lastSearchesStack.axis  = .vertical
+        lastSearchesStack.distribution = .fillEqually
+        lastSearchesStack.layoutMargins = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 5)
+        lastSearchesStack.isLayoutMarginsRelativeArrangement = true
+        lastSearchesStack.spacing = 5.0
+        
+        for str in getLastSearch() {
+            let label = UILabel()
+            label.text = str
+            label.textColor = .black
+            lastSearchesStack.addArrangedSubview(label)
+        }
+        
+        
+        
+        searchController.view.addSubview(lastSearchesStack)
+
+        //let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+    }
+    
+    /*let currentSearchesButton: UIButton = {
+        let btn = UIButton(type: .system)
+        //btn.setImage("home", for: .normal)
+        return btn
+    } ()*/
+    
+    
+    //save last search text in user defaults to show next time to user
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let lastSearchText = searchBar.text {
+            lastSearch.append(lastSearchText)
+            let defaults = UserDefaults.standard
+            defaults.set(lastSearch, forKey: "last_search")
+            defaults.synchronize()
+        }
+    }
+    
+    func getLastSearch() -> [String] {
+        if let str = UserDefaults.standard.stringArray(forKey: "last_search") {
+            return str
+        } else {
+            return ["maul"]
+        }
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        print("bookmark")
+    }
+    
+    func btnTapped() {
+        print("letzten suchen zeigen")
+    }
+    
+    
+    func savedSearchesTapped() {
+        print("abgespeicherte suchen holen")
     }
     
     
