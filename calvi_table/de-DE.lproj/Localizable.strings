@@ -64,3 +64,5 @@
 "show_searches" = "AKTUELL";
 "searches_explain" = "Du kannst deine Suchen abspeichern und wirst benachrichtigt, wenn eine Anzeige zu deiner Suche passt. Eine Übersicht deiner Suchen findest du unter 'Suchen Anzeigen'";
 "saved_searches" = "GESPEICHERT";
+"no_searches" = "Keine abgespeicherten Suchen.";
+"searches_title" = "Suchen: ";

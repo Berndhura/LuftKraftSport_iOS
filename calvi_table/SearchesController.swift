@@ -23,7 +23,17 @@ class SearchesController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
+        prepareView()
+        
         fetchSearches()
+    }
+    
+    
+    func prepareView() {
+        
+        tableView.separatorStyle = .none
+        
+        tabBarController?.title = ""
     }
     
     
@@ -60,7 +70,7 @@ class SearchesController: UIViewController {
                 self.searches = localSearches
                 self.tableView.reloadData()
                 
-                self.navigationItem.title = NSLocalizedString("messages_title", comment: "") + String(self.searches.count)
+                self.navigationItem.title = NSLocalizedString("searches_title", comment: "") + String(self.searches.count)
         }
     }
 }
@@ -71,7 +81,7 @@ extension SearchesController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if searches.count == 0 {
-            self.tableView.setEmptyMessage(NSLocalizedString("no_messages", comment: ""))
+            self.tableView.setEmptyMessage(NSLocalizedString("no_searches", comment: ""))
         } else {
             self.tableView.restore()
         }
@@ -92,17 +102,11 @@ extension SearchesController: UITableViewDataSource {
         //description
         cell?.desc?.text = search.title
         
-        /*//message
-        cell?.message?.text = search.message
+        //location
+        cell?.location.text = search.locationName
         
-        //date
-        cell?.date?.text = getFormatedDate(date: search.date)
-        
-        //image
-        let imageId = searches[indexPath.item].url
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/")
-        cell?.bild.sd_setImage(with: url!, placeholderImage: UIImage(named: "lks_logo_1024x1024"))
-         */
+        //distance
+        cell?.distance.text = String(describing: search.distance)
         
         return cell!
     }

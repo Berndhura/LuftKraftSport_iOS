@@ -12,6 +12,9 @@ class SearchCell: UITableViewCell {
     
     @IBOutlet weak var desc: UILabel!
     
+    @IBOutlet weak var location: UILabel!
+    
+    @IBOutlet weak var distance: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

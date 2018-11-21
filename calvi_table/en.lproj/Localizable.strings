@@ -64,4 +64,6 @@
 "show_searches" = "LATEST";
 "searches_explain" = "Wenn Du eine Suche speicherst, wirst Du benachrichtigt, wenn ein neuer Artikel eingestellt wird. Eine Übersicht deiner Suchen findest du unter 'Suchen Anzeigen'";
 "saved_searches" = "SAVED";
+"no_searches" = "No saved searches.";
+"searches_title" = "Searches: ";
 
