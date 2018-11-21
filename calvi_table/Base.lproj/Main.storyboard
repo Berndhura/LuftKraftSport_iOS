@@ -506,41 +506,53 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="214.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X37-f2-AUy">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eHj-6h-5q2">
                                                     <rect key="frame" x="20" y="11" width="374" height="71"/>
-                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X37-f2-AUy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="71"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-th-mFk">
+                                                            <rect key="frame" x="187" y="0.0" width="187" height="71"/>
+                                                            <state key="normal" image="delete"/>
+                                                            <connections>
+                                                                <action selector="deleteSearch:" destination="1Oc-8c-5PC" eventType="touchUpInside" id="JoQ-Qp-oc7"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klj-Cn-eza" userLabel="location">
                                                     <rect key="frame" x="20" y="82" width="374" height="70.5"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jV0-WO-Xh1" userLabel="radius">
                                                     <rect key="frame" x="20" y="152.5" width="374" height="71"/>
-                                                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="X37-f2-AUy" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="1cM-ox-N4f"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="klj-Cn-eza" secondAttribute="trailing" id="4ur-sF-elf"/>
                                                 <constraint firstItem="jV0-WO-Xh1" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="7UK-vf-Iq0"/>
-                                                <constraint firstItem="X37-f2-AUy" firstAttribute="trailing" secondItem="udk-2W-RYh" secondAttribute="trailingMargin" id="9b1-sJ-8Mh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jV0-WO-Xh1" secondAttribute="trailing" id="DNW-Bm-4mh"/>
+                                                <constraint firstItem="eHj-6h-5q2" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="I98-Vi-gFN"/>
+                                                <constraint firstItem="klj-Cn-eza" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="JHE-XV-5Ae"/>
                                                 <constraint firstItem="jV0-WO-Xh1" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="Ppf-Lk-iw5"/>
-                                                <constraint firstItem="X37-f2-AUy" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="Toz-av-R0r"/>
+                                                <constraint firstItem="klj-Cn-eza" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="Zfj-BQ-oMM"/>
                                                 <constraint firstItem="jV0-WO-Xh1" firstAttribute="top" secondItem="klj-Cn-eza" secondAttribute="bottom" id="aZ4-kZ-Qno"/>
-                                                <constraint firstItem="klj-Cn-eza" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="iIl-4B-SH4"/>
-                                                <constraint firstItem="X37-f2-AUy" firstAttribute="top" secondItem="udk-2W-RYh" secondAttribute="topMargin" id="ncV-8j-kVc"/>
-                                                <constraint firstItem="klj-Cn-eza" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="vRK-pC-3HG"/>
-                                                <constraint firstItem="klj-Cn-eza" firstAttribute="top" secondItem="X37-f2-AUy" secondAttribute="bottom" id="zHg-Y9-pYQ"/>
+                                                <constraint firstItem="klj-Cn-eza" firstAttribute="trailing" secondItem="udk-2W-RYh" secondAttribute="trailingMargin" id="bVR-Nc-wIU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eHj-6h-5q2" secondAttribute="trailing" id="cfx-9b-r2r"/>
+                                                <constraint firstItem="klj-Cn-eza" firstAttribute="top" secondItem="eHj-6h-5q2" secondAttribute="bottom" id="mgW-am-jD3"/>
+                                                <constraint firstItem="eHj-6h-5q2" firstAttribute="top" secondItem="udk-2W-RYh" secondAttribute="topMargin" id="rDd-1d-DPa"/>
+                                                <constraint firstItem="eHj-6h-5q2" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="uU7-uM-Kn0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
