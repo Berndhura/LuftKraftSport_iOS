@@ -61,5 +61,6 @@
 "validate_location" = "Der Ort ist leer, es wird die letzte bekannt Position genommen!";
 "progress_get_location" = "Ändere Ort...";
 
-"show_searches" = "Suchaufträge zeigen";
+"show_searches" = "AKTUELL";
 "searches_explain" = "Du kannst deine Suchen abspeichern und wirst benachrichtigt, wenn eine Anzeige zu deiner Suche passt. Eine Übersicht deiner Suchen findest du unter 'Suchen Anzeigen'";
+"saved_searches" = "GESPEICHERT";

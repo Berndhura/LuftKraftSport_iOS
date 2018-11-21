@@ -127,7 +127,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //gespeicherte Suchen (folgen)
         let savedSearches = UIButton()
         savedSearches.backgroundColor = appMainColorBlue
-        savedSearches.setTitle(NSLocalizedString("abgespeicherte", comment: ""), for: .normal)
+        savedSearches.setTitle(NSLocalizedString("saved_searches", comment: ""), for: .normal)
         savedSearches.addTarget(self, action: #selector(savedSearchesTapped), for: .touchDown)
       
         let stackView   = UIStackView(frame: CGRect(x: 0, y: 0, width: searchController.searchBar.frame.width, height: 50.0))
@@ -201,7 +201,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     
     func savedSearchesTapped() {
-        print("abgespeicherte suchen holen")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "searches") as! SearchesController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     

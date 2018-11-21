@@ -26,6 +26,8 @@
 		2748C4B51F744A620009CDCB /* MessageOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B41F744A620009CDCB /* MessageOverview.swift */; };
 		2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748C4B91F7455C00009CDCB /* MessageCell.swift */; };
 		274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274DA64F1F8FDE2B001DD34F /* Utils.swift */; };
+		2770EEA021A56E8E0023667A /* Searches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770EE9F21A56E8E0023667A /* Searches.swift */; };
+		2770EEA221A570410023667A /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2770EEA121A570410023667A /* SearchCell.swift */; };
 		27930C5C20DCF26F006BC154 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27930C5A20DCF26F006BC154 /* Localizable.strings */; };
 		279F0C771F7943BA004E2525 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C761F7943BA004E2525 /* ChatViewController.swift */; };
 		279F0C791F7D2F1D004E2525 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279F0C781F7D2F1D004E2525 /* Message.swift */; };
@@ -87,6 +89,8 @@
 		2748C4B41F744A620009CDCB /* MessageOverview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageOverview.swift; sourceTree = "<group>"; };
 		2748C4B91F7455C00009CDCB /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		274DA64F1F8FDE2B001DD34F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		2770EE9F21A56E8E0023667A /* Searches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searches.swift; sourceTree = "<group>"; };
+		2770EEA121A570410023667A /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		27930C5B20DCF26F006BC154 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27930C5D20DCFDDF006BC154 /* de-DE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "de-DE"; path = "de-DE.lproj/Main.strings"; sourceTree = "<group>"; };
 		27930C5E20DCFDE1006BC154 /* de-DE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "de-DE"; path = "de-DE.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				2748C4B41F744A620009CDCB /* MessageOverview.swift */,
 				279F0C781F7D2F1D004E2525 /* Message.swift */,
 				27EF133C20E139B500ADE593 /* Coordinate.swift */,
+				2770EE9F21A56E8E0023667A /* Searches.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			children = (
 				27FE13111F46FC5E0073C0E9 /* AdCell.swift */,
 				2748C4B91F7455C00009CDCB /* MessageCell.swift */,
+				2770EEA121A570410023667A /* SearchCell.swift */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -643,11 +649,13 @@
 				2711D3952177BA9F00A4416D /* UITableView+setEmptyMessage.swift in Sources */,
 				27332D0C212DFB78009C22C0 /* DeviceHelper.swift in Sources */,
 				27FE13141F46FF110073C0E9 /* Ad.swift in Sources */,
+				2770EEA021A56E8E0023667A /* Searches.swift in Sources */,
 				27FF9BD5201B33CE00D50983 /* Constants.swift in Sources */,
 				27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */,
 				27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */,
 				27CE4F9C1F446E6500FD4166 /* ViewController.swift in Sources */,
 				2748C4BA1F7455C00009CDCB /* MessageCell.swift in Sources */,
+				2770EEA221A570410023667A /* SearchCell.swift in Sources */,
 				2714E502215ABFB8006A576B /* HomeViewController.swift in Sources */,
 				2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
