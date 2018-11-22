@@ -66,4 +66,5 @@
 "saved_searches" = "SAVED";
 "no_searches" = "No saved searches.";
 "searches_title" = "Searches: ";
-
+"delete_search" = "Delete this search";
+"delete_search_confirm" = "Are you sure?";

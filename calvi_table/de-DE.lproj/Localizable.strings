@@ -66,3 +66,5 @@
 "saved_searches" = "GESPEICHERT";
 "no_searches" = "Keine abgespeicherten Suchen.";
 "searches_title" = "Suchen: ";
+"delete_search" = "Suche Löschen";
+"delete_search_confirm" = "Bist du sicher?";

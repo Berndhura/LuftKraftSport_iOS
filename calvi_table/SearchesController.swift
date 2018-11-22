@@ -10,9 +10,11 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class SearchesController: UIViewController {
+class SearchesController: UIViewController, SearchCellDelegate {
  
     var searches: [Searches] = []
+    
+    var indexToDelete: IndexPath?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,13 +28,25 @@ class SearchesController: UIViewController {
         prepareView()
         
         fetchSearches()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(removeSearchFromList), name: Notification.Name(Constants.searchDeleted), object: nil)
+    }
+    
+    
+    func deleteSearch(cell: SearchCell) {
+        let indexPath = self.tableView.indexPath(for: cell)
+        self.indexToDelete = indexPath
+    }
+    
+    
+    func removeSearchFromList(_ notification: NSNotification) {
+        searches.remove(at: indexToDelete!.row)
+        self.tableView.deleteRows(at: [indexToDelete!], with: .fade)
     }
     
     
     func prepareView() {
-        
         tableView.separatorStyle = .none
-        
         tabBarController?.title = ""
     }
     
@@ -97,6 +111,8 @@ extension SearchesController: UITableViewDataSource {
             cell = SearchCell(style: .default, reuseIdentifier: "SearchCell")
         }
         
+        cell?.delegate = self
+        
         let search: Searches = searches[indexPath.row]
         
         //description
@@ -107,6 +123,9 @@ extension SearchesController: UITableViewDataSource {
         
         //distance
         cell?.distance.text = String(describing: search.distance)
+        
+        //id
+        cell?.searchId = search.id
         
         return cell!
     }
