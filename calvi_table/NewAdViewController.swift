@@ -323,7 +323,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.allowsEditing = false
+        picker.allowsEditing = true
         picker.sourceType = .photoLibrary
         self.present(picker, animated: true, completion: nil)
     }

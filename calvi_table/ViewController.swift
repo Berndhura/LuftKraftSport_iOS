@@ -11,8 +11,10 @@ import Alamofire
 import Firebase
 import SDWebImage
 import SwiftyJSON
+import EasyTipView
 
-class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+
+class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate, EasyTipViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -85,6 +87,33 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.searchBar.placeholder = NSLocalizedString("main_search_title", comment: "")
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
+        //show bookmark button for search
+        self.searchController.searchBar.showsBookmarkButton = true
+        
+        showHintsForUser()
+    }
+    
+    func showHintsForUser() {
+        
+        var showAgain = true
+        let defaults:UserDefaults = UserDefaults.standard
+        showAgain = defaults.bool(forKey: "showHintForFollowSearch")
+        
+        if showAgain {
+            var preferences = EasyTipView.Preferences()
+            preferences.drawing.font = UIFont(name: "Futura-Medium", size: 15)!
+            preferences.drawing.foregroundColor = .white
+            preferences.drawing.cornerRadius = 10
+            preferences.drawing.backgroundColor = appMainColorBlue
+            preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.bottom
+            preferences.drawing.arrowPosition = .right
+            
+            EasyTipView.show(forView: self.searchController.searchBar,
+                             withinSuperview: view,
+                             text: "Folge Deinen Suchen, Bookmark Symbol speichert deine Suche!",
+                             preferences: preferences,
+                             delegate: self)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,8 +125,16 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         callbackClosureBookmarks?()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+    
+    //once user understand usefull hint - never show again
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+        let defaults:UserDefaults = UserDefaults.standard
+        defaults.set(false, forKey: "showHintForFollowSearch")
     }
     
    
@@ -114,96 +151,41 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             safeAreaHight = 0
         }
         
-        let v = UIView(frame: CGRect(x: 0, y: searchController.searchBar.frame.height + safeAreaHight!, width: searchController.searchBar.frame.width, height: 0.5 * (window?.screen.bounds.height)!))
-        v.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
-        v.alpha = 0.95
-        
-        //aktuelle suchen
-        let currentSearchesBtn = UIButton()
-        currentSearchesBtn.backgroundColor = appMainColorBlue
-        currentSearchesBtn.setTitle(NSLocalizedString("show_searches", comment: ""), for: .normal)
-        currentSearchesBtn.addTarget(self, action: #selector(btnTapped), for: .touchDown)
-        
         //gespeicherte Suchen (folgen)
-        let savedSearches = UIButton()
+        let savedSearches = UIButton(frame: CGRect(x: 0, y: searchController.searchBar.frame.height + safeAreaHight!, width: searchController.searchBar.frame.width, height: 50))
         savedSearches.backgroundColor = appMainColorBlue
         savedSearches.setTitle(NSLocalizedString("saved_searches", comment: ""), for: .normal)
         savedSearches.addTarget(self, action: #selector(savedSearchesTapped), for: .touchDown)
-      
-        let stackView   = UIStackView(frame: CGRect(x: 0, y: 0, width: searchController.searchBar.frame.width, height: 50.0))
-        stackView.axis  = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.spacing = 5.0
-        stackView.addArrangedSubview(currentSearchesBtn)
-        stackView.addArrangedSubview(savedSearches)
         
-        v.addSubview(stackView)
-        
-        searchController.view.addSubview(v)
-        
-        //last searches
-        
-        let lastSearchesStack   = UIStackView(frame: CGRect(x: 0, y: 160, width: searchController.searchBar.frame.width, height: 250.0))
-        lastSearchesStack.axis  = .vertical
-        lastSearchesStack.distribution = .fillEqually
-        lastSearchesStack.layoutMargins = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 5)
-        lastSearchesStack.isLayoutMarginsRelativeArrangement = true
-        lastSearchesStack.spacing = 5.0
-        
-        for str in getLastSearch() {
-            let label = UILabel()
-            label.text = str
-            label.textColor = .black
-            lastSearchesStack.addArrangedSubview(label)
-        }
-        
-        
-        
-        searchController.view.addSubview(lastSearchesStack)
-
-        //let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        searchController.view.addSubview(savedSearches)
     }
     
-    /*let currentSearchesButton: UIButton = {
-        let btn = UIButton(type: .system)
-        //btn.setImage("home", for: .normal)
-        return btn
-    } ()*/
-    
-    
-    //save last search text in user defaults to show next time to user
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        if let lastSearchText = searchBar.text {
-            lastSearch.append(lastSearchText)
-            let defaults = UserDefaults.standard
-            defaults.set(lastSearch, forKey: "last_search")
-            defaults.synchronize()
-        }
-    }
-    
-    func getLastSearch() -> [String] {
-        if let str = UserDefaults.standard.stringArray(forKey: "last_search") {
-            return str
-        } else {
-            return ["maul"]
-        }
-    }
-    
+    //nur wenn angemeldet!!
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        print("bookmark")
-    }
-    
-    func btnTapped() {
-        print("letzten suchen zeigen")
+        //get text and follow this search
+        if let text = searchBar.text {
+            if text != "" {
+                let userToken = Utils.getUserToken()
+                let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=1000000&lat=0&lng=0&distance=1000&token=\(userToken)")
+                Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+                    .responseJSON { response in
+                        print(response)
+                }
+            }
+        }
     }
     
     
     func savedSearchesTapped() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "searches") as! SearchesController
-        navigationController?.pushViewController(vc, animated: true)
+        if Utils.getUserToken() != "" {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "searches") as! SearchesController
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     
@@ -212,6 +194,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //searchText = searchController.searchBar.text!
         //perform(#selector(test), with: nil, afterDelay: 2)
     }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         

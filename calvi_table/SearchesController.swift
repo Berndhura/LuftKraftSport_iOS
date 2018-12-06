@@ -116,10 +116,10 @@ extension SearchesController: UITableViewDataSource {
         let search: Searches = searches[indexPath.row]
         
         //description
-        cell?.desc?.text = search.title
+        cell?.desc?.text = "Suche: " + search.title
         
         //location
-        cell?.location.text = search.locationName
+        cell?.location.text = "In: " + search.locationName
         
         //distance
         cell?.distance.text = String(describing: search.distance)

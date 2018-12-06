@@ -12,6 +12,7 @@
 		270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */; };
 		270C74A12194C80000866CD0 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A02194C80000866CD0 /* Extensions+UIView.swift */; };
 		270C74A521961AD900866CD0 /* SearchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A421961AD900866CD0 /* SearchesController.swift */; };
+		270EE7D521B834BB00B48D22 /* _preparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270EE7D421B834BB00B48D22 /* _preparation.swift */; };
 		2711D3952177BA9F00A4416D /* UITableView+setEmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */; };
 		2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3962177BE2900A4416D /* DataProtectionViewController.swift */; };
 		2714E4FE21595531006A576B /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2714E4FD21595531006A576B /* AppColors.swift */; };
@@ -75,6 +76,7 @@
 		270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		270C74A02194C80000866CD0 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		270C74A421961AD900866CD0 /* SearchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchesController.swift; sourceTree = "<group>"; };
+		270EE7D421B834BB00B48D22 /* _preparation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _preparation.swift; sourceTree = "<group>"; };
 		2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+setEmptyMessage.swift"; sourceTree = "<group>"; };
 		2711D3962177BE2900A4416D /* DataProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionViewController.swift; sourceTree = "<group>"; };
 		2714E4FD21595531006A576B /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				2714E503215AD06E006A576B /* ImpressumViewController.swift */,
 				2711D3962177BE2900A4416D /* DataProtectionViewController.swift */,
 				270C74A421961AD900866CD0 /* SearchesController.swift */,
+				270EE7D421B834BB00B48D22 /* _preparation.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -531,6 +535,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyTipView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -659,6 +664,7 @@
 				2714E502215ABFB8006A576B /* HomeViewController.swift in Sources */,
 				2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */,
 				27CE4F9A1F446E6500FD4166 /* AppDelegate.swift in Sources */,
+				270EE7D521B834BB00B48D22 /* _preparation.swift in Sources */,
 				2714E504215AD06E006A576B /* ImpressumViewController.swift in Sources */,
 				274DA6501F8FDE2B001DD34F /* Utils.swift in Sources */,
 				270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */,

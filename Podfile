@@ -20,6 +20,7 @@ target 'calvi_table' do
     pod 'Firebase/Messaging'
     pod 'PromiseKit/Alamofire'
     pod 'IQKeyboardManagerSwift'
+    pod 'EasyTipView', '~> 1.0.2'
     #pod 'MessageKit'
 
   target 'calvi_tableTests' do
