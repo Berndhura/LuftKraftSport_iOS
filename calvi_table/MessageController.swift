@@ -27,15 +27,18 @@ class MessagesController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isLoggedIn() {
+        // removed: loginseite wird 2 mal gezeigt wenn wenn schon existiert und über tab erneut angewählt wird
+        
+        /*if isLoggedIn() {
             prepareView()
         } else {
             openLogin()
-        }
+        }*/
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if !isLoggedIn() {
             openLogin()
         } else {
@@ -87,7 +90,7 @@ class MessagesController: UIViewController {
     func openLogin() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-        self.navigationController?.present(newViewController, animated: false)
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     

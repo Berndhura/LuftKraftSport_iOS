@@ -40,6 +40,10 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
 
     let gapSize: CGFloat = 5
     
+    var comesFromImagePicker = false
+    
+    var imagePlaceholderPrepared = false
+    
     fileprivate let presenter = ArticlePresenter()
     
     @IBOutlet weak var imgScrollView: UIScrollView!
@@ -96,31 +100,36 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         if isLoggedIn() {
             prepareView()
         } else {
-            //TODO zum merken welcher VC der letzte war bevor login aufgeacht wird (index in User defaults)
-            //TODO dies hier auch in den VC für messageoverview
-            let ind = self.tabBarController?.selectedIndex
-            print(ind!)
-            let defaults:UserDefaults = UserDefaults.standard
-            defaults.set(ind, forKey: "index")
-            defaults.synchronize()
-            openLogin()
+            //openLogin()
         }
     }
     
+    
     //problem: prepareView wird wieder aufgerufen wenn vom ImagePicker zurück -> keine Bilderanziege!!!
-    /*override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(true)
         if !isLoggedIn() {
             openLogin()
         } else {
-           //prepareView()
+            if comesFromImagePicker {
+                //nothing here to prevent problem with imagepicker
+            } else {
+                if imagePlaceholderPrepared {
+                    //nothing here all is prepared
+                } else {
+                    prepareView()
+                }
+            }
         }
-    }*/
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refreshTabBar()
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -130,7 +139,15 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+    func openLogin() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+        self.navigationController?.pushViewController(newViewController, animated: false)
+    }
+    
     func prepareView() {
+        
+        self.imagePlaceholderPrepared = true
         
         presenter.attachView(self)
         
@@ -274,11 +291,6 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-    func openLogin() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-        self.navigationController?.present(newViewController, animated: false)
-    }
     
     func refreshTabBar() {
         self.tabBarController?.title = NSLocalizedString("new_article_tab_bar_title", comment: "")
@@ -318,6 +330,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     func imageTapped(sender: UIButton) {
+        
+        comesFromImagePicker = true
+        
         //which image is clicked
         currentImageNumber = sender.tag
         
@@ -374,7 +389,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 adImages.append(chosenImage)
             }
         }
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: {
+            self.comesFromImagePicker = false
+        })
     }
     
     

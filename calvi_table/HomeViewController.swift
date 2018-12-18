@@ -107,7 +107,7 @@ class HomeViewController: UIViewController {
     func loginUser() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-        self.navigationController?.present(newViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     

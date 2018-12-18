@@ -87,6 +87,24 @@ let currentSearchesButton: UIButton = {
     //btn.setImage("home", for: .normal)
     return btn
 }()
+ 
+ 
+ merken des letzten viewControllers...
+ 
+ let ind = self.tabBarController?.selectedIndex
+ print("komme von: ")
+ print(ind!)
+ let defaults:UserDefaults = UserDefaults.standard
+ defaults.set(ind, forKey: "index")
+ defaults.synchronize()
+ 
+ setzen im letzten VC :
+ 
+ self.tabBarController?.selectedIndex = 1
+ 
+ klappt aber nicht
+ 
+ 
 
 */
 

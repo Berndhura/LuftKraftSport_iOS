@@ -166,7 +166,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         } else  {
             dismiss(animated: true, completion: nil)
         }*/
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     func isLoggedIn() -> Bool {

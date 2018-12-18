@@ -84,10 +84,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         alert.addAction(UIAlertAction(title: NSLocalizedString("login_btn", comment: ""), style: .default, handler: { (action: UIAlertAction!) in
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-            self.navigationController?.present(newViewController, animated: true) {
-                print("feddich")
-                //TODO zurück zur vorherigen seite!!!
-            }
+            self.navigationController?.pushViewController(newViewController, animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
     }
