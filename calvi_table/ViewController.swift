@@ -160,18 +160,31 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         searchController.view.addSubview(savedSearches)
     }
     
-    //nur wenn angemeldet!!
+    
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         //get text and follow this search
-        if let text = searchBar.text {
-            if text != "" {
-                let userToken = Utils.getUserToken()
-                let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=1000000&lat=0&lng=0&distance=1000&token=\(userToken)")
-                Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
-                    .responseJSON { response in
-                        print(response)
+        if Utils.getUserToken() != "" {
+            if let text = searchBar.text {
+                if text != "" {
+                    let userToken = Utils.getUserToken()
+                    let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=1000000&lat=0&lng=0&distance=1000&token=\(userToken)")
+                    Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+                        .responseJSON { response in
+                            //print(response)
+                            let alert = UIAlertController(title: NSLocalizedString("follow_search_saved", comment: ""), message: nil, preferredStyle: .actionSheet)
+                            self.present(alert, animated: true, completion: nil)
+                            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+                    }
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("empty_search_text_hint", comment: ""), message: nil, preferredStyle: .actionSheet)
+                    self.present(alert, animated: true, completion: nil)
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
                 }
             }
+        } else {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     

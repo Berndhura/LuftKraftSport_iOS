@@ -68,3 +68,5 @@
 "searches_title" = "Suchen: ";
 "delete_search" = "Suche Löschen";
 "delete_search_confirm" = "Bist du sicher?";
+"empty_search_text_hint" = "Suche ist leer!";
+"follow_search_saved" = "Folge dieser Suche ab jetzt";
