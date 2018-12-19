@@ -37,6 +37,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     var callbackClosureMyArticles: (() -> Void)?
     
     var callbackClosureBookmarks: (() -> Void)?
+    
+    var comesFromHome = false
 
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
@@ -55,8 +57,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         SDWebImageDownloader.shared().setValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", forHTTPHeaderField: "Accept")
         
         checkLoginStatus()
-        
-        getMyBookmaks(type: "all")
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -91,6 +91,12 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.searchBar.showsBookmarkButton = true
         
         showHintsForUser()
+        
+        if comesFromHome {
+            //nothing here, just show bookmarks or my ads
+        } else {
+            getMyBookmaks(type: "all")
+        }
     }
     
     func showHintsForUser() {
@@ -115,6 +121,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                              delegate: self)
         }
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         adaptTitle()
@@ -238,12 +245,14 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     }
     
     func showMyArticle() {
+        comesFromHome = true
         page = 0
         ads.removeAll()
         getMyBookmaks(type: "my")
     }
     
     func showBookmarkedArticles() {
+        comesFromHome = true
         page = 0
         ads.removeAll()
         getMyBookmaks(type: "bookmarked")
@@ -282,6 +291,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     } else {
                         if let res = response.result.value {
                             self.myBookmarks = res as! [Int32]  //TODO crash hier wenn netzwerk verbunden aber kein service, wahrscheinlich wie bei ALLEN requests!!!
+                            print("bookmarks")
+                            print(self.myBookmarks)
                         } else {
                             self.myBookmarks = []
                         }
@@ -301,7 +312,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         //paging problem
         //var localAds: [Ad]  = []
         
-        var url: URL
+        var url = URL(string: "www.google.de")!
         
         if type == "all" {
             //all articles
@@ -315,13 +326,15 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             let token = Utils.getUserToken()
             //TODO check url -> distance
             url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")!
-        } else {
+        } else if type == "my" {
             //my articles
             let userToken = Utils.getUserToken()
             let urlString = Urls.getMyArticles + "?token=\(userToken)&page=0&size=30"  //TODO Paging einbauen
             url = URL(string: urlString)!
         }
         
+        print("--------------------")
+        print(url)
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 
@@ -373,6 +386,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                 //self.ads = localAds
                 self.tableView.reloadData()
                 self.adaptTitle()
+                self.comesFromHome = false
         }
     }
     
