@@ -11,6 +11,7 @@ import UIKit
 class Constants {
     static let gotPushNotification: String = "gotPushNotification"
     static let searchDeleted: String = "searchDeleted"
+    static let searchFor: String = "searchFor"
     
     //default lat,lng if those are not available
     static let defaultLatitude = 53.551086

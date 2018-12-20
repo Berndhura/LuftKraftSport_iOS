@@ -53,6 +53,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initObservers()
+        
         //TODO besser in appdelegate???
         SDWebImageDownloader.shared().setValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", forHTTPHeaderField: "Accept")
         
@@ -120,6 +122,18 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                              preferences: preferences,
                              delegate: self)
         }
+    }
+    
+    
+    func initObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(searchForObserver), name: Notification.Name(Constants.searchFor), object: nil)
+    }
+    
+    func searchForObserver(_ notification: Notification) {
+        self.searchController.searchBar.endEditing(true)
+        
+        let searchText = notification.userInfo?["article"] as! String
+        searchFor(article: searchText)
     }
     
     
@@ -256,6 +270,14 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         page = 0
         ads.removeAll()
         getMyBookmaks(type: "bookmarked")
+    }
+    
+    func searchFor(article: String) {
+        comesFromHome = true
+        page = 0
+        ads.removeAll()
+        searchString = article
+        getMyBookmaks(type: "search")
     }
 
     override func didReceiveMemoryWarning() {

@@ -159,5 +159,34 @@ extension SearchesController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightFor section: Int) -> CGFloat{
         return 100.0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        let search: Searches = searches[indexPath.row]
+        print(search.title)
+        
+        var payload:[String: String] = [:]
+        payload["article"] = search.title
+        
+        self.navigationController?.popViewControllerWithHandler(completion: {
+            NotificationCenter.default.post(name: Notification.Name(Constants.searchFor), object: nil, userInfo: payload)
+        })
+    }
+}
+
+extension UINavigationController {
+    //Same function as "popViewController", but allow us to know when this function ends
+    func popViewControllerWithHandler(completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.popViewController(animated: true)
+        CATransaction.commit()
+    }
+    func pushViewController(viewController: UIViewController, completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.pushViewController(viewController, animated: true)
+        CATransaction.commit()
+    }
 }
 
