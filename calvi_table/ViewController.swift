@@ -34,10 +34,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var noMessagesLabel = UILabel()
     
-    var callbackClosureMyArticles: (() -> Void)?
-    
-    var callbackClosureBookmarks: (() -> Void)?
-    
     var comesFromHome = false
 
     //refresh button in tabbar
@@ -96,6 +92,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         if comesFromHome {
             //nothing here, just show bookmarks or my ads
+            print("KOMME FROM HOME!!!")
         } else {
             getMyBookmaks(type: "all")
         }
@@ -126,7 +123,28 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     
     func initObservers() {
+        
+        //search for a search user is following
         NotificationCenter.default.addObserver(self, selector: #selector(searchForObserver), name: Notification.Name(Constants.searchFor), object: nil)
+        
+        //show bookmarks from user
+        NotificationCenter.default.addObserver(self, selector: #selector(showBookmarksObserver), name: Notification.Name(Constants.showBookmarks), object: nil)
+        
+        //show user own articles
+        NotificationCenter.default.addObserver(self, selector: #selector(showUsersArticlesObserver), name: Notification.Name(Constants.showMyArticles), object: nil)
+    }
+    
+    func showBookmarksObserver() {
+        ads.removeAll()
+        tabBarController?.selectedIndex = 0
+        showBookmarkedArticles()
+    }
+    
+    
+    func showUsersArticlesObserver() {
+        ads.removeAll()
+        tabBarController?.selectedIndex = 0
+        showMyArticle()
     }
     
     func searchForObserver(_ notification: Notification) {
@@ -140,10 +158,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     override func viewDidAppear(_ animated: Bool) {
         adaptTitle()
         self.tabBarController?.navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
-        
-        //to get my article from homeViewController
-        callbackClosureMyArticles?()
-        callbackClosureBookmarks?()
     }
     
     

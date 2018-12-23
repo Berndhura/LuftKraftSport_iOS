@@ -182,6 +182,8 @@ extension UINavigationController {
         self.popViewController(animated: true)
         CATransaction.commit()
     }
+    
+    
     func pushViewController(viewController: UIViewController, completion: @escaping ()->()) {
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)

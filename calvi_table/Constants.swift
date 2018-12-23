@@ -12,6 +12,8 @@ class Constants {
     static let gotPushNotification: String = "gotPushNotification"
     static let searchDeleted: String = "searchDeleted"
     static let searchFor: String = "searchFor"
+    static let showBookmarks: String = "showBookmarks"
+    static let showMyArticles: String = "showMyArticles"
     
     //default lat,lng if those are not available
     static let defaultLatitude = 53.551086

@@ -115,13 +115,8 @@ class HomeViewController: UIViewController {
         if Utils.getUserToken() == "" {
             loginUser()
         } else {
-            //call VC with "my articles"
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
-            newViewController.callbackClosureMyArticles = { [] in
-                newViewController.showMyArticle()
-            }
-            self.navigationController?.pushViewController(newViewController, animated: true)
+            //send notification to show own articles
+            NotificationCenter.default.post(name: Notification.Name(Constants.showMyArticles), object: nil)
         }
     }
     
@@ -129,13 +124,8 @@ class HomeViewController: UIViewController {
         if Utils.getUserToken() == "" {
             loginUser()
         } else {
-            //call VC with "my articles"
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "mainPage") as! ViewController
-            newViewController.callbackClosureBookmarks = { [] in
-                newViewController.showBookmarkedArticles()
-            }
-            self.navigationController?.pushViewController(newViewController, animated: true)
+            //send notification to show bookmarks for user
+            NotificationCenter.default.post(name: Notification.Name(Constants.showBookmarks), object: nil)
         }
     }
 }
