@@ -12,6 +12,7 @@
 		270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */; };
 		270C74A12194C80000866CD0 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A02194C80000866CD0 /* Extensions+UIView.swift */; };
 		270C74A521961AD900866CD0 /* SearchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A421961AD900866CD0 /* SearchesController.swift */; };
+		270D655521D013A00076E846 /* FollowSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270D655421D013A00076E846 /* FollowSearchViewController.swift */; };
 		270EE7D521B834BB00B48D22 /* _preparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270EE7D421B834BB00B48D22 /* _preparation.swift */; };
 		2711D3952177BA9F00A4416D /* UITableView+setEmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */; };
 		2711D3972177BE2900A4416D /* DataProtectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2711D3962177BE2900A4416D /* DataProtectionViewController.swift */; };
@@ -76,6 +77,7 @@
 		270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		270C74A02194C80000866CD0 /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		270C74A421961AD900866CD0 /* SearchesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchesController.swift; sourceTree = "<group>"; };
+		270D655421D013A00076E846 /* FollowSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowSearchViewController.swift; sourceTree = "<group>"; };
 		270EE7D421B834BB00B48D22 /* _preparation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _preparation.swift; sourceTree = "<group>"; };
 		2711D3942177BA9F00A4416D /* UITableView+setEmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+setEmptyMessage.swift"; sourceTree = "<group>"; };
 		2711D3962177BE2900A4416D /* DataProtectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtectionViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				2711D3962177BE2900A4416D /* DataProtectionViewController.swift */,
 				270C74A421961AD900866CD0 /* SearchesController.swift */,
 				270EE7D421B834BB00B48D22 /* _preparation.swift */,
+				270D655421D013A00076E846 /* FollowSearchViewController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */,
 				273E6E111F671F0D0036A445 /* LoginController.swift in Sources */,
 				27454F5F1F824F1B008AA35A /* NewAdViewController.swift in Sources */,
+				270D655521D013A00076E846 /* FollowSearchViewController.swift in Sources */,
 				2727CA71211C48DC0075985D /* ArticlePresenter.swift in Sources */,
 				27EF133D20E139B500ADE593 /* Coordinate.swift in Sources */,
 				279F0C791F7D2F1D004E2525 /* Message.swift in Sources */,

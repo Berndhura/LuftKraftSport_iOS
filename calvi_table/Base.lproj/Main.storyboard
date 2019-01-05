@@ -487,6 +487,85 @@ abrufbaren Datenschutzhinweisen bereit.</string>
             </objects>
             <point key="canvasLocation" x="1462" y="782"/>
         </scene>
+        <!--Follow Search View Controller-->
+        <scene sceneID="jmK-zh-DwO">
+            <objects>
+                <viewController storyboardIdentifier="followSearch" modalPresentationStyle="overCurrentContext" id="q04-ce-KKx" customClass="FollowSearchViewController" customModule="calvi_table" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TNC-yS-prK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNS-dE-nG7">
+                                <rect key="frame" x="10" y="782" width="394" height="30"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="followSearchPressed:" destination="q04-ce-KKx" eventType="touchUpInside" id="tw6-ba-lKT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ov4-df-eKu">
+                                <rect key="frame" x="10" y="822" width="394" height="30"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="back"/>
+                                <connections>
+                                    <action selector="backBtnPressed:" destination="q04-ce-KKx" eventType="touchUpInside" id="MCO-Qr-iCN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="serachfor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymn-tc-ihc">
+                                <rect key="frame" x="10" y="95" width="136.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="infolabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJt-1h-eWx">
+                                <rect key="frame" x="10" y="54" width="394" height="21"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pf2-RT-iIB">
+                                <rect key="frame" x="156.5" y="95" width="247.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ymn-tc-ihc" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="2qt-1B-MfC"/>
+                            <constraint firstItem="Ymn-tc-ihc" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="9BM-bJ-49J"/>
+                            <constraint firstItem="ov4-df-eKu" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="CKV-lS-DMh"/>
+                            <constraint firstItem="Pf2-RT-iIB" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="Ccb-6f-drd"/>
+                            <constraint firstItem="Ymn-tc-ihc" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="EsI-60-Dwg"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="DJt-1h-eWx" secondAttribute="trailing" constant="10" id="UGG-2F-tyD"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="Pf2-RT-iIB" secondAttribute="trailing" constant="10" id="ePL-Ey-YXj"/>
+                            <constraint firstItem="DJt-1h-eWx" firstAttribute="top" secondItem="PEZ-XH-CBa" secondAttribute="top" constant="10" id="erE-o2-D6w"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="ov4-df-eKu" secondAttribute="trailing" constant="10" id="g5l-2u-q82"/>
+                            <constraint firstItem="ov4-df-eKu" firstAttribute="top" secondItem="cNS-dE-nG7" secondAttribute="bottom" constant="10" id="kgt-n3-iaq"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="bottom" secondItem="ov4-df-eKu" secondAttribute="bottom" constant="10" id="nQE-23-z1f"/>
+                            <constraint firstItem="Pf2-RT-iIB" firstAttribute="leading" secondItem="Ymn-tc-ihc" secondAttribute="trailing" constant="10" id="rfd-OV-eoA"/>
+                            <constraint firstItem="DJt-1h-eWx" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="wmr-6U-t6F"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="cNS-dE-nG7" secondAttribute="trailing" constant="10" id="wsA-AI-hMR"/>
+                            <constraint firstItem="cNS-dE-nG7" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="yWw-Zo-gIw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PEZ-XH-CBa"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
+                    <connections>
+                        <outlet property="backButton" destination="ov4-df-eKu" id="gE6-4U-mUC"/>
+                        <outlet property="mainInfoLable" destination="DJt-1h-eWx" id="to1-7Z-c2P"/>
+                        <outlet property="saveButton" destination="cNS-dE-nG7" id="8Bt-xE-Svl"/>
+                        <outlet property="searchTextInput" destination="Pf2-RT-iIB" id="8Fk-G7-rWE"/>
+                        <outlet property="serachTextLable" destination="Ymn-tc-ihc" id="Pvw-WI-gAb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdV-i4-Hd2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456.521739130435" y="1532.8125"/>
+        </scene>
         <!--Searches Controller-->
         <scene sceneID="LbC-ca-bZm">
             <objects>

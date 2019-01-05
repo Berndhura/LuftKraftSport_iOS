@@ -197,19 +197,31 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        
         //get text and follow this search
         if Utils.getUserToken() != "" {
             if let text = searchBar.text {
                 if text != "" {
-                    let userToken = Utils.getUserToken()
-                    let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=1000000&lat=0&lng=0&distance=1000&token=\(userToken)")
-                    Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
-                        .responseJSON { response in
-                            //print(response)
-                            let alert = UIAlertController(title: NSLocalizedString("follow_search_saved", comment: ""), message: nil, preferredStyle: .actionSheet)
-                            self.present(alert, animated: true, completion: nil)
-                            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+                    //text ok -> open new VC for more user input to save search
+                    let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
+                    vc.searchText = text
+                    vc.modalPresentationStyle = .custom
+                    
+                    let controller = vc.popoverPresentationController
+                    vc.preferredContentSize = CGSize(width: 100, height: 100)
+                    
+                    if controller != nil
+                    {
+                        controller?.delegate = self as? UIPopoverPresentationControllerDelegate
+                        //you could set the following in your storyboard
+                        controller?.sourceView = self.view
+                        controller?.sourceRect = CGRect(x:50, y: 50,width: 100,height: 100)
+                        controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+                        
                     }
+                    self.present(vc, animated: true, completion: nil)
+
                 } else {
                     let alert = UIAlertController(title: NSLocalizedString("empty_search_text_hint", comment: ""), message: nil, preferredStyle: .actionSheet)
                     self.present(alert, animated: true, completion: nil)
