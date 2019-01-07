@@ -14,6 +14,10 @@ class FollowSearchViewController: UIViewController {
     
     @IBOutlet weak var searchTextInput: UITextField!
     
+    @IBOutlet weak var priceInput: UITextField!
+    
+    @IBOutlet weak var priceLable: UILabel!
+    
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var mainInfoLable: UILabel!
@@ -30,7 +34,11 @@ class FollowSearchViewController: UIViewController {
     @IBAction func followSearchPressed(_ sender: Any) {
     
         let userToken = Utils.getUserToken()
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(searchText!)&priceFrom=0&priceTo=1000000&lat=0&lng=0&distance=1000&token=\(userToken)")
+        
+        let price = getPrice()
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(searchText!)&priceFrom=0&priceTo=\(price)&lat=0&lng=0&distance=1000&token=\(userToken)")
+        
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 //print(response)
@@ -49,7 +57,25 @@ class FollowSearchViewController: UIViewController {
         view.superview?.frame =  CGRect(x: 0, y: 0, width: 200, height: 200)
     }
     
+    func getPrice() -> Int {
+        
+        if let _ = Int(priceInput.text!) {
+            if priceInput.text!.isEmpty {
+                return Constants.maxPrice
+            }
+        } else {
+            return Int(priceInput.text!)!
+        }
+        
+        return Constants.maxPrice
+    }
+    
     func initElements() {
+        
+        priceLable.text = NSLocalizedString("price", comment: "")
+        priceInput.text = NSLocalizedString("price_dnm", comment: "")
+        
+        
         saveButton.backgroundColor = appMainColorBlue
         saveButton.setTitle(NSLocalizedString("followSearch", comment: ""), for: .normal)
         saveButton.setTitleColor(.white, for: .normal)
@@ -59,6 +85,7 @@ class FollowSearchViewController: UIViewController {
         backButton.setTitle(NSLocalizedString("abort", comment: ""), for: .normal)
         
         mainInfoLable.text = NSLocalizedString("searches_explain", comment: "")
+        mainInfoLable.backgroundColor = .gray
         
         serachTextLable.text = NSLocalizedString("search_text_lable", comment: "")
         

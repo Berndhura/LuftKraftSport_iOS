@@ -531,21 +531,40 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3Z-9w-u0L" userLabel="priceLable">
+                                <rect key="frame" x="10" y="125.5" width="136.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A49-pk-bOu" userLabel="priceInput">
+                                <rect key="frame" x="156.5" y="135" width="247.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="A49-pk-bOu" firstAttribute="top" secondItem="Pf2-RT-iIB" secondAttribute="bottom" constant="10" id="2Jl-cO-YBS"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="2qt-1B-MfC"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="9BM-bJ-49J"/>
                             <constraint firstItem="ov4-df-eKu" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="CKV-lS-DMh"/>
                             <constraint firstItem="Pf2-RT-iIB" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="Ccb-6f-drd"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="EsI-60-Dwg"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="A49-pk-bOu" secondAttribute="trailing" constant="10" id="Ru4-Zu-VnV"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="DJt-1h-eWx" secondAttribute="trailing" constant="10" id="UGG-2F-tyD"/>
+                            <constraint firstItem="z3Z-9w-u0L" firstAttribute="top" secondItem="Ymn-tc-ihc" secondAttribute="bottom" constant="10" id="UkO-6E-vn5"/>
+                            <constraint firstItem="A49-pk-bOu" firstAttribute="leading" secondItem="z3Z-9w-u0L" secondAttribute="trailing" constant="10" id="Vkd-Wv-Zr3"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="Pf2-RT-iIB" secondAttribute="trailing" constant="10" id="ePL-Ey-YXj"/>
                             <constraint firstItem="DJt-1h-eWx" firstAttribute="top" secondItem="PEZ-XH-CBa" secondAttribute="top" constant="10" id="erE-o2-D6w"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="ov4-df-eKu" secondAttribute="trailing" constant="10" id="g5l-2u-q82"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="A49-pk-bOu" secondAttribute="trailing" constant="10" id="kEC-d4-2qV"/>
                             <constraint firstItem="ov4-df-eKu" firstAttribute="top" secondItem="cNS-dE-nG7" secondAttribute="bottom" constant="10" id="kgt-n3-iaq"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="bottom" secondItem="ov4-df-eKu" secondAttribute="bottom" constant="10" id="nQE-23-z1f"/>
+                            <constraint firstItem="z3Z-9w-u0L" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="qpM-MV-rQh"/>
                             <constraint firstItem="Pf2-RT-iIB" firstAttribute="leading" secondItem="Ymn-tc-ihc" secondAttribute="trailing" constant="10" id="rfd-OV-eoA"/>
+                            <constraint firstItem="z3Z-9w-u0L" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="waw-05-atl"/>
                             <constraint firstItem="DJt-1h-eWx" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="wmr-6U-t6F"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="cNS-dE-nG7" secondAttribute="trailing" constant="10" id="wsA-AI-hMR"/>
                             <constraint firstItem="cNS-dE-nG7" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="yWw-Zo-gIw"/>
@@ -557,6 +576,8 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                     <connections>
                         <outlet property="backButton" destination="ov4-df-eKu" id="gE6-4U-mUC"/>
                         <outlet property="mainInfoLable" destination="DJt-1h-eWx" id="to1-7Z-c2P"/>
+                        <outlet property="priceInput" destination="A49-pk-bOu" id="EtB-og-Cm5"/>
+                        <outlet property="priceLable" destination="z3Z-9w-u0L" id="toQ-AQ-b17"/>
                         <outlet property="saveButton" destination="cNS-dE-nG7" id="8Bt-xE-Svl"/>
                         <outlet property="searchTextInput" destination="Pf2-RT-iIB" id="8Fk-G7-rWE"/>
                         <outlet property="serachTextLable" destination="Ymn-tc-ihc" id="Pvw-WI-gAb"/>
@@ -578,25 +599,25 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                 <rect key="frame" x="0.0" y="5" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="215" id="1Oc-8c-5PC" customClass="SearchCell" customModule="calvi_table" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="215"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchCell" rowHeight="354" id="1Oc-8c-5PC" customClass="SearchCell" customModule="calvi_table" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="354"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Oc-8c-5PC" id="udk-2W-RYh">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="214.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="353.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eHj-6h-5q2">
-                                                    <rect key="frame" x="20" y="11" width="374" height="71"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="141.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X37-f2-AUy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="71"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="141.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-th-mFk">
-                                                            <rect key="frame" x="187" y="0.0" width="187" height="71"/>
+                                                            <rect key="frame" x="187" y="0.0" width="187" height="141.5"/>
                                                             <state key="normal" image="delete"/>
                                                             <connections>
                                                                 <action selector="deleteSearch:" destination="1Oc-8c-5PC" eventType="touchUpInside" id="JoQ-Qp-oc7"/>
@@ -605,31 +626,41 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="klj-Cn-eza" userLabel="location">
-                                                    <rect key="frame" x="20" y="82" width="374" height="70.5"/>
+                                                    <rect key="frame" x="20" y="152.5" width="374" height="70.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jV0-WO-Xh1" userLabel="radius">
-                                                    <rect key="frame" x="20" y="152.5" width="374" height="71"/>
+                                                    <rect key="frame" x="20" y="223" width="374" height="71"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeq-Nh-w9w" userLabel="price">
+                                                    <rect key="frame" x="20" y="294" width="374" height="70.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="jV0-WO-Xh1" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="7UK-vf-Iq0"/>
+                                                <constraint firstItem="jV0-WO-Xh1" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.2" id="7UK-vf-Iq0"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jV0-WO-Xh1" secondAttribute="trailing" id="DNW-Bm-4mh"/>
-                                                <constraint firstItem="eHj-6h-5q2" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="I98-Vi-gFN"/>
+                                                <constraint firstItem="aeq-Nh-w9w" firstAttribute="leading" secondItem="jV0-WO-Xh1" secondAttribute="leading" id="Dmz-CZ-je9"/>
+                                                <constraint firstItem="aeq-Nh-w9w" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.2" id="F5M-K0-wZW"/>
+                                                <constraint firstItem="eHj-6h-5q2" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.4" id="I98-Vi-gFN"/>
                                                 <constraint firstItem="klj-Cn-eza" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="JHE-XV-5Ae"/>
                                                 <constraint firstItem="jV0-WO-Xh1" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="Ppf-Lk-iw5"/>
-                                                <constraint firstItem="klj-Cn-eza" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.33" id="Zfj-BQ-oMM"/>
+                                                <constraint firstItem="aeq-Nh-w9w" firstAttribute="top" secondItem="jV0-WO-Xh1" secondAttribute="bottom" id="Q8i-Vg-ErU"/>
+                                                <constraint firstItem="klj-Cn-eza" firstAttribute="height" secondItem="udk-2W-RYh" secondAttribute="height" multiplier="0.2" id="Zfj-BQ-oMM"/>
                                                 <constraint firstItem="jV0-WO-Xh1" firstAttribute="top" secondItem="klj-Cn-eza" secondAttribute="bottom" id="aZ4-kZ-Qno"/>
                                                 <constraint firstItem="klj-Cn-eza" firstAttribute="trailing" secondItem="udk-2W-RYh" secondAttribute="trailingMargin" id="bVR-Nc-wIU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eHj-6h-5q2" secondAttribute="trailing" id="cfx-9b-r2r"/>
                                                 <constraint firstItem="klj-Cn-eza" firstAttribute="top" secondItem="eHj-6h-5q2" secondAttribute="bottom" id="mgW-am-jD3"/>
+                                                <constraint firstItem="aeq-Nh-w9w" firstAttribute="trailing" secondItem="jV0-WO-Xh1" secondAttribute="trailing" id="qrk-w7-67U"/>
                                                 <constraint firstItem="eHj-6h-5q2" firstAttribute="top" secondItem="udk-2W-RYh" secondAttribute="topMargin" id="rDd-1d-DPa"/>
                                                 <constraint firstItem="eHj-6h-5q2" firstAttribute="leading" secondItem="udk-2W-RYh" secondAttribute="leadingMargin" id="uU7-uM-Kn0"/>
                                             </constraints>
@@ -638,6 +669,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                             <outlet property="desc" destination="X37-f2-AUy" id="qdr-DG-RV2"/>
                                             <outlet property="distance" destination="jV0-WO-Xh1" id="Kew-yy-HJ2"/>
                                             <outlet property="location" destination="klj-Cn-eza" id="Knp-9Z-lcr"/>
+                                            <outlet property="price" destination="aeq-Nh-w9w" id="aHf-SA-Kys"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

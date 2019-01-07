@@ -72,3 +72,6 @@
 "follow_search_saved" = "Folge dieser Suche ab jetzt";
 "followSearch" = "Dieser Suche folgen";
 "search_text_lable" = "Suche nach:";
+"price" = "Preis:";
+"price_dnm" = "Beliebig";
+"max_price" = "Preis bis: ";

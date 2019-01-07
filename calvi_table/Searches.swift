@@ -13,4 +13,5 @@ struct Searches {
     var distance: Int
     var locationName: String
     var id: Int16
+    var priceTo: Int
 }

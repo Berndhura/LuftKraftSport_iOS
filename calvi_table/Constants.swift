@@ -18,6 +18,8 @@ class Constants {
     //default lat,lng if those are not available
     static let defaultLatitude = 53.551086
     static let defaultLongitude = 9.993682
+    
+    static let maxPrice = 10000000
 }
 
 

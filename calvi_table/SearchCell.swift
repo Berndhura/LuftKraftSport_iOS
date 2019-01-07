@@ -23,6 +23,8 @@ class SearchCell: UITableViewCell {
     
     @IBOutlet weak var distance: UILabel!
     
+    @IBOutlet weak var price: UILabel!
+    
     public var searchId: Int16 = 0
     
     override func awakeFromNib() {

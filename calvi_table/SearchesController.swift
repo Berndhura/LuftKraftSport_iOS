@@ -65,16 +65,16 @@ class SearchesController: UIViewController, SearchCellDelegate {
                 switch response.result {
                 case .success:
                     let jsonData = JSON(response.result.value ?? "default")
-                    
                     for (_ , value) in jsonData {
                         
                         let title = value["description"].string
                         let dist = value["distance"].int
                         let location = value["locationName"].string
                         let id = value["id"].int16
+                        let maxPrice = value["priceTo"].int
                         
                         //TODO resultCount, priceFrom, lng, priceTo, lat
-                        let search = Searches(title: title!, distance: dist!, locationName: location!, id: id!)
+                        let search = Searches(title: title!, distance: dist!, locationName: location!, id: id!, priceTo: maxPrice!)
                         
                         localSearches.append(search)
                     }
@@ -127,6 +127,10 @@ extension SearchesController: UITableViewDataSource {
         //id
         cell?.searchId = search.id
         
+        //max price
+        let maxPrice = NSLocalizedString("max_price", comment: "") + ((search.priceTo == Constants.maxPrice) ? NSLocalizedString("price_dnm", comment: "") :  String(describing: search.priceTo))
+        cell?.price?.text =  maxPrice
+        
         return cell!
     }
     
@@ -149,15 +153,15 @@ extension SearchesController: UITableViewDelegate {
         let screenSize:CGRect = UIScreen.main.bounds
         let screenHeight = screenSize.height
         
-        return screenHeight / 7.0
+        return screenHeight / 5.0
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200.0
+        return 250.0
     }
     
     func tableView(_ tableView: UITableView, heightFor section: Int) -> CGFloat{
-        return 100.0
+        return 150.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
