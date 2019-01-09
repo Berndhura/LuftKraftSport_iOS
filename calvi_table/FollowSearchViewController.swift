@@ -32,6 +32,7 @@ class FollowSearchViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var serachTextLable: UILabel!
+    
     var searchText: String?
     
     @IBAction func backBtnPressed(_ sender: Any) {
@@ -46,16 +47,21 @@ class FollowSearchViewController: UIViewController {
         
         let distance = getDistance()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(searchText!)&priceFrom=0&priceTo=\(price)&lat=0&lng=0&distance=\(distance)&token=\(userToken)")
+        if validateInput() {
+            
+            let text = getSearchText()
         
-        Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                //print(response)
-                let alert = UIAlertController(title: NSLocalizedString("follow_search_saved", comment: ""), message: nil, preferredStyle: .actionSheet)
-                self.present(alert, animated: true, completion: nil)
-                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=\(price)&lat=0&lng=0&distance=\(distance)&token=\(userToken)")
+            
+            Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
+                .responseJSON { response in
+                    //print(response)
+                    let alert = UIAlertController(title: NSLocalizedString("follow_search_saved", comment: ""), message: nil, preferredStyle: .actionSheet)
+                    self.present(alert, animated: true, completion: nil)
+                    Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+            }
+            self.dismiss(animated: true, completion: nil)
         }
-        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -65,6 +71,30 @@ class FollowSearchViewController: UIViewController {
         
         view.superview?.frame =  CGRect(x: 0, y: 0, width: 200, height: 200)
     }
+    
+    
+    func validateInput() -> Bool {
+        
+        if let text = searchTextInput.text {
+            let trimmedText = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            if (text.isEmpty || trimmedText == "")  {
+                let alert = UIAlertController(title: NSLocalizedString("empty_search_text_hint", comment: ""), message: nil, preferredStyle: .actionSheet)
+                self.present(alert, animated: true, completion: nil)
+                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
+        return false
+    }
+    
+    
+    func getSearchText() -> String {
+        return searchTextInput.text!
+    }
+    
     
     func getPrice() -> Int {
         
