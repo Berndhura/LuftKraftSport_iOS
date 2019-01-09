@@ -75,3 +75,6 @@
 "price" = "Price:";
 "price_dnm" = "Any";
 "max_price" = "Price to: ";
+"what" = "What: ";
+"where" = "Where: ";
+"radius" = "Range: ";

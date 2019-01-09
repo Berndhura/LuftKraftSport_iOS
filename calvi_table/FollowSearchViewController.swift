@@ -64,7 +64,11 @@ class FollowSearchViewController: UIViewController {
                 return Constants.maxPrice
             }
         } else {
-            return Int(priceInput.text!)!
+            if priceInput.text! == NSLocalizedString("price_dnm", comment: "") {
+                return Constants.maxPrice
+            } else {
+                return Int(priceInput.text!)!
+            }
         }
         
         return Constants.maxPrice

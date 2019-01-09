@@ -32,6 +32,11 @@ class SearchesController: UIViewController, SearchCellDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(removeSearchFromList), name: Notification.Name(Constants.searchDeleted), object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     
     func deleteSearch(cell: SearchCell) {
         let indexPath = self.tableView.indexPath(for: cell)
@@ -116,13 +121,13 @@ extension SearchesController: UITableViewDataSource {
         let search: Searches = searches[indexPath.row]
         
         //description
-        cell?.desc?.text = "Suche: " + search.title
+        cell?.desc?.text = NSLocalizedString("what", comment: "") + search.title
         
         //location
-        cell?.location.text = "In: " + search.locationName
+        cell?.location.text = NSLocalizedString("where", comment: "") + search.locationName
         
         //distance
-        cell?.distance.text = String(describing: search.distance)
+        cell?.distance.text = NSLocalizedString("radius", comment: "") + String(describing: search.distance)
         
         //id
         cell?.searchId = search.id
@@ -155,14 +160,7 @@ extension SearchesController: UITableViewDelegate {
         
         return screenHeight / 5.0
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250.0
-    }
-    
-    func tableView(_ tableView: UITableView, heightFor section: Int) -> CGFloat{
-        return 150.0
-    }
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     

@@ -75,3 +75,6 @@
 "price" = "Preis:";
 "price_dnm" = "Beliebig";
 "max_price" = "Preis bis: ";
+"what" = "Suche nach: ";
+"where" = "Wo: ";
+"radius" = "Umkreis: ";
