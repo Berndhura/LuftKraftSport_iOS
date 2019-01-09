@@ -35,6 +35,8 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     var noMessagesLabel = UILabel()
     
     var comesFromHome = false
+    
+    var searchText = ""
 
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
@@ -454,9 +456,38 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     }
     
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchText = searchText
+    }
+    
+    
     func showAlertForNoResults() {
+        
         let alert = UIAlertController(title: NSLocalizedString("no_search_results", comment: ""), message: NSLocalizedString("no_search_results_details", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+    
+        alert.addAction(UIAlertAction(title: NSLocalizedString("followSearch", comment: ""), style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
+            vc.searchText = self.searchText
+            vc.modalPresentationStyle = .custom
+            
+            let controller = vc.popoverPresentationController
+            vc.preferredContentSize = CGSize(width: 100, height: 100)
+            
+            if controller != nil
+            {
+                controller?.delegate = self as? UIPopoverPresentationControllerDelegate
+                //you could set the following in your storyboard
+                controller?.sourceView = self.view
+                controller?.sourceRect = CGRect(x:50, y: 50,width: 100,height: 100)
+                controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+                
+            }
+            self.present(vc, animated: true, completion: nil)
+        }))
+        
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
     }
 
