@@ -21,6 +21,7 @@ target 'calvi_table' do
     pod 'PromiseKit/Alamofire'
     pod 'IQKeyboardManagerSwift'
     pod 'EasyTipView', '~> 1.0.2'
+    pod 'DownPicker' 
     #pod 'MessageKit'
 
   target 'calvi_tableTests' do

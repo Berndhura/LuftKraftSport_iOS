@@ -526,19 +526,31 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pf2-RT-iIB">
-                                <rect key="frame" x="156.5" y="95" width="247.5" height="30"/>
+                                <rect key="frame" x="156.5" y="91.5" width="247.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3Z-9w-u0L" userLabel="priceLable">
-                                <rect key="frame" x="10" y="125.5" width="136.5" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3Z-9w-u0L" userLabel="priceLable">
+                                <rect key="frame" x="10" y="135.5" width="136.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A49-pk-bOu" userLabel="priceInput">
-                                <rect key="frame" x="156.5" y="135" width="247.5" height="30"/>
+                                <rect key="frame" x="156.5" y="132" width="247.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etS-S6-Ewl">
+                                <rect key="frame" x="10" y="178" width="136.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vTm-W1-MON">
+                                <rect key="frame" x="156.5" y="174.5" width="247.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -546,22 +558,28 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="A49-pk-bOu" firstAttribute="top" secondItem="Pf2-RT-iIB" secondAttribute="bottom" constant="10" id="2Jl-cO-YBS"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="2qt-1B-MfC"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="9BM-bJ-49J"/>
                             <constraint firstItem="ov4-df-eKu" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="CKV-lS-DMh"/>
-                            <constraint firstItem="Pf2-RT-iIB" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="Ccb-6f-drd"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="EsI-60-Dwg"/>
+                            <constraint firstItem="vTm-W1-MON" firstAttribute="leading" secondItem="etS-S6-Ewl" secondAttribute="trailing" constant="10" id="Gx5-FD-jWg"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="vTm-W1-MON" secondAttribute="trailing" constant="10" id="HaD-mh-dqr"/>
+                            <constraint firstItem="etS-S6-Ewl" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="Jn3-fY-ZBe"/>
+                            <constraint firstItem="etS-S6-Ewl" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="Mfl-r4-F9n"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="A49-pk-bOu" secondAttribute="trailing" constant="10" id="Ru4-Zu-VnV"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="DJt-1h-eWx" secondAttribute="trailing" constant="10" id="UGG-2F-tyD"/>
-                            <constraint firstItem="z3Z-9w-u0L" firstAttribute="top" secondItem="Ymn-tc-ihc" secondAttribute="bottom" constant="10" id="UkO-6E-vn5"/>
+                            <constraint firstItem="z3Z-9w-u0L" firstAttribute="top" secondItem="Ymn-tc-ihc" secondAttribute="bottom" constant="20" id="UkO-6E-vn5"/>
+                            <constraint firstItem="A49-pk-bOu" firstAttribute="firstBaseline" secondItem="z3Z-9w-u0L" secondAttribute="firstBaseline" id="VbI-iP-QRf"/>
                             <constraint firstItem="A49-pk-bOu" firstAttribute="leading" secondItem="z3Z-9w-u0L" secondAttribute="trailing" constant="10" id="Vkd-Wv-Zr3"/>
+                            <constraint firstItem="etS-S6-Ewl" firstAttribute="top" secondItem="z3Z-9w-u0L" secondAttribute="bottom" constant="21.5" id="YEy-nR-CxC"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="Pf2-RT-iIB" secondAttribute="trailing" constant="10" id="ePL-Ey-YXj"/>
                             <constraint firstItem="DJt-1h-eWx" firstAttribute="top" secondItem="PEZ-XH-CBa" secondAttribute="top" constant="10" id="erE-o2-D6w"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="ov4-df-eKu" secondAttribute="trailing" constant="10" id="g5l-2u-q82"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="A49-pk-bOu" secondAttribute="trailing" constant="10" id="kEC-d4-2qV"/>
+                            <constraint firstItem="Pf2-RT-iIB" firstAttribute="firstBaseline" secondItem="Ymn-tc-ihc" secondAttribute="firstBaseline" id="kKX-hr-Lyu"/>
                             <constraint firstItem="ov4-df-eKu" firstAttribute="top" secondItem="cNS-dE-nG7" secondAttribute="bottom" constant="10" id="kgt-n3-iaq"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="bottom" secondItem="ov4-df-eKu" secondAttribute="bottom" constant="10" id="nQE-23-z1f"/>
+                            <constraint firstItem="vTm-W1-MON" firstAttribute="firstBaseline" secondItem="etS-S6-Ewl" secondAttribute="firstBaseline" id="nxZ-gK-ZFD"/>
                             <constraint firstItem="z3Z-9w-u0L" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="qpM-MV-rQh"/>
                             <constraint firstItem="Pf2-RT-iIB" firstAttribute="leading" secondItem="Ymn-tc-ihc" secondAttribute="trailing" constant="10" id="rfd-OV-eoA"/>
                             <constraint firstItem="z3Z-9w-u0L" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="waw-05-atl"/>
@@ -578,6 +596,8 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                         <outlet property="mainInfoLable" destination="DJt-1h-eWx" id="to1-7Z-c2P"/>
                         <outlet property="priceInput" destination="A49-pk-bOu" id="EtB-og-Cm5"/>
                         <outlet property="priceLable" destination="z3Z-9w-u0L" id="toQ-AQ-b17"/>
+                        <outlet property="radiusInput" destination="vTm-W1-MON" id="nax-us-P6W"/>
+                        <outlet property="radiusLable" destination="etS-S6-Ewl" id="xhb-6T-0CY"/>
                         <outlet property="saveButton" destination="cNS-dE-nG7" id="8Bt-xE-Svl"/>
                         <outlet property="searchTextInput" destination="Pf2-RT-iIB" id="8Fk-G7-rWE"/>
                         <outlet property="serachTextLable" destination="Ymn-tc-ihc" id="Pvw-WI-gAb"/>

@@ -20,6 +20,7 @@ class Constants {
     static let defaultLongitude = 9.993682
     
     static let maxPrice = 10000000
+    static let unlimitedRange = 1000000
 }
 
 
