@@ -31,7 +31,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568758509.917399"
+            timestampString = "568827007.257991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -47,7 +47,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568758509.917497"
+            timestampString = "568827007.258796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -69,38 +69,6 @@
             startingLineNumber = "169"
             endingLineNumber = "169"
             landmarkName = "goBackPressed()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "calvi_table/MessageController.swift"
-            timestampString = "567336574.990667"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "calvi_table/MessageController.swift"
-            timestampString = "567336574.9909461"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

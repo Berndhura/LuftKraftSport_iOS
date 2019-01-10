@@ -89,6 +89,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.searchBar.delegate = self
         //show bookmark button for search
         self.searchController.searchBar.showsBookmarkButton = true
+        //and change it 
+        let bookmarkIcon = UIImage(named: "addBookmark")
+        searchController.searchBar.setImage(bookmarkIcon, for: .bookmark , state: .normal)
         
         showHintsForUser()
         
@@ -469,26 +472,15 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
             vc.searchText = self.searchText
-            vc.modalPresentationStyle = .custom
-            
-            let controller = vc.popoverPresentationController
-            vc.preferredContentSize = CGSize(width: 100, height: 100)
-            
-            if controller != nil
-            {
-                controller?.delegate = self as? UIPopoverPresentationControllerDelegate
-                //you could set the following in your storyboard
-                controller?.sourceView = self.view
-                controller?.sourceRect = CGRect(x:50, y: 50,width: 100,height: 100)
-                controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-                
-            }
             self.present(vc, animated: true, completion: nil)
         }))
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: {
+            //TODO: refresh kommt zu früh hier
+            self.getMyBookmaks(type: "all")
+        })
     }
 
 

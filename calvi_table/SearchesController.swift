@@ -127,7 +127,7 @@ extension SearchesController: UITableViewDataSource {
         cell?.location.text = NSLocalizedString("where", comment: "") + search.locationName
         
         //distance
-        cell?.distance.text = NSLocalizedString("radius", comment: "") + String(describing: search.distance)
+        cell?.distance.text = NSLocalizedString("radius", comment: "") + String(describing: search.distance) + " km"
         
         //id
         cell?.searchId = search.id
