@@ -11,6 +11,29 @@ import FBSDKLoginKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var shareLable: UIButton!
+    
+    @IBAction func shareButton(_ sender: Any) {
+        
+        let originalString = "https://testflight.apple.com/join/KKlZJ36K"
+        
+        let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
+        
+        let url  = URL(string: "whatsapp://send?text=\(escapedString!)")
+        
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            //no Whatsapp - show it
+            let alertNoWhatsapp = UIAlertController(title: NSLocalizedString("problem", comment: ""), message: NSLocalizedString("no_whatsapp", comment: ""), preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ok", style: .default) { (action) in
+                return
+            }
+            alertNoWhatsapp.addAction(ok)
+            present(alertNoWhatsapp, animated: true, completion: nil)
+        }
+        
+    }
     
     //bookmarked articles
     @IBAction func bookmarksBtn(_ sender: Any) {
@@ -47,7 +70,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         refreshTabBar()
-        setColors()
+        initButtons()
         initLoginButton()
     }
     
@@ -58,12 +81,20 @@ class HomeViewController: UIViewController {
         initLoginButton()
     }
     
-    func setColors()  {
+    func initButtons()  {
         bookmarks.setTitleColor(appMainColorBlue, for: .normal)
+        bookmarks.setTitle(NSLocalizedString("bookmarks", comment: ""), for: .normal)
+        
         login.setTitleColor(appMainColorBlue, for: .normal)
+        login.setTitle(NSLocalizedString("login_btn", comment: ""), for: .normal)
+        
         myArticles.setTitleColor(appMainColorBlue, for: .normal)
+        myArticles.setTitle(NSLocalizedString("my_articles", comment: ""), for: .normal)
+        
         impressum.setTitleColor(appMainColorBlue, for: .normal)
         datenschutz.setTitleColor(appMainColorBlue, for: .normal)
+        shareLable.setTitleColor(appMainColorBlue, for: .normal)
+        shareLable.setTitle(NSLocalizedString("shareApp", comment: ""), for: .normal) 
     }
     
     func refreshTabBar() {

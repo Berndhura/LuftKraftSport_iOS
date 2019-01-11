@@ -191,6 +191,15 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         print(userInfo)
         
+        if (String(describing: userInfo["type"]) == "article") {
+            let messageText = userInfo["message"]
+            let sender = userInfo["sender"]
+            let articleId = userInfo["articleId"]
+            let name = userInfo["name"]
+            
+            
+        }
+    
       
         let defaults:UserDefaults = UserDefaults.standard
         let userId = defaults.string(forKey: "senderId")

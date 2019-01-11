@@ -391,15 +391,25 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                             <action selector="loginBtn:" destination="nr7-mu-bNA" eventType="touchUpInside" id="nSt-gq-qT2"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08R-dl-25b">
+                                        <rect key="frame" x="15" y="235" width="237" height="34"/>
+                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
+                                        <state key="normal" title="share"/>
+                                        <connections>
+                                            <action selector="shareButton:" destination="nr7-mu-bNA" eventType="touchUpInside" id="jol-hC-VAH"/>
+                                            <action selector="test:" destination="Wdh-qx-8mx" eventType="touchUpInside" id="3AM-6t-7vY"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="08R-dl-25b" secondAttribute="bottom" constant="456" id="1sb-oA-y5g"/>
                                     <constraint firstAttribute="trailing" secondItem="awm-L3-NM0" secondAttribute="trailing" id="2Td-SP-Lpb"/>
                                     <constraint firstAttribute="trailing" secondItem="oAx-6E-Xzk" secondAttribute="trailing" id="3DX-4e-JW4"/>
-                                    <constraint firstAttribute="bottom" secondItem="Bhy-SC-yvx" secondAttribute="bottom" constant="325" id="57x-iE-2t7"/>
                                     <constraint firstItem="Qj1-7K-Ams" firstAttribute="top" secondItem="oAx-6E-Xzk" secondAttribute="bottom" constant="10" id="64x-ZR-alX"/>
                                     <constraint firstItem="Bhy-SC-yvx" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="9Zh-xt-tZv"/>
                                     <constraint firstItem="oAx-6E-Xzk" firstAttribute="top" secondItem="ifM-ll-7Nf" secondAttribute="top" constant="10" id="Fjp-cF-Jir"/>
                                     <constraint firstAttribute="trailing" secondItem="Qj1-7K-Ams" secondAttribute="trailing" id="RRF-kD-uVu"/>
+                                    <constraint firstItem="08R-dl-25b" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="TLT-jC-64B"/>
                                     <constraint firstItem="awm-L3-NM0" firstAttribute="top" secondItem="jTW-nB-39W" secondAttribute="bottom" constant="10" id="Ttg-nr-crl"/>
                                     <constraint firstItem="Qj1-7K-Ams" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="WrY-z9-8cs"/>
                                     <constraint firstItem="jTW-nB-39W" firstAttribute="top" secondItem="Qj1-7K-Ams" secondAttribute="bottom" constant="15" id="XVs-Fk-l30"/>
@@ -407,7 +417,9 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                     <constraint firstAttribute="trailing" secondItem="Bhy-SC-yvx" secondAttribute="trailing" id="pKM-iT-HVG"/>
                                     <constraint firstItem="oAx-6E-Xzk" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="q8y-64-KPG"/>
                                     <constraint firstItem="Bhy-SC-yvx" firstAttribute="top" secondItem="awm-L3-NM0" secondAttribute="bottom" constant="10" id="qXN-dA-iJY"/>
+                                    <constraint firstAttribute="trailing" secondItem="08R-dl-25b" secondAttribute="trailing" constant="10" id="ref-Ny-xe5"/>
                                     <constraint firstItem="jTW-nB-39W" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="tho-xs-rqE"/>
+                                    <constraint firstItem="08R-dl-25b" firstAttribute="top" secondItem="Bhy-SC-yvx" secondAttribute="bottom" constant="10" id="xNf-Tq-2op"/>
                                     <constraint firstItem="awm-L3-NM0" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="zkT-ve-Jqy"/>
                                 </constraints>
                             </scrollView>
@@ -428,9 +440,11 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                         <outlet property="impressum" destination="awm-L3-NM0" id="AHE-Qq-obT"/>
                         <outlet property="login" destination="jTW-nB-39W" id="N4i-1x-3yU"/>
                         <outlet property="myArticles" destination="oAx-6E-Xzk" id="dig-Fj-TzQ"/>
+                        <outlet property="shareLable" destination="08R-dl-25b" id="el3-hx-cWw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iLt-gb-gWD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wdh-qx-8mx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1916" y="781.25937031484261"/>
         </scene>

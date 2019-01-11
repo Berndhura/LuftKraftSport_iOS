@@ -145,6 +145,8 @@ class FollowSearchViewController: UIViewController {
         
         mainInfoLable.text = NSLocalizedString("searches_explain", comment: "")
         mainInfoLable.backgroundColor = .gray
+        //mainInfoLable.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+
         
         serachTextLable.text = NSLocalizedString("search_text_lable", comment: "")
         
