@@ -111,7 +111,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         if !hintDismissed {
             var preferences = EasyTipView.Preferences()
-            preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
+            preferences.drawing.font = UIFont(name: "Verdana-Bold", size: 16)!
             preferences.drawing.foregroundColor = .white
             preferences.drawing.cornerRadius = 10
             preferences.drawing.backgroundColor = appMainColorBlue

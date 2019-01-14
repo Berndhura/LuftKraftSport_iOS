@@ -368,7 +368,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awm-L3-NM0">
-                                        <rect key="frame" x="15" y="147" width="247" height="34"/>
+                                        <rect key="frame" x="15" y="142" width="247" height="34"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Impressum"/>
                                         <connections>
@@ -376,7 +376,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhy-SC-yvx">
-                                        <rect key="frame" x="15" y="191" width="247" height="34"/>
+                                        <rect key="frame" x="15" y="186" width="247" height="34"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Datenschutzbestimmungen"/>
                                         <connections>
@@ -384,7 +384,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTW-nB-39W">
-                                        <rect key="frame" x="15" y="103" width="232" height="34"/>
+                                        <rect key="frame" x="15" y="98" width="232" height="34"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -392,7 +392,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08R-dl-25b">
-                                        <rect key="frame" x="15" y="235" width="237" height="34"/>
+                                        <rect key="frame" x="15" y="230" width="237" height="34"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="18"/>
                                         <state key="normal" title="share"/>
                                         <connections>
@@ -412,7 +412,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                     <constraint firstItem="08R-dl-25b" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="TLT-jC-64B"/>
                                     <constraint firstItem="awm-L3-NM0" firstAttribute="top" secondItem="jTW-nB-39W" secondAttribute="bottom" constant="10" id="Ttg-nr-crl"/>
                                     <constraint firstItem="Qj1-7K-Ams" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="WrY-z9-8cs"/>
-                                    <constraint firstItem="jTW-nB-39W" firstAttribute="top" secondItem="Qj1-7K-Ams" secondAttribute="bottom" constant="15" id="XVs-Fk-l30"/>
+                                    <constraint firstItem="jTW-nB-39W" firstAttribute="top" secondItem="Qj1-7K-Ams" secondAttribute="bottom" constant="10" id="XVs-Fk-l30"/>
                                     <constraint firstAttribute="trailing" secondItem="jTW-nB-39W" secondAttribute="trailing" constant="15" id="nnU-rO-R7b"/>
                                     <constraint firstAttribute="trailing" secondItem="Bhy-SC-yvx" secondAttribute="trailing" id="pKM-iT-HVG"/>
                                     <constraint firstItem="oAx-6E-Xzk" firstAttribute="leading" secondItem="ifM-ll-7Nf" secondAttribute="leading" constant="15" id="q8y-64-KPG"/>

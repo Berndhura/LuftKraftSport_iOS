@@ -92,7 +92,10 @@ class HomeViewController: UIViewController {
         myArticles.setTitle(NSLocalizedString("my_articles", comment: ""), for: .normal)
         
         impressum.setTitleColor(appMainColorBlue, for: .normal)
+        
         datenschutz.setTitleColor(appMainColorBlue, for: .normal)
+        datenschutz.setTitle(NSLocalizedString("privacy", comment: ""), for: .normal)
+        
         shareLable.setTitleColor(appMainColorBlue, for: .normal)
         shareLable.setTitle(NSLocalizedString("shareApp", comment: ""), for: .normal) 
     }
