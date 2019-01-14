@@ -87,9 +87,11 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.searchBar.placeholder = NSLocalizedString("main_search_title", comment: "")
         self.searchController.searchResultsUpdater = self
         self.searchController.searchBar.delegate = self
+        
         //show bookmark button for search
         self.searchController.searchBar.showsBookmarkButton = true
-        //and change it 
+        
+        //and change it
         let bookmarkIcon = UIImage(named: "addBookmark")
         searchController.searchBar.setImage(bookmarkIcon, for: .bookmark , state: .normal)
         
@@ -105,13 +107,11 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     func showHintsForUser() {
         
-        var showAgain = true
-        let defaults:UserDefaults = UserDefaults.standard
-        showAgain = defaults.bool(forKey: "showHintForFollowSearch")
+        let hintDismissed = UserDefaults.standard.bool(forKey: Constants.showHint)
         
-        if showAgain {
+        if !hintDismissed {
             var preferences = EasyTipView.Preferences()
-            preferences.drawing.font = UIFont(name: "Futura-Medium", size: 15)!
+            preferences.drawing.font = UIFont(name: "Futura-Medium", size: 16)!
             preferences.drawing.foregroundColor = .white
             preferences.drawing.cornerRadius = 10
             preferences.drawing.backgroundColor = appMainColorBlue
@@ -120,10 +120,16 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             
             EasyTipView.show(forView: self.searchController.searchBar,
                              withinSuperview: view,
-                             text: "Folge Deinen Suchen, Bookmark Symbol speichert deine Suche!",
+                             text: NSLocalizedString("follow_hint", comment: ""),
                              preferences: preferences,
                              delegate: self)
         }
+    }
+    
+    
+    //once user understand usefull hint - never show again
+    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
+       UserDefaults.standard.set(true, forKey: Constants.showHint)
     }
     
     
@@ -168,13 +174,6 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-    }
-    
-    
-    //once user understand usefull hint - never show again
-    func easyTipViewDidDismiss(_ tipView: EasyTipView) {
-        let defaults:UserDefaults = UserDefaults.standard
-        defaults.set(false, forKey: "showHintForFollowSearch")
     }
     
    
