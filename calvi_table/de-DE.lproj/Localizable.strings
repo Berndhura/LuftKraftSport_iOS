@@ -55,6 +55,11 @@
 "messages_title" = "Nachrichten: ";
 "no_messages" = "Noch keine Nachrichten :-(";
 
+"messages_tab" = "Nachrichten";
+"search_tab" = "Suche";
+"home_tab" = "Home";
+"new_ad_tab" = "Anbieten";
+
 "validate_price_number" = "Preis muss eine Zahl sein!";
 "validate_price_not_empty" = "Preis darf nicht leer sein!";
 "validate_title" = "Titel darf nicht leer sein!";

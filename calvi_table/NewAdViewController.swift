@@ -105,6 +105,12 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.title = NSLocalizedString("new_ad_tab", comment: "")
+    }
+    
+    
     //problem: prepareView wird wieder aufgerufen wenn vom ImagePicker zurück -> keine Bilderanziege!!!
     override func viewWillAppear(_ animated: Bool) {
         

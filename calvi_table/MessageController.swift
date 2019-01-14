@@ -23,6 +23,10 @@ class MessagesController: UIViewController {
     
     var isLoadingTableView = true
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.title = NSLocalizedString("messages_tab", comment: "")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

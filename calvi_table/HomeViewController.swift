@@ -66,6 +66,12 @@ class HomeViewController: UIViewController {
     //datenschutz
     @IBOutlet weak var datenschutz: UIButton!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.title = NSLocalizedString("home_tab", comment: "")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

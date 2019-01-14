@@ -48,6 +48,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     var size = 0
     var pages = 0
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.title = NSLocalizedString("search_tab", comment: "")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

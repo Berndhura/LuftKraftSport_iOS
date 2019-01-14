@@ -55,6 +55,11 @@
 "messages_title" = "Messages: ";
 "no_messages" = "No messages yet!";
 
+"messages_tab" = "Messages";
+"search_tab" = "Search";
+"home_tab" = "Home";
+"new_ad_tab" = "Create";
+
 "validate_price_number" = "Use numbers for Price!";
 "validate_price_not_empty" = "Price can not be empty!";
 "validate_title" = "Title must not be empty";

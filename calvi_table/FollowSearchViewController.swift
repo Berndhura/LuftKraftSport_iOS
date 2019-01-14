@@ -78,7 +78,7 @@ class FollowSearchViewController: UIViewController {
     
     
     func getLat() -> Double {
-        TODO get last location
+        //TODO get last location
         return 50.0
     }
     
