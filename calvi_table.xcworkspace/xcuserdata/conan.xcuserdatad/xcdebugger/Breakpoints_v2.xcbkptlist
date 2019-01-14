@@ -31,7 +31,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568935452.099733"
+            timestampString = "569189459.960703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -47,7 +47,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568935452.099846"
+            timestampString = "569189459.960766"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -79,7 +79,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568935452.099948"
+            timestampString = "569189459.960842"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "194"
@@ -95,7 +95,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568935452.100021"
+            timestampString = "569189459.960888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
@@ -111,7 +111,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "calvi_table/AppDelegate.swift"
-            timestampString = "568935452.1000921"
+            timestampString = "569189459.96093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
@@ -150,6 +150,22 @@
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "calvi_table/NewAdViewController.swift"
+            timestampString = "569189459.960973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

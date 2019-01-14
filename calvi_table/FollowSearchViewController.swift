@@ -47,11 +47,15 @@ class FollowSearchViewController: UIViewController {
         
         let distance = getDistance()
         
+        let lat = getLat()
+        
+        let lng = getLng()
+        
         if validateInput() {
             
             let text = getSearchText()
         
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=\(price)&lat=0&lng=0&distance=\(distance)&token=\(userToken)")
+            let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=\(price)&lat=\(lat)&lng=\(lng)&distance=\(distance)&token=\(userToken)")
             
             Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
@@ -72,6 +76,16 @@ class FollowSearchViewController: UIViewController {
         view.superview?.frame =  CGRect(x: 0, y: 0, width: 200, height: 200)
     }
     
+    
+    func getLat() -> Double {
+        TODO get last location
+        return 50.0
+    }
+    
+    
+    func getLng() -> Double {
+        return 13.0
+    }
     
     func validateInput() -> Bool {
         

@@ -127,13 +127,14 @@ extension SearchesController: UITableViewDataSource {
         cell?.location.text = NSLocalizedString("where", comment: "") + search.locationName
         
         //distance
-        cell?.distance.text = NSLocalizedString("radius", comment: "") + String(describing: search.distance) + " km"
+        let distance = (search.distance == Constants.unlimitedRange) ? NSLocalizedString("unlimited", comment: "") : String(describing: search.distance) + " km"
+        cell?.distance.text = NSLocalizedString("radius", comment: "") + distance
         
         //id
         cell?.searchId = search.id
         
         //max price
-        let maxPrice = NSLocalizedString("max_price", comment: "") + ((search.priceTo == Constants.maxPrice) ? NSLocalizedString("price_dnm", comment: "") :  String(describing: search.priceTo))
+        let maxPrice = NSLocalizedString("max_price", comment: "") + ((search.priceTo == Constants.maxPrice) ? NSLocalizedString("price_dnm", comment: "") :  (String(describing: search.priceTo)) + " €")
         cell?.price?.text =  maxPrice
         
         return cell!

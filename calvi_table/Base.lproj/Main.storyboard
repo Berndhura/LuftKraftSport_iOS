@@ -652,7 +652,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-th-mFk">
                                                             <rect key="frame" x="187" y="0.0" width="187" height="113.5"/>
-                                                            <state key="normal" image="delete"/>
+                                                            <state key="normal" image="delete_search"/>
                                                             <connections>
                                                                 <action selector="deleteSearch:" destination="1Oc-8c-5PC" eventType="touchUpInside" id="JoQ-Qp-oc7"/>
                                                             </connections>
@@ -1252,6 +1252,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
     </scenes>
     <resources>
         <image name="delete" width="50" height="50"/>
+        <image name="delete_search" width="48" height="48"/>
         <image name="edit-32" width="32" height="32"/>
         <image name="home" width="48" height="48"/>
         <image name="login" width="25.600000381469727" height="25.600000381469727"/>

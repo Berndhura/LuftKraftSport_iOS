@@ -202,7 +202,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //TODO in NewAdVC oder ViewController oder app Delegate?
         locValue = manager.location?.coordinate
-        //print("locationSAU = \(locValue.latitude) \(locValue.longitude)")
+        print("locationSAU = \(locValue!.latitude) \(locValue!.longitude)")
     }
     
     
