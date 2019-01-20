@@ -9,9 +9,10 @@
 import Foundation
 import Alamofire
 import DownPicker
+import CoreLocation
 
 
-class FollowSearchViewController: UIViewController {
+class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var searchTextInput: UITextField!
     
@@ -27,13 +28,19 @@ class FollowSearchViewController: UIViewController {
     
     @IBOutlet weak var radiusInput: UITextField!
     
-    var radiusPicker: DownPicker!
-    
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var serachTextLable: UILabel!
     
+    @IBOutlet weak var locationInput: UITextField!
+    @IBOutlet weak var locLable: UILabel!
     var searchText: String?
+    
+    var radiusPicker: DownPicker!
+    
+    var locationManager: CLLocationManager!
+    
+    var locValue: CLLocationCoordinate2D?
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -59,7 +66,7 @@ class FollowSearchViewController: UIViewController {
             
             Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
-                    //print(response)
+                    print(response)
                     let alert = UIAlertController(title: NSLocalizedString("follow_search_saved", comment: ""), message: nil, preferredStyle: .actionSheet)
                     self.present(alert, animated: true, completion: nil)
                     Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
@@ -73,18 +80,95 @@ class FollowSearchViewController: UIViewController {
         
         initElements()
         
-        view.superview?.frame =  CGRect(x: 0, y: 0, width: 200, height: 200)
+        initLocationManager()
+        
+        getLocationName()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func initLocationManager() {
+        
+        locationManager = CLLocationManager()
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locValue = manager.location?.coordinate
+        print("lat lng: \(locValue!.latitude) \(locValue!.longitude)")
+    }
+    
+    func getLocationName() {
+        
+        let location = CLLocation(latitude: Constants.defaultLatitude, longitude: Constants.defaultLongitude)
+        
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            let pm = placemarks! as [CLPlacemark]
+            
+            if pm.count > 0 {
+                let pm = placemarks![0]
+                print(pm.country)
+                print(pm.locality)
+                print(pm.subLocality)
+                print(pm.thoroughfare)
+                print(pm.postalCode)
+                print(pm.subThoroughfare)
+                var addressString : String = ""
+                if pm.subLocality != nil {
+                    addressString = addressString + pm.subLocality! + ", "
+                }
+                if pm.thoroughfare != nil {
+                    addressString = addressString + pm.thoroughfare! + ", "
+                }
+                if pm.locality != nil {
+                    addressString = addressString + pm.locality! + ", "
+                }
+                if pm.country != nil {
+                    addressString = addressString + pm.country! + ", "
+                }
+                if pm.postalCode != nil {
+                    addressString = addressString + pm.postalCode! + " "
+                }
+                
+                
+                print(addressString)
+            }
+        }
+        //locationInput.text = "sdfsd" -> hole name von lat lng
+        //wenn drauf geklickt ? neue eingabe -> später
     }
     
     
     func getLat() -> Double {
-        //TODO get last location
-        return 50.0
+        if let lat = locValue {
+            return lat.latitude
+        } else {
+            //TODO gps aus ! was zurück geben?
+            return 0.0
+        }
     }
     
     
     func getLng() -> Double {
-        return 13.0
+        if let lng = locValue {
+            return lng.longitude
+        } else {
+            //TODO gps aus ! was zurück geben?
+            return 1.1
+        }
     }
     
     func validateInput() -> Bool {
@@ -159,8 +243,8 @@ class FollowSearchViewController: UIViewController {
         
         mainInfoLable.text = NSLocalizedString("searches_explain", comment: "")
         mainInfoLable.backgroundColor = .gray
-        //mainInfoLable.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-
+        
+        locLable.text = NSLocalizedString("location", comment: "")
         
         serachTextLable.text = NSLocalizedString("search_text_lable", comment: "")
         

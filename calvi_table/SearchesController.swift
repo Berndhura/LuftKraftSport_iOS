@@ -77,9 +77,11 @@ class SearchesController: UIViewController, SearchCellDelegate {
                         let location = value["locationName"].string
                         let id = value["id"].int16
                         let maxPrice = value["priceTo"].int
+                        let lat = value["lat"].double
+                        let lng = value["lng"].double
                         
-                        //TODO resultCount, priceFrom, lng, priceTo, lat
-                        let search = Searches(title: title!, distance: dist!, locationName: location!, id: id!, priceTo: maxPrice!)
+                        //TODO resultCount, priceFrom
+                        let search = Searches(title: title!, distance: dist!, locationName: location!, id: id!, priceTo: maxPrice!, lat: lat!, lng: lng!)
                         
                         localSearches.append(search)
                     }
@@ -166,10 +168,8 @@ extension SearchesController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         let search: Searches = searches[indexPath.row]
-        print(search.title)
-        
-        var payload:[String: String] = [:]
-        payload["article"] = search.title
+        var payload:[String: Searches] = [:]
+        payload["search"] = search
         
         self.navigationController?.popViewControllerWithHandler(completion: {
             NotificationCenter.default.post(name: Notification.Name(Constants.searchFor), object: nil, userInfo: payload)

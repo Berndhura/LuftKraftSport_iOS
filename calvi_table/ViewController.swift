@@ -36,7 +36,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     var comesFromHome = false
     
-    var searchText = ""
+    var searchItem = Searches(title: "", distance: Constants.unlimitedRange, locationName: "", id: 0, priceTo: Constants.unlimitedRange, lat: 0, lng: 0)
 
     //refresh button in tabbar
     var refreshButton: UIBarButtonItem?
@@ -108,7 +108,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             //nothing here, just show bookmarks or my ads
             print("KOMME FROM HOME!!!")
         } else {
-            getMyBookmaks(type: "all")
+            getMyBookmaks(type: "all", item: searchItem)
         }
     }
     
@@ -168,8 +168,9 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     func searchForObserver(_ notification: Notification) {
         self.searchController.searchBar.endEditing(true)
         
-        let searchText = notification.userInfo?["article"] as! String
-        searchFor(article: searchText)
+        let item = notification.userInfo?["search"] as! Searches
+        
+        searchFor(article: item)
     }
     
     
@@ -273,7 +274,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.dismiss(animated: true, completion: nil)
         page = 0
         ads.removeAll()
-        self.getMyBookmaks(type: "search")
+        self.getMyBookmaks(type: "search", item: searchItem)
     }
     
     func checkLoginStatus() {
@@ -292,36 +293,35 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         self.searchController.searchBar.text = ""
         ads.removeAll()
         page = 0
-        getMyBookmaks(type: "all")
+        getMyBookmaks(type: "all", item: searchItem)
     }
     
     func showMyArticle() {
         comesFromHome = true
         page = 0
         ads.removeAll()
-        getMyBookmaks(type: "my")
+        getMyBookmaks(type: "my", item: searchItem)
     }
     
     func showBookmarkedArticles() {
         comesFromHome = true
         page = 0
         ads.removeAll()
-        getMyBookmaks(type: "bookmarked")
+        getMyBookmaks(type: "bookmarked", item: searchItem)
     }
     
-    func searchFor(article: String) {
+    func searchFor(article: Searches) {
         comesFromHome = true
         page = 0
         ads.removeAll()
-        searchString = article
-        getMyBookmaks(type: "search")
+        getMyBookmaks(type: "search", item: article)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func getMyBookmaks(type: String) {
+    func getMyBookmaks(type: String, item: Searches?) {
         
         if !Utils.isInternetAvailable() {
             
@@ -356,45 +356,49 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                             self.myBookmarks = []
                         }
                     }
-                    self.fetchAds(type: type)
+                    self.fetchAds(type: type, searchItem: item!)
             }
         } else {
             self.myBookmarks.removeAll()
-            self.fetchAds(type: type)
+            self.fetchAds(type: type, searchItem: item!)
         }
     }
     
-    func fetchAds(type: String) {
+    func fetchAds(type: String, searchItem: Searches?) {
         
         print("fetching ads........................")
         
         //paging problem
         //var localAds: [Ad]  = []
         
-        var url = URL(string: "www.google.de")!
+        var url = URL(string: "www.google.de")
         
         if type == "all" {
             //all articles
-            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=\(page)&size=\(batchSize)")!
+            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=\(page)&size=\(batchSize)")
         } else if type == "search" {
             //search for article
-            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&description=\(searchString!)")!
+            let lat = searchItem!.lat
+            let lng = searchItem!.lng
+            let dist = searchItem!.distance
+            let title = searchItem!.title
+            url = URL(string: "http://178.254.54.25:9876/api/V3/articles?lat=\(lat)&lng=\(lng)&distance=\(dist)&page=0&size=30&description=\(title)")
             //TODO Paging einbauen
         } else if type == "bookmarked" {
             //bookmarks
             let token = Utils.getUserToken()
             //TODO check url -> distance
-            url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")!
+            url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")
         } else if type == "my" {
             //my articles
             let userToken = Utils.getUserToken()
             let urlString = Urls.getMyArticles + "?token=\(userToken)&page=0&size=30"  //TODO Paging einbauen
-            url = URL(string: urlString)!
+            url = URL(string: urlString)
         }
         
         print("--------------------")
-        print(url)
-        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default)
+       // print(url)
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 
                 switch response.result {
@@ -466,7 +470,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
+        searchItem.title = searchText
     }
     
     
@@ -477,7 +481,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         alert.addAction(UIAlertAction(title: NSLocalizedString("followSearch", comment: ""), style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
-            vc.searchText = self.searchText
+            vc.searchText = self.searchItem.title
             self.present(vc, animated: true, completion: nil)
         }))
         
@@ -485,7 +489,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         self.present(alert, animated: true, completion: {
             //TODO: refresh kommt zu früh hier
-            self.getMyBookmaks(type: "all")
+            self.getMyBookmaks(type: "all", item: self.searchItem)
         })
     }
 
@@ -538,7 +542,7 @@ extension ViewController: UITableViewDataSource {
         if (indexPath.row == ads.count - 1) { // last cell
             if (totalItems > ads.count && page <= pages) { // more items to fetch
                 page += 1
-                fetchAds(type: "all")  //TODO allgemein den typen hier durchschleifen all, serach, bookmarks
+                fetchAds(type: "all", searchItem: nil)  //TODO allgemein den typen hier durchschleifen all, serach, bookmarks
             }
         }
     }

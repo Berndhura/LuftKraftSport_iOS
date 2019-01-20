@@ -569,22 +569,39 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z8-z5-L6U" userLabel="location">
+                                <rect key="frame" x="10" y="219" width="136.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TK3-aS-YLH">
+                                <rect key="frame" x="156.5" y="215.5" width="247.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="top" secondItem="DJt-1h-eWx" secondAttribute="bottom" constant="20" id="2qt-1B-MfC"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="9BM-bJ-49J"/>
+                            <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="TK3-aS-YLH" secondAttribute="trailing" constant="10" id="9fv-tt-yhr"/>
                             <constraint firstItem="ov4-df-eKu" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="CKV-lS-DMh"/>
                             <constraint firstItem="Ymn-tc-ihc" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="EsI-60-Dwg"/>
                             <constraint firstItem="vTm-W1-MON" firstAttribute="leading" secondItem="etS-S6-Ewl" secondAttribute="trailing" constant="10" id="Gx5-FD-jWg"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="vTm-W1-MON" secondAttribute="trailing" constant="10" id="HaD-mh-dqr"/>
                             <constraint firstItem="etS-S6-Ewl" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="Jn3-fY-ZBe"/>
                             <constraint firstItem="etS-S6-Ewl" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="Mfl-r4-F9n"/>
+                            <constraint firstItem="7Z8-z5-L6U" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="OlN-d1-Wgg"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="A49-pk-bOu" secondAttribute="trailing" constant="10" id="Ru4-Zu-VnV"/>
+                            <constraint firstItem="TK3-aS-YLH" firstAttribute="leading" secondItem="7Z8-z5-L6U" secondAttribute="trailing" constant="10" id="Ts2-Oh-x1c"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="DJt-1h-eWx" secondAttribute="trailing" constant="10" id="UGG-2F-tyD"/>
                             <constraint firstItem="z3Z-9w-u0L" firstAttribute="top" secondItem="Ymn-tc-ihc" secondAttribute="bottom" constant="20" id="UkO-6E-vn5"/>
+                            <constraint firstItem="7Z8-z5-L6U" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="VGd-gw-Phf"/>
                             <constraint firstItem="A49-pk-bOu" firstAttribute="firstBaseline" secondItem="z3Z-9w-u0L" secondAttribute="firstBaseline" id="VbI-iP-QRf"/>
                             <constraint firstItem="A49-pk-bOu" firstAttribute="leading" secondItem="z3Z-9w-u0L" secondAttribute="trailing" constant="10" id="Vkd-Wv-Zr3"/>
+                            <constraint firstItem="7Z8-z5-L6U" firstAttribute="top" secondItem="etS-S6-Ewl" secondAttribute="bottom" constant="20" id="WVf-3A-HVe"/>
                             <constraint firstItem="etS-S6-Ewl" firstAttribute="top" secondItem="z3Z-9w-u0L" secondAttribute="bottom" constant="21.5" id="YEy-nR-CxC"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="Pf2-RT-iIB" secondAttribute="trailing" constant="10" id="ePL-Ey-YXj"/>
                             <constraint firstItem="DJt-1h-eWx" firstAttribute="top" secondItem="PEZ-XH-CBa" secondAttribute="top" constant="10" id="erE-o2-D6w"/>
@@ -599,6 +616,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                             <constraint firstItem="z3Z-9w-u0L" firstAttribute="width" secondItem="PEZ-XH-CBa" secondAttribute="width" multiplier="0.33" id="waw-05-atl"/>
                             <constraint firstItem="DJt-1h-eWx" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="wmr-6U-t6F"/>
                             <constraint firstItem="PEZ-XH-CBa" firstAttribute="trailing" secondItem="cNS-dE-nG7" secondAttribute="trailing" constant="10" id="wsA-AI-hMR"/>
+                            <constraint firstItem="TK3-aS-YLH" firstAttribute="firstBaseline" secondItem="7Z8-z5-L6U" secondAttribute="firstBaseline" id="xjg-fT-pjG"/>
                             <constraint firstItem="cNS-dE-nG7" firstAttribute="leading" secondItem="PEZ-XH-CBa" secondAttribute="leading" constant="10" id="yWw-Zo-gIw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PEZ-XH-CBa"/>
@@ -607,6 +625,8 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="300"/>
                     <connections>
                         <outlet property="backButton" destination="ov4-df-eKu" id="gE6-4U-mUC"/>
+                        <outlet property="locLable" destination="7Z8-z5-L6U" id="rn0-zO-9VQ"/>
+                        <outlet property="locationInput" destination="TK3-aS-YLH" id="zXj-oC-cgR"/>
                         <outlet property="mainInfoLable" destination="DJt-1h-eWx" id="to1-7Z-c2P"/>
                         <outlet property="priceInput" destination="A49-pk-bOu" id="EtB-og-Cm5"/>
                         <outlet property="priceLable" destination="z3Z-9w-u0L" id="toQ-AQ-b17"/>
@@ -1251,7 +1271,7 @@ abrufbaren Datenschutzhinweisen bereit.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="delete" width="50" height="50"/>
+        <image name="delete" width="128" height="128"/>
         <image name="delete_search" width="48" height="48"/>
         <image name="edit-32" width="32" height="32"/>
         <image name="home" width="48" height="48"/>

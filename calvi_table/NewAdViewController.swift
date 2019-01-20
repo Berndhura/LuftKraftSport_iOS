@@ -200,7 +200,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         if CLLocationManager.locationServicesEnabled(){
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
     }
