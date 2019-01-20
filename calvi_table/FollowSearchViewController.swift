@@ -33,7 +33,9 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var serachTextLable: UILabel!
     
     @IBOutlet weak var locationInput: UITextField!
+    
     @IBOutlet weak var locLable: UILabel!
+    
     var searchText: String?
     
     var radiusPicker: DownPicker!
@@ -41,6 +43,11 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     
     var locValue: CLLocationCoordinate2D?
+    
+    @IBAction func locationClicked(_ sender: Any) {
+        print("open da map")
+        //TODO open map and change location
+    }
     
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -120,35 +127,10 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
             
             if pm.count > 0 {
                 let pm = placemarks![0]
-                print(pm.country)
-                print(pm.locality)
-                print(pm.subLocality)
-                print(pm.thoroughfare)
-                print(pm.postalCode)
-                print(pm.subThoroughfare)
-                var addressString : String = ""
-                if pm.subLocality != nil {
-                    addressString = addressString + pm.subLocality! + ", "
-                }
-                if pm.thoroughfare != nil {
-                    addressString = addressString + pm.thoroughfare! + ", "
-                }
-                if pm.locality != nil {
-                    addressString = addressString + pm.locality! + ", "
-                }
-                if pm.country != nil {
-                    addressString = addressString + pm.country! + ", "
-                }
-                if pm.postalCode != nil {
-                    addressString = addressString + pm.postalCode! + " "
-                }
-                
-                
-                print(addressString)
+                let location = pm.locality
+                self.locationInput.text = location
             }
         }
-        //locationInput.text = "sdfsd" -> hole name von lat lng
-        //wenn drauf geklickt ? neue eingabe -> später
     }
     
     
@@ -245,6 +227,12 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
         mainInfoLable.backgroundColor = .gray
         
         locLable.text = NSLocalizedString("location", comment: "")
+        locationInput.isUserInteractionEnabled = false
+        locationInput.rightViewMode = UITextFieldViewMode.always
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(named: "location")
+        imageView.image = image
+        locationInput.rightView = imageView
         
         serachTextLable.text = NSLocalizedString("search_text_lable", comment: "")
         

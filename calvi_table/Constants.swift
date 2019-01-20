@@ -20,6 +20,10 @@ class Constants {
     static let defaultLatitude = 53.551086
     static let defaultLongitude = 9.993682
     
+    static let lastLat = "last_lat"
+    static let lastLng = "last_lng"
+    static let lastLocation_name = "last_location_name"
+    
     static let maxPrice = 10000000
     static let unlimitedRange = 10000000
 }

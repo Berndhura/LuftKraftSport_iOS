@@ -580,6 +580,9 @@ abrufbaren Datenschutzhinweisen bereit.</string>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="locationClicked:" destination="q04-ce-KKx" eventType="editingDidEnd" id="wGH-gR-4Xn"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
