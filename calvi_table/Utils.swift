@@ -163,4 +163,40 @@ class Utils {
         let needsConnection = flags.contains(.connectionRequired)
         return (isReachable && !needsConnection)
     }
+    
+    struct LastLocation {
+        var lat: Double?
+        var lng: Double?
+        var locationName: String?
+    }
+    
+    static func getLastLocation() -> LastLocation {
+    
+        var lastLocation = LastLocation(lat: 0.0, lng: 0.0, locationName: "")
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        lastLocation.lat = defaults.double(forKey: Constants.lastLat)
+        lastLocation.lng = defaults.double(forKey: Constants.lastLng)
+        lastLocation.locationName = defaults.string(forKey: Constants.lastLocationName)
+        
+        return lastLocation
+    }
+    
+    static func setLastLocation(lat: Double?, lng: Double?) {
+        let defaults:UserDefaults = UserDefaults.standard
+        if let la = lat {
+            defaults.set(la, forKey: Constants.lastLat)
+        }
+        
+        if let ln = lng {
+            defaults.set(ln, forKey: Constants.lastLng)
+        }
+    }
+    
+    static func setLastLocationName(locationName: String?) {
+        let defaults:UserDefaults = UserDefaults.standard
+        if let loc = locationName {
+            defaults.set(loc, forKey: Constants.lastLocationName)
+        }
+    }
 }

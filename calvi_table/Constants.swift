@@ -22,7 +22,7 @@ class Constants {
     
     static let lastLat = "last_lat"
     static let lastLng = "last_lng"
-    static let lastLocation_name = "last_location_name"
+    static let lastLocationName = "last_location_name"
     
     static let maxPrice = 10000000
     static let unlimitedRange = 10000000

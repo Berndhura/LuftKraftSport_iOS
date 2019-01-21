@@ -116,12 +116,10 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locValue = manager.location?.coordinate
         print("lat lng: \(locValue!.latitude) \(locValue!.longitude)")
+        Utils.setLastLocation(lat: locValue!.latitude, lng: locValue!.longitude)
     }
     
-    func getLocationName() {
-        
-        let location = CLLocation(latitude: Constants.defaultLatitude, longitude: Constants.defaultLongitude)
-        
+    fileprivate func getNameFromLatLng(_ location: CLLocation) {
         CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
             let pm = placemarks! as [CLPlacemark]
             
@@ -129,7 +127,24 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
                 let pm = placemarks![0]
                 let location = pm.locality
                 self.locationInput.text = location
+                
+                Utils.setLastLocationName(locationName: location)
             }
+        }
+    }
+    
+    func getLocationName() {
+        
+        if let loc = locValue {
+            let lat = loc.latitude
+            let lng = loc.longitude
+            
+            let location = CLLocation(latitude: lat, longitude: lng)
+            getNameFromLatLng(location)
+        } else {
+            let lastLocation = Utils.getLastLocation()
+            let location = CLLocation(latitude: lastLocation.lat ?? Constants.defaultLatitude, longitude: lastLocation.lng ?? Constants.defaultLongitude)
+            getNameFromLatLng(location)
         }
     }
     
@@ -224,7 +239,6 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
         backButton.setTitle(NSLocalizedString("abort", comment: ""), for: .normal)
         
         mainInfoLable.text = NSLocalizedString("searches_explain", comment: "")
-        mainInfoLable.backgroundColor = .gray
         
         locLable.text = NSLocalizedString("location", comment: "")
         locationInput.isUserInteractionEnabled = false
