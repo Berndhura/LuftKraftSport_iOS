@@ -171,9 +171,12 @@ extension SearchesController: UITableViewDelegate {
         var payload:[String: Searches] = [:]
         payload["search"] = search
         
-        self.navigationController?.popViewControllerWithHandler(completion: {
+        NotificationCenter.default.post(name: Notification.Name(Constants.searchFor), object: nil, userInfo: payload)
+        /*
+         TODO: pop VC in viewController to avoid crash
+         self.navigationController?.popViewControllerWithHandler(completion: {
             NotificationCenter.default.post(name: Notification.Name(Constants.searchFor), object: nil, userInfo: payload)
-        })
+        })*/
     }
 }
 

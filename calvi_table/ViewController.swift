@@ -166,10 +166,13 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
     }
     
     func searchForObserver(_ notification: Notification) {
-        self.searchController.searchBar.endEditing(true)
+        
+        self.navigationController?.popViewController(animated: true)
+        
+        self.tabBarController?.selectedIndex = 0
+        self.searchController.isActive = false
         
         let item = notification.userInfo?["search"] as! Searches
-        
         searchFor(article: item)
     }
     
@@ -218,20 +221,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
                     let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
                     vc.searchText = text
-                    vc.modalPresentationStyle = .custom
-                    
-                    let controller = vc.popoverPresentationController
-                    vc.preferredContentSize = CGSize(width: 100, height: 100)
-                    
-                    if controller != nil
-                    {
-                        controller?.delegate = self as? UIPopoverPresentationControllerDelegate
-                        //you could set the following in your storyboard
-                        controller?.sourceView = self.view
-                        controller?.sourceRect = CGRect(x:50, y: 50,width: 100,height: 100)
-                        controller?.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
-                        
-                    }
+                    searchBar.text = ""
                     self.present(vc, animated: true, completion: nil)
 
                 } else {
@@ -482,6 +472,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
             let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
             vc.searchText = self.searchItem.title
+            self.searchController?.searchBar.text = ""
             self.present(vc, animated: true, completion: nil)
         }))
         
