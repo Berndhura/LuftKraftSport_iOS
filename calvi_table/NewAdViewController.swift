@@ -208,8 +208,13 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //TODO in NewAdVC oder ViewController oder app Delegate?
         locValue = manager.location?.coordinate
-        print("locationSAU = \(locValue!.latitude) \(locValue!.longitude)")
+        print("location = \(locValue!.latitude) \(locValue!.longitude)")
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+    }
+    
     
     
     @objc func locationDidChange(_ textField: UITextField) {
@@ -715,6 +720,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         location.leftViewMode = .always
         location.contentVerticalAlignment = .center
         location.placeholder = NSLocalizedString("new_article_location", comment: "")
+        let loc = Utils.getLastLocation()
+        location.text = loc.locationName
     }
     
     func showUselessInfo() {

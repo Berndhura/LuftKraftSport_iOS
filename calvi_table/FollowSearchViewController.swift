@@ -243,13 +243,23 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
         locLable.text = NSLocalizedString("location", comment: "")
         locationInput.isUserInteractionEnabled = false
         locationInput.rightViewMode = UITextFieldViewMode.always
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        locationInput.isUserInteractionEnabled = true
+        locationInput.addGestureRecognizer(tapGestureRecognizer)
         let image = UIImage(named: "location")
         imageView.image = image
+        
         locationInput.rightView = imageView
         
         serachTextLable.text = NSLocalizedString("search_text_lable", comment: "")
         
         searchTextInput.text = searchText
+    }
+    
+    func imageTapped()
+    {
+        getLocationName()
     }
 }
