@@ -78,7 +78,7 @@
 "empty_search_text_hint" = "Search text is empty!";
 "follow_search_saved" = "Following this search now...";
 "followSearch" = "Follow this search";
-"search_text_lable" = "Search for:";
+"search_text_lable" = "Search:";
 "price" = "Price:";
 "price_dnm" = "Any";
 "max_price" = "Price to: ";
