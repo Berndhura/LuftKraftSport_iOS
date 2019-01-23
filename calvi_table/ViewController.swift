@@ -468,13 +468,21 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         let alert = UIAlertController(title: NSLocalizedString("no_search_results", comment: ""), message: NSLocalizedString("no_search_results_details", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
     
-        alert.addAction(UIAlertAction(title: NSLocalizedString("followSearch", comment: ""), style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
-            vc.searchText = self.searchItem.title
-            self.searchController?.searchBar.text = ""
-            self.present(vc, animated: true, completion: nil)
-        }))
+        if Utils.getUserToken() != "" {
+            alert.addAction(UIAlertAction(title: NSLocalizedString("followSearch", comment: ""), style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "followSearch") as! FollowSearchViewController
+                vc.searchText = self.searchItem.title
+                self.searchController?.searchBar.text = ""
+                self.present(vc, animated: true, completion: nil)
+            }))
+        } else {
+            alert.addAction(UIAlertAction(title: NSLocalizedString("login_to_follow", comment: ""), style: UIAlertActionStyle.default, handler: {(UIAlertAction) in
+                let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }))
+        }
         
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         

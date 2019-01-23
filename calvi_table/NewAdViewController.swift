@@ -212,7 +212,9 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        locationManager.stopUpdatingLocation()
+        if locationManager != nil {
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     

@@ -93,7 +93,9 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        locationManager.stopUpdatingLocation()
+        if locationManager != nil {
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     func initLocationManager() {

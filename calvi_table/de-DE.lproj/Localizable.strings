@@ -67,6 +67,7 @@
 "progress_get_location" = "Ändere Ort...";
 
 "show_searches" = "AKTUELL";
+"login_to_follow" = "Melde Dich an, um einer Suche zu folgen!";
 "follow_hint" = "Folge Deiner Suche und werde benachrichtigt, indem Du nach der Suche auf den Stern klickst \n\nVerstanden - klick mich weg!";
 "searches_explain" = "Du kannst deine Suchen abspeichern und wirst benachrichtigt, sowie eine Anzeige zu deiner abgespeicherten Suche passt.";
 "saved_searches" = "ABGESPEICHERTE SUCHEN";

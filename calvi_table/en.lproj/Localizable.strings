@@ -67,6 +67,7 @@
 "progress_get_location" = "Getting location details...";
 
 "show_searches" = "LATEST";
+"login_to_follow" = "Login to follow a search!";
 "follow_hint" = "Follow a search and get notified by clicking the star after searching!\n\nGot it - click me away!";
 "searches_explain" = "Once you're following a search you will get a push notification in case a newly added article fits your search criterias.";
 "saved_searches" = "SHOW SAVED SEARCHES";
