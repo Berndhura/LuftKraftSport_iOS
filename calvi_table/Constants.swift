@@ -15,6 +15,7 @@ class Constants {
     static let showBookmarks: String = "showBookmarks"
     static let showMyArticles: String = "showMyArticles"
     static let showHint: String = "showHintForFollowSearch"
+    static let followSearchMatch: String = "followSearchMatch"
     
     //default lat,lng if those are not available
     static let defaultLatitude = 53.551086

@@ -11,6 +11,7 @@ import Alamofire
 import MapKit
 import SDWebImage
 import SVProgressHUD
+import SwiftyJSON
 
 
 class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDelegate {
@@ -26,6 +27,8 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     var lat: Double?
     var lng: Double?
     var views: Int?
+    
+    var isFollowSearchNotification: Bool?
     
     var imageCount = 0
     
@@ -110,15 +113,24 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        if let _ = isFollowSearchNotification {
+            getDetailsForArticle()
+        } else {
+            showDetails()
+        }
+    }
+    
+    
+    func showDetails() {
         
         increaseViewsForAd()
         
         imageCount = Utils.getAllPictureUrls(str: pictureUrl!).count
-       
+        
         scrollView.delegate = self
         
         prepareMap()
-
+        
         prepareShareButton()
         
         if userId != nil {
@@ -144,7 +156,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         if desc != nil {
             self.beschreibung.text = desc
         }
-
+        
         if price != nil {
             self.priceLabel.text = String(describing: price!) + " €"
         }
@@ -169,6 +181,40 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         imageNumberList = Utils.getAllPictureUrls(str: pictureUrl!)
     }
     
+    func getDetailsForArticle() {
+        
+        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId!)")
+        Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    let jsonData = JSON(response.result.value ?? "default")
+                
+                    self.articleTitle = jsonData["title"].string
+                    self.pictureUrl = jsonData["urls"].string
+                    self.desc = jsonData["description"].string
+                    self.price = jsonData["price"].int
+                    self.location = jsonData["location"].string
+                    self.date = jsonData["date"].double
+                    self.userId = jsonData["userId"].string
+                    self.articleId = jsonData["id"].int32
+                    self.lat = jsonData["location"]["coordinates"][0].double
+                    self.lng = jsonData["location"]["coordinates"][1].double
+                    self.views = jsonData["views"].int
+                    
+                    self.imageNumberList = Utils.getAllPictureUrls(str: self.pictureUrl!)
+                    self.prepareScrollView()
+                    
+                    //show first image
+                    self.addImageToScrollView(imageNumber: 0)
+                    self.showDetails()
+        
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard self.didLoadContent == false else {
@@ -177,10 +223,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         self.didLoadContent = true
         
-        prepareScrollView()
-        
-        //show first image
-        addImageToScrollView(imageNumber: 0)
+        if let _ = isFollowSearchNotification {
+            //nothing here!  why??
+        } else {
+            prepareScrollView()
+            //show first image
+            addImageToScrollView(imageNumber: 0)
+        }
     }
     
     

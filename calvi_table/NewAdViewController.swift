@@ -148,7 +148,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func openLogin() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "loginPage") as! LoginController
-        self.navigationController?.pushViewController(newViewController, animated: false)
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
     func prepareView() {

@@ -15,7 +15,12 @@ class HomeViewController: UIViewController {
     
     @IBAction func shareButton(_ sender: Any) {
         
-        let originalString = "https://testflight.apple.com/join/KKlZJ36K"
+        //TODO : post hier nur zu testzwecken, um follow search zu simulieren
+        
+        let dataDict:[String: Int32] = ["articleId": 1234]
+        NotificationCenter.default.post(name: Notification.Name(Constants.followSearchMatch), object: nil, userInfo: dataDict)
+        
+        /*let originalString = "https://testflight.apple.com/join/KKlZJ36K"
         
         let escapedString = originalString.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
         
@@ -31,7 +36,7 @@ class HomeViewController: UIViewController {
             }
             alertNoWhatsapp.addAction(ok)
             present(alertNoWhatsapp, animated: true, completion: nil)
-        }
+        }*/
         
     }
     
