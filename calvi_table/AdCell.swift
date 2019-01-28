@@ -228,7 +228,7 @@ class AdCell: UITableViewCell {
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Artikel ist gemerkt!", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: NSLocalizedString("article_saved", comment: ""), message: nil, preferredStyle: .actionSheet)
        // self.present(alert, animated: true, completion: nil)
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: { _ in alert.dismiss(animated: true, completion: nil)} )
     }

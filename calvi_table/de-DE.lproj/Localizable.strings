@@ -39,6 +39,7 @@
 "login_please" = "Bitte anmelden!";
 "logged_in" = "Angemeldet";
 "welcome" = "Willkommen ";
+"article_saved" = "Artikel ist gemerkt!"
 
 "new_article_titel" = "Titel deiner Anzeige...";
 "new_article_description" = "Beschreibe dein Angebot...";

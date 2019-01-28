@@ -39,6 +39,7 @@
 "login_please" = "Please login";
 "logged_in" = "Login ok";
 "welcome" = "Welcome ";
+"article_saved" = "Article is saved!"
 
 "new_article_titel" = "Title for your ad...";
 "new_article_description" = "Describe your ad...";
