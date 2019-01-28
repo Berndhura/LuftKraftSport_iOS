@@ -66,13 +66,13 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
             if myBookmarks.contains(articleId!) {
                 //unbookmark
                 unBookmarkArticle(articleId: articleId!)
-                bookmarkEditButton.setTitle("Merken", for: .normal)
+                bookmarkEditButton.setTitle(NSLocalizedString("remember", comment: ""), for: .normal)
                 removeArticelFromBookmarkList(id: articleId!)
             } else {
                 //bookmark this article
                 if Utils.isLoggedIn() {
                     bookmarkArticle(articleId: articleId!)
-                    bookmarkEditButton.setTitle("Vergessen", for: .normal)
+                    bookmarkEditButton.setTitle(NSLocalizedString("forget", comment: ""), for: .normal)
                     myBookmarks.append(articleId!)
                 } else {
                     showLoginInfo(text: NSLocalizedString("login_to_bookmark", comment: ""))
@@ -136,14 +136,14 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         if userId != nil {
             let userIdFromDefaults = Utils.getUserId()
             if userId == userIdFromDefaults {
-                messageButton.setTitle("Löschen" , for: .normal)
-                bookmarkEditButton.setTitle("Bearbeiten", for: .normal)
+                messageButton.setTitle(NSLocalizedString("delete", comment: "") , for: .normal)
+                bookmarkEditButton.setTitle(NSLocalizedString("edit", comment: ""), for: .normal)
             } else {
                 //already bookmarked? adapt button title
                 if myBookmarks.contains(articleId!) {
-                    bookmarkEditButton.setTitle("Vergessen", for: .normal)
+                    bookmarkEditButton.setTitle(NSLocalizedString("forget", comment: ""), for: .normal)
                 } else {
-                    bookmarkEditButton.setTitle("Merken", for: .normal)
+                    bookmarkEditButton.setTitle(NSLocalizedString("remember", comment: ""), for: .normal)
                 }
             }
         }
@@ -168,7 +168,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         dateFormatter.locale = Locale(identifier: "de_DE")
         
         let date = Date(timeIntervalSince1970: (self.date! / 1000.0))
-        self.dateLabel.text = "Erstellt am: " + dateFormatter.string(from: date)
+        self.dateLabel.text = NSLocalizedString("created_on", comment: "") + dateFormatter.string(from: date)
         
         //location
         if location != nil {
@@ -375,7 +375,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("fokit")
+        
         let lat = view.annotation?.coordinate.latitude
         let lng = view.annotation?.coordinate.longitude
         
@@ -482,9 +482,9 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func sendMessage(articleId: Int32, userIdFromArticle: String) {
         
-        let alertController = UIAlertController(title: "Nachricht schreiben", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: NSLocalizedString("write_message", comment: ""), message: nil, preferredStyle: .alert)
         
-        let confirmAction = UIAlertAction(title: "Senden", style: .default) { (_) in
+        let confirmAction = UIAlertAction(title: NSLocalizedString("send", comment: ""), style: .default) { (_) in
             if let field = alertController.textFields![0] as? UITextField {
                 
                 let message = field.text!
@@ -503,10 +503,10 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Doch nicht", style: .cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("not_sure", comment: ""), style: .cancel) { (_) in }
         
         alertController.addTextField { (textField) in
-            textField.placeholder = "Sag etwas..."
+            textField.placeholder = NSLocalizedString("say_something", comment: "")
         }
         
         alertController.addAction(confirmAction)

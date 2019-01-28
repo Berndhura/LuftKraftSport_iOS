@@ -26,6 +26,15 @@
 "delete_article_confirm" = "Are you sure to do this?";
 "delete_sure" = "Delete!";
 
+"remember" = "Bookmark";
+"forget" = "Unbookmark";
+"delete" = "Remove";
+"edit" = "Edit";
+"created_on" = "Created on: ";
+"write_message" = "Write message";
+"send" = "Send";
+"say_something" = "Say something...";
+
 "new_article_titel" = "Title for your ad...";
 "new_article_description" = "Describe your ad...";
 "new_article_price" = "Price...";

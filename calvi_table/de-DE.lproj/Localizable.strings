@@ -26,6 +26,16 @@
 "delete_article_confirm" = "Bist du dir sicher?";
 "delete_sure" = "Lösche!";
 
+"remember" = "Merken";
+"forget" = "Vergessen";
+"delete" = "Löschen";
+"edit" = "Bearbeiten";
+"created_on" = "Erstellt am: ";
+"write_message" = "Nachricht schreiben";
+"send" = "Senden";
+"not_sure" = "Doch nicht";
+"say_something" = "Sag etwas...";
+
 "new_article_titel" = "Titel deiner Anzeige...";
 "new_article_description" = "Beschreibe dein Angebot...";
 "new_article_price" = "Preis...";
