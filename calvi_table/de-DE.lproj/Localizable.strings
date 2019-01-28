@@ -36,6 +36,10 @@
 "not_sure" = "Doch nicht";
 "say_something" = "Sag etwas...";
 
+"login_please" = "Bitte anmelden!";
+"logged_in" = "Angemeldet";
+"welcome" = "Willkommen ";
+
 "new_article_titel" = "Titel deiner Anzeige...";
 "new_article_description" = "Beschreibe dein Angebot...";
 "new_article_price" = "Preis...";

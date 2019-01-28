@@ -86,9 +86,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         tabBarController?.title = ""
         
         if Utils.getUserToken() == "" {
-            tabBarController?.title = "Bitte anmelden!"
+            tabBarController?.title = NSLocalizedString("login_please", comment: "")
         } else {
-            tabBarController?.title = "Angemeldet"
+            tabBarController?.title = NSLocalizedString("logged_in", comment: "")
         }
         
         //remove tabbar items
@@ -187,7 +187,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         self.userImage.sd_setImage(with: URL(string: profilePicture))
         
         let profileName = Utils.getUserName()
-        self.userName.text = "Willkommen " + profileName
+        self.userName.text = NSLocalizedString("welcome", comment: "") + profileName
     }
     
     
@@ -244,7 +244,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
                 }
             }
             let fullName = dict["name"]! as! String
-            self.userName.text = "Willkommen " + fullName
+            self.userName.text = NSLocalizedString("welcome", comment: "") + fullName
             self.refreshTabBar()
             self.hideLoginButtons()
             self.setMainLoginTitle()
@@ -267,7 +267,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             self.userImage.sd_setImage(with: user.profile.imageURL(withDimension: 400))
             
             let fullName = user.profile.name
-            self.userName.text = "Willkommen " + fullName!
+            self.userName.text = NSLocalizedString("welcome", comment: "") + fullName!
             
             saveUserDetails(user: user)
             Utils.updateDeviceToken()

@@ -83,19 +83,17 @@ class ChatViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
         let messageToSend = text!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        print("message: " + messageToSend!)
+        //print("message: " + messageToSend!)
         
         let userToken = Utils.getUserToken()
         let adId = articleId
         let sender = self.sender
         
-        print("userToken: " + userToken)
-        print(articleId)
-        print(sender)
+        //print("userToken: " + userToken)
+        //print(articleId)
+        //print(sender)
         
         let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(adId)&idTo=\(sender)&message=\(messageToSend!)")
-        
-        print(url!)
         
         //let message = JSQMessage(senderId: senderId!, displayName: senderDisplayName!, text: text!)
         let message =  JSQMessage(senderId: senderId!, senderDisplayName: senderDisplayName!, date: date!, text: text!)
@@ -139,7 +137,6 @@ class ChatViewController: JSQMessagesViewController {
         } else {
             
             return 17.0
-            
         }
     }
 

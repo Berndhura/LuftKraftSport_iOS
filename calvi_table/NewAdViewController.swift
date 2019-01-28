@@ -590,8 +590,8 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func uploadNewImagesToAd() {
         let userToken = Utils.getUserToken()
         let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
-        print("new images anzahl: ")
-        print(adImages.count)
+        //print("new images anzahl: ")
+        //print(adImages.count)
         
         when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
             .done { ([Any]) in

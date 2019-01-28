@@ -33,7 +33,12 @@
 "created_on" = "Created on: ";
 "write_message" = "Write message";
 "send" = "Send";
+"not_sure" = "Not sure";
 "say_something" = "Say something...";
+
+"login_please" = "Please login";
+"logged_in" = "Login ok";
+"welcome" = "Welcome ";
 
 "new_article_titel" = "Title for your ad...";
 "new_article_description" = "Describe your ad...";
