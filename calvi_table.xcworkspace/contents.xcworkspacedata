@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:calvi_table.xcodeproj">
+      location = "group:/Users/digiconan/Desktop/LuftKraftSport_iOS/LKS.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -40,13 +40,13 @@
 		27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE4FA21F446E6500FD4166 /* LaunchScreen.storyboard */; };
 		27CE4FAF1F446E6500FD4166 /* calvi_tableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4FAE1F446E6500FD4166 /* calvi_tableTests.swift */; };
 		27CE4FBA1F446E6500FD4166 /* calvi_tableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE4FB91F446E6500FD4166 /* calvi_tableUITests.swift */; };
-		27E576972185146F00D37E02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27E576962185146F00D37E02 /* GoogleService-Info.plist */; };
 		27EF133D20E139B500ADE593 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EF133C20E139B500ADE593 /* Coordinate.swift */; };
 		27F5C3671F73F44D002B8AB8 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F5C3661F73F44D002B8AB8 /* MessageController.swift */; };
 		27FE13121F46FC5E0073C0E9 /* AdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13111F46FC5E0073C0E9 /* AdCell.swift */; };
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
 		27FF9BD5201B33CE00D50983 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF9BD4201B33CE00D50983 /* Constants.swift */; };
+		6C8F115221FF7CCA0066B22F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C8F115121FF7CCA0066B22F /* GoogleService-Info.plist */; };
 		76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +114,6 @@
 		27CE4FB51F446E6500FD4166 /* calvi_tableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calvi_tableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CE4FB91F446E6500FD4166 /* calvi_tableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calvi_tableUITests.swift; sourceTree = "<group>"; };
 		27CE4FBB1F446E6500FD4166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27E576962185146F00D37E02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27EF133C20E139B500ADE593 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		27F5C3661F73F44D002B8AB8 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		27FE13111F46FC5E0073C0E9 /* AdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCell.swift; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8F115121FF7CCA0066B22F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.debug.xcconfig"; sourceTree = "<group>"; };
 		BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +193,7 @@
 				270C74A421961AD900866CD0 /* SearchesController.swift */,
 				270EE7D421B834BB00B48D22 /* _preparation.swift */,
 				270D655421D013A00076E846 /* FollowSearchViewController.swift */,
+				6C8F115121FF7CCA0066B22F /* GoogleService-Info.plist */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -268,7 +269,6 @@
 				27CE4F9D1F446E6500FD4166 /* Main.storyboard */,
 				27CE4FA01F446E6500FD4166 /* Assets.xcassets */,
 				27CE4FA21F446E6500FD4166 /* LaunchScreen.storyboard */,
-				27E576962185146F00D37E02 /* GoogleService-Info.plist */,
 				27CE4FA51F446E6500FD4166 /* Info.plist */,
 				27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */,
 			);
@@ -420,7 +420,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 27CE4F911F446E6500FD4166 /* Build configuration list for PBXProject "calvi_table" */;
+			buildConfigurationList = 27CE4F911F446E6500FD4166 /* Build configuration list for PBXProject "LKS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -448,9 +448,9 @@
 			files = (
 				27930C5C20DCF26F006BC154 /* Localizable.strings in Resources */,
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
+				6C8F115221FF7CCA0066B22F /* GoogleService-Info.plist in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
-				27E576972185146F00D37E02 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,7 +954,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27CE4F911F446E6500FD4166 /* Build configuration list for PBXProject "calvi_table" */ = {
+		27CE4F911F446E6500FD4166 /* Build configuration list for PBXProject "LKS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27CE4FBC1F446E6500FD4166 /* Debug */,
