@@ -46,7 +46,7 @@
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
 		27FF9BD5201B33CE00D50983 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF9BD4201B33CE00D50983 /* Constants.swift */; };
-		6C8F115221FF7CCA0066B22F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C8F115121FF7CCA0066B22F /* GoogleService-Info.plist */; };
+		6C9161C82230278900AC1EB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C9161C72230278900AC1EB9 /* GoogleService-Info.plist */; };
 		76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,7 +124,7 @@
 		2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C8F115121FF7CCA0066B22F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6C9161C72230278900AC1EB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.debug.xcconfig"; sourceTree = "<group>"; };
 		BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				270C74A421961AD900866CD0 /* SearchesController.swift */,
 				270EE7D421B834BB00B48D22 /* _preparation.swift */,
 				270D655421D013A00076E846 /* FollowSearchViewController.swift */,
-				6C8F115121FF7CCA0066B22F /* GoogleService-Info.plist */,
+				6C9161C72230278900AC1EB9 /* GoogleService-Info.plist */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -448,7 +448,7 @@
 			files = (
 				27930C5C20DCF26F006BC154 /* Localizable.strings in Resources */,
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
-				6C8F115221FF7CCA0066B22F /* GoogleService-Info.plist in Resources */,
+				6C9161C82230278900AC1EB9 /* GoogleService-Info.plist in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
 			);
