@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */; };
-		206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */; };
+		1B6F909E1C09AB3ED3FB090F /* Pods_calvi_tableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D39B57FEB7F83D2075911144 /* Pods_calvi_tableUITests.framework */; };
 		270A36401FB35D8A00F5026A /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A363F1FB35D8A00F5026A /* UITextViewPlaceholder.swift */; };
 		270C74A12194C80000866CD0 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A02194C80000866CD0 /* Extensions+UIView.swift */; };
 		270C74A521961AD900866CD0 /* SearchesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270C74A421961AD900866CD0 /* SearchesController.swift */; };
@@ -46,8 +45,9 @@
 		27FE13141F46FF110073C0E9 /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13131F46FF110073C0E9 /* Ad.swift */; };
 		27FE13161F47122F0073C0E9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FE13151F47122F0073C0E9 /* DetailViewController.swift */; };
 		27FF9BD5201B33CE00D50983 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FF9BD4201B33CE00D50983 /* Constants.swift */; };
-		6CEBEAC12240059F00D91AD3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CEBEAC02240059F00D91AD3 /* GoogleService-Info.plist */; };
-		76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */; };
+		6C1D9519224C161D001F6729 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C1D9518224C161C001F6729 /* GoogleService-Info.plist */; };
+		8BBB85558D1230D30499CCBC /* Pods_calvi_tableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38DFB229812779747E3F2D4 /* Pods_calvi_tableTests.framework */; };
+		97AB786E9E0A70ABAA1541EE /* Pods_calvi_table.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 434FA8A1437E6B6EF6D72651 /* Pods_calvi_table.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_table.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.debug.xcconfig"; sourceTree = "<group>"; };
+		03F17A5A5365775649D8ED82 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
+		0CEAA6F01D92BFA6DC84E21B /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2705B6C720B36440004B36E9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		2705B6C820B36550004B36E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2705B6C920B36551004B36E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -120,15 +120,15 @@
 		27FE13151F47122F0073C0E9 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		27FE13581F6417200073C0E9 /* calvi_table-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "calvi_table-Bridging-Header.h"; sourceTree = "<group>"; };
 		27FF9BD4201B33CE00D50983 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.release.xcconfig"; sourceTree = "<group>"; };
-		5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CEA47E022395446003AA816 /* calvi_table.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = calvi_table.entitlements; sourceTree = "<group>"; };
-		6CEBEAC02240059F00D91AD3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.debug.xcconfig"; sourceTree = "<group>"; };
-		BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E81CCFCF4A59A12AF4386C19 /* Pods-calvi_table.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.release.xcconfig"; sourceTree = "<group>"; };
+		313A9D50F2589ACF3DEC092B /* Pods-calvi_table.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.release.xcconfig"; sourceTree = "<group>"; };
+		434FA8A1437E6B6EF6D72651 /* Pods_calvi_table.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_table.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C1D9518224C161C001F6729 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6C1D951A224C167C001F6729 /* calvi_table.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = calvi_table.entitlements; sourceTree = "<group>"; };
+		7283B824E944A7A2DFBBD015 /* Pods-calvi_tableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7856BDD158E642FCE145A1FC /* Pods-calvi_tableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_tableUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_tableUITests/Pods-calvi_tableUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B4D145397F86DC42279EAE8D /* Pods-calvi_table.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-calvi_table.debug.xcconfig"; path = "Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table.debug.xcconfig"; sourceTree = "<group>"; };
+		D39B57FEB7F83D2075911144 /* Pods_calvi_tableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F38DFB229812779747E3F2D4 /* Pods_calvi_tableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_calvi_tableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76874EB1E393E40F33342546 /* Pods_calvi_table.framework in Frameworks */,
+				97AB786E9E0A70ABAA1541EE /* Pods_calvi_table.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				206B306B1F7E944D4A7CE2A0 /* Pods_calvi_tableTests.framework in Frameworks */,
+				8BBB85558D1230D30499CCBC /* Pods_calvi_tableTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EE9124A930A1480B556AE12 /* Pods_calvi_tableUITests.framework in Frameworks */,
+				1B6F909E1C09AB3ED3FB090F /* Pods_calvi_tableUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +239,8 @@
 				27CE4FAD1F446E6500FD4166 /* calvi_tableTests */,
 				27CE4FB81F446E6500FD4166 /* calvi_tableUITests */,
 				27CE4F971F446E6500FD4166 /* Products */,
-				D5066F03A7C90A06D472CC46 /* Pods */,
 				FC235A5C4BB21180C6E1AC70 /* Frameworks */,
+				D69927940FE6F92210467F96 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,8 +257,7 @@
 		27CE4F981F446E6500FD4166 /* calvi_table */ = {
 			isa = PBXGroup;
 			children = (
-				6CEBEAC02240059F00D91AD3 /* GoogleService-Info.plist */,
-				6CEA47E022395446003AA816 /* calvi_table.entitlements */,
+				6C1D951A224C167C001F6729 /* calvi_table.entitlements */,
 				2711D3932177BA6300A4416D /* extentions */,
 				2727CA6F211C45770075985D /* presenter */,
 				274DA64C1F8FDCBB001DD34F /* utils */,
@@ -266,6 +265,7 @@
 				2748C4B31F74498E0009CDCB /* model */,
 				2748C4B11F74494F0009CDCB /* controller */,
 				27CE4F991F446E6500FD4166 /* AppDelegate.swift */,
+				6C1D9518224C161C001F6729 /* GoogleService-Info.plist */,
 				27CE4F9D1F446E6500FD4166 /* Main.storyboard */,
 				27CE4FA01F446E6500FD4166 /* Assets.xcassets */,
 				27CE4FA21F446E6500FD4166 /* LaunchScreen.storyboard */,
@@ -293,15 +293,15 @@
 			path = calvi_tableUITests;
 			sourceTree = "<group>";
 		};
-		D5066F03A7C90A06D472CC46 /* Pods */ = {
+		D69927940FE6F92210467F96 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */,
-				E81CCFCF4A59A12AF4386C19 /* Pods-calvi_table.release.xcconfig */,
-				16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */,
-				2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */,
-				5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */,
-				E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */,
+				B4D145397F86DC42279EAE8D /* Pods-calvi_table.debug.xcconfig */,
+				313A9D50F2589ACF3DEC092B /* Pods-calvi_table.release.xcconfig */,
+				7283B824E944A7A2DFBBD015 /* Pods-calvi_tableTests.debug.xcconfig */,
+				03F17A5A5365775649D8ED82 /* Pods-calvi_tableTests.release.xcconfig */,
+				0CEAA6F01D92BFA6DC84E21B /* Pods-calvi_tableUITests.debug.xcconfig */,
+				7856BDD158E642FCE145A1FC /* Pods-calvi_tableUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -309,9 +309,9 @@
 		FC235A5C4BB21180C6E1AC70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1235801914AE20CE5C47D021 /* Pods_calvi_table.framework */,
-				5FF59E0B40FFDB90081F91C7 /* Pods_calvi_tableTests.framework */,
-				BB240C1589386875C3C3352F /* Pods_calvi_tableUITests.framework */,
+				434FA8A1437E6B6EF6D72651 /* Pods_calvi_table.framework */,
+				F38DFB229812779747E3F2D4 /* Pods_calvi_tableTests.framework */,
+				D39B57FEB7F83D2075911144 /* Pods_calvi_tableUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -327,8 +327,8 @@
 				27CE4F921F446E6500FD4166 /* Sources */,
 				27CE4F931F446E6500FD4166 /* Frameworks */,
 				27CE4F941F446E6500FD4166 /* Resources */,
-				F09AA32DFABF0E337CEFA71F /* [CP] Copy Pods Resources */,
-				233498DC4E97BA5C85A92B15 /* [CP] Embed Pods Frameworks */,
+				8BF4CBED8A12031C7B4A162E /* [CP] Embed Pods Frameworks */,
+				1F53ACFBAB1686A007319092 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,8 +347,6 @@
 				27CE4FA61F446E6500FD4166 /* Sources */,
 				27CE4FA71F446E6500FD4166 /* Frameworks */,
 				27CE4FA81F446E6500FD4166 /* Resources */,
-				B7F21C476ECBC43D591F6597 /* [CP] Embed Pods Frameworks */,
-				C3495AA0C0D4CFC5F86D346A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -396,7 +394,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -425,9 +423,11 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"de-DE",
+				de,
 			);
 			mainGroup = 27CE4F8D1F446E6500FD4166;
 			productRefGroup = 27CE4F971F446E6500FD4166 /* Products */;
@@ -448,7 +448,7 @@
 			files = (
 				27930C5C20DCF26F006BC154 /* Localizable.strings in Resources */,
 				27CE4FA41F446E6500FD4166 /* LaunchScreen.storyboard in Resources */,
-				6CEBEAC12240059F00D91AD3 /* GoogleService-Info.plist in Resources */,
+				6C1D9519224C161D001F6729 /* GoogleService-Info.plist in Resources */,
 				27CE4FA11F446E6500FD4166 /* Assets.xcassets in Resources */,
 				27CE4F9F1F446E6500FD4166 /* Main.storyboard in Resources */,
 			);
@@ -507,10 +507,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		233498DC4E97BA5C85A92B15 /* [CP] Embed Pods Frameworks */ = {
+		1F53ACFBAB1686A007319092 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh",
+				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BF4CBED8A12031C7B4A162E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-frameworks.sh",
@@ -522,7 +548,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-Defines-Logger-NSData+zlib/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
@@ -536,6 +562,8 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
@@ -579,74 +607,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7F21C476ECBC43D591F6597 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac-Defines-NSData+zlib/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C3495AA0C0D4CFC5F86D346A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh",
-				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_tableTests/Pods-calvi_tableTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F09AA32DFABF0E337CEFA71F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh",
-				"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks/GoogleAuthUtilities.framework/Resources/GTMOAuth2ViewTouch.xib",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMOAuth2ViewTouch.nib",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-calvi_table/Pods-calvi_table-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -797,7 +757,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -843,7 +803,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -854,14 +814,14 @@
 		};
 		27CE4FBF1F446E6500FD4166 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A059138545325922EBC40CD /* Pods-calvi_table.debug.xcconfig */;
+			baseConfigurationReference = B4D145397F86DC42279EAE8D /* Pods-calvi_table.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = calvi_table/calvi_table.entitlements;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
 				INFOPLIST_FILE = calvi_table/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.wichura.lks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -873,14 +833,14 @@
 		};
 		27CE4FC01F446E6500FD4166 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E81CCFCF4A59A12AF4386C19 /* Pods-calvi_table.release.xcconfig */;
+			baseConfigurationReference = 313A9D50F2589ACF3DEC092B /* Pods-calvi_table.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = calvi_table/calvi_table.entitlements;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
 				INFOPLIST_FILE = calvi_table/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.wichura.lks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -891,7 +851,7 @@
 		};
 		27CE4FC21F446E6500FD4166 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 16B140DE5479CD576136FAAB /* Pods-calvi_tableTests.debug.xcconfig */;
+			baseConfigurationReference = 7283B824E944A7A2DFBBD015 /* Pods-calvi_tableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -907,7 +867,7 @@
 		};
 		27CE4FC31F446E6500FD4166 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B2C524508D136494A43EBE8 /* Pods-calvi_tableTests.release.xcconfig */;
+			baseConfigurationReference = 03F17A5A5365775649D8ED82 /* Pods-calvi_tableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -923,7 +883,7 @@
 		};
 		27CE4FC51F446E6500FD4166 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B448772B8FF7FBBFCCD17FA /* Pods-calvi_tableUITests.debug.xcconfig */;
+			baseConfigurationReference = 0CEAA6F01D92BFA6DC84E21B /* Pods-calvi_tableUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = XPVL95Z44H;
@@ -938,7 +898,7 @@
 		};
 		27CE4FC61F446E6500FD4166 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E20860EAB9F1F6602AFD6E40 /* Pods-calvi_tableUITests.release.xcconfig */;
+			baseConfigurationReference = 7856BDD158E642FCE145A1FC /* Pods-calvi_tableUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = XPVL95Z44H;

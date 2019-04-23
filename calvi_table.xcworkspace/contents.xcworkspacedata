@@ -4,7 +4,4 @@
    <FileRef
       location = "group:/Users/digiconan/Desktop/LuftKraftSport_iOS/LKS.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
 </Workspace>

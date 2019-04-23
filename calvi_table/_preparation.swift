@@ -108,3 +108,12 @@ let currentSearchesButton: UIButton = {
 
 */
 
+
+//
+//  AppDelegate.swift
+//  push
+//
+//  Created by bernd wichura on 28.01.19.
+//  Copyright © 2019 bernd wichura. All rights reserved.
+//
+

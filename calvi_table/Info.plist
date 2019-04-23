@@ -69,10 +69,6 @@
 	<string>Luftkraftsport needs your location to find articles, so please grant this permission or tell us your location.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We want to get your profile picture for this app</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
