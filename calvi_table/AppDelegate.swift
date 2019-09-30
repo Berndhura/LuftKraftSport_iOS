@@ -1,50 +1,22 @@
 
-//
-//  AppDelegate.swift
-//  calvi_table
-//
-//  Created by bernd wichura on 16.08.17.
-//  Copyright © 2017 bernd wichura. All rights reserved.
-//
-
 import UIKit
 import Firebase
-import FBSDKCoreKit
-import FBSDKLoginKit
 import UserNotifications
-import SwiftyJSON
-import IQKeyboardManagerSwift
-
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
-    var navigationController: UINavigationController?
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-    }
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        FBSDKLoginManager.initialize()
-        
-        IQKeyboardManager.shared.enable = true
-        
-        navigationController = application.windows[0].rootViewController as? UINavigationController
-        
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-    }
-    
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        initObservers()
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
         
+        // [START set_messaging_delegate]
+        Messaging.messaging().delegate = self
+        // [END set_messaging_delegate]
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
         // [START register_for_notifications]
@@ -65,64 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]
-        
-        Messaging.messaging().delegate = self
-        
         return true
     }
-    
-    
-    // init all obersvers for eg receiving push notifications for follow search notification
-    fileprivate func  initObservers() {
-        
-        // Observer for follow search push notification
-        NotificationCenter.default.addObserver(self, selector: #selector(followSearchMatchObserver), name: Notification.Name(Constants.followSearchMatch), object: nil)
-    }
-    
-    
-    @objc fileprivate func followSearchMatchObserver() {
-        
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
-        vc.articleId = 5928  
-        vc.isFollowSearchNotification = true
-        self.navigationController!.pushViewController(vc, animated: true)
-    }
-    
-    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        let sourceApplication =  options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
-        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
-        
-        let googleHandler = GIDSignIn.sharedInstance().handle(
-            url,
-            sourceApplication: sourceApplication,
-            annotation: annotation )
-        
-        let facebookHandler = FBSDKApplicationDelegate.sharedInstance().application (
-            app,
-            open: url,
-            sourceApplication: sourceApplication,
-            annotation: annotation )
-        
-        return googleHandler || facebookHandler
-    }
-    
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        
-        FBSDKAppEvents.activateApp()
-    }
-    
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        Utils.eraseChatInfo()
-    }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        Utils.eraseChatInfo()
-    }
-    
     
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
@@ -168,31 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("APNs token retrieved: \(deviceToken)")
         
-        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print(deviceTokenString)
-
-        
         // With swizzling disabled you must set the APNs token here.
-        //Messaging.messaging().apnsToken = deviceToken
-    }
-    
-    func forwardMessageToChat(userInfo: [AnyHashable: Any]) {
-        
-        let name = userInfo[AnyHashable("name")] as? String
-        let articleId = userInfo[AnyHashable("articleId")] as? String
-        let sender = userInfo[AnyHashable("sender")] as? String
-        
-        //open Chat ViewController
-        let chatController = ChatViewController()
-        chatController.sender = sender!
-        chatController.articleId = Int64(articleId!)!
-        chatController.partnerName = name!
-        
-        navigationController!.pushViewController(chatController, animated: true)
+        // Messaging.messaging().apnsToken = deviceToken
     }
 }
 
-/*
 // [START ios_10_message_handling]
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
@@ -204,8 +100,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         
         // With swizzling disabled you must let Messaging know about the message, for Analytics
-        //Messaging.messaging().appDidReceiveMessage(userInfo)
-        //completionHandler([.sound,.alert,.badge])
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -214,44 +109,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         print(userInfo)
         
-        if (String(describing: userInfo["type"]) == "article") {
-            //let messageText = userInfo["message"]
-            //let sender = userInfo["sender"]
-            let articleId = userInfo["articleId"]
-            //let name = userInfo["name"]
-            
-            
-            let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "detailViewController") as! DetailViewController
-            vc.articleId = articleId as? Int32
-            vc.isFollowSearchNotification = true
-            self.navigationController!.pushViewController(vc, animated: true)
-            completionHandler([.alert, .sound, .badge])
-            
-        } else {
-            
-            let defaults:UserDefaults = UserDefaults.standard
-            let userId = defaults.string(forKey: "senderId")
-            let articleId = defaults.string(forKey: "articleId")
-            let userIdFromMessage = userInfo["sender"] as! String
-            let articleIdFromMessage = userInfo["articleId"] as! String
-            let message = userInfo["message"]
-            let name = userInfo["name"]
-            
-            if (userId == userIdFromMessage && articleId == articleIdFromMessage) {
-                
-                var payload:[String: String] = [:]
-                payload["message"] = message as? String
-                payload["name"] = name as? String
-                payload["partnerId"] = userIdFromMessage
-                let nc = NotificationCenter.default
-                nc.post(name: Notification.Name(Constants.gotPushNotification), object: nil, userInfo: payload)
-            } else {
-                completionHandler([.alert, .sound, .badge])
-            }
-        }
+        // Change this to your preferred presentation option
+        completionHandler([])
     }
-    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
@@ -262,50 +122,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             print("Message ID: \(messageID)")
         }
         
-        //app is in background -> show badge
-        forwardMessageToChat(userInfo: userInfo)
+        // Print full message.
+        print(userInfo)
         
-    }
-}
-// [END ios_10_message_handling]
-*/
-
-
-// [START ios_10_message_handling]
-@available(iOS 10, *)
-extension AppDelegate : UNUserNotificationCenterDelegate {
-    
-    // Receive displayed notifications for iOS 10 devices.
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                willPresent notification: UNNotification,
-                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        let userInfo = notification.request.content.userInfo
-        if let messageID = userInfo[gcmMessageIDKey] {
-            debugPrint("Message ID: \(messageID)")
-        }
-        debugPrint(userInfo)
-        //Handle the notification ON APP
-        Messaging.messaging().appDidReceiveMessage(userInfo)
-        completionHandler([.sound,.alert,.badge])
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse,
-                                withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        let userInfo = response.notification.request.content.userInfo
-        if let messageID = userInfo[gcmMessageIDKey] {
-            debugPrint("Message ID: \(messageID)")
-        }
-        //Handle the notification ON BACKGROUND
-        Messaging.messaging().appDidReceiveMessage(userInfo)
         completionHandler()
     }
 }
 // [END ios_10_message_handling]
-
-
 
 extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
@@ -316,18 +139,7 @@ extension AppDelegate : MessagingDelegate {
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
-        
-        InstanceID.instanceID().instanceID { (result, error) in
-            if let error = error {
-                print("Error fetching remote instange ID: \(error)")
-            } else if let result = result {
-                print("Remote instance ID token: \(result.token)")
-                Utils.saveDeviceFmcToken(fcmToken: result.token)
-                Utils.updateDeviceToken()
-            }
-        }
     }
-    
     // [END refresh_token]
     // [START ios_10_data_message]
     // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
@@ -337,4 +149,3 @@ extension AppDelegate : MessagingDelegate {
     }
     // [END ios_10_data_message]
 }
-

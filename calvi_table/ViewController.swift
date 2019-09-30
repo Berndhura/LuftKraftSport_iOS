@@ -328,7 +328,7 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         if userToken != "" {
             
-            let url = URL(string: "https://178.254.54.25:9876/api/V3/bookmarks/ids?token=\(userToken)")
+            let url = URL(string: "http://52.29.200.187:80/api/V3/bookmarks/ids?token=\(userToken)")
             
             Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in
@@ -365,20 +365,20 @@ class ViewController: UIViewController, UISearchResultsUpdating, UISearchBarDele
         
         if type == "all" {
             //all articles
-            url = URL(string: "https://178.254.54.25:9876/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=\(page)&size=\(batchSize)")
+            url = URL(string: "http://52.29.200.187:80/api/V3/articles?lat=0.0&lng=0.0&distance=10000000&page=\(page)&size=\(batchSize)")
         } else if type == "search" {
             //search for article
             let lat = searchItem!.lat
             let lng = searchItem!.lng
             let dist = searchItem!.distance
             let title = searchItem!.title
-            url = URL(string: "https://178.254.54.25:9876/api/V3/articles?lat=\(lat)&lng=\(lng)&distance=\(dist)&page=0&size=30&description=\(title)")
+            url = URL(string: "http://52.29.200.187:80/api/V3/articles?lat=\(lat)&lng=\(lng)&distance=\(dist)&page=0&size=30&description=\(title)")
             //TODO Paging einbauen
         } else if type == "bookmarked" {
             //bookmarks
             let token = Utils.getUserToken()
             //TODO check url -> distance
-            url = URL(string: "https://178.254.54.25:9876/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")
+            url = URL(string: "http://52.29.200.187:80/api/V3/bookmarks?lat=0.0&lng=0.0&distance=10000000&page=0&size=30&token=\(token)")
         } else if type == "my" {
             //my articles
             let userToken = Utils.getUserToken()
@@ -601,7 +601,7 @@ extension ViewController: UITableViewDataSource {
         //image
         let imageId = getPictureUrl(str: ads[indexPath.item].urls)
         
-        let urlString = "https://178.254.54.25:9876/api/V3/pictures/\(imageId)"
+        let urlString = "http://52.29.200.187:80/api/V3/pictures/\(imageId)"
         
         let url = URL(string: urlString)
         

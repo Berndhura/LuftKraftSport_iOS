@@ -32,7 +32,7 @@ class ArticlePresenter {
     func deleteImage(articleId: Int32, imageId: Int) {
         
         let userToken = Utils.getUserToken()
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/\(imageId)/deletePicture?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)/\(imageId)/deletePicture?token=\(userToken)")
         Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 //debugPrint(response)
