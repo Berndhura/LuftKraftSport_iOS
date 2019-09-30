@@ -114,7 +114,7 @@ class MessagesController: UIViewController {
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forUser?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/messages/forUser?token=\(userToken)")
         
         Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -212,7 +212,7 @@ extension MessagesController: UITableViewDataSource {
     
         //image
         let imageId = messages[indexPath.item].url
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageId)/thumbnail/")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/pictures/\(imageId)/thumbnail/")
         cell?.bild.sd_setImage(with: url!, placeholderImage: UIImage(named: "lks_logo_1024x1024"))
         
         return cell!

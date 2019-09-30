@@ -183,7 +183,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     
     func getDetailsForArticle() {
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId!)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId!)")
         Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
                 switch response.result {
@@ -240,7 +240,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
 
     
     func increaseViewsForAd() {
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId!)/increaseViewCount")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId!)/increaseViewCount")
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
         }
@@ -297,7 +297,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
     func addImageToScrollView(imageNumber: Int) {
         
         if (imageNumberList.count > 0) {
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(imageNumberList[imageNumber])")
+            let url = URL(string: "http://52.29.200.187:80/api/V3/pictures/\(imageNumberList[imageNumber])")
             let imageView = UIImageView()
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapImage(_:)))
 
@@ -425,7 +425,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -437,7 +437,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/\(articleId)?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/bookmarks/\(articleId)?token=\(userToken)")
         
         Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
@@ -461,7 +461,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)?token=\(userToken)")
         
         let refreshAlert = UIAlertController(title: NSLocalizedString("delete_article", comment: ""), message: NSLocalizedString("delete_article_confirm", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         
@@ -491,7 +491,7 @@ class DetailViewController: UIViewController, MKMapViewDelegate, UIScrollViewDel
                 
                 let userToken = Utils.getUserToken()
                 
-                let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
+                let url = URL(string: "http://52.29.200.187:80/api/V3/messages?token=\(userToken)&articleId=\(articleId)&idTo=\(userIdFromArticle)&message=\(message)")
                 
                 //TODO crash oft hier beim ersten nachrichten schicken url ist nil
                 Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)

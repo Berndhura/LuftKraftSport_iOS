@@ -119,7 +119,7 @@ class Utils {
         let defaults:UserDefaults = UserDefaults.standard
         let deviceToken = defaults.string(forKey: "deviceFcmToken")
 
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/users/sendToken?token=\(userToken)&deviceToken=\(deviceToken ?? "")")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/users/sendToken?token=\(userToken)&deviceToken=\(deviceToken ?? "")")
         
         Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in

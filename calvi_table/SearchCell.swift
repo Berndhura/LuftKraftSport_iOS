@@ -38,7 +38,7 @@ class SearchCell: UITableViewCell {
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/\(searchId)?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/searches/\(searchId)?token=\(userToken)")
         
         let refreshAlert = UIAlertController(title: NSLocalizedString("delete_search", comment: ""), message: NSLocalizedString("delete_search_confirm", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         

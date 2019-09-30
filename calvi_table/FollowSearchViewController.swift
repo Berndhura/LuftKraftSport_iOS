@@ -69,7 +69,7 @@ class FollowSearchViewController: UIViewController, CLLocationManagerDelegate {
             
             let text = getSearchText()
         
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=\(price)&lat=\(lat)&lng=\(lng)&distance=\(distance)&token=\(userToken)")
+            let url = URL(string: "http://52.29.200.187:80/api/V3/searches/new?description=\(text)&priceFrom=0&priceTo=\(price)&lat=\(lat)&lng=\(lng)&distance=\(distance)&token=\(userToken)")
             
             Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                 .responseJSON { response in

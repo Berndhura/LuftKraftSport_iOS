@@ -93,7 +93,7 @@ class ChatViewController: JSQMessagesViewController {
         //print(articleId)
         //print(sender)
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages?token=\(userToken)&articleId=\(adId)&idTo=\(sender)&message=\(messageToSend!)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/messages?token=\(userToken)&articleId=\(adId)&idTo=\(sender)&message=\(messageToSend!)")
         
         //let message = JSQMessage(senderId: senderId!, displayName: senderDisplayName!, text: text!)
         let message =  JSQMessage(senderId: senderId!, senderDisplayName: senderDisplayName!, date: date!, text: text!)
@@ -145,7 +145,7 @@ class ChatViewController: JSQMessagesViewController {
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/messages/forArticle?token=\(userToken)&sender=\(self.sender)&articleId=\(self.articleId)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/messages/forArticle?token=\(userToken)&sender=\(self.sender)&articleId=\(self.articleId)")
         
         URLSession.shared.dataTask(with: url!) { data, response, error in
             

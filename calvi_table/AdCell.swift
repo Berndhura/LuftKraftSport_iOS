@@ -62,7 +62,7 @@ class AdCell: UITableViewCell {
         if Utils.isLoggedIn() {
             if myBookmarks.contains(articleId) {
                 //remove bookmark
-                let url = URL(string: "http://178.254.54.25:9876/api/V3/bookmarks/\(articleId)?token=\(userToken)")
+                let url = URL(string: "http://52.29.200.187:80/api/V3/bookmarks/\(articleId)?token=\(userToken)")
                 
                 Alamofire.request(url!, method: .delete, parameters: nil, encoding: JSONEncoding.default)
                     .responseJSON { response in
@@ -73,7 +73,7 @@ class AdCell: UITableViewCell {
                 
             } else {
                 //create bookmark
-                let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
+                let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)/bookmark?token=\(userToken)")
                 
                 Alamofire.request(url!, method: .post, parameters: nil, encoding: JSONEncoding.default)
                     .responseJSON { response in
@@ -90,7 +90,7 @@ class AdCell: UITableViewCell {
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)?token=\(userToken)")
         
         let refreshAlert = UIAlertController(title: NSLocalizedString("delete_article", comment: ""), message: NSLocalizedString("delete_article_confirm", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         

@@ -474,7 +474,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         for i in 0..<urlList.count {
             
             let imageButton = UIButton()
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/pictures/\(urlList[i])")
+            let url = URL(string: "http://52.29.200.187:80/api/V3/pictures/\(urlList[i])")
             imageButton.sd_setImage(with: url!, for: .normal, completed: nil)
             imageButton.tag = i
             imageButton.addTarget(self, action: #selector(imageTapped), for: .touchDown)
@@ -544,7 +544,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles?token=\(userToken)")
         
         self.deleteImageFromListAndServer()
         
@@ -589,7 +589,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
      */
     func uploadNewImagesToAd() {
         let userToken = Utils.getUserToken()
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
         //print("new images anzahl: ")
         //print(adImages.count)
         
@@ -612,7 +612,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/articles?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/articles?token=\(userToken)")
         
         let price = self.price.text!
         
@@ -671,7 +671,7 @@ class NewAdViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         if let articleId = dict["id"] {
             let userToken = Utils.getUserToken()
-            let url = URL(string: "http://178.254.54.25:9876/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
+            let url = URL(string: "http://52.29.200.187:80/api/V3/articles/\(articleId)/addPicture?token=\(userToken)")
             
             when(fulfilled: adImages.map {presenter.uploadImagePromise(url: url!, image: $0)})
                 .done { ([Any]) in

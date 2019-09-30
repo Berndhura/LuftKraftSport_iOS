@@ -62,7 +62,7 @@ class SearchesController: UIViewController, SearchCellDelegate {
         
         let userToken = Utils.getUserToken()
         
-        let url = URL(string: "http://178.254.54.25:9876/api/V3/searches?token=\(userToken)")
+        let url = URL(string: "http://52.29.200.187:80/api/V3/searches?token=\(userToken)")
         
         Alamofire.request(url!, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .responseJSON { response in
